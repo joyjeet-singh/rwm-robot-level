@@ -47,3 +47,11 @@
 - scripts/air_numbers.py fk() fix (K <= −100% printed as 100%; only unused keys changed).
 - Commit c0f7c93. Choices in DECISIONS.md (R6): "barely changing", T20 at 368 steps, COMBO citation unverified.
 - Open: any added text (R7 appendix ref, R9 FT sentence in abstract) needs matching cuts; the two-column build has no slack.
+
+## R7 status: COMPLETE (2026-11-01 22:52)
+- Figure 2 has three panels (Spearman from stats.json); caption in the body names them.
+- paper/appendix.template.tex: A1–A6 filled, A7 left for R9; new keys (hp_*, a1t_*) in revision_numbers.py (839 keys).
+- build_paper.py fills appendix.tex (refuses on a missing key); main_single inputs it after the references.
+- Single column 15 pages, two-column 6 pages; submission_checks, check_claims (46), check_bib pass.
+- Commit 8227323. Notes: revision/notes/R7.md; choices in DECISIONS (R7).
+- Open: not placed in the appendix: shared_pct, cov1_*, ng_pathB_*, TorchScript timing. fig_horizon.* left unstaged.
