@@ -39,3 +39,11 @@
 - Spot checks (printed both sides): a1 X5 λ1(8) −0.02, a2 Q3_vs_E1 two-level CI, perc K width-128, stale 22.49, NGCAPS ρ [0.70, 0.93], Holm p for Q4_vs_E8; all match their sources.
 - Key list for R6: revision/notes/R5_keys.md (128 lines, generated from paper_numbers.json). Commit 44235e1. Choices in DECISIONS.md (R5).
 - Open: A1/A2/A3 keys are exploratory and must be labelled so; scale_ratio is 750 (from 0.133%), not 770.
+
+## R6 status: COMPLETE (2026-11-01 22:46)
+- body.template.tex revised for T1–T22; title kept, two alternatives in revision/notes/R6.md (T23).
+- Two-column 6 pages (page 6 full, no spare line), single column 10; abstract 199 words; check_bib (strict), submission_checks, check_claims pass.
+- New: paper/appendix.template.tex (A1–A7 skeleton), revision/notes/R6.md, R6_moved.md (old Sec. 4.3 for A6).
+- scripts/air_numbers.py fk() fix (K <= −100% printed as 100%; only unused keys changed).
+- Commit c0f7c93. Choices in DECISIONS.md (R6): "barely changing", T20 at 368 steps, COMBO citation unverified.
+- Open: any added text (R7 appendix ref, R9 FT sentence in abstract) needs matching cuts; the two-column build has no slack.
