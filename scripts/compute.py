@@ -20,10 +20,12 @@ import torch
 
 import common as C
 import compress as K
+import evalh
 import lyap
 import pools
 
 torch.set_num_threads(2)
+HW = (1, 8, 24, 100)
 
 
 def build(path, ens, variant):
@@ -47,9 +49,12 @@ def per_model(m, ar, sc):
     P, S = C.denorm(pred.numpy()), C.denorm(st.numpy())
     rG, rJ, rA = C.monitors(P, sc)
     jdeg, vel, pos, _ = C.physical(P, S)
+    win = {f"E{h}": evalh.window_error(m, st, ac, h)[0] for h in HW}                        # (B,) each
     lam, log1 = lyap.lyapunov(m, st, ac, p=4)                                               # float64
-    return {"err": err, "lam": lam, "log1": log1, "rG": rG, "rJ": rJ, "rA": rA, "jdeg": jdeg, "vel": vel,
-            "pos": pos, "finite": bool(np.isfinite(err).all() and np.isfinite(lam).all())}
+    out = {"err": err, "lam": lam, "log1": log1, "rG": rG, "rJ": rJ, "rA": rA, "jdeg": jdeg, "vel": vel,
+           "pos": pos, **win}
+    out["finite"] = bool(all(np.isfinite(v).all() for v in out.values()))
+    return out
 
 
 def arena_extras(ar, fold_train):
@@ -62,8 +67,9 @@ def arena_extras(ar, fold_train):
     jdeg, vel, pos, dist = C.physical(hold, S)
     sc = C.real_scales(fold_train)
     rG, rJ, rA = C.monitors(S, sc)                                       # the recording's own residuals
+    fw = {f"floor_E{h}": evalh.window_floor(st, h) for h in HW}
     return {"floor": floor, "floor_jdeg": jdeg, "floor_vel": vel, "floor_pos": pos, "dist": dist,
-            "rec_rG": rG, "rec_rJ": rJ, "rec_rA": rA}, sc
+            "rec_rG": rG, "rec_rJ": rJ, "rec_rA": rA, **fw}, sc
 
 
 def run(entries, arena_of, tag):
@@ -79,7 +85,7 @@ def run(entries, arena_of, tag):
             done.add(fold)
         m, info = build(path, ens, variant)
         out = per_model(m, ar, sc)
-        for k in ("err", "lam", "log1", "rG", "rJ", "rA", "jdeg", "vel", "pos"):
+        for k in ("err", "lam", "log1", "rG", "rJ", "rA", "jdeg", "vel", "pos") + tuple(f"E{h}" for h in HW):
             raw[f"{k}_{key}"] = out[k]
         meta.append({"key": key, "pool": pool, "group": group, "variant": variant, "variant_info": info,
                      "extra": extra, "ensemble": ens, "finite": out["finite"],
