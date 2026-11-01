@@ -13,6 +13,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
+from matplotlib.ticker import FixedLocator, FuncFormatter, NullLocator  # noqa: E402
 
 import common as C  # noqa: E402
 
@@ -44,7 +45,7 @@ def fig_horizon():
     fig, ax = plt.subplots(figsize=(3.45, 2.15))
     for h, txt in ((24, "24 steps\n(RWM)"), (100, "100 steps\n(RWM-U)")):
         ax.axvline(h, color="#d6d5d0", lw=0.8, zorder=0)
-        ax.text(h * 1.06, 0.012, txt, color=MUTED, fontsize=5.8, va="bottom")
+        ax.text(h * 1.06, 0.075, txt, color=MUTED, fontsize=5.8, va="bottom")
     ax.plot(k, F, color=GRAY, lw=1.2, ls=(0, (4, 2)), label="hold last state (floor)")
     ax.plot(k, B, color=ORANGE, lw=1.6, label="teacher-forced")
     ax.plot(k, U, color=AQUA, lw=1.6, label="rollout-trained, 30% pruned")
@@ -52,12 +53,22 @@ def fig_horizon():
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.set_xlim(1, 368)
-    ax.set_ylim(0.01, 4)
+    ax.set_ylim(0.07, 6)
+    plain = FuncFormatter(lambda v, _: f"{v:g}")
+    ax.xaxis.set_major_locator(FixedLocator([1, 8, 24, 100, 368]))
+    ax.xaxis.set_major_formatter(plain)
+    ax.xaxis.set_minor_locator(NullLocator())
+    ax.yaxis.set_major_locator(FixedLocator([0.1, 0.2, 0.5, 1, 2, 5]))
+    ax.yaxis.set_major_formatter(plain)
+    ax.yaxis.set_minor_locator(NullLocator())
     ax.set_xlabel("forecast step k (0.02 s each)")
     ax.set_ylabel("error at step k (state std units)")
     ax.grid(True, which="major", color="#ecebe7", lw=0.5)
     sec = ax.secondary_xaxis("top", functions=(lambda x: x * C.DT, lambda t: t / C.DT))
     sec.set_xlabel("simulated time (s)", fontsize=6.5, color=MUTED)
+    sec.xaxis.set_major_locator(FixedLocator([0.02, 0.1, 0.5, 2, 7.36]))
+    sec.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}"))
+    sec.xaxis.set_minor_locator(NullLocator())
     sec.tick_params(labelsize=6, colors=MUTED)
     ax.legend(loc="upper left", frameon=False, handlelength=2.2)
     fig.tight_layout(pad=0.3)
@@ -76,10 +87,11 @@ def fig_checks():
     st = json.load(open(os.path.join(C.RESULTS, "stats.json")))
     fl = st["floor_F18"]["E100"]
     fam = {"R": ("rollout-trained", BLUE, "o"), "T": ("trained one step ahead", ORANGE, "^"),
-           "C": ("compressed (rollout-trained parent)", AQUA, "s")}
-    fig, axs = plt.subplots(1, 2, figsize=(3.45, 1.85), sharey=True)
+           "C": ("compressed copies", AQUA, "s")}
+    fig, axs = plt.subplots(1, 2, figsize=(3.45, 2.05), sharey=True)
+    plain = FuncFormatter(lambda v, _: f"{v:g}")
     for ax, (xk, xl, rk) in zip(axs, (("E1", "one-step error $E_1$", "Q1"),
-                                      ("lam1", r"Lyapunov exponent $\lambda_1$ (1/s)", "Q1"))):
+                                      ("lam1", r"growth rate $\lambda_1$ (1/s)", "Q1"))):
         for p, (lab, colr, mk) in fam.items():
             rr = [r for r in table if r["pool"] == p]
             x = np.array([r[xk] for r in rr])
@@ -87,22 +99,29 @@ def fig_checks():
             ax.scatter(x, y, s=11, c=colr, marker=mk, edgecolors="white", linewidths=0.4, label=lab, zorder=3)
         ax.axhline(fl, color=GRAY, lw=0.9, ls=(0, (4, 2)), zorder=1)
         ax.set_yscale("log")
+        ax.yaxis.set_major_locator(FixedLocator([0.2, 0.5, 1, 2]))
+        ax.yaxis.set_major_formatter(plain)
+        ax.yaxis.set_minor_locator(NullLocator())
         if xk == "E1":
             ax.set_xscale("log")
-            rho = st[rk]["rho_base"]
+            ax.xaxis.set_major_locator(FixedLocator([0.08, 0.1, 0.15, 0.2]))
+            ax.xaxis.set_major_formatter(plain)
+            ax.xaxis.set_minor_locator(NullLocator())
+            rho, pos = st[rk]["rho_base"], (0.04, 0.95, "left", "top")
         else:
             ax.axvline(0, color="#d6d5d0", lw=0.8, zorder=0)
-            rho = st[rk]["rho_new"]
+            rho, pos = st[rk]["rho_new"], (0.96, 0.05, "right", "bottom")
         ax.set_xlabel(xl)
-        ax.text(0.04, 0.95, f"Spearman {rho:+.2f}", transform=ax.transAxes, fontsize=6.3, color=INK, va="top")
+        ax.text(pos[0], pos[1], f"Spearman {rho:+.2f}", transform=ax.transAxes, fontsize=6.3, color=INK,
+                ha=pos[2], va=pos[3])
         ax.grid(True, which="major", color="#ecebe7", lw=0.5)
     axs[0].set_ylabel("100-step error $E_{100}$")
     axs[0].text(0.97, fl * 1.08, "floor", transform=axs[0].get_yaxis_transform(), ha="right", fontsize=5.8,
                 color=MUTED)
     h, l_ = axs[0].get_legend_handles_labels()
-    fig.legend(h, l_, loc="lower center", ncol=3, frameon=False, fontsize=5.6, handletextpad=0.2,
-               columnspacing=0.8, bbox_to_anchor=(0.5, -0.01))
-    fig.tight_layout(pad=0.3, rect=(0, 0.1, 1, 1))
+    fig.legend(h, l_, loc="lower center", ncol=3, frameon=False, fontsize=5.8, handletextpad=0.2,
+               columnspacing=1.0, bbox_to_anchor=(0.5, 0.0))
+    fig.tight_layout(pad=0.3, rect=(0, 0.09, 1, 1))
     fig.savefig(os.path.join(C.FIGURES, "fig_checks.pdf"))
     fig.savefig(os.path.join(C.FIGURES, "fig_checks.png"), dpi=200)
     plt.close(fig)
