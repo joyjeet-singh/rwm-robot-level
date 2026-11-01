@@ -1,0 +1,8 @@
+{
+ "all_agree": true,
+ "n_compared": 151,
+ "max_abs_diff": 1.1102230246251565e-16,
+ "disagreements": [],
+ "scope": "point estimates only; intervals not rechecked",
+ "implementation": "numpy+json+scipy.stats.spearmanr; no import of revision_analyses.py or stats.py"
+}

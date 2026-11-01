@@ -13,3 +13,8 @@
 - Headlines: λ1(8) does not rank E100; r̄J(8) ≈ E8. Two-level: Q3_vs_E1, Q5_vs_E1, Q1_E24 would no longer exclude 0. Holm: only Q3_vs_E8 and Q4_vs_E1 survive.
 - Commits: 8786f28 (work); log/checkpoint commit follows.
 - OPEN: ./py loads numpy 2.2.6 from .pylib, so torch↔numpy is broken; R3 training will fail until fixed (DECISIONS R1).
+
+## R2 status: COMPLETE (2026-11-01 20:00)
+- scripts/revision_recheck.py (independent; numpy/json/spearmanr) → results/revision_recheck.json: all_agree true, 151 point estimates (A1, A3, A2b), max diff 1.1e-16.
+- One first-pass mismatch was the recheck's own E368 definition (mean over 368 steps); fixed. R1 needs no change.
+- Notes: revision/notes/R2.md. Open: numpy/.pylib issue from R1 still stands for R3.
