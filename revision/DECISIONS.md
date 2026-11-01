@@ -21,3 +21,11 @@
 - Manek/Kolter author order follows the plan (arXiv order); NeurIPS page lists Kolter first. Left as in the plan; R8 may check.
 - RAMBO refs [75],[76] = COMBO, MOPO were reported by the checker, not confirmed by the reference list; the text should not name them without a check.
 - check_bib.py: strict mode now also fails on uncited entries (previously only reported); --allow-uncited makes them warnings.
+
+## R5
+- scale_ratio uses the unrounded c2_pct (0.133%) from rwm_repro/results/paper_numbers.json: 100/0.133 = 752, so "about 750". Dividing the printed 0.13% would give "about 770"; R6 should write the sentence next to {{budget_pct}} so the two agree (0.13% is a rounding of 0.133%).
+- Plan item (d): lamshift_*, lam_*, lampos_* for all variants already exist in air_numbers.py; R5 added only totals (n_unstable_removed 7 of n_removed_copies 150; n_unstable_wide 7 of n_wide_copies 75). A copy = one parent x one variant.
+- A2 "holds" means the two-level interval gives the registered verdict (excludes 0 with the estimate's sign for a directional verdict; includes 0 for NOT SETTLED). a2_median_ratio is over all 29 intervals (16 Table 2 + 13 registered tests); the two sub-medians are also registered.
+- stale_ho_h100 (the held-out-pair stale command at h = 100, released checkpoint) prints with two significant figures like stale_h100 (22%, [6.3%, 42%]); the earlier study printed 22.5 [6.3, 41.7]. Source n5_stale_armA_ci.json, results.released.held_out_n4.by_horizon[100].
+- hp_*: the optimiser is not in the hyperparameters field; it is read from rwm_repro/src/rwm_train.py (make_optimizer, torch.optim.Adam, asserted in code). All seven loss weights are non-zero. Equality asserted over 25 parents' records (5 folds x 5 seeds; fold 18 from step5_armA_seed0-4.json, the rest x3_run_armA_ho*_seed0-4.json); hidden size/layers only exist in the 20 x3 records.
+- perc_*: "first" = seed 0 (PerconAI r2.* keys), "rep" = seeds 1-2 (r3.rep.*), "pool" = all three (r3.pool.*). Q4 is the 3000-iteration, 368-step reading. results/paper_numbers.json source paths are now relative to this Mac's PDM folder (they were the cloud's /mnt path).
