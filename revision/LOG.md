@@ -55,3 +55,8 @@
 - Single column 15 pages, two-column 6 pages; submission_checks, check_claims (46), check_bib pass.
 - Commit 8227323. Notes: revision/notes/R7.md; choices in DECISIONS (R7).
 - Open: not placed in the appendix: shared_pct, cov1_*, ng_pathB_*, TorchScript timing. fig_horizon.* left unstaged.
+
+## R8 status: COMPLETE (2026-11-02 12:00)
+- check_claims.py: 67 assertions (46 before); list in revision/notes/R8_claims.md. All five checks pass; two-column 6 pages, abstract 200 words.
+- air-claim-checker run; fixes (Q5 labels, pathB sentence, exploratory/descriptive labels, narrower wording) in revision/notes/R8.md.
+- Open for R10: items in R8.md "Not changed". A7 still empty for R9.

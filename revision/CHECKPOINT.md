@@ -1,4 +1,4 @@
-Last session: R7, COMPLETE.
-Next action: R8 per REVISION_PLAN.md (check COMBO citation, per R6 note).
+Last session: R8, COMPLETE.
+Next action: R9 per REVISION_PLAN.md.
 Blockers: none.
-Notes: two-column build is 6 pages with no slack; body additions (R9's FT clause) need matching cuts. A7 in appendix.template.tex is empty for R9. figures/fig_horizon.* and results/raw/ remain unstaged.
+Notes: two-column build is 6 pages with no slack and abstract is 200 words; R9's FT text needs matching cuts. A7 empty. figures/fig_horizon.*, results/raw/, results/ft* remain unstaged (not mine). See revision/notes/R8.md.

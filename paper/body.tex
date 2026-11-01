@@ -13,11 +13,11 @@ of the Robotic World Model (RWM), matched its released gradients exactly, and me
 simulators, 200 compressed copies and the released model. One-step checks reverse the training choices:
 teacher forcing and one-step training are more accurate one step ahead but 2.0 and 2.6
 times as wrong at 2~s, consistent with RWM's ablation. Pruning 30\% of weights keeps 90\% of the skill
-one step ahead, 39\% at 2~s. The ensemble's spread is too small, increasingly with horizon, because the
+one step ahead, 39\% at 2~s. The released ensemble's spread is too small, increasingly with horizon, because the
 implemented loss is lowest at zero spread. In a registered comparison over 97 simulators, a kinematic-consistency
 residual ranked the 2-second error best; on a second pool it was level with an 8-step check (exploratory). The error
-growth rate beat one-step error but failed its registered replication on a pool of mostly compressed copies, because moderate pruning adds error while barely changing it. Scope: simulated data of one robot and gait, recorded
-commands replayed, no policy trained. We distil a vetting checklist.
+growth rate beat one-step error but failed its registered replication on a pool of mostly compressed copies, probably because moderate pruning adds error while barely changing it. Scope: simulated data of one robot and gait, recorded
+commands, no policy trained. We distil a vetting checklist.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -159,7 +159,7 @@ is scored on the same trajectories. Resampling parents and trajectories together
 1.5 (exploratory, appendix~A4); 3 of the 13 registered verdicts then lose
 their reading: the growth rate's lead over one-step error at 24 steps and without the one-step-trained models, and
 one-step error's lead over it on the five splits. The secondary verdicts are judged at 95\% without correction; under
-Holm's correction 2 of the 7 survive: the 8-step error's lead over the growth rate on
+Holm's correction (exploratory) 2 of the 7 survive: the 8-step error's lead over the growth rate on
 the five splits, and the residual's lead over one-step error on F18.
 
 \section{Results}\label{sec:results}
@@ -206,8 +206,8 @@ state) at step 29, and the 30\%-pruned copy, which starts within a few per cent 
 \textbf{Training choices.} The first two rows of Table~\ref{tab:decisions} independently confirm RWM's
 ablation~\cite{li2025rwm} on 0.13\% of its data: rollout training beats teacher forcing at the horizon of use,
 and a longer training horizon helps. What they add is the one-step view, where the order reverses. Teacher forcing
-wins one step ahead, as an earlier registered analysis also found: its one-step error is 10\% lower
-than rollout training's ($-$0.011 [$-$0.014, $-$0.0077], 20 trajectories). By 8 steps the order has
+wins one step ahead, as an earlier registered analysis also found. Here its one-step error is 10\% lower
+than rollout training's (descriptive: $-$0.011 [$-$0.014, $-$0.0077], 20 trajectories). By 8 steps the order has
 reversed on 19 of the 20, and the gap grows with the horizon (Fig.~\ref{fig:horizon}); at 368 steps the
 registered rule found rollout training better on all 10 held-out episodes (sign test $p={}$0.0020). Over
 2~s the teacher-forced simulator's joint angles are off by 7.0$^\circ$ against
@@ -222,7 +222,7 @@ positive for $N=1$ (+0.61/s) and falls
 steadily with the training horizon, through +0.44, $-$0.43 and $-$1.13 to $-$1.38/s at $N=32$. A rule
 committed before that analysis found longer horizons more stable ($\rho(N,\lambda_1)=$ $-$0.97 [$-$0.99, $-$0.89],
 15 models). Every rebuilt model trained on its own rollouts of eight or more steps was contracting, and no
-teacher-forced one was; training teacher-forced models longer raised their growth rate further (+0.18 to
+teacher-forced one was. In an earlier descriptive run, training a teacher-forced model longer raised its growth rate further (+0.18 to
 +1.5/s). The released model does not fit this account
 (Sec.~\ref{sec:checks}).
 
@@ -230,7 +230,7 @@ teacher-forced one was; training teacher-forced models longer raised their growt
 parent's skill one step ahead, but 39\% at 100 steps and $-$41\% at 368 steps: by the end it is
 worse than predicting no change (Fig.~\ref{fig:horizon}). Moderate pruning (10--30\%) adds error while barely changing
 the growth rate. At 30\%, $\lambda_1$ shifts by +0.03/s [$-$0.02, +0.07], which the registered rule
-could not separate from zero; at 10 and 20\% the shifts are smaller but resolved (appendix~A5), and no copy pruned by 10--30\% has $\lambda_1>0$.
+could not separate from zero; at 10 and 20\% the shifts are smaller and barely resolved (exploratory; appendix~A5), and no copy pruned by 10--30\% has $\lambda_1>0$.
 Heavier pruning and unit removal do raise it (by +0.27/s at 50\%, +0.40/s at width 128),
 and 4 of the 25 copies at width 192 and 3 at width 128 became unstable. Without fine-tuning, removing units fails: width
 192 keeps 6\% of the skill one step ahead. In an earlier registered study, copies fine-tuned for 500
@@ -242,7 +242,7 @@ quantisation (weights and activations; the release's relative error), the model 
 [91.8\%, 100.9\%] of its 368-step skill.
 
 \textbf{Uncertainty.} The released five-head ensemble's spread ranks error well (Spearman +0.90 with
-the 100-step error) but is too small, by a factor that grows with the horizon (Table~\ref{tab:decisions}), so no
+the 100-step error, on episodes it may have trained on) but is too small, by a factor that grows with the horizon (Table~\ref{tab:decisions}), so no
 single constant repairs it. Each head's own variance collapses: the implemented loss is squared error on a prediction sampled from that variance, whose
 expectation, $(\mu-y)^2+\sigma^2$, is smallest at $\sigma=0$. On synthetic data the released head sits
 21.7$\times$ below the true noise; the authors' unused likelihood loss recovers it (0.98). A multiplier per horizon, fitted on nine episodes and scored on the tenth, restores $\pm1\sigma$
@@ -261,7 +261,7 @@ same held at 368 steps. At 24 steps, which the 8-step windows nearly cover, the 
 growth rate. Without the one-step-trained models (88 simulators), the growth rate still ranked better than
 one-step error (+0.27 [+0.04, +0.51]), though not under the wider intervals. The kinematic
 residual ranked best of all, and the registered rule favoured it over the 8-step error (+0.12 [+0.02, +0.23]);
-this margin does not survive Holm's correction.
+this margin does not survive Holm's correction (exploratory).
 
 Three exploratory analyses qualify this (appendix~A3). With both label-free checks limited to the target's 100
 steps, the residual still ranks well (+0.94 on F18, +0.96 on X5; exploratory).
@@ -286,7 +286,7 @@ error (0.083; floor 0.21) but is not contracting on these trajectories (+0.70/s)
 it may have trained on. The stability account of Sec.~\ref{sec:decisions} is therefore shown only for models trained
 on this data set. The kinematic residual, registered on F18 only, also ranked
 the five-split pool best, level with the 8-step error (+0.01 [$-$0.01, +0.03]; without the split
-\{1, 8\}, +0.02 [+0.00, +0.05]; exploratory).
+\{1, 8\}, level or slightly ahead: +0.02 [+0.00, +0.05]; exploratory).
 Every check here was tested with recorded commands replayed; whether the label-free checks rank simulators when a
 policy supplies the commands is untested.
 
@@ -337,7 +337,7 @@ kinematic-consistency score fired added 10.1\% [5.6\%, 15.7\%] to the 368-step e
 
 \section{Discussion}\label{sec:discussion}
 \textbf{A checklist for vetting a learned robot simulator.}
-(1)~\emph{Train for the horizon of use.} Rollout training over eight or more steps gave simulators that damp
+(1)~\emph{Train for the horizon of use.} Rollout training over eight or more steps gave rebuilt simulators that damp
 their own errors; one-step training gave ones that amplify them. (2)~\emph{Validate at the horizon of use}, on
 held-out episodes, counting independent trajectories: one-step scores mis-ranked the training objective and passed a
 pruned model that has lost most of its skill by 2~s. (3)~\emph{Without recordings, check consistency and stability.} The
@@ -354,7 +354,7 @@ of simulated data, so ``held out'' means other velocity commands of the same gai
 with no controller in the loop and no policy trained, so what a mis-ranked or miscalibrated simulator costs a
 controller is not measured. F18 has four independent held-out trajectories and X5 twenty, which bounds every
 interval. Correlations across models treat models as independent although they share parents,
-training data and test trajectories; wider intervals that allow for this unresolve 3 registered verdicts.
+training data and test trajectories; wider intervals that allow for this (exploratory) unresolve 3 registered verdicts.
 The growth rate is a finite-time exponent in the network's own coordinates and depends on the start direction by
 tenths of 1/s, and the stability account does not cover the released model. Compressed copies were not fine-tuned,
 and the 8-bit variant rounds weights only. The registered replication of the growth-rate comparison failed on the
@@ -362,9 +362,9 @@ five-split pool, and the kinematic residual's standing there is exploratory.
 
 \section{Conclusion}\label{sec:conclusion}
 On this simulator, one-step checks favoured teacher forcing, one-step training and a pruned model that loses most
-skill by 2~s, and understated the ensemble's overconfidence. Without recordings, a kinematic residual ranked
+skill by 2~s, and understated the ensemble's overconfidence. Without recordings, on this robot, a kinematic residual ranked
 simulators best (level with the 8-step error on the five-split pool; exploratory), and a positive growth rate
-flagged bad training choices. Neither replaces a recording at run time or has been tested in closed loop with a
+flagged the teacher-forced and one-step-trained simulators. Neither replaces a recording at run time or has been tested in closed loop with a
 policy.
 
 \textbf{Reproducibility and use of AI tools.} The registrations and code are in the
