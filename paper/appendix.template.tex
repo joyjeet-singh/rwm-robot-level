@@ -256,4 +256,101 @@ angles onto the approximate integration rule multiplied it by {{icp_J_x}}.
 
 \section{Study FT: fine-tuning the pruned copies}\label{app:A7}
 % A7: the study registered in prereg/PREREG_FT.md before any fine-tuned model existed (R3): design, arms, decision
-% rules and results from scripts/ft_stats.py, with any departure recorded in ANOMALIES.md. R9 writes it.
+% rules and results from scripts/ft_stats.py (results/ft_stats.json); no departure was recorded in ANOMALIES.md.
+\textbf{Design.} Study FT asked whether a short fine-tuning, with the pruned weights held at zero, restores the
+long-horizon skill that magnitude pruning removes; its rules and analysis code were committed ({{ft_reg_time}}, local
+time) before any fine-tuned pruned model existed. The parents were the {{ft_nparents}} rollout-trained five-split
+models with seeds {{ft_seeds}}, the seeds for which an earlier study had fine-tuned unpruned controls. Each parent's
+smallest 30\% of weight-matrix entries ({{ft_pruned_u30}}) were set to zero, and the copy was fine-tuned for
+{{ft_iters}} iterations by the controls' protocol (the parent's training episodes, rollout loss, settings and seed,
+fresh optimiser state), with the pruned entries reset to zero after every step; 50\% pruning ({{ft_pruned_u50}}
+entries) was a secondary arm. The parent, the copies before and after fine-tuning and the control were all scored
+on this machine by the measures of Sec.~\ref{sec:setup}, on each parent's own split, giving {{ft_ntraj}}
+trajectories with seeds averaged within each. Two primary questions at 100 steps, with 97.5\% intervals from
+{{ft_ndraws}} trajectory resamples, were registered: FT1, the change in $K$ against the original parent from
+fine-tuning (interval above 0: fine-tuning restores skill); and FT2, $K$ of the fine-tuned copy against the control,
+with the earlier study's thresholds (lower end above 90\%: nearly as skilled; above 50\%: keeps most; upper end below
+50\%: loses most).
+
+\textbf{Time rule and checks.} The 50\% arm was to run only if a probe, run before any fine-tuning, projected the
+whole study at no more than {{ft_cap_h}}~h; it projected {{ft_probe_total_h}}~h, so both arms ran. The
+{{ft_nruns}} runs took {{ft_wall_total_h}}~h in all ({{ft_wall_min_min}} to {{ft_wall_max_min}} minutes each, mean
+{{ft_wall_mean_min}}), and scoring the {{ft_n_scored}} models took {{ft_score_min}} minutes. All four registered checks
+passed for every run ({{ft_cft1_pass}} each): the pruned entries were exactly zero after training and after
+reloading; every loss trace was finite; the settings equalled the parent's training record; and this machine's
+100-step errors for the parent and the unretrained copy matched the stored values within {{ft_cft4_maxrel}}
+(relative; the registered tolerance was $10^{-3}$). No arm was excluded, and no bootstrap draw was undefined.
+
+\textbf{Results.} Both primary questions were settled (Table~\ref{tab:app-ft}): fine-tuning restored the 100-step
+skill (FT1), and the fine-tuned copies were nearly as skilled as the controls (FT2). The secondary readings at 24 and
+368 steps, and at 50\% pruning, agree. Against the original parent, $K$ above 100\% mostly reflects the fine-tuning
+itself: the control, fine-tuned without pruning, reaches {{ft_K_CTRL_vs_P_h100}} {{ft_K_CTRL_vs_P_h100_ci}} at 100
+steps (descriptive). The unretrained term of FT1 uses seeds {{ft_seeds}} only, hence {{ft_FT1_Knoft}} rather than
+Table~\ref{tab:decisions}'s {{K_u30_h100}} (seeds 0--4). After fine-tuning, the one-step reading of $K$ could not be
+separated from the 100-step one (secondary; not settled). Unretrained pruning raised the kinematic residual and did
+not measurably move the growth rate; after fine-tuning, both were slightly below the parent's (secondary). Table~\ref{tab:app-ft-desc} gives $K$ of every arm (descriptive). As everywhere in this paper, this is
+one robot, one trotting gait, simulated data and recorded commands, with no policy trained.
+
+\begin{table}[h]
+\centering
+\caption{Study FT: registered questions. Primary: 97.5\% intervals (a family of two). Secondary: 95\% intervals,
+not corrected for multiplicity. $d$: difference in $K$ (percentage points). $\Delta$: mean change from the parent
+($\lambda_1$ in 1/s; $\bar r_J$ in units of the recording's own residual). U30, U50: pruned 30\% or 50\%, not
+retrained; F: then fine-tuned.}
+\label{tab:app-ft}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}lllcl@{}}
+\toprule
+ & Question & Quantity & Estimate [interval] & Verdict \\
+\midrule
+Primary & FT1, 100 steps & $d=K(\mathrm{U30F})-K(\mathrm{U30})$; {{ft_FT1_Kft}} against {{ft_FT1_Knoft}} & {{ft_FT1_d}} {{ft_FT1_ci}} & \textsc{{{ft_FT1_verdict}}} \\
+ & FT2, 100 steps & $K$ of U30F against the control & {{ft_FT2_K}} {{ft_FT2_ci}} & \textsc{{{ft_FT2_verdict}}} \\
+\midrule
+Secondary & FT1, 24 steps & $d$; {{ft_FT1_h24_Kft}} against {{ft_FT1_h24_Knoft}} & {{ft_FT1_h24_d}} {{ft_FT1_h24_ci}} & \textsc{{{ft_FT1_h24_verdict}}} \\
+ & FT2, 24 steps & $K$ of U30F against the control & {{ft_FT2_h24_K}} {{ft_FT2_h24_ci}} & \textsc{{{ft_FT2_h24_verdict}}} \\
+ & FT1, 368 steps & $d$; {{ft_FT1_h368_Kft}} against {{ft_FT1_h368_Knoft}} & {{ft_FT1_h368_d}} {{ft_FT1_h368_ci}} & \textsc{{{ft_FT1_h368_verdict}}} \\
+ & FT2, 368 steps & $K$ of U30F against the control & {{ft_FT2_h368_K}} {{ft_FT2_h368_ci}} & \textsc{{{ft_FT2_h368_verdict}}} \\
+ & FT1, 50\%, 100 steps & $d$; {{ft_FT1_u50_h100_Kft}} against {{ft_FT1_u50_h100_Knoft}} & {{ft_FT1_u50_h100_d}} {{ft_FT1_u50_h100_ci}} & \textsc{{{ft_FT1_u50_h100_verdict}}} \\
+ & FT2, 50\%, 100 steps & $K$ of U50F against the control & {{ft_FT2_u50_h100_K}} {{ft_FT2_u50_h100_ci}} & \textsc{{{ft_FT2_u50_h100_verdict}}} \\
+ & One-step reading & $K(\mathrm{U30F})$ at 1 step minus at 100 steps & {{ft_onestep_U30F_d}} {{ft_onestep_U30F_ci}} & \textsc{{{ft_onestep_U30F_verdict}}} \\
+ & Growth rate & $\Delta\lambda_1$, U30F (parent {{ft_change_lam1_U30F_P_P}}) & {{ft_change_lam1_U30F_P_mean}} {{ft_change_lam1_U30F_P_ci}} & \textsc{{{ft_change_lam1_U30F_P_verdict}}} \\
+ &  & $\Delta\lambda_1$, U30 & {{ft_change_lam1_U30_P_mean}} {{ft_change_lam1_U30_P_ci}} & \textsc{{{ft_change_lam1_U30_P_verdict}}} \\
+ & Kinematic residual & $\Delta\bar r_J$, U30F (parent {{ft_change_rJ_U30F_P_P}}) & {{ft_change_rJ_U30F_P_mean}} {{ft_change_rJ_U30F_P_ci}} & \textsc{{{ft_change_rJ_U30F_P_verdict}}} \\
+ &  & $\Delta\bar r_J$, U30 & {{ft_change_rJ_U30_P_mean}} {{ft_change_rJ_U30_P_ci}} & \textsc{{{ft_change_rJ_U30_P_verdict}}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Study FT, descriptive: skill retained $K$ of each arm against the original parent and against the control
+(95\% intervals, {{ft_ntraj}} trajectories, seeds {{ft_seeds}}). CTRL: the parent fine-tuned the same way without
+pruning.}
+\label{tab:app-ft-desc}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}llcccc@{}}
+\toprule
+Arm & Against & 1 step & 24 steps & 100 steps & 368 steps \\
+\midrule
+U30 & parent & {{ft_K_U30_vs_P_h1}} {{ft_K_U30_vs_P_h1_ci}} & {{ft_K_U30_vs_P_h24}} {{ft_K_U30_vs_P_h24_ci}} & {{ft_K_U30_vs_P_h100}} {{ft_K_U30_vs_P_h100_ci}} & {{ft_K_U30_vs_P_h368}} {{ft_K_U30_vs_P_h368_ci}} \\
+U30F & parent & {{ft_K_U30F_vs_P_h1}} {{ft_K_U30F_vs_P_h1_ci}} & {{ft_K_U30F_vs_P_h24}} {{ft_K_U30F_vs_P_h24_ci}} & {{ft_K_U30F_vs_P_h100}} {{ft_K_U30F_vs_P_h100_ci}} & {{ft_K_U30F_vs_P_h368}} {{ft_K_U30F_vs_P_h368_ci}} \\
+U50 & parent & {{ft_K_U50_vs_P_h1}} {{ft_K_U50_vs_P_h1_ci}} & {{ft_K_U50_vs_P_h24}} {{ft_K_U50_vs_P_h24_ci}} & {{ft_K_U50_vs_P_h100}} {{ft_K_U50_vs_P_h100_ci}} & {{ft_K_U50_vs_P_h368}} {{ft_K_U50_vs_P_h368_ci}} \\
+U50F & parent & {{ft_K_U50F_vs_P_h1}} {{ft_K_U50F_vs_P_h1_ci}} & {{ft_K_U50F_vs_P_h24}} {{ft_K_U50F_vs_P_h24_ci}} & {{ft_K_U50F_vs_P_h100}} {{ft_K_U50F_vs_P_h100_ci}} & {{ft_K_U50F_vs_P_h368}} {{ft_K_U50F_vs_P_h368_ci}} \\
+CTRL & parent & {{ft_K_CTRL_vs_P_h1}} {{ft_K_CTRL_vs_P_h1_ci}} & {{ft_K_CTRL_vs_P_h24}} {{ft_K_CTRL_vs_P_h24_ci}} & {{ft_K_CTRL_vs_P_h100}} {{ft_K_CTRL_vs_P_h100_ci}} & {{ft_K_CTRL_vs_P_h368}} {{ft_K_CTRL_vs_P_h368_ci}} \\
+\midrule
+U30F & control & {{ft_K_U30F_vs_CTRL_h1}} {{ft_K_U30F_vs_CTRL_h1_ci}} & {{ft_K_U30F_vs_CTRL_h24}} {{ft_K_U30F_vs_CTRL_h24_ci}} & {{ft_K_U30F_vs_CTRL_h100}} {{ft_K_U30F_vs_CTRL_h100_ci}} & {{ft_K_U30F_vs_CTRL_h368}} {{ft_K_U30F_vs_CTRL_h368_ci}} \\
+U50F & control & {{ft_K_U50F_vs_CTRL_h1}} {{ft_K_U50F_vs_CTRL_h1_ci}} & {{ft_K_U50F_vs_CTRL_h24}} {{ft_K_U50F_vs_CTRL_h24_ci}} & {{ft_K_U50F_vs_CTRL_h100}} {{ft_K_U50F_vs_CTRL_h100_ci}} & {{ft_K_U50F_vs_CTRL_h368}} {{ft_K_U50F_vs_CTRL_h368_ci}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\textbf{What was known before the registration.} Table~\ref{tab:decisions}'s $K$ for the 30\%-pruned copies without
+fine-tuning (seeds 0--4) was known: {{K_u30_h1}} at one step, {{K_u30_h100}} at 100 steps and {{K_u30_h368}} at 368
+steps. So were the earlier unit-removal study's registered results (Table~\ref{tab:app-perc}): fine-tuned width-192
+copies kept most of the control's 368-step skill ({{perc_K_pool_w192_h368}}, pooled), width 128 was not settled, and
+fine-tuning alone took the unreduced control to {{perc_ctrl_pool_h368}} of the original's skill at 368 steps. No
+fine-tuned magnitude-pruned copy had been trained beyond a few test iterations, and none had been scored; $K$ of the
+unretrained copies for seeds {{ft_seeds}} alone could have been computed from stored scores, but the registration
+records that it was not.

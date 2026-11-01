@@ -1999,6 +1999,896 @@
   "source": "AIR 2027/results/stats.json",
   "value": "0.69"
  },
+ "ft_FT1_Kft": {
+  "path": "primary.FT1.K_orig_ft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "102.2\\%"
+ },
+ "ft_FT1_Knoft": {
+  "path": "primary.FT1.K_orig_noft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "38\\%"
+ },
+ "ft_FT1_ci": {
+  "path": "primary.FT1.ci97.5 (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[54.4, 76.0]"
+ },
+ "ft_FT1_d": {
+  "path": "primary.FT1.d (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "+63.9"
+ },
+ "ft_FT1_h24_Kft": {
+  "path": "secondary.FT1_h24.K_orig_ft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "100.9\\%"
+ },
+ "ft_FT1_h24_Knoft": {
+  "path": "secondary.FT1_h24.K_orig_noft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "82\\%"
+ },
+ "ft_FT1_h24_ci": {
+  "path": "secondary.FT1_h24.ci95 (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[16.6, 21.6]"
+ },
+ "ft_FT1_h24_d": {
+  "path": "secondary.FT1_h24.d (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "+18.9"
+ },
+ "ft_FT1_h24_verdict": {
+  "path": "secondary.FT1_h24.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "fine-tuning restores skill"
+ },
+ "ft_FT1_h368_Kft": {
+  "path": "secondary.FT1_h368.K_orig_ft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "103.9\\%"
+ },
+ "ft_FT1_h368_Knoft": {
+  "path": "secondary.FT1_h368.K_orig_noft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$31\\%"
+ },
+ "ft_FT1_h368_ci": {
+  "path": "secondary.FT1_h368.ci95 (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[102.1, 176.4]"
+ },
+ "ft_FT1_h368_d": {
+  "path": "secondary.FT1_h368.d (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "+134.6"
+ },
+ "ft_FT1_h368_verdict": {
+  "path": "secondary.FT1_h368.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "fine-tuning restores skill"
+ },
+ "ft_FT1_u50_h100_Kft": {
+  "path": "secondary.FT1_u50_h100.K_orig_ft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "101.3\\%"
+ },
+ "ft_FT1_u50_h100_Knoft": {
+  "path": "secondary.FT1_u50_h100.K_orig_noft",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$93\\%"
+ },
+ "ft_FT1_u50_h100_ci": {
+  "path": "secondary.FT1_u50_h100.ci95 (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[171.3, 228.5]"
+ },
+ "ft_FT1_u50_h100_d": {
+  "path": "secondary.FT1_u50_h100.d (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "+194.4"
+ },
+ "ft_FT1_u50_h100_verdict": {
+  "path": "secondary.FT1_u50_h100.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "fine-tuning restores skill"
+ },
+ "ft_FT1_verdict": {
+  "path": "primary.FT1.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "fine-tuning restores skill"
+ },
+ "ft_FT2_K": {
+  "path": "primary.FT2.K_ctrl",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.9\\%"
+ },
+ "ft_FT2_ci": {
+  "path": "primary.FT2.ci97.5",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.5\\%, 100.4\\%]"
+ },
+ "ft_FT2_h24_K": {
+  "path": "secondary.FT2_h24.K_ctrl",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "100.0\\%"
+ },
+ "ft_FT2_h24_ci": {
+  "path": "secondary.FT2_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.8\\%, 100.1\\%]"
+ },
+ "ft_FT2_h24_verdict": {
+  "path": "secondary.FT2_h24.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "nearly as skilled"
+ },
+ "ft_FT2_h368_K": {
+  "path": "secondary.FT2_h368.K_ctrl",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.4\\%"
+ },
+ "ft_FT2_h368_ci": {
+  "path": "secondary.FT2_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[97.9\\%, 100.6\\%]"
+ },
+ "ft_FT2_h368_verdict": {
+  "path": "secondary.FT2_h368.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "nearly as skilled"
+ },
+ "ft_FT2_u50_h100_K": {
+  "path": "secondary.FT2_u50_h100.K_ctrl",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.0\\%"
+ },
+ "ft_FT2_u50_h100_ci": {
+  "path": "secondary.FT2_u50_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[98.4\\%, 99.7\\%]"
+ },
+ "ft_FT2_u50_h100_verdict": {
+  "path": "secondary.FT2_u50_h100.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "nearly as skilled"
+ },
+ "ft_FT2_verdict": {
+  "path": "primary.FT2.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "nearly as skilled"
+ },
+ "ft_K_CTRL_vs_P_h1": {
+  "path": "descriptive.K_CTRL_vs_P_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "102.5\\%"
+ },
+ "ft_K_CTRL_vs_P_h100": {
+  "path": "descriptive.K_CTRL_vs_P_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "102.3\\%"
+ },
+ "ft_K_CTRL_vs_P_h100_ci": {
+  "path": "descriptive.K_CTRL_vs_P_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[101.5\\%, 103.4\\%]"
+ },
+ "ft_K_CTRL_vs_P_h1_ci": {
+  "path": "descriptive.K_CTRL_vs_P_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[102.1\\%, 102.9\\%]"
+ },
+ "ft_K_CTRL_vs_P_h24": {
+  "path": "descriptive.K_CTRL_vs_P_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "101.0\\%"
+ },
+ "ft_K_CTRL_vs_P_h24_ci": {
+  "path": "descriptive.K_CTRL_vs_P_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.7\\%, 101.3\\%]"
+ },
+ "ft_K_CTRL_vs_P_h368": {
+  "path": "descriptive.K_CTRL_vs_P_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "104.6\\%"
+ },
+ "ft_K_CTRL_vs_P_h368_ci": {
+  "path": "descriptive.K_CTRL_vs_P_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[102.3\\%, 107.8\\%]"
+ },
+ "ft_K_CTRL_vs_P_h8": {
+  "path": "descriptive.K_CTRL_vs_P_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "101.0\\%"
+ },
+ "ft_K_CTRL_vs_P_h8_ci": {
+  "path": "descriptive.K_CTRL_vs_P_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.9\\%, 101.3\\%]"
+ },
+ "ft_K_P_vs_CTRL_h1": {
+  "path": "descriptive.K_P_vs_CTRL_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "97.5\\%"
+ },
+ "ft_K_P_vs_CTRL_h100": {
+  "path": "descriptive.K_P_vs_CTRL_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "97.8\\%"
+ },
+ "ft_K_P_vs_CTRL_h100_ci": {
+  "path": "descriptive.K_P_vs_CTRL_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[96.7\\%, 98.6\\%]"
+ },
+ "ft_K_P_vs_CTRL_h1_ci": {
+  "path": "descriptive.K_P_vs_CTRL_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[97.2\\%, 98.0\\%]"
+ },
+ "ft_K_P_vs_CTRL_h24": {
+  "path": "descriptive.K_P_vs_CTRL_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.0\\%"
+ },
+ "ft_K_P_vs_CTRL_h24_ci": {
+  "path": "descriptive.K_P_vs_CTRL_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[98.7\\%, 99.3\\%]"
+ },
+ "ft_K_P_vs_CTRL_h368": {
+  "path": "descriptive.K_P_vs_CTRL_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "95.6\\%"
+ },
+ "ft_K_P_vs_CTRL_h368_ci": {
+  "path": "descriptive.K_P_vs_CTRL_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[93\\%, 97.8\\%]"
+ },
+ "ft_K_P_vs_CTRL_h8": {
+  "path": "descriptive.K_P_vs_CTRL_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.0\\%"
+ },
+ "ft_K_P_vs_CTRL_h8_ci": {
+  "path": "descriptive.K_P_vs_CTRL_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[98.8\\%, 99.2\\%]"
+ },
+ "ft_K_U30F_vs_CTRL_h1": {
+  "path": "descriptive.K_U30F_vs_CTRL_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.8\\%"
+ },
+ "ft_K_U30F_vs_CTRL_h100": {
+  "path": "descriptive.K_U30F_vs_CTRL_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.9\\%"
+ },
+ "ft_K_U30F_vs_CTRL_h100_ci": {
+  "path": "descriptive.K_U30F_vs_CTRL_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.5\\%, 100.3\\%]"
+ },
+ "ft_K_U30F_vs_CTRL_h1_ci": {
+  "path": "descriptive.K_U30F_vs_CTRL_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.7\\%, 99.9\\%]"
+ },
+ "ft_K_U30F_vs_CTRL_h24": {
+  "path": "descriptive.K_U30F_vs_CTRL_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "100.0\\%"
+ },
+ "ft_K_U30F_vs_CTRL_h24_ci": {
+  "path": "descriptive.K_U30F_vs_CTRL_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.8\\%, 100.1\\%]"
+ },
+ "ft_K_U30F_vs_CTRL_h368": {
+  "path": "descriptive.K_U30F_vs_CTRL_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.4\\%"
+ },
+ "ft_K_U30F_vs_CTRL_h368_ci": {
+  "path": "descriptive.K_U30F_vs_CTRL_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[97.9\\%, 100.6\\%]"
+ },
+ "ft_K_U30F_vs_CTRL_h8": {
+  "path": "descriptive.K_U30F_vs_CTRL_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.9\\%"
+ },
+ "ft_K_U30F_vs_CTRL_h8_ci": {
+  "path": "descriptive.K_U30F_vs_CTRL_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.9\\%, 100.0\\%]"
+ },
+ "ft_K_U30F_vs_P_h1": {
+  "path": "descriptive.K_U30F_vs_P_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "102.3\\%"
+ },
+ "ft_K_U30F_vs_P_h100": {
+  "path": "descriptive.K_U30F_vs_P_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "102.2\\%"
+ },
+ "ft_K_U30F_vs_P_h100_ci": {
+  "path": "descriptive.K_U30F_vs_P_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[101.3\\%, 103.5\\%]"
+ },
+ "ft_K_U30F_vs_P_h1_ci": {
+  "path": "descriptive.K_U30F_vs_P_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[102.0\\%, 102.6\\%]"
+ },
+ "ft_K_U30F_vs_P_h24": {
+  "path": "descriptive.K_U30F_vs_P_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "100.9\\%"
+ },
+ "ft_K_U30F_vs_P_h24_ci": {
+  "path": "descriptive.K_U30F_vs_P_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.6\\%, 101.3\\%]"
+ },
+ "ft_K_U30F_vs_P_h368": {
+  "path": "descriptive.K_U30F_vs_P_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "103.9\\%"
+ },
+ "ft_K_U30F_vs_P_h368_ci": {
+  "path": "descriptive.K_U30F_vs_P_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[101.1\\%, 107.4\\%]"
+ },
+ "ft_K_U30F_vs_P_h8": {
+  "path": "descriptive.K_U30F_vs_P_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "101.0\\%"
+ },
+ "ft_K_U30F_vs_P_h8_ci": {
+  "path": "descriptive.K_U30F_vs_P_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.8\\%, 101.2\\%]"
+ },
+ "ft_K_U30_vs_CTRL_h1": {
+  "path": "descriptive.K_U30_vs_CTRL_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "88\\%"
+ },
+ "ft_K_U30_vs_CTRL_h100": {
+  "path": "descriptive.K_U30_vs_CTRL_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "37\\%"
+ },
+ "ft_K_U30_vs_CTRL_h100_ci": {
+  "path": "descriptive.K_U30_vs_CTRL_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[28\\%, 45\\%]"
+ },
+ "ft_K_U30_vs_CTRL_h1_ci": {
+  "path": "descriptive.K_U30_vs_CTRL_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[85\\%, 89\\%]"
+ },
+ "ft_K_U30_vs_CTRL_h24": {
+  "path": "descriptive.K_U30_vs_CTRL_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "81\\%"
+ },
+ "ft_K_U30_vs_CTRL_h24_ci": {
+  "path": "descriptive.K_U30_vs_CTRL_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[79\\%, 83\\%]"
+ },
+ "ft_K_U30_vs_CTRL_h368": {
+  "path": "descriptive.K_U30_vs_CTRL_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$29\\%"
+ },
+ "ft_K_U30_vs_CTRL_h368_ci": {
+  "path": "descriptive.K_U30_vs_CTRL_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$68\\%, 1\\%]"
+ },
+ "ft_K_U30_vs_CTRL_h8": {
+  "path": "descriptive.K_U30_vs_CTRL_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "89\\%"
+ },
+ "ft_K_U30_vs_CTRL_h8_ci": {
+  "path": "descriptive.K_U30_vs_CTRL_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[87\\%, 91\\%]"
+ },
+ "ft_K_U30_vs_P_h1": {
+  "path": "descriptive.K_U30_vs_P_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "90\\%"
+ },
+ "ft_K_U30_vs_P_h100": {
+  "path": "descriptive.K_U30_vs_P_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "38\\%"
+ },
+ "ft_K_U30_vs_P_h100_ci": {
+  "path": "descriptive.K_U30_vs_P_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[28\\%, 46\\%]"
+ },
+ "ft_K_U30_vs_P_h1_ci": {
+  "path": "descriptive.K_U30_vs_P_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[87\\%, 92\\%]"
+ },
+ "ft_K_U30_vs_P_h24": {
+  "path": "descriptive.K_U30_vs_P_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "82\\%"
+ },
+ "ft_K_U30_vs_P_h24_ci": {
+  "path": "descriptive.K_U30_vs_P_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[79\\%, 84\\%]"
+ },
+ "ft_K_U30_vs_P_h368": {
+  "path": "descriptive.K_U30_vs_P_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$31\\%"
+ },
+ "ft_K_U30_vs_P_h368_ci": {
+  "path": "descriptive.K_U30_vs_P_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$72\\%, 1\\%]"
+ },
+ "ft_K_U30_vs_P_h8": {
+  "path": "descriptive.K_U30_vs_P_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "90\\%"
+ },
+ "ft_K_U30_vs_P_h8_ci": {
+  "path": "descriptive.K_U30_vs_P_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[88\\%, 92\\%]"
+ },
+ "ft_K_U50F_vs_CTRL_h1": {
+  "path": "descriptive.K_U50F_vs_CTRL_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "98.6\\%"
+ },
+ "ft_K_U50F_vs_CTRL_h100": {
+  "path": "descriptive.K_U50F_vs_CTRL_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.0\\%"
+ },
+ "ft_K_U50F_vs_CTRL_h100_ci": {
+  "path": "descriptive.K_U50F_vs_CTRL_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[98.4\\%, 99.7\\%]"
+ },
+ "ft_K_U50F_vs_CTRL_h1_ci": {
+  "path": "descriptive.K_U50F_vs_CTRL_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[98.2\\%, 99.4\\%]"
+ },
+ "ft_K_U50F_vs_CTRL_h24": {
+  "path": "descriptive.K_U50F_vs_CTRL_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.5\\%"
+ },
+ "ft_K_U50F_vs_CTRL_h24_ci": {
+  "path": "descriptive.K_U50F_vs_CTRL_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.3\\%, 99.8\\%]"
+ },
+ "ft_K_U50F_vs_CTRL_h368": {
+  "path": "descriptive.K_U50F_vs_CTRL_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "96.5\\%"
+ },
+ "ft_K_U50F_vs_CTRL_h368_ci": {
+  "path": "descriptive.K_U50F_vs_CTRL_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[94\\%, 99.3\\%]"
+ },
+ "ft_K_U50F_vs_CTRL_h8": {
+  "path": "descriptive.K_U50F_vs_CTRL_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "99.5\\%"
+ },
+ "ft_K_U50F_vs_CTRL_h8_ci": {
+  "path": "descriptive.K_U50F_vs_CTRL_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[99.3\\%, 99.8\\%]"
+ },
+ "ft_K_U50F_vs_P_h1": {
+  "path": "descriptive.K_U50F_vs_P_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "101.1\\%"
+ },
+ "ft_K_U50F_vs_P_h100": {
+  "path": "descriptive.K_U50F_vs_P_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "101.3\\%"
+ },
+ "ft_K_U50F_vs_P_h100_ci": {
+  "path": "descriptive.K_U50F_vs_P_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.4\\%, 102.5\\%]"
+ },
+ "ft_K_U50F_vs_P_h1_ci": {
+  "path": "descriptive.K_U50F_vs_P_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.8\\%, 101.6\\%]"
+ },
+ "ft_K_U50F_vs_P_h24": {
+  "path": "descriptive.K_U50F_vs_P_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "100.5\\%"
+ },
+ "ft_K_U50F_vs_P_h24_ci": {
+  "path": "descriptive.K_U50F_vs_P_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.2\\%, 100.9\\%]"
+ },
+ "ft_K_U50F_vs_P_h368": {
+  "path": "descriptive.K_U50F_vs_P_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "100.9\\%"
+ },
+ "ft_K_U50F_vs_P_h368_ci": {
+  "path": "descriptive.K_U50F_vs_P_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[97.9\\%, 104.6\\%]"
+ },
+ "ft_K_U50F_vs_P_h8": {
+  "path": "descriptive.K_U50F_vs_P_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "100.5\\%"
+ },
+ "ft_K_U50F_vs_P_h8_ci": {
+  "path": "descriptive.K_U50F_vs_P_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[100.3\\%, 100.8\\%]"
+ },
+ "ft_K_U50_vs_CTRL_h1": {
+  "path": "descriptive.K_U50_vs_CTRL_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "55\\%"
+ },
+ "ft_K_U50_vs_CTRL_h100": {
+  "path": "descriptive.K_U50_vs_CTRL_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$91\\%"
+ },
+ "ft_K_U50_vs_CTRL_h100_ci": {
+  "path": "descriptive.K_U50_vs_CTRL_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$123\\%, $-$69\\%]"
+ },
+ "ft_K_U50_vs_CTRL_h1_ci": {
+  "path": "descriptive.K_U50_vs_CTRL_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[45\\%, 62\\%]"
+ },
+ "ft_K_U50_vs_CTRL_h24": {
+  "path": "descriptive.K_U50_vs_CTRL_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "38\\%"
+ },
+ "ft_K_U50_vs_CTRL_h24_ci": {
+  "path": "descriptive.K_U50_vs_CTRL_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[30\\%, 44\\%]"
+ },
+ "ft_K_U50_vs_CTRL_h368": {
+  "path": "descriptive.K_U50_vs_CTRL_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$469\\%"
+ },
+ "ft_K_U50_vs_CTRL_h368_ci": {
+  "path": "descriptive.K_U50_vs_CTRL_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$608\\%, $-$354\\%]"
+ },
+ "ft_K_U50_vs_CTRL_h8": {
+  "path": "descriptive.K_U50_vs_CTRL_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "61\\%"
+ },
+ "ft_K_U50_vs_CTRL_h8_ci": {
+  "path": "descriptive.K_U50_vs_CTRL_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[54\\%, 66\\%]"
+ },
+ "ft_K_U50_vs_P_h1": {
+  "path": "descriptive.K_U50_vs_P_h1.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "57\\%"
+ },
+ "ft_K_U50_vs_P_h100": {
+  "path": "descriptive.K_U50_vs_P_h100.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$93\\%"
+ },
+ "ft_K_U50_vs_P_h100_ci": {
+  "path": "descriptive.K_U50_vs_P_h100.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$126\\%, $-$70\\%]"
+ },
+ "ft_K_U50_vs_P_h1_ci": {
+  "path": "descriptive.K_U50_vs_P_h1.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[46\\%, 63\\%]"
+ },
+ "ft_K_U50_vs_P_h24": {
+  "path": "descriptive.K_U50_vs_P_h24.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "39\\%"
+ },
+ "ft_K_U50_vs_P_h24_ci": {
+  "path": "descriptive.K_U50_vs_P_h24.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[30\\%, 45\\%]"
+ },
+ "ft_K_U50_vs_P_h368": {
+  "path": "descriptive.K_U50_vs_P_h368.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$491\\%"
+ },
+ "ft_K_U50_vs_P_h368_ci": {
+  "path": "descriptive.K_U50_vs_P_h368.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$642\\%, $-$368\\%]"
+ },
+ "ft_K_U50_vs_P_h8": {
+  "path": "descriptive.K_U50_vs_P_h8.K",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "62\\%"
+ },
+ "ft_K_U50_vs_P_h8_ci": {
+  "path": "descriptive.K_U50_vs_P_h8.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[55\\%, 66\\%]"
+ },
+ "ft_arms_excluded": {
+  "path": "excluded_arms",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "none"
+ },
+ "ft_cap_h": {
+  "path": "cap_hours",
+  "source": "AIR 2027/results/ft_probe.json",
+  "value": "8"
+ },
+ "ft_cft1_pass": {
+  "path": "checks.C-FT1.*.passed",
+  "source": "AIR 2027/results/ft_models.json",
+  "value": "30 of 30"
+ },
+ "ft_cft2_pass": {
+  "path": "checks.C-FT2.*.passed",
+  "source": "AIR 2027/results/ft_models.json",
+  "value": "30 of 30"
+ },
+ "ft_cft3_pass": {
+  "path": "checks.C-FT3.*.passed",
+  "source": "AIR 2027/results/ft_models.json",
+  "value": "30 of 30"
+ },
+ "ft_cft4_maxrel": {
+  "path": "checks.C-FT4.*.max_rel_per_trajectory (max)",
+  "source": "AIR 2027/results/ft_models.json",
+  "value": "$2\\times10^{-7}$"
+ },
+ "ft_cft4_pass": {
+  "path": "checks.C-FT4.*.passed",
+  "source": "AIR 2027/results/ft_models.json",
+  "value": "30 of 30"
+ },
+ "ft_change_lam1_U30F_P_P": {
+  "path": "secondary.change_lam1_U30F_minus_P.P_mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$0.46"
+ },
+ "ft_change_lam1_U30F_P_ci": {
+  "path": "secondary.change_lam1_U30F_minus_P.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$0.049, $-$0.002]"
+ },
+ "ft_change_lam1_U30F_P_mean": {
+  "path": "secondary.change_lam1_U30F_minus_P.mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$0.024"
+ },
+ "ft_change_lam1_U30F_P_verdict": {
+  "path": "secondary.change_lam1_U30F_minus_P.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "decreases"
+ },
+ "ft_change_lam1_U30_P_P": {
+  "path": "secondary.change_lam1_U30_minus_P.P_mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$0.46"
+ },
+ "ft_change_lam1_U30_P_ci": {
+  "path": "secondary.change_lam1_U30_minus_P.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$0.062, 0.068]"
+ },
+ "ft_change_lam1_U30_P_mean": {
+  "path": "secondary.change_lam1_U30_minus_P.mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "+0.004"
+ },
+ "ft_change_lam1_U30_P_verdict": {
+  "path": "secondary.change_lam1_U30_minus_P.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "not settled"
+ },
+ "ft_change_rJ_U30F_P_P": {
+  "path": "secondary.change_rJ_U30F_minus_P.P_mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "1.6"
+ },
+ "ft_change_rJ_U30F_P_ci": {
+  "path": "secondary.change_rJ_U30F_minus_P.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$0.093, $-$0.012]"
+ },
+ "ft_change_rJ_U30F_P_mean": {
+  "path": "secondary.change_rJ_U30F_minus_P.mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "$-$0.052"
+ },
+ "ft_change_rJ_U30F_P_verdict": {
+  "path": "secondary.change_rJ_U30F_minus_P.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "decreases"
+ },
+ "ft_change_rJ_U30_P_P": {
+  "path": "secondary.change_rJ_U30_minus_P.P_mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "1.6"
+ },
+ "ft_change_rJ_U30_P_ci": {
+  "path": "secondary.change_rJ_U30_minus_P.ci95",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[2.0, 2.5]"
+ },
+ "ft_change_rJ_U30_P_mean": {
+  "path": "secondary.change_rJ_U30_minus_P.mean",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "+2.3"
+ },
+ "ft_change_rJ_U30_P_verdict": {
+  "path": "secondary.change_rJ_U30_minus_P.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "increases"
+ },
+ "ft_iters": {
+  "path": "*.json curves.total (length)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "500"
+ },
+ "ft_n_scored": {
+  "path": "models (count)",
+  "source": "AIR 2027/results/ft_models.json",
+  "value": "90"
+ },
+ "ft_ndraws": {
+  "path": "n_draws",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "20{,}000"
+ },
+ "ft_nparents": {
+  "path": "*.json source_run (distinct, level 0.3)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "15"
+ },
+ "ft_nruns": {
+  "path": "*.json (count)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "30"
+ },
+ "ft_ntraj": {
+  "path": "n_trajectories",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "20"
+ },
+ "ft_onestep_U30F_ci": {
+  "path": "secondary.onestep_U30F.ci95 (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "[$-$1.2, 0.9]"
+ },
+ "ft_onestep_U30F_d": {
+  "path": "secondary.onestep_U30F.d (x100, points)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "+0.1"
+ },
+ "ft_onestep_U30F_verdict": {
+  "path": "secondary.onestep_U30F.verdict",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "not settled"
+ },
+ "ft_probe_spi": {
+  "path": "s_per_iter_mean_after_first",
+  "source": "AIR 2027/results/ft_probe.json",
+  "value": "0.90"
+ },
+ "ft_probe_total_h": {
+  "path": "projected_hours.total_with_u50",
+  "source": "AIR 2027/results/ft_probe.json",
+  "value": "3.9"
+ },
+ "ft_pruned_u30": {
+  "path": "*.json pruned_entries (level 0.3)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "423{,}283"
+ },
+ "ft_pruned_u50": {
+  "path": "*.json pruned_entries (level 0.5)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "705{,}472"
+ },
+ "ft_reg_commit": {
+  "path": "log --diff-filter=A -- prereg/PREREG_FT.md (%h)",
+  "source": "git",
+  "value": "7fc5524"
+ },
+ "ft_reg_time": {
+  "path": "log --diff-filter=A -- prereg/PREREG_FT.md (%ci, UTC+0530)",
+  "source": "git",
+  "value": "2026-11-01 22:05"
+ },
+ "ft_s_per_iter": {
+  "path": "*.json s_per_iter (mean)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "0.96"
+ },
+ "ft_score_min": {
+  "path": "elapsed_s / 60",
+  "source": "AIR 2027/results/ft/progress.json",
+  "value": "11"
+ },
+ "ft_seeds": {
+  "path": "seeds",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "0--2"
+ },
+ "ft_undefined_draws": {
+  "path": "primary/secondary.*.undefined_draws (sum)",
+  "source": "AIR 2027/results/ft_stats.json",
+  "value": "0"
+ },
+ "ft_wall_max_min": {
+  "path": "*.json wall_clock_s (max / 60)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "13"
+ },
+ "ft_wall_mean_min": {
+  "path": "*.json wall_clock_s (mean / 60)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "8.0"
+ },
+ "ft_wall_min_min": {
+  "path": "*.json wall_clock_s (min / 60)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "7.2"
+ },
+ "ft_wall_total_h": {
+  "path": "*.json wall_clock_s (sum / 3600)",
+  "source": "AIR 2027/results/raw/ft",
+  "value": "4.0"
+ },
  "gA_E1": {
   "path": "D1_groups_F18.A (M32,N8).E1",
   "source": "AIR 2027/results/stats.json",

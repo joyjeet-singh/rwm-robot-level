@@ -1,0 +1,45 @@
+Study FT (prereg/PREREG_FT.md): fine-tuning magnitude-pruned copies, 20 X5 trajectories, seeds 0-2.
+arms ['P', 'U30', 'U30F', 'CTRL', 'U50', 'U50F']; excluded none; C-FT4 failures none
+
+PRIMARY (97.5% intervals)
+FT1 d = K_orig(U30F,100) - K_orig(U30,100) = 0.639 [0.544, 0.760]  (U30F 1.022, U30 0.383) -> FINE-TUNING RESTORES SKILL
+FT2 K_ctrl(U30F,100) = 0.999 [0.995, 1.004] -> NEARLY AS SKILLED
+
+SECONDARY (95%, not corrected for multiplicity)
+FT1_h24: d = 0.189 [0.166, 0.216] -> FINE-TUNING RESTORES SKILL
+FT2_h24: K_ctrl = 1.000 [0.998, 1.001] -> NEARLY AS SKILLED
+FT1_h368: d = 1.346 [1.021, 1.764] -> FINE-TUNING RESTORES SKILL
+FT2_h368: K_ctrl = 0.994 [0.979, 1.006] -> NEARLY AS SKILLED
+FT1_u50_h100: d = 1.944 [1.713, 2.285] -> FINE-TUNING RESTORES SKILL
+FT2_u50_h100: K_ctrl = 0.990 [0.984, 0.997] -> NEARLY AS SKILLED
+onestep_U30F: K_orig h1 1.023, h100 1.022; d = 0.001 [-0.012, 0.009] -> NOT SETTLED
+change_lam1_U30F_minus_P: -0.0238 [-0.049, -0.002] -> DECREASES
+change_lam1_U30_minus_P: 0.0038 [-0.062, 0.068] -> NOT SETTLED
+change_rJ_U30F_minus_P: -0.0521 [-0.093, -0.012] -> DECREASES
+change_rJ_U30_minus_P: 2.2521 [1.998, 2.500] -> INCREASES
+
+DESCRIPTIVE K (95%)
+K_P_vs_CTRL_h1: 0.975 [0.972, 0.980]
+K_P_vs_CTRL_h8: 0.990 [0.988, 0.992]
+K_P_vs_CTRL_h24: 0.990 [0.987, 0.993]
+K_P_vs_CTRL_h100: 0.978 [0.967, 0.986]
+K_P_vs_CTRL_h368: 0.956 [0.928, 0.978]
+K_U30_vs_P_h1: 0.899 [0.872, 0.916]
+K_U30_vs_P_h8: 0.901 [0.882, 0.917]
+K_U30_vs_P_h24: 0.820 [0.795, 0.841]
+K_U30_vs_P_h100: 0.383 [0.285, 0.462]
+K_U30_vs_P_h368: -0.307 [-0.716, 0.007]
+K_U30_vs_CTRL_h1: 0.877 [0.851, 0.895]
+K_U30_vs_CTRL_h8: 0.892 [0.872, 0.908]
+K_U30_vs_CTRL_h24: 0.812 [0.787, 0.834]
+K_U30_vs_CTRL_h100: 0.375 [0.278, 0.453]
+K_U30_vs_CTRL_h368: -0.294 [-0.675, 0.007]
+K_U30F_vs_P_h1: 1.023 [1.020, 1.026]
+K_U30F_vs_P_h8: 1.010 [1.008, 1.012]
+K_U30F_vs_P_h24: 1.009 [1.006, 1.013]
+K_U30F_vs_P_h100: 1.022 [1.013, 1.035]
+K_U30F_vs_P_h368: 1.039 [1.011, 1.074]
+K_U30F_vs_CTRL_h1: 0.998 [0.997, 0.999]
+K_U30F_vs_CTRL_h8: 0.999 [0.999, 1.000]
+K_U30F_vs_CTRL_h24: 1.000 [0.998, 1.001]
+K_U30F_vs_CTRL_h100: 0.999 [0.995, 1.003]

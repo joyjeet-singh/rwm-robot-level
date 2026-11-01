@@ -1,0 +1,3132 @@
+{
+ "models": {
+  "P_18_s0": {
+   "arm": "P",
+   "parent": "armA_seed0",
+   "fold": "18",
+   "seed": 0,
+   "E1": 0.08984485268592834,
+   "E8": 0.14674949645996094,
+   "E24": 0.17655545473098755,
+   "E100": 0.23946136236190796,
+   "E368": 0.30808186531066895,
+   "lam1": -0.507274507807123,
+   "rJ": 1.3448775792401064,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt",
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_18_s0": {
+   "arm": "U30",
+   "parent": "armA_seed0",
+   "fold": "18",
+   "seed": 0,
+   "E1": 0.1014174371957779,
+   "E8": 0.19342754781246185,
+   "E24": 0.29924941062927246,
+   "E100": 0.6724150776863098,
+   "E368": 1.9409939050674438,
+   "lam1": -0.34402351276360776,
+   "rJ": 4.883426617670097,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt",
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014321974478662014
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_18_s0": {
+   "arm": "U30F",
+   "parent": "armA_seed0",
+   "fold": "18",
+   "seed": 0,
+   "E1": 0.08842317014932632,
+   "E8": 0.1431257426738739,
+   "E24": 0.17191079258918762,
+   "E100": 0.2318514883518219,
+   "E368": 0.2981884479522705,
+   "lam1": -0.5264931570483844,
+   "rJ": 1.3307411363460222,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_armA_seed0/weights_500.pt",
+   "sha256": "2beacffe401f90190bb481082224056f98f605aa67d78ff05673bff75302cafa",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_18_s0": {
+   "arm": "CTRL",
+   "parent": "armA_seed0",
+   "fold": "18",
+   "seed": 0,
+   "E1": 0.08789905905723572,
+   "E8": 0.14229033887386322,
+   "E24": 0.17170296609401703,
+   "E100": 0.23085063695907593,
+   "E368": 0.29511794447898865,
+   "lam1": -0.5062692532551885,
+   "rJ": 1.3305706490770988,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_armA_seed0_w256/weights_500.pt",
+   "sha256": "b7ca130c2b7501be2083bf96e416a21f55a788d21839a7307d46a04f128e4708",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_18_s0": {
+   "arm": "U50",
+   "parent": "armA_seed0",
+   "fold": "18",
+   "seed": 0,
+   "E1": 0.13035798072814941,
+   "E8": 0.3027213513851166,
+   "E24": 0.5097671747207642,
+   "E100": 1.2116771936416626,
+   "E368": 4.210794925689697,
+   "lam1": -0.14758072911486428,
+   "rJ": 18.44820417948838,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt",
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027257049456238747
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_18_s0": {
+   "arm": "U50F",
+   "parent": "armA_seed0",
+   "fold": "18",
+   "seed": 0,
+   "E1": 0.08895477652549744,
+   "E8": 0.14462679624557495,
+   "E24": 0.17287281155586243,
+   "E100": 0.23396459221839905,
+   "E368": 0.3049772381782532,
+   "lam1": -0.4802612393838724,
+   "rJ": 1.37614398557628,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_armA_seed0/weights_500.pt",
+   "sha256": "7d77c341fbed92a0521ac78639524211d51a259070fe1602ff732524c6af7c92",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_18_s1": {
+   "arm": "P",
+   "parent": "armA_seed1",
+   "fold": "18",
+   "seed": 1,
+   "E1": 0.08979818224906921,
+   "E8": 0.15198102593421936,
+   "E24": 0.17811211943626404,
+   "E100": 0.25753819942474365,
+   "E368": 0.3335886001586914,
+   "lam1": -0.3854582357475199,
+   "rJ": 1.5820799344659329,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt",
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_18_s1": {
+   "arm": "U30",
+   "parent": "armA_seed1",
+   "fold": "18",
+   "seed": 1,
+   "E1": 0.10305394232273102,
+   "E8": 0.20222607254981995,
+   "E24": 0.299997478723526,
+   "E100": 0.6405074000358582,
+   "E368": 1.01384437084198,
+   "lam1": -0.5203472933656588,
+   "rJ": 3.388444654264324,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt",
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014207061380147934
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_18_s1": {
+   "arm": "U30F",
+   "parent": "armA_seed1",
+   "fold": "18",
+   "seed": 1,
+   "E1": 0.08754976093769073,
+   "E8": 0.1471736580133438,
+   "E24": 0.17279905080795288,
+   "E100": 0.2503807246685028,
+   "E368": 0.3776130676269531,
+   "lam1": -0.3201567602477362,
+   "rJ": 1.6948489374945923,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_armA_seed1/weights_500.pt",
+   "sha256": "206c41f7bfea311a162b784bb7ae0c1611d78ab750723e328801d0a2c0e1469e",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_18_s1": {
+   "arm": "CTRL",
+   "parent": "armA_seed1",
+   "fold": "18",
+   "seed": 1,
+   "E1": 0.08774314820766449,
+   "E8": 0.14790818095207214,
+   "E24": 0.1739448755979538,
+   "E100": 0.24682806432247162,
+   "E368": 0.3312523066997528,
+   "lam1": -0.3777678473956275,
+   "rJ": 1.5761720539964246,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_armA_seed1_w256/weights_500.pt",
+   "sha256": "7e245f161c7dc5294a2b1356d78dbac0f5233407a1e8564396993640daa3eb19",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_18_s1": {
+   "arm": "U50",
+   "parent": "armA_seed1",
+   "fold": "18",
+   "seed": 1,
+   "E1": 0.13480401039123535,
+   "E8": 0.32014843821525574,
+   "E24": 0.5208504796028137,
+   "E100": 1.2188377380371094,
+   "E368": 3.3143296241760254,
+   "lam1": -0.1852721366792342,
+   "rJ": 13.759098132470804,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt",
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027050457894802094
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_18_s1": {
+   "arm": "U50F",
+   "parent": "armA_seed1",
+   "fold": "18",
+   "seed": 1,
+   "E1": 0.08748678117990494,
+   "E8": 0.14745882153511047,
+   "E24": 0.17364707589149475,
+   "E100": 0.2469925582408905,
+   "E368": 0.33647987246513367,
+   "lam1": -0.29109409326777125,
+   "rJ": 1.4860396402435188,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_armA_seed1/weights_500.pt",
+   "sha256": "9af61cd4ee484639dcb72f892508624581cbae2c8f17e072c38d66e0fd0dd59c",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_18_s2": {
+   "arm": "P",
+   "parent": "armA_seed2",
+   "fold": "18",
+   "seed": 2,
+   "E1": 0.08672028034925461,
+   "E8": 0.1481063812971115,
+   "E24": 0.18165475130081177,
+   "E100": 0.2570745050907135,
+   "E368": 0.3622261583805084,
+   "lam1": -0.3826552957526449,
+   "rJ": 1.4624663052559048,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt",
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_18_s2": {
+   "arm": "U30",
+   "parent": "armA_seed2",
+   "fold": "18",
+   "seed": 2,
+   "E1": 0.09748141467571259,
+   "E8": 0.19160722196102142,
+   "E24": 0.2789061665534973,
+   "E100": 0.4956342279911041,
+   "E368": 0.7386803030967712,
+   "lam1": -0.3436282951537516,
+   "rJ": 2.82633609109719,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt",
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014494975097477436
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_18_s2": {
+   "arm": "U30F",
+   "parent": "armA_seed2",
+   "fold": "18",
+   "seed": 2,
+   "E1": 0.08451478183269501,
+   "E8": 0.14332039654254913,
+   "E24": 0.17325493693351746,
+   "E100": 0.24313154816627502,
+   "E368": 0.34615758061408997,
+   "lam1": -0.4738567316045428,
+   "rJ": 1.405820981981867,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_armA_seed2/weights_500.pt",
+   "sha256": "ee6a0f7a6aaba9588e5c22717ccc47feb52a9447a5c902daf1ba1d7bb249f408",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_18_s2": {
+   "arm": "CTRL",
+   "parent": "armA_seed2",
+   "fold": "18",
+   "seed": 2,
+   "E1": 0.08492178469896317,
+   "E8": 0.14381428062915802,
+   "E24": 0.1724594682455063,
+   "E100": 0.23962810635566711,
+   "E368": 0.34061986207962036,
+   "lam1": -0.43858943367107694,
+   "rJ": 1.4036635292592534,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_armA_seed2_w256/weights_500.pt",
+   "sha256": "32f696bb36b67a87c942baff0b67e439fc2bd0a73f813ee6f5ee96b628dc208e",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_18_s2": {
+   "arm": "U50",
+   "parent": "armA_seed2",
+   "fold": "18",
+   "seed": 2,
+   "E1": 0.14389532804489136,
+   "E8": 0.3432479202747345,
+   "E24": 0.6147739291191101,
+   "E100": 1.2524114847183228,
+   "E368": 2.772008180618286,
+   "lam1": -0.2567448549672875,
+   "rJ": 10.938888029185337,
+   "finite": true,
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt",
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027319442480802536
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_18_s2": {
+   "arm": "U50F",
+   "parent": "armA_seed2",
+   "fold": "18",
+   "seed": 2,
+   "E1": 0.0852305218577385,
+   "E8": 0.14475589990615845,
+   "E24": 0.17451000213623047,
+   "E100": 0.2470177263021469,
+   "E368": 0.3965955674648285,
+   "lam1": -0.21723137717795854,
+   "rJ": 1.521991786510894,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_armA_seed2/weights_500.pt",
+   "sha256": "fbc002b13187e085155349dd7fa17e2d1fddd49c09d3d325be1a1053315e061a",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_02_s0": {
+   "arm": "P",
+   "parent": "x3_armA_ho02_seed0",
+   "fold": "02",
+   "seed": 0,
+   "E1": 0.11435853689908981,
+   "E8": 0.18637460470199585,
+   "E24": 0.23582056164741516,
+   "E100": 0.31265413761138916,
+   "E368": 0.3891432285308838,
+   "lam1": -0.36811803129999515,
+   "rJ": 1.6905043007356253,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed0/weights_2500.pt",
+   "sha256": "ed1a89d161496bb702c9971c48c1b8b4f0015e64f4ac69e3992e83430a88f832",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_02_s0": {
+   "arm": "U30",
+   "parent": "x3_armA_ho02_seed0",
+   "fold": "02",
+   "seed": 0,
+   "E1": 0.12682363390922546,
+   "E8": 0.23427726328372955,
+   "E24": 0.344587504863739,
+   "E100": 0.6560763120651245,
+   "E368": 1.1921733617782593,
+   "lam1": -0.32116656998540954,
+   "rJ": 4.193969849731574,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed0/weights_2500.pt",
+   "sha256": "ed1a89d161496bb702c9971c48c1b8b4f0015e64f4ac69e3992e83430a88f832",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014318603090941906
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_02_s0": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho02_seed0",
+   "fold": "02",
+   "seed": 0,
+   "E1": 0.11125350743532181,
+   "E8": 0.18311794102191925,
+   "E24": 0.23474553227424622,
+   "E100": 0.31169354915618896,
+   "E368": 0.36964067816734314,
+   "lam1": -0.378339110746584,
+   "rJ": 1.6376847716623202,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho02_seed0/weights_500.pt",
+   "sha256": "44ad638c7d0de223488cb95ae9ad6c2fb1f1a880ea78c01d582332ada59b8c5c",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_02_s0": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho02_seed0",
+   "fold": "02",
+   "seed": 0,
+   "E1": 0.11127154529094696,
+   "E8": 0.18370866775512695,
+   "E24": 0.23547935485839844,
+   "E100": 0.30935123562812805,
+   "E368": 0.36783093214035034,
+   "lam1": -0.36963256657945287,
+   "rJ": 1.618124968805092,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho02_seed0_w256/weights_500.pt",
+   "sha256": "6ad20cb913b88c4f0899171b1d77c9a3181a24b06b536ef9440cbb04084306bb",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_02_s0": {
+   "arm": "U50",
+   "parent": "x3_armA_ho02_seed0",
+   "fold": "02",
+   "seed": 0,
+   "E1": 0.1557251662015915,
+   "E8": 0.366242378950119,
+   "E24": 0.6187587976455688,
+   "E100": 1.3755549192428589,
+   "E368": 3.951448917388916,
+   "lam1": -0.10762079773090752,
+   "rJ": 12.994526877198773,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed0/weights_2500.pt",
+   "sha256": "ed1a89d161496bb702c9971c48c1b8b4f0015e64f4ac69e3992e83430a88f832",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.02729322761297226
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_02_s0": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho02_seed0",
+   "fold": "02",
+   "seed": 0,
+   "E1": 0.11342817544937134,
+   "E8": 0.1851697862148285,
+   "E24": 0.2369416356086731,
+   "E100": 0.3140519857406616,
+   "E368": 0.41248077154159546,
+   "lam1": -0.3701514525074192,
+   "rJ": 1.6914853056649857,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho02_seed0/weights_500.pt",
+   "sha256": "84fd03688c4d14dfe312452623edf13b5554a135952cd652db894fd9f8cd4b6b",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_02_s1": {
+   "arm": "P",
+   "parent": "x3_armA_ho02_seed1",
+   "fold": "02",
+   "seed": 1,
+   "E1": 0.11367692053318024,
+   "E8": 0.18699418008327484,
+   "E24": 0.23271848261356354,
+   "E100": 0.28774550557136536,
+   "E368": 0.3404633402824402,
+   "lam1": -0.3336747541296458,
+   "rJ": 1.6294599790327706,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed1/weights_2500.pt",
+   "sha256": "bf2d31cd173b08992d95b65bc85ca7a41e5921578d39e05ee4ad928730cd08a3",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_02_s1": {
+   "arm": "U30",
+   "parent": "x3_armA_ho02_seed1",
+   "fold": "02",
+   "seed": 1,
+   "E1": 0.1228555217385292,
+   "E8": 0.22747370600700378,
+   "E24": 0.3399925231933594,
+   "E100": 0.6535972356796265,
+   "E368": 1.2483686208724976,
+   "lam1": -0.4724945920372717,
+   "rJ": 4.6884649748303335,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed1/weights_2500.pt",
+   "sha256": "bf2d31cd173b08992d95b65bc85ca7a41e5921578d39e05ee4ad928730cd08a3",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014257330447435379
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_02_s1": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho02_seed1",
+   "fold": "02",
+   "seed": 1,
+   "E1": 0.11050702631473541,
+   "E8": 0.1817573457956314,
+   "E24": 0.2253226488828659,
+   "E100": 0.27293723821640015,
+   "E368": 0.30177491903305054,
+   "lam1": -0.5075363538412287,
+   "rJ": 1.51217644307479,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho02_seed1/weights_500.pt",
+   "sha256": "54d74095bd4648974c7af4810fec2b4a5393ecfc3527cc55a203891a6c0ffd09",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_02_s1": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho02_seed1",
+   "fold": "02",
+   "seed": 1,
+   "E1": 0.1101561039686203,
+   "E8": 0.1811828315258026,
+   "E24": 0.22457216680049896,
+   "E100": 0.27666282653808594,
+   "E368": 0.3188333511352539,
+   "lam1": -0.4459372554443674,
+   "rJ": 1.5679202645090555,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho02_seed1_w256/weights_500.pt",
+   "sha256": "3fcc00ec6cc234fd8739840dddee60b509b87d36590434dc49ebf0d9aac3ad5c",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_02_s1": {
+   "arm": "U50",
+   "parent": "x3_armA_ho02_seed1",
+   "fold": "02",
+   "seed": 1,
+   "E1": 0.1613548845052719,
+   "E8": 0.36140334606170654,
+   "E24": 0.6025552749633789,
+   "E100": 1.4732532501220703,
+   "E368": 6.615817546844482,
+   "lam1": -0.13965193414911806,
+   "rJ": 26.86113494223861,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed1/weights_2500.pt",
+   "sha256": "bf2d31cd173b08992d95b65bc85ca7a41e5921578d39e05ee4ad928730cd08a3",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.02703242376446724
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_02_s1": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho02_seed1",
+   "fold": "02",
+   "seed": 1,
+   "E1": 0.1126495897769928,
+   "E8": 0.18638789653778076,
+   "E24": 0.23288887739181519,
+   "E100": 0.2905018925666809,
+   "E368": 0.34361299872398376,
+   "lam1": -0.3347062605283163,
+   "rJ": 1.5843230665462416,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho02_seed1/weights_500.pt",
+   "sha256": "3474674668d7ed5efda0bf5ebfbe323d75bdcd33ab678b452f516621c18502c3",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_02_s2": {
+   "arm": "P",
+   "parent": "x3_armA_ho02_seed2",
+   "fold": "02",
+   "seed": 2,
+   "E1": 0.11403465270996094,
+   "E8": 0.18817569315433502,
+   "E24": 0.2359272837638855,
+   "E100": 0.30500760674476624,
+   "E368": 0.3758023679256439,
+   "lam1": -0.31316087445735824,
+   "rJ": 1.7008427214742263,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed2/weights_2500.pt",
+   "sha256": "86478152017d0d1bb81396ca319190380e816f77593b6d8dd29ed21bdfe07cdb",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_02_s2": {
+   "arm": "U30",
+   "parent": "x3_armA_ho02_seed2",
+   "fold": "02",
+   "seed": 2,
+   "E1": 0.12168478220701218,
+   "E8": 0.22023536264896393,
+   "E24": 0.3138555884361267,
+   "E100": 0.5349264144897461,
+   "E368": 0.8142892718315125,
+   "lam1": -0.3779870243087014,
+   "rJ": 2.9127469934469463,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed2/weights_2500.pt",
+   "sha256": "86478152017d0d1bb81396ca319190380e816f77593b6d8dd29ed21bdfe07cdb",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014388618059456348
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_02_s2": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho02_seed2",
+   "fold": "02",
+   "seed": 2,
+   "E1": 0.1114937961101532,
+   "E8": 0.18495559692382812,
+   "E24": 0.2356232851743698,
+   "E100": 0.29944032430648804,
+   "E368": 0.3525058925151825,
+   "lam1": -0.3689853624392311,
+   "rJ": 1.6247629528890373,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho02_seed2/weights_500.pt",
+   "sha256": "77b8fbcfa5f746df162d0da70a10c9b15a24ed61e72b24ae298b1e85222a2ea0",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_02_s2": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho02_seed2",
+   "fold": "02",
+   "seed": 2,
+   "E1": 0.11139141023159027,
+   "E8": 0.18451657891273499,
+   "E24": 0.23457422852516174,
+   "E100": 0.302216500043869,
+   "E368": 0.37124285101890564,
+   "lam1": -0.3335136013814561,
+   "rJ": 1.6917547926151781,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho02_seed2_w256/weights_500.pt",
+   "sha256": "78016a12f6836af526480ef9bad1c886285ff8eb213f450cafa2712fc4ae4132",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_02_s2": {
+   "arm": "U50",
+   "parent": "x3_armA_ho02_seed2",
+   "fold": "02",
+   "seed": 2,
+   "E1": 0.16377964615821838,
+   "E8": 0.371688574552536,
+   "E24": 0.6293735504150391,
+   "E100": 1.497153639793396,
+   "E368": 4.546546459197998,
+   "lam1": -0.13024247876727338,
+   "rJ": 19.8800352728828,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho02_seed2/weights_2500.pt",
+   "sha256": "86478152017d0d1bb81396ca319190380e816f77593b6d8dd29ed21bdfe07cdb",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027183953672647476
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_02_s2": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho02_seed2",
+   "fold": "02",
+   "seed": 2,
+   "E1": 0.11327558755874634,
+   "E8": 0.18887539207935333,
+   "E24": 0.2394612580537796,
+   "E100": 0.3042874038219452,
+   "E368": 0.35888615250587463,
+   "lam1": -0.4042334142831261,
+   "rJ": 1.6011380195224556,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho02_seed2/weights_500.pt",
+   "sha256": "42261de588e1298f3c3e9333e78c06a16e3324ad1b6ee10790759b5f7bb59de5",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_34_s0": {
+   "arm": "P",
+   "parent": "x3_armA_ho34_seed0",
+   "fold": "34",
+   "seed": 0,
+   "E1": 0.1124105453491211,
+   "E8": 0.19043582677841187,
+   "E24": 0.24808810651302338,
+   "E100": 0.35336142778396606,
+   "E368": 0.47655653953552246,
+   "lam1": -0.5179838459166876,
+   "rJ": 1.7995634155378648,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed0/weights_2500.pt",
+   "sha256": "7e20ac39cde8e389457fe41105c165e7b3c9c6a67841c2c6a7f2bcc13a25ad84",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_34_s0": {
+   "arm": "U30",
+   "parent": "x3_armA_ho34_seed0",
+   "fold": "34",
+   "seed": 0,
+   "E1": 0.12537355720996857,
+   "E8": 0.23972362279891968,
+   "E24": 0.35703468322753906,
+   "E100": 0.8009302616119385,
+   "E368": 2.1997885704040527,
+   "lam1": -0.44120557162716545,
+   "rJ": 6.6594330269058375,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed0/weights_2500.pt",
+   "sha256": "7e20ac39cde8e389457fe41105c165e7b3c9c6a67841c2c6a7f2bcc13a25ad84",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014414713717997074
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_34_s0": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho34_seed0",
+   "fold": "34",
+   "seed": 0,
+   "E1": 0.11040675640106201,
+   "E8": 0.18460211157798767,
+   "E24": 0.23618578910827637,
+   "E100": 0.31507962942123413,
+   "E368": 0.39554545283317566,
+   "lam1": -0.5133895470426348,
+   "rJ": 1.6055308381737203,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho34_seed0/weights_500.pt",
+   "sha256": "8ad3604f7a8ff4f43275254ac47c97237a6fe5cc24dc4cb591eec5bacdbb0609",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_34_s0": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho34_seed0",
+   "fold": "34",
+   "seed": 0,
+   "E1": 0.11021530628204346,
+   "E8": 0.1845572292804718,
+   "E24": 0.2370191365480423,
+   "E100": 0.3170328736305237,
+   "E368": 0.3946610391139984,
+   "lam1": -0.5129232628220584,
+   "rJ": 1.5816045539483636,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho34_seed0_w256/weights_500.pt",
+   "sha256": "05d427ab8b3bddebbeb6287100c4ebee5346d7d62ac8ae35291a2fec0220c813",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_34_s0": {
+   "arm": "U50",
+   "parent": "x3_armA_ho34_seed0",
+   "fold": "34",
+   "seed": 0,
+   "E1": 0.1475880742073059,
+   "E8": 0.3285368084907532,
+   "E24": 0.5577228665351868,
+   "E100": 1.2908519506454468,
+   "E368": 3.2260031700134277,
+   "lam1": -0.3388162753068817,
+   "rJ": 14.917704613981046,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed0/weights_2500.pt",
+   "sha256": "7e20ac39cde8e389457fe41105c165e7b3c9c6a67841c2c6a7f2bcc13a25ad84",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027398498728871346
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_34_s0": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho34_seed0",
+   "fold": "34",
+   "seed": 0,
+   "E1": 0.11076206713914871,
+   "E8": 0.184350848197937,
+   "E24": 0.23585793375968933,
+   "E100": 0.3087711036205292,
+   "E368": 0.37675976753234863,
+   "lam1": -0.4213045358635653,
+   "rJ": 1.6241464693420078,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho34_seed0/weights_500.pt",
+   "sha256": "07f40e9ebcf78f4803e5fd2a04744e2120d538d9ddf3b5a144a9bac0e50b20ac",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_34_s1": {
+   "arm": "P",
+   "parent": "x3_armA_ho34_seed1",
+   "fold": "34",
+   "seed": 1,
+   "E1": 0.11293914914131165,
+   "E8": 0.18883979320526123,
+   "E24": 0.24326184391975403,
+   "E100": 0.31290364265441895,
+   "E368": 0.3820264935493469,
+   "lam1": -0.5741856779759659,
+   "rJ": 1.5154416398265609,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed1/weights_2500.pt",
+   "sha256": "178020ec4cc1037b4cd4494fb93c7599e1adc654519a837d87d19298884f52e2",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_34_s1": {
+   "arm": "U30",
+   "parent": "x3_armA_ho34_seed1",
+   "fold": "34",
+   "seed": 1,
+   "E1": 0.12303154915571213,
+   "E8": 0.22727473080158234,
+   "E24": 0.3240046203136444,
+   "E100": 0.4955836534500122,
+   "E368": 0.6154716610908508,
+   "lam1": -0.6098344033667703,
+   "rJ": 2.4913643169252357,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed1/weights_2500.pt",
+   "sha256": "178020ec4cc1037b4cd4494fb93c7599e1adc654519a837d87d19298884f52e2",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.01429537683725357
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_34_s1": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho34_seed1",
+   "fold": "34",
+   "seed": 1,
+   "E1": 0.11106967180967331,
+   "E8": 0.18646468222141266,
+   "E24": 0.23887348175048828,
+   "E100": 0.30587905645370483,
+   "E368": 0.37504130601882935,
+   "lam1": -0.535934278725881,
+   "rJ": 1.5235596892210728,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho34_seed1/weights_500.pt",
+   "sha256": "332221364a9830aab62bdc587fb4ee2386a053be02413eeee7317dca96958960",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_34_s1": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho34_seed1",
+   "fold": "34",
+   "seed": 1,
+   "E1": 0.11064741015434265,
+   "E8": 0.1857185959815979,
+   "E24": 0.23950788378715515,
+   "E100": 0.3108255863189697,
+   "E368": 0.3937740623950958,
+   "lam1": -0.5309710819968612,
+   "rJ": 1.5511000700247124,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho34_seed1_w256/weights_500.pt",
+   "sha256": "3b0274efb5f3dd7b08c4796d0c3f5d4d1650aee092a83e121c3e830ca5ffedd4",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_34_s1": {
+   "arm": "U50",
+   "parent": "x3_armA_ho34_seed1",
+   "fold": "34",
+   "seed": 1,
+   "E1": 0.15907405316829681,
+   "E8": 0.3565315902233124,
+   "E24": 0.5913453102111816,
+   "E100": 1.628221035003662,
+   "E368": 5.924965858459473,
+   "lam1": -0.18948532800147935,
+   "rJ": 16.841846627216817,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed1/weights_2500.pt",
+   "sha256": "178020ec4cc1037b4cd4494fb93c7599e1adc654519a837d87d19298884f52e2",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027143090963363647
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_34_s1": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho34_seed1",
+   "fold": "34",
+   "seed": 1,
+   "E1": 0.11209951341152191,
+   "E8": 0.18690215051174164,
+   "E24": 0.23830553889274597,
+   "E100": 0.31186968088150024,
+   "E368": 0.38334134221076965,
+   "lam1": -0.5514326125837961,
+   "rJ": 1.555605871371094,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho34_seed1/weights_500.pt",
+   "sha256": "0a994d5418c21fabd73f2a2905188792b71947b6d3ee1a2e063c13919a78b042",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_34_s2": {
+   "arm": "P",
+   "parent": "x3_armA_ho34_seed2",
+   "fold": "34",
+   "seed": 2,
+   "E1": 0.11456599831581116,
+   "E8": 0.19820573925971985,
+   "E24": 0.2516041696071625,
+   "E100": 0.34147635102272034,
+   "E368": 0.4248877465724945,
+   "lam1": -0.5143866539118499,
+   "rJ": 1.8069819783508028,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed2/weights_2500.pt",
+   "sha256": "6b9a6c8fd969ac7be51536bd1b20a0a2b3e1995650ff204ff667152b901dfb84",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_34_s2": {
+   "arm": "U30",
+   "parent": "x3_armA_ho34_seed2",
+   "fold": "34",
+   "seed": 2,
+   "E1": 0.12105713784694672,
+   "E8": 0.22820362448692322,
+   "E24": 0.3334653973579407,
+   "E100": 0.6234221458435059,
+   "E368": 1.125628113746643,
+   "lam1": -0.3737370110673219,
+   "rJ": 4.3791240497238375,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed2/weights_2500.pt",
+   "sha256": "6b9a6c8fd969ac7be51536bd1b20a0a2b3e1995650ff204ff667152b901dfb84",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014326928183436394
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_34_s2": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho34_seed2",
+   "fold": "34",
+   "seed": 2,
+   "E1": 0.11205607652664185,
+   "E8": 0.19289645552635193,
+   "E24": 0.2445797473192215,
+   "E100": 0.3203747570514679,
+   "E368": 0.40412935614585876,
+   "lam1": -0.6193004391322547,
+   "rJ": 1.7156297401169969,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho34_seed2/weights_500.pt",
+   "sha256": "98e102dfaee5b33a22ded679b9713806fe79cbe1539affc1a6a4be2c3fd4c151",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_34_s2": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho34_seed2",
+   "fold": "34",
+   "seed": 2,
+   "E1": 0.11151406168937683,
+   "E8": 0.1914965957403183,
+   "E24": 0.24327653646469116,
+   "E100": 0.32405567169189453,
+   "E368": 0.4111644923686981,
+   "lam1": -0.5501633212976335,
+   "rJ": 1.7321297502934514,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho34_seed2_w256/weights_500.pt",
+   "sha256": "87053a7f313ff90c07cdc6283afa21f6d5e55921f456bee1bdeafa8fa4f38025",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_34_s2": {
+   "arm": "U50",
+   "parent": "x3_armA_ho34_seed2",
+   "fold": "34",
+   "seed": 2,
+   "E1": 0.16129520535469055,
+   "E8": 0.371469110250473,
+   "E24": 0.6119407415390015,
+   "E100": 1.1827805042266846,
+   "E368": 2.803053855895996,
+   "lam1": -0.30548262345128985,
+   "rJ": 11.095484339792158,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho34_seed2/weights_2500.pt",
+   "sha256": "6b9a6c8fd969ac7be51536bd1b20a0a2b3e1995650ff204ff667152b901dfb84",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027176450937986374
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_34_s2": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho34_seed2",
+   "fold": "34",
+   "seed": 2,
+   "E1": 0.11264873296022415,
+   "E8": 0.19414673745632172,
+   "E24": 0.24828438460826874,
+   "E100": 0.33551090955734253,
+   "E368": 0.4369998872280121,
+   "lam1": -0.4782853986532688,
+   "rJ": 1.8220719516329897,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho34_seed2/weights_500.pt",
+   "sha256": "59692b1d1c7cec0fe81724ba5a43e6eccbe11ab23a6a6b00626e0dff49162e7b",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_56_s0": {
+   "arm": "P",
+   "parent": "x3_armA_ho56_seed0",
+   "fold": "56",
+   "seed": 0,
+   "E1": 0.09019901603460312,
+   "E8": 0.1359402984380722,
+   "E24": 0.17063158750534058,
+   "E100": 0.23765289783477783,
+   "E368": 0.2957177460193634,
+   "lam1": -0.5320324442474199,
+   "rJ": 1.3275755494058767,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed0/weights_2500.pt",
+   "sha256": "8095592245f62e14af763fd806846ad687e998c4703690689b47aa49b8faa298",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_56_s0": {
+   "arm": "U30",
+   "parent": "x3_armA_ho56_seed0",
+   "fold": "56",
+   "seed": 0,
+   "E1": 0.10468629747629166,
+   "E8": 0.2002909630537033,
+   "E24": 0.3232158422470093,
+   "E100": 0.6456583738327026,
+   "E368": 1.0276060104370117,
+   "lam1": -0.5800515679094724,
+   "rJ": 3.409678691810489,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed0/weights_2500.pt",
+   "sha256": "8095592245f62e14af763fd806846ad687e998c4703690689b47aa49b8faa298",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014341349713504314
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_56_s0": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho56_seed0",
+   "fold": "56",
+   "seed": 0,
+   "E1": 0.08708789199590683,
+   "E8": 0.13011395931243896,
+   "E24": 0.1631738543510437,
+   "E100": 0.2173936367034912,
+   "E368": 0.23269930481910706,
+   "lam1": -0.5252601794125054,
+   "rJ": 1.2033306083334623,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho56_seed0/weights_500.pt",
+   "sha256": "1bb76c6860604dba92a91fdaa0aabc370e2896d026316470be16fff062ee9d62",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_56_s0": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho56_seed0",
+   "fold": "56",
+   "seed": 0,
+   "E1": 0.08678291738033295,
+   "E8": 0.129730686545372,
+   "E24": 0.16279079020023346,
+   "E100": 0.2182554304599762,
+   "E368": 0.24217145144939423,
+   "lam1": -0.5254568205140324,
+   "rJ": 1.2268002202819819,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho56_seed0_w256/weights_500.pt",
+   "sha256": "ae93f91a677dbddf19b6630d2c4fad2988fcaec91a44605d671a5098a235c5b7",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_56_s0": {
+   "arm": "U50",
+   "parent": "x3_armA_ho56_seed0",
+   "fold": "56",
+   "seed": 0,
+   "E1": 0.13839027285575867,
+   "E8": 0.31403809785842896,
+   "E24": 0.5029032230377197,
+   "E100": 1.0135653018951416,
+   "E368": 1.8930249214172363,
+   "lam1": -0.4579034852340449,
+   "rJ": 5.904544624717069,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed0/weights_2500.pt",
+   "sha256": "8095592245f62e14af763fd806846ad687e998c4703690689b47aa49b8faa298",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027386022731661797
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_56_s0": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho56_seed0",
+   "fold": "56",
+   "seed": 0,
+   "E1": 0.08876776695251465,
+   "E8": 0.13291813433170319,
+   "E24": 0.16641351580619812,
+   "E100": 0.2297368049621582,
+   "E368": 0.27339670062065125,
+   "lam1": -0.48938417570931303,
+   "rJ": 1.3240869945760794,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho56_seed0/weights_500.pt",
+   "sha256": "15a2ba321dcb847c5447c15224afef956a915cbf0cb4e7e79f71d16ee4b10e47",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_56_s1": {
+   "arm": "P",
+   "parent": "x3_armA_ho56_seed1",
+   "fold": "56",
+   "seed": 1,
+   "E1": 0.08944511413574219,
+   "E8": 0.13560451567173004,
+   "E24": 0.16728229820728302,
+   "E100": 0.22510744631290436,
+   "E368": 0.26168200373649597,
+   "lam1": -0.5432625380715189,
+   "rJ": 1.2927539695351684,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed1/weights_2500.pt",
+   "sha256": "87de2702ab334660650440d6195fbd717de20355fc6a76e616417977cb184ba6",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_56_s1": {
+   "arm": "U30",
+   "parent": "x3_armA_ho56_seed1",
+   "fold": "56",
+   "seed": 1,
+   "E1": 0.10179588943719864,
+   "E8": 0.1834106594324112,
+   "E24": 0.27018558979034424,
+   "E100": 0.5263451337814331,
+   "E368": 0.6370987296104431,
+   "lam1": -0.8176645000391849,
+   "rJ": 2.459946079956263,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed1/weights_2500.pt",
+   "sha256": "87de2702ab334660650440d6195fbd717de20355fc6a76e616417977cb184ba6",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014409190975129604
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_56_s1": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho56_seed1",
+   "fold": "56",
+   "seed": 1,
+   "E1": 0.08640268445014954,
+   "E8": 0.13112711906433105,
+   "E24": 0.16168582439422607,
+   "E100": 0.22011886537075043,
+   "E368": 0.25264686346054077,
+   "lam1": -0.6130596532618685,
+   "rJ": 1.2519713786957514,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho56_seed1/weights_500.pt",
+   "sha256": "6583bbcf708a2f09e023cda2355a6f79a6463edf5edec5dfa445f8c91b418069",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_56_s1": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho56_seed1",
+   "fold": "56",
+   "seed": 1,
+   "E1": 0.08596498519182205,
+   "E8": 0.1309361457824707,
+   "E24": 0.16243502497673035,
+   "E100": 0.22277137637138367,
+   "E368": 0.2524145245552063,
+   "lam1": -0.5970831425460297,
+   "rJ": 1.2665515196279689,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho56_seed1_w256/weights_500.pt",
+   "sha256": "1b079f3bf17390cd568006bfd2bd29ec1a9860c6190654f0714400abf3d98401",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_56_s1": {
+   "arm": "U50",
+   "parent": "x3_armA_ho56_seed1",
+   "fold": "56",
+   "seed": 1,
+   "E1": 0.13878025114536285,
+   "E8": 0.3074963092803955,
+   "E24": 0.46869248151779175,
+   "E100": 0.9531146883964539,
+   "E368": 1.8809595108032227,
+   "lam1": -0.3711488161251482,
+   "rJ": 6.552656381419959,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed1/weights_2500.pt",
+   "sha256": "87de2702ab334660650440d6195fbd717de20355fc6a76e616417977cb184ba6",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027334652841091156
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_56_s1": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho56_seed1",
+   "fold": "56",
+   "seed": 1,
+   "E1": 0.08821399509906769,
+   "E8": 0.13369692862033844,
+   "E24": 0.16544319689273834,
+   "E100": 0.22167494893074036,
+   "E368": 0.2434656322002411,
+   "lam1": -0.6420558510873264,
+   "rJ": 1.2567988354975974,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho56_seed1/weights_500.pt",
+   "sha256": "98e2ef2ece9f20355b9ad88a5a18ca10b415eb42d2cf09ea4f06778b081cd5e0",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_56_s2": {
+   "arm": "P",
+   "parent": "x3_armA_ho56_seed2",
+   "fold": "56",
+   "seed": 2,
+   "E1": 0.09048813581466675,
+   "E8": 0.1406368911266327,
+   "E24": 0.17756560444831848,
+   "E100": 0.25839847326278687,
+   "E368": 0.31405290961265564,
+   "lam1": -0.5216924216174103,
+   "rJ": 1.458816823133602,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed2/weights_2500.pt",
+   "sha256": "5a8e9df57a48dd0d702894f2ad37aec98f1476333142222a034a0eca419df455",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_56_s2": {
+   "arm": "U30",
+   "parent": "x3_armA_ho56_seed2",
+   "fold": "56",
+   "seed": 2,
+   "E1": 0.10054318606853485,
+   "E8": 0.18773868680000305,
+   "E24": 0.28562983870506287,
+   "E100": 0.6012320518493652,
+   "E368": 1.019702672958374,
+   "lam1": -0.5358154643146953,
+   "rJ": 2.985750417779593,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed2/weights_2500.pt",
+   "sha256": "5a8e9df57a48dd0d702894f2ad37aec98f1476333142222a034a0eca419df455",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014365456998348236
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_56_s2": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho56_seed2",
+   "fold": "56",
+   "seed": 2,
+   "E1": 0.08734029531478882,
+   "E8": 0.13538357615470886,
+   "E24": 0.1707564890384674,
+   "E100": 0.24154411256313324,
+   "E368": 0.2814359962940216,
+   "lam1": -0.4900882041533047,
+   "rJ": 1.4021065397738774,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho56_seed2/weights_500.pt",
+   "sha256": "6e8734badda8d5f45cb76c0b8bcfc6dcfc571943d9e714cb2b2b8478804153d3",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_56_s2": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho56_seed2",
+   "fold": "56",
+   "seed": 2,
+   "E1": 0.08716927468776703,
+   "E8": 0.13565237820148468,
+   "E24": 0.1720047891139984,
+   "E100": 0.24372288584709167,
+   "E368": 0.27229544520378113,
+   "lam1": -0.4928134375564443,
+   "rJ": 1.3694663877283628,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho56_seed2_w256/weights_500.pt",
+   "sha256": "cd238462096f94b7ad639fb5d698ce9d89a804280eab6503279f8fbd1ec9813c",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_56_s2": {
+   "arm": "U50",
+   "parent": "x3_armA_ho56_seed2",
+   "fold": "56",
+   "seed": 2,
+   "E1": 0.1439170390367508,
+   "E8": 0.3280147314071655,
+   "E24": 0.5489664077758789,
+   "E100": 1.3062489032745361,
+   "E368": 4.148230075836182,
+   "lam1": -0.3389517635916547,
+   "rJ": 13.69651801275843,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho56_seed2/weights_2500.pt",
+   "sha256": "5a8e9df57a48dd0d702894f2ad37aec98f1476333142222a034a0eca419df455",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027299057692289352
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_56_s2": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho56_seed2",
+   "fold": "56",
+   "seed": 2,
+   "E1": 0.08963247388601303,
+   "E8": 0.13816316425800323,
+   "E24": 0.17326372861862183,
+   "E100": 0.24707426130771637,
+   "E368": 0.2898561656475067,
+   "lam1": -0.6176739915909308,
+   "rJ": 1.3817152270290554,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho56_seed2/weights_500.pt",
+   "sha256": "6dd41918f2ed7af2a1209e77cc95d93d1c66d03bd3b814efe368de787cae87aa",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_79_s0": {
+   "arm": "P",
+   "parent": "x3_armA_ho79_seed0",
+   "fold": "79",
+   "seed": 0,
+   "E1": 0.12029186636209488,
+   "E8": 0.21847191452980042,
+   "E24": 0.2791905105113983,
+   "E100": 0.3408642113208771,
+   "E368": 0.4854397177696228,
+   "lam1": -0.4529216829465264,
+   "rJ": 1.912066459821169,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed0/weights_2500.pt",
+   "sha256": "1c63ad797eace6c5afd46d2a427a0df92c25b822aec7f2b7331cee59f363a4a9",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_79_s0": {
+   "arm": "U30",
+   "parent": "x3_armA_ho79_seed0",
+   "fold": "79",
+   "seed": 0,
+   "E1": 0.1299649327993393,
+   "E8": 0.26014435291290283,
+   "E24": 0.3685607314109802,
+   "E100": 0.5470936298370361,
+   "E368": 0.8658949136734009,
+   "lam1": -0.3194030840823638,
+   "rJ": 3.411757691748216,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed0/weights_2500.pt",
+   "sha256": "1c63ad797eace6c5afd46d2a427a0df92c25b822aec7f2b7331cee59f363a4a9",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014245106838643551
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_79_s0": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho79_seed0",
+   "fold": "79",
+   "seed": 0,
+   "E1": 0.11828415095806122,
+   "E8": 0.21554356813430786,
+   "E24": 0.27681225538253784,
+   "E100": 0.3423781991004944,
+   "E368": 0.4706079959869385,
+   "lam1": -0.488476283419356,
+   "rJ": 1.8985092420241645,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho79_seed0/weights_500.pt",
+   "sha256": "70922af6bdb3ab165d147b53ef1b4314650c2e766e8ddc34b8f4c8cff6912225",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_79_s0": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho79_seed0",
+   "fold": "79",
+   "seed": 0,
+   "E1": 0.11805470287799835,
+   "E8": 0.214849591255188,
+   "E24": 0.276151180267334,
+   "E100": 0.3396748900413513,
+   "E368": 0.44937577843666077,
+   "lam1": -0.5713654262925286,
+   "rJ": 1.8284364674321347,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho79_seed0_w256/weights_500.pt",
+   "sha256": "239c4eb5eca81520c9d3bcc61df1735257abb9809c1d0e5f7757e2fe2caab607",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_79_s0": {
+   "arm": "U50",
+   "parent": "x3_armA_ho79_seed0",
+   "fold": "79",
+   "seed": 0,
+   "E1": 0.15628473460674286,
+   "E8": 0.35651975870132446,
+   "E24": 0.5738598108291626,
+   "E100": 1.209005355834961,
+   "E368": 3.4255645275115967,
+   "lam1": -0.13443849245375789,
+   "rJ": 15.74001183644794,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed0/weights_2500.pt",
+   "sha256": "1c63ad797eace6c5afd46d2a427a0df92c25b822aec7f2b7331cee59f363a4a9",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027189603075385094
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_79_s0": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho79_seed0",
+   "fold": "79",
+   "seed": 0,
+   "E1": 0.11961435526609421,
+   "E8": 0.21759527921676636,
+   "E24": 0.279310405254364,
+   "E100": 0.34572386741638184,
+   "E368": 0.5341668128967285,
+   "lam1": -0.394203957100453,
+   "rJ": 1.9761533275127974,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho79_seed0/weights_500.pt",
+   "sha256": "e6540e501b8efbabc0472c5e80ac2ee0a9b61de7c8d0c6bb9cdc59da00b9ff8c",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_79_s1": {
+   "arm": "P",
+   "parent": "x3_armA_ho79_seed1",
+   "fold": "79",
+   "seed": 1,
+   "E1": 0.11826929450035095,
+   "E8": 0.2153279334306717,
+   "E24": 0.2733415365219116,
+   "E100": 0.3424786925315857,
+   "E368": 0.5135818123817444,
+   "lam1": -0.48933266802633524,
+   "rJ": 1.9426127296372928,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed1/weights_2500.pt",
+   "sha256": "363db592404d61df86217a57ac754e1742927842d1c945a4ba2c2d31aadbce2c",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_79_s1": {
+   "arm": "U30",
+   "parent": "x3_armA_ho79_seed1",
+   "fold": "79",
+   "seed": 1,
+   "E1": 0.1268891990184784,
+   "E8": 0.25115761160850525,
+   "E24": 0.36628323793411255,
+   "E100": 0.6123904585838318,
+   "E368": 0.8112300634384155,
+   "lam1": -0.4322007746928016,
+   "rJ": 3.357009029354954,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed1/weights_2500.pt",
+   "sha256": "363db592404d61df86217a57ac754e1742927842d1c945a4ba2c2d31aadbce2c",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014368686825037003
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_79_s1": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho79_seed1",
+   "fold": "79",
+   "seed": 1,
+   "E1": 0.11658355593681335,
+   "E8": 0.21150824427604675,
+   "E24": 0.26805680990219116,
+   "E100": 0.33749106526374817,
+   "E368": 0.534572958946228,
+   "lam1": -0.4350314625031761,
+   "rJ": 1.9960448987160653,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho79_seed1/weights_500.pt",
+   "sha256": "7621bf2c8f60a430ede0764c7371f9bc4c88efd57de63a5f53c90d20d2c4f9d6",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_79_s1": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho79_seed1",
+   "fold": "79",
+   "seed": 1,
+   "E1": 0.11643150448799133,
+   "E8": 0.21196281909942627,
+   "E24": 0.26745009422302246,
+   "E100": 0.32572513818740845,
+   "E368": 0.49620798230171204,
+   "lam1": -0.4667723154995584,
+   "rJ": 1.8819887630400631,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho79_seed1_w256/weights_500.pt",
+   "sha256": "d45419d341d0deae89563b747541db437cca206bc2b8252c31cb62ecc84dc92d",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_79_s1": {
+   "arm": "U50",
+   "parent": "x3_armA_ho79_seed1",
+   "fold": "79",
+   "seed": 1,
+   "E1": 0.1557423323392868,
+   "E8": 0.35850995779037476,
+   "E24": 0.5549939274787903,
+   "E100": 1.061659336090088,
+   "E368": 2.8911635875701904,
+   "lam1": -0.10135490854003991,
+   "rJ": 9.86333762549001,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed1/weights_2500.pt",
+   "sha256": "363db592404d61df86217a57ac754e1742927842d1c945a4ba2c2d31aadbce2c",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027189956977963448
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_79_s1": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho79_seed1",
+   "fold": "79",
+   "seed": 1,
+   "E1": 0.11760122328996658,
+   "E8": 0.21422363817691803,
+   "E24": 0.27302736043930054,
+   "E100": 0.3419017791748047,
+   "E368": 0.5115430355072021,
+   "lam1": -0.3835790830584052,
+   "rJ": 2.0612400532229924,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho79_seed1/weights_500.pt",
+   "sha256": "c0fa0a198aae4de497af058fb3a9e9d84e74cda7e53ebcb632227d0647046cb7",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "P_79_s2": {
+   "arm": "P",
+   "parent": "x3_armA_ho79_seed2",
+   "fold": "79",
+   "seed": 2,
+   "E1": 0.1183241754770279,
+   "E8": 0.2170235514640808,
+   "E24": 0.2769353985786438,
+   "E100": 0.3346100449562073,
+   "E368": 0.524278461933136,
+   "lam1": -0.4588248043473174,
+   "rJ": 1.8314322959814244,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed2/weights_2500.pt",
+   "sha256": "9f3f02a6832396e99bc0ea3844ca4b033ff172c9398d77ce06de6f7539919ffb",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30_79_s2": {
+   "arm": "U30",
+   "parent": "x3_armA_ho79_seed2",
+   "fold": "79",
+   "seed": 2,
+   "E1": 0.12776485085487366,
+   "E8": 0.2520608901977539,
+   "E24": 0.359191358089447,
+   "E100": 0.6286095380783081,
+   "E368": 1.5457351207733154,
+   "lam1": -0.34821210876695724,
+   "rJ": 6.031069137561988,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed2/weights_2500.pt",
+   "sha256": "9f3f02a6832396e99bc0ea3844ca4b033ff172c9398d77ce06de6f7539919ffb",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014644638635218143
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U30F_79_s2": {
+   "arm": "U30F",
+   "parent": "x3_armA_ho79_seed2",
+   "fold": "79",
+   "seed": 2,
+   "E1": 0.11623089015483856,
+   "E8": 0.21308203041553497,
+   "E24": 0.2744852602481842,
+   "E100": 0.326324462890625,
+   "E368": 0.46410486102104187,
+   "lam1": -0.4557647514010605,
+   "rJ": 1.7127940855156722,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u30_x3_armA_ho79_seed2/weights_500.pt",
+   "sha256": "c416cd92d4a99f92fdf2b1f2e4ae9834bb003df6747d68473130a5d8dd218923",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "CTRL_79_s2": {
+   "arm": "CTRL",
+   "parent": "x3_armA_ho79_seed2",
+   "fold": "79",
+   "seed": 2,
+   "E1": 0.1156013235449791,
+   "E8": 0.21192750334739685,
+   "E24": 0.27099230885505676,
+   "E100": 0.32273587584495544,
+   "E368": 0.4648129940032959,
+   "lam1": -0.46293727939091994,
+   "rJ": 1.7317865862614434,
+   "finite": true,
+   "path": "PerconAI/runs/e3_ft/e3ft_x3_armA_ho79_seed2_w256/weights_500.pt",
+   "sha256": "c550e8309ed464b78aa56aea33a1ebc144d056b819640782c73848fca52aa61b",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50_79_s2": {
+   "arm": "U50",
+   "parent": "x3_armA_ho79_seed2",
+   "fold": "79",
+   "seed": 2,
+   "E1": 0.16589981317520142,
+   "E8": 0.38747334480285645,
+   "E24": 0.6540372371673584,
+   "E100": 1.536150336265564,
+   "E368": 3.9255151748657227,
+   "lam1": -0.26983799780374773,
+   "rJ": 12.280607789509554,
+   "finite": true,
+   "path": "rwm_repro/runs/x3_armA_ho79_seed2/weights_2500.pt",
+   "sha256": "9f3f02a6832396e99bc0ea3844ca4b033ff172c9398d77ce06de6f7539919ffb",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.02740625850856304
+   },
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  },
+  "U50F_79_s2": {
+   "arm": "U50F",
+   "parent": "x3_armA_ho79_seed2",
+   "fold": "79",
+   "seed": 2,
+   "E1": 0.1176004409790039,
+   "E8": 0.21570585668087006,
+   "E24": 0.27557137608528137,
+   "E100": 0.32811102271080017,
+   "E368": 0.5070931315422058,
+   "lam1": -0.5033993419450539,
+   "rJ": 1.7201699218059914,
+   "finite": true,
+   "path": "AIR 2027/runs/ft/ft_u50_x3_armA_ho79_seed2/weights_500.pt",
+   "sha256": "beb1897db0de87b87acbeadcb2b8d6577cf18e80b1a2b032a92673c3a41a9954",
+   "variant_info": null,
+   "versions": {
+    "python": "3.11.15",
+    "torch": "2.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "machine": "macOS-13.7.8-x86_64-i386-64bit",
+    "torch_threads": 2
+   }
+  }
+ },
+ "checks": {
+  "C-FT1": {
+   "U30F_18_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_18_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_18_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_18_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_18_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_18_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_02_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_02_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_02_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_02_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_02_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_02_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_34_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_34_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_34_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_34_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_34_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_34_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_56_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_56_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_56_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_56_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_56_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_56_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_79_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_79_s0": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_79_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_79_s1": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   },
+   "U30F_79_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 423283,
+    "pruned_entries": 423283,
+    "passed": true
+   },
+   "U50F_79_s2": {
+    "mask_entries_all_zero": true,
+    "mask_zeros": 705472,
+    "pruned_entries": 705472,
+    "passed": true
+   }
+  },
+  "C-FT2": {
+   "U30F_18_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_18_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_18_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_18_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_18_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_18_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_02_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_02_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_02_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_02_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_02_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_02_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_34_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_34_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_34_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_34_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_34_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_34_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_56_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_56_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_56_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_56_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_56_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_56_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_79_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_79_s0": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_79_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_79_s1": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U30F_79_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   },
+   "U50F_79_s2": {
+    "non_finite_traces": [],
+    "passed": true
+   }
+  },
+  "C-FT3": {
+   "U30F_18_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/step5_armA_seed0.json",
+    "passed": true
+   },
+   "U50F_18_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/step5_armA_seed0.json",
+    "passed": true
+   },
+   "U30F_18_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/step5_armA_seed1.json",
+    "passed": true
+   },
+   "U50F_18_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/step5_armA_seed1.json",
+    "passed": true
+   },
+   "U30F_18_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/step5_armA_seed2.json",
+    "passed": true
+   },
+   "U50F_18_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/step5_armA_seed2.json",
+    "passed": true
+   },
+   "U30F_02_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho02_seed0.json",
+    "passed": true
+   },
+   "U50F_02_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho02_seed0.json",
+    "passed": true
+   },
+   "U30F_02_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho02_seed1.json",
+    "passed": true
+   },
+   "U50F_02_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho02_seed1.json",
+    "passed": true
+   },
+   "U30F_02_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho02_seed2.json",
+    "passed": true
+   },
+   "U50F_02_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho02_seed2.json",
+    "passed": true
+   },
+   "U30F_34_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho34_seed0.json",
+    "passed": true
+   },
+   "U50F_34_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho34_seed0.json",
+    "passed": true
+   },
+   "U30F_34_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho34_seed1.json",
+    "passed": true
+   },
+   "U50F_34_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho34_seed1.json",
+    "passed": true
+   },
+   "U30F_34_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho34_seed2.json",
+    "passed": true
+   },
+   "U50F_34_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho34_seed2.json",
+    "passed": true
+   },
+   "U30F_56_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho56_seed0.json",
+    "passed": true
+   },
+   "U50F_56_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho56_seed0.json",
+    "passed": true
+   },
+   "U30F_56_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho56_seed1.json",
+    "passed": true
+   },
+   "U50F_56_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho56_seed1.json",
+    "passed": true
+   },
+   "U30F_56_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho56_seed2.json",
+    "passed": true
+   },
+   "U50F_56_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho56_seed2.json",
+    "passed": true
+   },
+   "U30F_79_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho79_seed0.json",
+    "passed": true
+   },
+   "U50F_79_s0": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho79_seed0.json",
+    "passed": true
+   },
+   "U30F_79_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho79_seed1.json",
+    "passed": true
+   },
+   "U50F_79_s1": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho79_seed1.json",
+    "passed": true
+   },
+   "U30F_79_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho79_seed2.json",
+    "passed": true
+   },
+   "U50F_79_s2": {
+    "settings_check": "equal",
+    "source_record": "rwm_repro/results/x3_run_armA_ho79_seed2.json",
+    "passed": true
+   }
+  },
+  "C-FT4": {
+   "P_18_s0": {
+    "max_rel_per_trajectory": 1.2941707765755865e-07,
+    "rel_of_mean": 3.11139150279914e-08,
+    "passed": true
+   },
+   "U30_18_s0": {
+    "max_rel_per_trajectory": 1.9750256037381704e-07,
+    "rel_of_mean": 2.216065892680538e-08,
+    "passed": true
+   },
+   "P_18_s1": {
+    "max_rel_per_trajectory": 1.0370889990369591e-07,
+    "rel_of_mean": 4.339500221206024e-08,
+    "passed": true
+   },
+   "U30_18_s1": {
+    "max_rel_per_trajectory": 9.925847960228318e-08,
+    "rel_of_mean": 2.3264619882632784e-08,
+    "passed": true
+   },
+   "P_18_s2": {
+    "max_rel_per_trajectory": 1.2330910083435252e-07,
+    "rel_of_mean": 2.89821873158182e-08,
+    "passed": true
+   },
+   "U30_18_s2": {
+    "max_rel_per_trajectory": 1.2751455514889747e-07,
+    "rel_of_mean": 3.006483526822846e-08,
+    "passed": true
+   },
+   "P_02_s0": {
+    "max_rel_per_trajectory": 1.2435327746430736e-07,
+    "rel_of_mean": 3.57451586801765e-08,
+    "passed": true
+   },
+   "U30_02_s0": {
+    "max_rel_per_trajectory": 0.0,
+    "rel_of_mean": 0.0,
+    "passed": true
+   },
+   "P_02_s1": {
+    "max_rel_per_trajectory": 0.0,
+    "rel_of_mean": 0.0,
+    "passed": true
+   },
+   "U30_02_s1": {
+    "max_rel_per_trajectory": 1.0849581938483956e-07,
+    "rel_of_mean": 2.2798692741197175e-08,
+    "passed": true
+   },
+   "P_02_s2": {
+    "max_rel_per_trajectory": 2.1787643464823577e-07,
+    "rel_of_mean": 5.4961925034828915e-08,
+    "passed": true
+   },
+   "U30_02_s2": {
+    "max_rel_per_trajectory": 6.479688767589115e-08,
+    "rel_of_mean": 1.3928234992055196e-08,
+    "passed": true
+   },
+   "P_34_s0": {
+    "max_rel_per_trajectory": 1.2421638096070936e-07,
+    "rel_of_mean": 1.054243683999733e-08,
+    "passed": true
+   },
+   "U30_34_s0": {
+    "max_rel_per_trajectory": 1.0082319110844311e-07,
+    "rel_of_mean": 1.860481730813596e-08,
+    "passed": true
+   },
+   "P_34_s1": {
+    "max_rel_per_trajectory": 1.467350569420062e-07,
+    "rel_of_mean": 4.76222042908749e-08,
+    "passed": true
+   },
+   "U30_34_s1": {
+    "max_rel_per_trajectory": 1.2319064509951617e-07,
+    "rel_of_mean": 3.0067900234346206e-08,
+    "passed": true
+   },
+   "P_34_s2": {
+    "max_rel_per_trajectory": 1.2546765716690392e-07,
+    "rel_of_mean": 6.545619685488647e-08,
+    "passed": true
+   },
+   "U30_34_s2": {
+    "max_rel_per_trajectory": 1.0651200555396202e-07,
+    "rel_of_mean": 4.7804403502628645e-08,
+    "passed": true
+   },
+   "P_56_s0": {
+    "max_rel_per_trajectory": 6.817307808333027e-08,
+    "rel_of_mean": 1.5675341113057378e-08,
+    "passed": true
+   },
+   "U30_56_s0": {
+    "max_rel_per_trajectory": 1.8920450196976076e-07,
+    "rel_of_mean": 2.3079017941628548e-08,
+    "passed": true
+   },
+   "P_56_s1": {
+    "max_rel_per_trajectory": 7.563450352263918e-08,
+    "rel_of_mean": 4.964682818578194e-08,
+    "passed": true
+   },
+   "U30_56_s1": {
+    "max_rel_per_trajectory": 0.0,
+    "rel_of_mean": 0.0,
+    "passed": true
+   },
+   "P_56_s2": {
+    "max_rel_per_trajectory": 8.06774908429031e-08,
+    "rel_of_mean": 1.4416844133212332e-08,
+    "passed": true
+   },
+   "U30_56_s2": {
+    "max_rel_per_trajectory": 1.1343703671605224e-07,
+    "rel_of_mean": 2.4784376543679403e-08,
+    "passed": true
+   },
+   "P_79_s0": {
+    "max_rel_per_trajectory": 1.489344115191831e-07,
+    "rel_of_mean": 6.557374325899187e-08,
+    "passed": true
+   },
+   "U30_79_s0": {
+    "max_rel_per_trajectory": 1.179548516010012e-07,
+    "rel_of_mean": 0.0,
+    "passed": true
+   },
+   "P_79_s1": {
+    "max_rel_per_trajectory": 8.8891654407026e-08,
+    "rel_of_mean": 4.3509743006222156e-08,
+    "passed": true
+   },
+   "U30_79_s1": {
+    "max_rel_per_trajectory": 0.0,
+    "rel_of_mean": 0.0,
+    "passed": true
+   },
+   "P_79_s2": {
+    "max_rel_per_trajectory": 1.7482060565025443e-07,
+    "rel_of_mean": 6.679937996370189e-08,
+    "passed": true
+   },
+   "U30_79_s2": {
+    "max_rel_per_trajectory": 9.064728506848856e-08,
+    "rel_of_mean": 2.370495560630734e-08,
+    "passed": true
+   }
+  }
+ },
+ "arms": [
+  "P",
+  "U30",
+  "U30F",
+  "CTRL",
+  "U50",
+  "U50F"
+ ],
+ "versions": {
+  "python": "3.11.15",
+  "torch": "2.2.2",
+  "numpy": "1.26.4",
+  "scipy": "1.13.1",
+  "machine": "macOS-13.7.8-x86_64-i386-64bit",
+  "torch_threads": 2
+ },
+ "arenas": {
+  "18": {
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "episode": [
+    1,
+    1,
+    8,
+    8
+   ]
+  },
+  "02": {
+   "starts": [
+    0,
+    400,
+    1999,
+    2399
+   ],
+   "episode": [
+    0,
+    0,
+    2,
+    2
+   ]
+  },
+  "34": {
+   "starts": [
+    2999,
+    3399,
+    3999,
+    4399
+   ],
+   "episode": [
+    3,
+    3,
+    4,
+    4
+   ]
+  },
+  "56": {
+   "starts": [
+    4999,
+    5399,
+    5999,
+    6399
+   ],
+   "episode": [
+    5,
+    5,
+    6,
+    6
+   ]
+  },
+  "79": {
+   "starts": [
+    6999,
+    7399,
+    8999,
+    9399
+   ],
+   "episode": [
+    7,
+    7,
+    9,
+    9
+   ]
+  }
+ }
+}

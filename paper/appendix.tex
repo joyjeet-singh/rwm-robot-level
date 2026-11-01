@@ -257,4 +257,101 @@ angles onto the approximate integration rule multiplied it by 2.3.
 
 \section{Study FT: fine-tuning the pruned copies}\label{app:A7}
 % A7: the study registered in prereg/PREREG_FT.md before any fine-tuned model existed (R3): design, arms, decision
-% rules and results from scripts/ft_stats.py, with any departure recorded in ANOMALIES.md. R9 writes it.
+% rules and results from scripts/ft_stats.py (results/ft_stats.json); no departure was recorded in ANOMALIES.md.
+\textbf{Design.} Study FT asked whether a short fine-tuning, with the pruned weights held at zero, restores the
+long-horizon skill that magnitude pruning removes; its rules and analysis code were committed (2026-11-01 22:05, local
+time) before any fine-tuned pruned model existed. The parents were the 15 rollout-trained five-split
+models with seeds 0--2, the seeds for which an earlier study had fine-tuned unpruned controls. Each parent's
+smallest 30\% of weight-matrix entries (423{,}283) were set to zero, and the copy was fine-tuned for
+500 iterations by the controls' protocol (the parent's training episodes, rollout loss, settings and seed,
+fresh optimiser state), with the pruned entries reset to zero after every step; 50\% pruning (705{,}472
+entries) was a secondary arm. The parent, the copies before and after fine-tuning and the control were all scored
+on this machine by the measures of Sec.~\ref{sec:setup}, on each parent's own split, giving 20
+trajectories with seeds averaged within each. Two primary questions at 100 steps, with 97.5\% intervals from
+20{,}000 trajectory resamples, were registered: FT1, the change in $K$ against the original parent from
+fine-tuning (interval above 0: fine-tuning restores skill); and FT2, $K$ of the fine-tuned copy against the control,
+with the earlier study's thresholds (lower end above 90\%: nearly as skilled; above 50\%: keeps most; upper end below
+50\%: loses most).
+
+\textbf{Time rule and checks.} The 50\% arm was to run only if a probe, run before any fine-tuning, projected the
+whole study at no more than 8~h; it projected 3.9~h, so both arms ran. The
+30 runs took 4.0~h in all (7.2 to 13 minutes each, mean
+8.0), and scoring the 90 models took 11 minutes. All four registered checks
+passed for every run (30 of 30 each): the pruned entries were exactly zero after training and after
+reloading; every loss trace was finite; the settings equalled the parent's training record; and this machine's
+100-step errors for the parent and the unretrained copy matched the stored values within $2\times10^{-7}$
+(relative; the registered tolerance was $10^{-3}$). No arm was excluded, and no bootstrap draw was undefined.
+
+\textbf{Results.} Both primary questions were settled (Table~\ref{tab:app-ft}): fine-tuning restored the 100-step
+skill (FT1), and the fine-tuned copies were nearly as skilled as the controls (FT2). The secondary readings at 24 and
+368 steps, and at 50\% pruning, agree. Against the original parent, $K$ above 100\% mostly reflects the fine-tuning
+itself: the control, fine-tuned without pruning, reaches 102.3\% [101.5\%, 103.4\%] at 100
+steps (descriptive). The unretrained term of FT1 uses seeds 0--2 only, hence 38\% rather than
+Table~\ref{tab:decisions}'s 39\% (seeds 0--4). After fine-tuning, the one-step reading of $K$ could not be
+separated from the 100-step one (secondary; not settled). Unretrained pruning raised the kinematic residual and did
+not measurably move the growth rate; after fine-tuning, both were slightly below the parent's (secondary). Table~\ref{tab:app-ft-desc} gives $K$ of every arm (descriptive). As everywhere in this paper, this is
+one robot, one trotting gait, simulated data and recorded commands, with no policy trained.
+
+\begin{table}[h]
+\centering
+\caption{Study FT: registered questions. Primary: 97.5\% intervals (a family of two). Secondary: 95\% intervals,
+not corrected for multiplicity. $d$: difference in $K$ (percentage points). $\Delta$: mean change from the parent
+($\lambda_1$ in 1/s; $\bar r_J$ in units of the recording's own residual). U30, U50: pruned 30\% or 50\%, not
+retrained; F: then fine-tuned.}
+\label{tab:app-ft}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}lllcl@{}}
+\toprule
+ & Question & Quantity & Estimate [interval] & Verdict \\
+\midrule
+Primary & FT1, 100 steps & $d=K(\mathrm{U30F})-K(\mathrm{U30})$; 102.2\% against 38\% & +63.9 [54.4, 76.0] & \textsc{fine-tuning restores skill} \\
+ & FT2, 100 steps & $K$ of U30F against the control & 99.9\% [99.5\%, 100.4\%] & \textsc{nearly as skilled} \\
+\midrule
+Secondary & FT1, 24 steps & $d$; 100.9\% against 82\% & +18.9 [16.6, 21.6] & \textsc{fine-tuning restores skill} \\
+ & FT2, 24 steps & $K$ of U30F against the control & 100.0\% [99.8\%, 100.1\%] & \textsc{nearly as skilled} \\
+ & FT1, 368 steps & $d$; 103.9\% against $-$31\% & +134.6 [102.1, 176.4] & \textsc{fine-tuning restores skill} \\
+ & FT2, 368 steps & $K$ of U30F against the control & 99.4\% [97.9\%, 100.6\%] & \textsc{nearly as skilled} \\
+ & FT1, 50\%, 100 steps & $d$; 101.3\% against $-$93\% & +194.4 [171.3, 228.5] & \textsc{fine-tuning restores skill} \\
+ & FT2, 50\%, 100 steps & $K$ of U50F against the control & 99.0\% [98.4\%, 99.7\%] & \textsc{nearly as skilled} \\
+ & One-step reading & $K(\mathrm{U30F})$ at 1 step minus at 100 steps & +0.1 [$-$1.2, 0.9] & \textsc{not settled} \\
+ & Growth rate & $\Delta\lambda_1$, U30F (parent $-$0.46) & $-$0.024 [$-$0.049, $-$0.002] & \textsc{decreases} \\
+ &  & $\Delta\lambda_1$, U30 & +0.004 [$-$0.062, 0.068] & \textsc{not settled} \\
+ & Kinematic residual & $\Delta\bar r_J$, U30F (parent 1.6) & $-$0.052 [$-$0.093, $-$0.012] & \textsc{decreases} \\
+ &  & $\Delta\bar r_J$, U30 & +2.3 [2.0, 2.5] & \textsc{increases} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Study FT, descriptive: skill retained $K$ of each arm against the original parent and against the control
+(95\% intervals, 20 trajectories, seeds 0--2). CTRL: the parent fine-tuned the same way without
+pruning.}
+\label{tab:app-ft-desc}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}llcccc@{}}
+\toprule
+Arm & Against & 1 step & 24 steps & 100 steps & 368 steps \\
+\midrule
+U30 & parent & 90\% [87\%, 92\%] & 82\% [79\%, 84\%] & 38\% [28\%, 46\%] & $-$31\% [$-$72\%, 1\%] \\
+U30F & parent & 102.3\% [102.0\%, 102.6\%] & 100.9\% [100.6\%, 101.3\%] & 102.2\% [101.3\%, 103.5\%] & 103.9\% [101.1\%, 107.4\%] \\
+U50 & parent & 57\% [46\%, 63\%] & 39\% [30\%, 45\%] & $-$93\% [$-$126\%, $-$70\%] & $-$491\% [$-$642\%, $-$368\%] \\
+U50F & parent & 101.1\% [100.8\%, 101.6\%] & 100.5\% [100.2\%, 100.9\%] & 101.3\% [100.4\%, 102.5\%] & 100.9\% [97.9\%, 104.6\%] \\
+CTRL & parent & 102.5\% [102.1\%, 102.9\%] & 101.0\% [100.7\%, 101.3\%] & 102.3\% [101.5\%, 103.4\%] & 104.6\% [102.3\%, 107.8\%] \\
+\midrule
+U30F & control & 99.8\% [99.7\%, 99.9\%] & 100.0\% [99.8\%, 100.1\%] & 99.9\% [99.5\%, 100.3\%] & 99.4\% [97.9\%, 100.6\%] \\
+U50F & control & 98.6\% [98.2\%, 99.4\%] & 99.5\% [99.3\%, 99.8\%] & 99.0\% [98.4\%, 99.7\%] & 96.5\% [94\%, 99.3\%] \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\textbf{What was known before the registration.} Table~\ref{tab:decisions}'s $K$ for the 30\%-pruned copies without
+fine-tuning (seeds 0--4) was known: 90\% at one step, 39\% at 100 steps and $-$41\% at 368
+steps. So were the earlier unit-removal study's registered results (Table~\ref{tab:app-perc}): fine-tuned width-192
+copies kept most of the control's 368-step skill (88\%, pooled), width 128 was not settled, and
+fine-tuning alone took the unreduced control to 104\% of the original's skill at 368 steps. No
+fine-tuned magnitude-pruned copy had been trained beyond a few test iterations, and none had been scored; $K$ of the
+unretrained copies for seeds 0--2 alone could have been computed from stored scores, but the registration
+records that it was not.

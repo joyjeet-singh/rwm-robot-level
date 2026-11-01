@@ -180,6 +180,47 @@ CLAIMS.update({
         ICP_V["families"]["use"]["tests"]["H7"]["ci"][0] > 0,
 })
 
+# Study FT (registered, prereg/PREREG_FT.md): Sec. 4.1, Table 1, abstract, Discussion (2), Limitations, Conclusion, A7
+FT = json.load(open(os.path.join(C.RESULTS, "ft_stats.json")))
+FTM = json.load(open(os.path.join(C.RESULTS, "ft_models.json")))
+FTP = json.load(open(os.path.join(C.RESULTS, "ft_probe.json")))
+FTp, FTs, FTd = FT["primary"], FT["secondary"], FT["descriptive"]
+CLAIMS.update({
+    "FT1: fine-tuning restored the 100-step skill (registered; 97.5% interval above 0)":
+        FTp["FT1"]["verdict"] == "FINE-TUNING RESTORES SKILL" and FTp["FT1"]["ci97.5"][0] > 0
+        and FTp["FT1"]["K_orig_ft"] > FTp["FT1"]["K_orig_noft"],
+    "FT2: fine-tuned 30%-pruned copies nearly as skilled as the equally fine-tuned control (lower end above 0.90)":
+        FTp["FT2"]["verdict"] == "NEARLY AS SKILLED" and FTp["FT2"]["ci97.5"][0] > 0.90,
+    "Table 1: fine-tuned row is above 100% of the parent at every horizon shown":
+        all(FTd[f"K_U30F_vs_P_h{h}"]["K"] > 1 for h in (1, 24, 100, 368)),
+    "A7: secondary readings at 24 and 368 steps and at 50% agree with the primary verdicts":
+        all(FTs[q]["verdict"] == "FINE-TUNING RESTORES SKILL" for q in ("FT1_h24", "FT1_h368", "FT1_u50_h100"))
+        and all(FTs[q]["verdict"] == "NEARLY AS SKILLED" for q in ("FT2_h24", "FT2_h368", "FT2_u50_h100")),
+    "A7: K above 100% mostly reflects fine-tuning: the control alone is above 100% and level with U30F at 100 steps":
+        FTd["K_CTRL_vs_P_h100"]["ci95"][0] > 1 and FTd["K_CTRL_vs_P_h100"]["K"] >= FTd["K_U30F_vs_P_h100"]["K"]
+        and FTd["K_U30F_vs_CTRL_h100"]["ci95"][0] < 1 < FTd["K_U30F_vs_CTRL_h100"]["ci95"][1],
+    "A7: one-step reading of the fine-tuned copy not separated from the 100-step one (secondary)":
+        FTs["onestep_U30F"]["verdict"] == "NOT SETTLED",
+    "A7: unretrained pruning raised r_J, growth rate not resolved; after fine-tuning both below the parent's":
+        FTs["change_rJ_U30_minus_P"]["verdict"] == "INCREASES" and FTs["change_lam1_U30_minus_P"]["verdict"] == "NOT SETTLED"
+        and FTs["change_rJ_U30F_minus_P"]["verdict"] == "DECREASES"
+        and FTs["change_lam1_U30F_minus_P"]["verdict"] == "DECREASES",
+    "A7: all four checks passed for every run; no arm excluded; no undefined draw":
+        all(all((x["passed"] if isinstance(x, dict) else x) is True for x in FTM["checks"][c].values())
+            for c in ("C-FT1", "C-FT2", "C-FT3", "C-FT4"))
+        and not FT["excluded_arms"]
+        and all(v.get("undefined_draws", 0) == 0 for b in (FTp, FTs) for v in b.values()),
+    "A7: probe projected the study within the cap, so the 50% arm ran":
+        FTP["projected_hours"]["total_with_u50"] <= FTP["cap_hours"] and FTP["run_u50f"] is True
+        and "U50F" in FT["arms"],
+    "Limitations: only the 30% and 50% pruned copies were fine-tuned in this study":
+        {round(json.load(open(f))["level"], 2) for f in
+         [os.path.join(C.RESULTS, "raw", "ft", n) for n in os.listdir(os.path.join(C.RESULTS, "raw", "ft"))]}
+        == {0.3, 0.5},
+    "Sec. 4.1: unretrained 30% copies of the FT parents had lost most 100-step skill (below one half)":
+        FTp["FT1"]["K_orig_noft"] < 0.5,
+})
+
 if __name__ == "__main__":
     out = {k: bool(v) for k, v in CLAIMS.items()}
     failed = [k for k, v in out.items() if not v]

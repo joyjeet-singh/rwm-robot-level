@@ -144,6 +144,7 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
     put("scale_ratio", "about " + str(int(round(100.0 / c2, -1))), _rel(t), "c2_pct: 100 / c2_pct, to the nearest 10")
 
     earlier_studies(put, sig, cib, dp)
+    study_ft(put, sig, sgn, cib, dp)
 
 
 def _exp10(x):
@@ -278,3 +279,112 @@ def earlier_studies(put, sig, cib, dp):
             put(f"perc_ctrl_{tag}_h{h}_ci", cib(K[f"{pre}.h{h}.K.lo"]["value"], K[f"{pre}.h{h}.K.hi"]["value"], f=kp),
                 pr, f"keys.{pre}.h{h}.K.lo/hi")
     assert abs(K["r2.korig.control_w256_500it.h368.K.est"]["value"] - K["r3.korig.s0.h368.K.est"]["value"]) < 1e-4
+
+
+def study_ft(put, sig, sgn, cib, dp):
+    """Study FT (prereg/PREREG_FT.md): registered; results/ft_stats.json is written by the registered ft_stats.py."""
+    fs, fm = os.path.join(C.RESULTS, "ft_stats.json"), os.path.join(C.RESULTS, "ft_models.json")
+    S, M, rs, rm = _ld(fs), _ld(fm), _rel(fs), _rel(fm)
+
+    def fk(x):
+        """skill retained in per cent: one decimal from 95% up, else whole per cents; values above 100% are kept"""
+        v = 100 * x
+        return (f"{v:.1f}" if v >= 95 else f"{v:.0f}").replace("-", "$-$") + r"\%"
+    pts = lambda x: dp(100 * x, 1, signed=True)                                          # noqa: E731
+    pts_ci = lambda x: dp(100 * x, 1)                                                    # noqa: E731
+    lam = lambda x: dp(x, 3, signed=True)                                                # noqa: E731
+    lam_ci = lambda x: dp(x, 3)                                                          # noqa: E731
+    rj = lambda x: sgn(x, 2)                                                             # noqa: E731
+    rj_ci = lambda x: sig(x, 2)                                                          # noqa: E731
+
+    assert not S["excluded_arms"] and not S["C-FT4_failures"]
+    put("ft_arms_excluded", "none", rs, "excluded_arms")
+    put("ft_ntraj", str(S["n_trajectories"]), rs, "n_trajectories")
+    put("ft_ndraws", f"{S['n_draws']:,}".replace(",", "{,}"), rs, "n_draws")
+    put("ft_seeds", "--".join(str(x) for x in (min(S["seeds"]), max(S["seeds"]))), rs, "seeds")
+
+    # ---- verdicts and differences (primary: 97.5% intervals; secondary: 95%)
+    blocks = [("primary", q, "ci97.5") for q in S["primary"]] + [("secondary", q, "ci95") for q in S["secondary"]]
+    undefined = 0
+    for part, q, lev in blocks:
+        v, path, key = S[part][q], f"{part}.{q}", "ft_" + q.replace("_minus_", "_")
+        put(key + "_verdict", v["verdict"].lower(), rs, path + ".verdict")
+        undefined += v.get("undefined_draws", 0)
+        if q.startswith("FT1"):
+            put(key + "_d", pts(v["d"]), rs, path + ".d (x100, points)")
+            put(key + "_ci", cib(*v[lev], f=pts_ci), rs, f"{path}.{lev} (x100, points)")
+            put(key + "_Kft", fk(v["K_orig_ft"]), rs, path + ".K_orig_ft")
+            put(key + "_Knoft", fk(v["K_orig_noft"]), rs, path + ".K_orig_noft")
+        elif q.startswith("FT2"):
+            put(key + "_K", fk(v["K_ctrl"]), rs, path + ".K_ctrl")
+            put(key + "_ci", cib(*v[lev], f=fk), rs, f"{path}.{lev}")
+        elif q == "onestep_U30F":
+            put(key + "_d", pts(v["d"]), rs, path + ".d (x100, points)")
+            put(key + "_ci", cib(*v["ci95"], f=pts_ci), rs, path + ".ci95 (x100, points)")
+        else:
+            f, fc = (lam, lam_ci) if "lam1" in q else (rj, rj_ci)
+            put(key + "_mean", f(v["mean"]), rs, path + ".mean")
+            put(key + "_ci", cib(*v["ci95"], f=fc), rs, path + ".ci95")
+            put(key + "_P", dp(v["P_mean"], 2) if "lam1" in q else sig(v["P_mean"], 2), rs, path + ".P_mean")
+    assert undefined == 0
+    put("ft_undefined_draws", str(undefined), rs, "primary/secondary.*.undefined_draws (sum)")
+
+    # ---- descriptive K (95%) of every arm against the parent P and against the control CTRL
+    for k, v in S["descriptive"].items():
+        put("ft_" + k, fk(v["K"]), rs, f"descriptive.{k}.K")
+        put("ft_" + k + "_ci", cib(*v["ci95"], f=fk), rs, f"descriptive.{k}.ci95")
+
+    # ---- checks C-FT1 to C-FT4 (results/ft_models.json)
+    ch = M["checks"]
+    for c in ("C-FT1", "C-FT2", "C-FT3", "C-FT4"):
+        ok = sum(1 for x in ch[c].values() if (x["passed"] if isinstance(x, dict) else x) is True)
+        assert ok == len(ch[c])
+        put("ft_" + c.replace("-", "").lower() + "_pass", f"{ok} of {len(ch[c])}", rm, f"checks.{c}.*.passed")
+    put("ft_cft4_maxrel", _exp10(max(x["max_rel_per_trajectory"] for x in ch["C-FT4"].values())), rm,
+        "checks.C-FT4.*.max_rel_per_trajectory (max)")
+    put("ft_n_scored", str(len(M["models"])), rm, "models (count)")
+
+    # ---- runs: count, wall-clock time and pruned entries (results/raw/ft/*.json)
+    import glob
+    runs = [_ld(f) for f in sorted(glob.glob(os.path.join(C.RESULTS, "raw", "ft", "*.json")))]
+    rr = _rel(os.path.join(C.RESULTS, "raw", "ft"))
+    assert all(r["trained"] and r["mask_check"]["passed"] and not r["non_finite_traces"] for r in runs)
+    put("ft_nruns", str(len(runs)), rr, "*.json (count)")
+    par = {r["source_run"] for r in runs if abs(r["level"] - 0.30) < 1e-9}
+    assert par == {r["source_run"] for r in runs if abs(r["level"] - 0.50) < 1e-9}
+    put("ft_nparents", str(len(par)), rr, "*.json source_run (distinct, level 0.3)")
+    wall = [r["wall_clock_s"] for r in runs]
+    put("ft_wall_mean_min", sig(statistics.mean(wall) / 60, 2), rr, "*.json wall_clock_s (mean / 60)")
+    put("ft_wall_min_min", sig(min(wall) / 60, 2), rr, "*.json wall_clock_s (min / 60)")
+    put("ft_wall_max_min", sig(max(wall) / 60, 2), rr, "*.json wall_clock_s (max / 60)")
+    put("ft_wall_total_h", sig(sum(wall) / 3600, 2), rr, "*.json wall_clock_s (sum / 3600)")
+    put("ft_s_per_iter", sig(statistics.mean(r["s_per_iter"] for r in runs), 2), rr, "*.json s_per_iter (mean)")
+    iters = {len(r["curves"]["total"]) for r in runs}
+    assert len(iters) == 1
+    put("ft_iters", str(iters.pop()), rr, "*.json curves.total (length)")
+    for lv in (0.30, 0.50):
+        n = {r["pruned_entries"] for r in runs if abs(r["level"] - lv) < 1e-9}
+        assert len(n) == 1
+        put(f"ft_pruned_u{int(round(100 * lv))}", f"{n.pop():,}".replace(",", "{,}"), rr,
+            f"*.json pruned_entries (level {lv})")
+
+    # ---- the time rule (results/ft_probe.json, written before any fine-tuned model existed) and scoring time
+    fp = os.path.join(C.RESULTS, "ft_probe.json")
+    P, rp = _ld(fp), _rel(fp)
+    assert P["run_u50f"] is True
+    put("ft_probe_spi", sig(P["s_per_iter_mean_after_first"], 2), rp, "s_per_iter_mean_after_first")
+    put("ft_probe_total_h", sig(P["projected_hours"]["total_with_u50"], 2), rp, "projected_hours.total_with_u50")
+    put("ft_cap_h", sig(P["cap_hours"], 1), rp, "cap_hours")
+    fg = os.path.join(C.RESULTS, "ft", "progress.json")
+    G = _ld(fg)
+    assert G["done"] == G["of"] and not G["missing_runs"]
+    put("ft_score_min", sig(G["elapsed_s"] / 60, 2), _rel(fg), "elapsed_s / 60")
+
+    # ---- the registration: the commit that added the pre-registration (git)
+    import subprocess
+    out = subprocess.run(["git", "log", "--diff-filter=A", "--format=%h %ci", "--", "prereg/PREREG_FT.md"],
+                         cwd=C.AIR, capture_output=True, text=True, check=True).stdout.split()
+    assert len(out) == 4, out
+    put("ft_reg_commit", out[0], "git", "log --diff-filter=A -- prereg/PREREG_FT.md (%h)")
+    put("ft_reg_time", f"{out[1]} {out[2][:5]}", "git", "log --diff-filter=A -- prereg/PREREG_FT.md (%ci, UTC" +
+        out[3] + ")")

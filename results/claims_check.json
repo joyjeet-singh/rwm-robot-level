@@ -66,7 +66,18 @@
   "X5 without split {1,8}: growth rate still does not beat one-step error (exploratory)": true,
   "X5 without split {1,8}: r_J not behind E8, at most slightly ahead (exploratory)": true,
   "most F18 simulators worse than holding the last state have lambda_1 <= 0": true,
-  "re-synchronising on a score adds error versus a fixed schedule (interval above 0)": true
+  "re-synchronising on a score adds error versus a fixed schedule (interval above 0)": true,
+  "FT1: fine-tuning restored the 100-step skill (registered; 97.5% interval above 0)": true,
+  "FT2: fine-tuned 30%-pruned copies nearly as skilled as the equally fine-tuned control (lower end above 0.90)": true,
+  "Table 1: fine-tuned row is above 100% of the parent at every horizon shown": true,
+  "A7: secondary readings at 24 and 368 steps and at 50% agree with the primary verdicts": true,
+  "A7: K above 100% mostly reflects fine-tuning: the control alone is above 100% and level with U30F at 100 steps": true,
+  "A7: one-step reading of the fine-tuned copy not separated from the 100-step one (secondary)": true,
+  "A7: unretrained pruning raised r_J, growth rate not resolved; after fine-tuning both below the parent's": true,
+  "A7: all four checks passed for every run; no arm excluded; no undefined draw": true,
+  "A7: probe projected the study within the cap, so the 50% arm ran": true,
+  "Limitations: only the 30% and 50% pruned copies were fine-tuned in this study": true,
+  "Sec. 4.1: unretrained 30% copies of the FT parents had lost most 100-step skill (below one half)": true
  },
  "failed": []
 }
