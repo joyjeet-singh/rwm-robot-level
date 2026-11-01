@@ -32,3 +32,10 @@
 - paper/refs.bib: 7 new keys + mikhaeil2022chaotic; li2025rwm note now workshop poster.
 - scripts/check_bib.py: fourth source, --allow-uncited, scans body.template/body/appendix; passes with --allow-uncited.
 - Notes: revision/notes/R4.md. Open: quotes are fragments; RAMBO refs [75,76] unconfirmed; Manek/Kolter order (DECISIONS R4).
+
+## R5 status: COMPLETE (2026-11-01 23:00)
+- scripts/revision_numbers.py (called from paper_numbers.py after air_numbers): 277 new keys, 790 in all; paper_numbers.py runs.
+- Registered: A1, A2 (two-level, X5 without {1,8}, Holm), A3, unstable-copy totals, scale ratio ("about 750"), stale command on the held-out pair at h=100, training settings (equal across 25 parents), pre-registration priors, PerconAI unit-removal K/Q3/Q4.
+- Spot checks (printed both sides): a1 X5 λ1(8) −0.02, a2 Q3_vs_E1 two-level CI, perc K width-128, stale 22.49, NGCAPS ρ [0.70, 0.93], Holm p for Q4_vs_E8; all match their sources.
+- Key list for R6: revision/notes/R5_keys.md (128 lines, generated from paper_numbers.json). Commit 44235e1. Choices in DECISIONS.md (R5).
+- Open: A1/A2/A3 keys are exploratory and must be labelled so; scale_ratio is 750 (from 0.133%), not 770.
