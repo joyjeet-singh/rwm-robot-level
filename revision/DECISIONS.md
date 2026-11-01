@@ -15,3 +15,9 @@
 - FT2 copies PerconAI Q3's undefined-draw rule (PREREG_R2.md §2.1: K = −∞ on a draw where the reference has no skill). The block names D2's estimator, which has no such rule; the copy only matters on such draws and can only widen intervals (FT1's difference: −∞ low, +∞ high). Conservative choice.
 - FT1 is reported NOT COMPUTABLE if P has no skill over the floor on the full sample (guard; not expected).
 - air-stats-reviewer (1 MUST FIX, 7 SHOULD FIX, 5 NOTE), all addressed before registration. MUST FIX: a failed C-FT1/C-FT3 aborted the run, so "exclude the arm" was unreachable. Now a failed check is recorded and the run exits 0 (C-FT3: recorded, not trained, not scored), ft_eval records it, and ft_stats excludes the arm without needing its scores. Secondary labels (one-step; INCREASES/DECREASES) are kept and declared as this registration's own.
+
+## R4
+- All 8 requested records VERIFIED; none left out of refs.bib. Quotes are fragments (tool limit), so text should use them as fragments.
+- Manek/Kolter author order follows the plan (arXiv order); NeurIPS page lists Kolter first. Left as in the plan; R8 may check.
+- RAMBO refs [75],[76] = COMBO, MOPO were reported by the checker, not confirmed by the reference list; the text should not name them without a check.
+- check_bib.py: strict mode now also fails on uncited entries (previously only reported); --allow-uncited makes them warnings.

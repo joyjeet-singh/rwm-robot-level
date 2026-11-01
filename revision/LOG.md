@@ -26,3 +26,9 @@
 - air-stats-reviewer: 1 MUST FIX + 7 SHOULD FIX fixed before registration (DECISIONS.md R3).
 - Job: revision/jobs/R3.zsh (30 runs, then ft_eval.py; ~4 h). After it: ./py scripts/ft_stats.py.
 - Env: .pylib numpy 2.2.6 moved to .cache/pylib_removed (earlier R3 attempt); R0 smoke not rerun. figures/*.png show as modified but were not changed by R3 and were left unstaged.
+
+## R4 status: COMPLETE (2026-11-01 22:08)
+- 8 new references verified by air-bib-checker (two briefs); paper/bib_verified_air.json written (9 entries incl. RWM venue).
+- paper/refs.bib: 7 new keys + mikhaeil2022chaotic; li2025rwm note now workshop poster.
+- scripts/check_bib.py: fourth source, --allow-uncited, scans body.template/body/appendix; passes with --allow-uncited.
+- Notes: revision/notes/R4.md. Open: quotes are fragments; RAMBO refs [75,76] unconfirmed; Manek/Kolter order (DECISIONS R4).

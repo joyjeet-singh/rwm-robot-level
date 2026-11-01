@@ -1,7 +1,10 @@
 """
 Every entry of paper/refs.bib must come from a bibliography an earlier study checked against its source record:
 same key in that study's bib_verified.json, same title (case and punctuation ignored) in its refs.bib.
+A fourth source is this paper's own paper/bib_verified_air.json (R4), where the key must be present and its
+"title" equal to the entry's title.
 Every entry must be cited, and every citation must have an entry. -> results/bib_check.json
+--allow-uncited reports entries that are never cited as warnings instead of failures.
 """
 import json
 import os
@@ -13,6 +16,7 @@ import common as C
 PAPER = os.path.join(C.AIR, "paper")
 STUDIES = {s: (os.path.join(C.PDM, s, "results", "bib_verified.json"), os.path.join(C.PDM, s, "paper", "refs.bib"))
            for s in ("PerconAI", "ICPAIAS", "NGCAPS")}
+ALLOW_UNCITED = "--allow-uncited" in sys.argv
 ALIASES = {"janner2019": ("janner2019mbpo",)}           # NGCAPS's key for the same paper
 
 
@@ -40,8 +44,15 @@ def verified_keys(path):
     return {k for k in d if k != "note"}
 
 
+def air_titles(path):
+    if not os.path.exists(path):
+        return {}
+    return {k: v.get("title", "") for k, v in json.load(open(path)).get("entries", {}).items()}
+
+
 ours = entries(os.path.join(PAPER, "refs.bib"))
 src = {s: (verified_keys(v), entries(b)) for s, (v, b) in STUDIES.items()}
+air = air_titles(os.path.join(PAPER, "bib_verified_air.json"))
 report, bad = {}, []
 for key, title in ours.items():
     found = []
@@ -49,15 +60,23 @@ for key, title in ours.items():
         for k in (key,) + ALIASES.get(key, ()):
             if k in vk and k in bib and norm(bib[k]) == norm(title):
                 found.append(f"{s}:{k}")
+    if key in air and norm(air[key]) == norm(title):
+        found.append(f"AIR:{key}")
     report[key] = found
     if not found:
         bad.append(key)
-body = open(os.path.join(PAPER, "body.template.tex")).read()
 cited = set()
-for m in re.finditer(r"\\cite[pt]?\{([^}]*)\}", body):
-    cited |= {c.strip() for c in m.group(1).split(",")}
+for name in ("body.template.tex", "body.tex", "appendix.tex"):
+    f = os.path.join(PAPER, name)
+    if not os.path.exists(f):
+        continue
+    for m in re.finditer(r"\\cite[pt]?\{([^}]*)\}", open(f).read()):
+        cited |= {c.strip() for c in m.group(1).split(",")}
+uncited = sorted(set(ours) - cited)
 out = {"entries": report, "not_traced": bad, "cited_without_entry": sorted(cited - set(ours)),
-       "entry_never_cited": sorted(set(ours) - cited)}
+       "entry_never_cited": uncited, "uncited_allowed": ALLOW_UNCITED}
 json.dump(out, open(os.path.join(C.RESULTS, "bib_check.json"), "w"), indent=1)
 print(json.dumps({k: v for k, v in out.items() if k != "entries"}, indent=1))
-sys.exit(1 if (bad or out["cited_without_entry"]) else 0)
+if uncited and ALLOW_UNCITED:
+    print("WARNING: entries never cited:", ", ".join(uncited))
+sys.exit(1 if (bad or out["cited_without_entry"] or (uncited and not ALLOW_UNCITED)) else 0)

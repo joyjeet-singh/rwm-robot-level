@@ -1,0 +1,146 @@
+{
+ "note": "Verified by air-bib-checker for R4. Quotes are verbatim fragments (fetch tool truncates at about 125 characters), not whole sentences. Verified entries only.",
+ "checked_on": "2026-11-01",
+ "entries": {
+  "lambert2020objective": {
+   "title": "Objective Mismatch in Model-based Reinforcement Learning",
+   "authors": "Nathan Lambert, Brandon Amos, Omry Yadan, Roberto Calandra",
+   "venue": "L4DC 2020 (PMLR 120:761-770)",
+   "year": 2020,
+   "url": "https://arxiv.org/abs/2002.04523",
+   "summary": "Identifies an objective mismatch between training a dynamics model by likelihood and using it for control.",
+   "quotes": [
+    {
+     "text": "the likelihood of one-step ahead predictions is not always correlated with control performance.",
+     "where": "abstract",
+     "url": "https://arxiv.org/abs/2002.04523"
+    },
+    {
+     "text": "globally accurate models might not be sufficiently accurate locally to obtain good control performance",
+     "where": "abstract",
+     "url": "https://arxiv.org/abs/2002.04523"
+    }
+   ]
+  },
+  "malik2019calibrated": {
+   "title": "Calibrated Model-Based Deep Reinforcement Learning",
+   "authors": "Ali Malik, Volodymyr Kuleshov, Jiaming Song, Danny Nemer, Harlan Seymour, Stefano Ermon",
+   "venue": "ICML 2019 (PMLR 97:4314-4323)",
+   "year": 2019,
+   "url": "https://proceedings.mlr.press/v97/malik19a.html",
+   "summary": "Adds calibrated uncertainty estimates to model-based RL agents.",
+   "quotes": [
+    {
+     "text": "We describe a simple way to augment any model-based reinforcement learning agent with a calibrated model",
+     "where": "abstract (fragment)",
+     "url": "https://proceedings.mlr.press/v97/malik19a.html"
+    }
+   ]
+  },
+  "kuleshov2018accurate": {
+   "title": "Accurate Uncertainties for Deep Learning Using Calibrated Regression",
+   "authors": "Volodymyr Kuleshov, Nathan Fenner, Stefano Ermon",
+   "venue": "ICML 2018 (PMLR 80:2796-2804)",
+   "year": 2018,
+   "url": "https://proceedings.mlr.press/v80/kuleshov18a.html",
+   "summary": "A recalibration procedure for regression so that credible intervals match their nominal coverage.",
+   "quotes": [
+    {
+     "text": "Here, we propose a simple procedure for calibrating any regression algorithm",
+     "where": "abstract (fragment)",
+     "url": "https://proceedings.mlr.press/v80/kuleshov18a.html"
+    }
+   ]
+  },
+  "manek2019stable": {
+   "title": "Learning Stable Deep Dynamics Models",
+   "authors": "Gaurav Manek, J. Zico Kolter",
+   "venue": "NeurIPS 2019 (Advances in Neural Information Processing Systems 32, pp. 11128-11136)",
+   "year": 2019,
+   "url": "https://papers.nips.cc/paper/9292-learning-stable-deep-dynamics-models",
+   "summary": "Learns a dynamics model jointly with a Lyapunov function so the learned system is guaranteed stable. Author order: arXiv 2001.06116 lists Manek first; the NeurIPS page lists Kolter first.",
+   "quotes": [
+    {
+     "text": "we propose an approach for learning dynamical systems that are guaranteed to be stable over the entire state space",
+     "where": "abstract (fragment)",
+     "url": "https://papers.nips.cc/paper/9292-learning-stable-deep-dynamics-models"
+    }
+   ]
+  },
+  "hess2023generalized": {
+   "title": "Generalized Teacher Forcing for Learning Chaotic Dynamics",
+   "authors": "Florian Hess, Zahra Monfared, Manuel Brenner, Daniel Durstewitz",
+   "venue": "ICML 2023 (PMLR 202:13017-13049)",
+   "year": 2023,
+   "url": "https://proceedings.mlr.press/v202/hess23a.html",
+   "summary": "Modifies teacher forcing so gradients stay bounded when training RNNs on chaotic dynamics.",
+   "quotes": [
+    {
+     "text": "a surprisingly simple modification of teacher forcing leads to provably strictly all-time bounded gradients",
+     "where": "abstract (fragment)",
+     "url": "https://proceedings.mlr.press/v202/hess23a.html"
+    }
+   ]
+  },
+  "rigter2022rambo": {
+   "title": "RAMBO-RL: Robust Adversarial Model-Based Offline Reinforcement Learning",
+   "authors": "Marc Rigter, Bruno Lacerda, Nick Hawes",
+   "venue": "NeurIPS 2022",
+   "year": 2022,
+   "url": "https://arxiv.org/abs/2204.12581",
+   "summary": "Model-based offline RL with an adversarially trained model. Abstract not retrieved; used only for its Appendix B.1 model-training procedure.",
+   "quotes": [
+    {
+     "text": "Following previous works [75, 76], during the initial maximum likelihood model training (Line 2 of Algorithm 1)",
+     "where": "App. B.1 Model Training (fragment). The checker reported [75],[76] as COMBO and MOPO; the reference list was not read by the checker.",
+     "url": "https://arxiv.org/html/2204.12581"
+    },
+    {
+     "text": "we train an ensemble of 7 such dynamics models and pick the best 5 models based on the validation error",
+     "where": "App. B.1 (fragment)",
+     "url": "https://arxiv.org/html/2204.12581"
+    },
+    {
+     "text": "on a held-out test set of 1000 transitions from the dataset D.",
+     "where": "App. B.1 (fragment)",
+     "url": "https://arxiv.org/html/2204.12581"
+    }
+   ]
+  },
+  "yu2021combo": {
+   "title": "COMBO: Conservative Offline Model-Based Policy Optimization",
+   "authors": "Tianhe Yu, Aviral Kumar, Rafael Rafailov, Aravind Rajeswaran, Sergey Levine, Chelsea Finn",
+   "venue": "NeurIPS 2021",
+   "year": 2021,
+   "url": "https://arxiv.org/abs/2102.08363",
+   "summary": "Model-based offline RL that regularizes the value function on out-of-support state-action tuples from model rollouts.",
+   "quotes": [
+    {
+     "text": "developing a new model-based offline RL algorithm, COMBO, that regularizes the value function",
+     "where": "abstract (fragment)",
+     "url": "https://arxiv.org/abs/2102.08363"
+    }
+   ]
+  },
+  "li2025rwm": {
+   "title": "Robotic World Model: A Neural Network Simulator for Robust Policy Optimization in Robotics",
+   "authors": "Chenhao Li, Andreas Krause, Marco Hutter",
+   "venue": "NeurIPS 2025 Workshop on Embodied World Models for Decision Making (poster)",
+   "year": 2025,
+   "url": "https://arxiv.org/html/2501.10100v4",
+   "summary": "Dual-autoregressive world model with self-supervised training for long-horizon prediction. Venue confirmed at https://neurips.cc/virtual/2025/loc/san-diego/123991; arXiv v4 page names no venue.",
+   "quotes": [
+    {
+     "text": "RWM-AR significantly outperforms its teacher-forcing counterpart (RWM-TF)",
+     "where": "Sec. 4.3 (fragment)",
+     "url": "https://arxiv.org/html/2501.10100v4"
+    },
+    {
+     "text": "Forecast horizon N, on the other hand, plays a decisive role in improving long-term prediction accuracy.",
+     "where": "App. A.4.1",
+     "url": "https://arxiv.org/html/2501.10100v4"
+    }
+   ]
+  }
+ }
+}

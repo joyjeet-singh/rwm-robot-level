@@ -3,7 +3,8 @@
   "li2025rwm": [
    "PerconAI:li2025rwm",
    "ICPAIAS:li2025rwm",
-   "NGCAPS:li2025rwm"
+   "NGCAPS:li2025rwm",
+   "AIR:li2025rwm"
   ],
   "li2025rwmu": [
    "PerconAI:li2025rwmu",
@@ -90,9 +91,43 @@
   ],
   "nosek2018prereg": [
    "NGCAPS:nosek2018prereg"
+  ],
+  "lambert2020objective": [
+   "AIR:lambert2020objective"
+  ],
+  "malik2019calibrated": [
+   "AIR:malik2019calibrated"
+  ],
+  "kuleshov2018accurate": [
+   "AIR:kuleshov2018accurate"
+  ],
+  "manek2019stable": [
+   "AIR:manek2019stable"
+  ],
+  "hess2023generalized": [
+   "AIR:hess2023generalized"
+  ],
+  "rigter2022rambo": [
+   "AIR:rigter2022rambo"
+  ],
+  "yu2021combo": [
+   "AIR:yu2021combo"
+  ],
+  "mikhaeil2022chaotic": [
+   "NGCAPS:mikhaeil2022chaotic"
   ]
  },
  "not_traced": [],
  "cited_without_entry": [],
- "entry_never_cited": []
+ "entry_never_cited": [
+  "hess2023generalized",
+  "kuleshov2018accurate",
+  "lambert2020objective",
+  "malik2019calibrated",
+  "manek2019stable",
+  "mikhaeil2022chaotic",
+  "rigter2022rambo",
+  "yu2021combo"
+ ],
+ "uncited_allowed": true
 }
