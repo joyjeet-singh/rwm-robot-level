@@ -1,0 +1,60 @@
+REVISION EXPLORATORY ANALYSES (R1) -- nothing here is registered; registered verdicts stand.
+Registered Q1-Q6, Table 2 rhos reproduce exactly (lam1 from log1 to 2e-16). Run 178s; numpy 2.2.6. * = 95% CI excludes 0.
+A1 horizon-matched checks, Spearman with E100 [95% CI, models resampled]
+  check        F18 all            F18 trained        F18 compressed     X5 (within splits)
+  lam1_8     +0.21 [-0.03, +0.43] +0.72 [+0.52, +0.86] -0.60 [-0.79, -0.34] -0.02 [-0.14, +0.11]
+  lam1_24    +0.33 [+0.12, +0.53] +0.80 [+0.62, +0.91] -0.30 [-0.59, +0.04] +0.19 [+0.07, +0.31]
+  lam1_100   +0.77 [+0.66, +0.84] +0.90 [+0.81, +0.95] +0.58 [+0.30, +0.78] +0.56 [+0.45, +0.63]
+  lam1_368   +0.80 [+0.71, +0.85] +0.85 [+0.72, +0.91] +0.82 [+0.65, +0.91] +0.67 [+0.57, +0.72]
+  rJ_8       +0.83 [+0.72, +0.90] +0.60 [+0.36, +0.78] +0.90 [+0.81, +0.94] +0.88 [+0.82, +0.90]
+  rJ_24      +0.88 [+0.80, +0.93] +0.70 [+0.49, +0.85] +0.95 [+0.88, +0.97] +0.93 [+0.88, +0.94]
+  rJ_100     +0.94 [+0.90, +0.97] +0.83 [+0.68, +0.92] +0.97 [+0.92, +0.99] +0.96 [+0.94, +0.97]
+  rJ_368     +0.95 [+0.91, +0.97] +0.91 [+0.82, +0.96] +0.94 [+0.85, +0.98] +0.96 [+0.93, +0.97]
+  E1         +0.32 [+0.07, +0.54] -0.50 [-0.71, -0.20] +0.89 [+0.77, +0.95] +0.78 [+0.69, +0.84]
+  E8         +0.84 [+0.71, +0.93] +0.63 [+0.36, +0.83] +0.96 [+0.91, +0.98] +0.95 [+0.92, +0.96]
+  same checks with E24 / E368 (rho on F18 all; X5):
+  lam1_8     E24 +0.16; +0.01   E368 +0.14; -0.02
+  lam1_368   E24 +0.76; +0.66   E368 +0.85; +0.72
+  rJ_8       E24 +0.91; +0.90   E368 +0.77; +0.84
+  rJ_368     E24 +0.92; +0.95   E368 +0.97; +0.97
+  E1         E24 +0.41; +0.81   E368 +0.29; +0.72
+  E8         E24 +0.93; +0.98   E368 +0.79; +0.91
+  rJ_8_minus_E8 (vs E100): F18_all -0.006 [-0.076, +0.063]; F18_trained -0.023 [-0.185, +0.123]; F18_compressed -0.062 [-0.143, -0.002]*; X5 -0.073 [-0.120, -0.040]*
+  rJ_100_minus_E8 (vs E100): F18_all +0.109 [+0.035, +0.205]*; F18_trained +0.209 [+0.044, +0.401]*; F18_compressed +0.008 [-0.017, +0.040]; X5 +0.013 [-0.003, +0.033]
+A2a two-level bootstrap (20000 draws; clusters x trajectories; compressed has only 5 clusters), descriptive; 95% CI, width ratio to registered; dropped draws 0
+  F18_all        E1 +0.32 [-0.18, +0.59] x1.6; E8 +0.84 [+0.56, +0.91] x1.6; lam1 +0.80 [+0.63, +0.87] x1.7; rJ +0.95 [+0.86, +0.97] x1.8
+  F18_trained    E1 -0.50 [-0.69, -0.06] x1.2; E8 +0.63 [+0.19, +0.80] x1.3; lam1 +0.85 [+0.70, +0.92] x1.1; rJ +0.91 [+0.70, +0.95] x1.8
+  F18_compressed E1 +0.89 [+0.77, +0.96] x1.1; E8 +0.96 [+0.90, +0.98] x1.0; lam1 +0.82 [+0.49, +0.92] x1.7; rJ +0.94 [+0.86, +0.99] x1.0
+  X5             E1 +0.78 [+0.63, +0.84] x1.4; E8 +0.95 [+0.91, +0.96] x1.2; lam1 +0.67 [+0.54, +0.72] x1.2; rJ +0.96 [+0.92, +0.97] x1.4
+  Q1        +0.48 97.5%: reg [+0.20, +0.79] two-level [+0.09, +1.11] x1.7  LABEL-FREE BETTER; excludes 0: yes
+  Q2        -0.04 97.5%: reg [-0.20, +0.14] two-level [-0.24, +0.31] x1.6  NOT SETTLED; excludes 0: NO
+  Q1_E24    +0.36 95%: reg [+0.13, +0.60] two-level [-0.03, +0.74] x1.7  LABEL-FREE BETTER; excludes 0: NO
+  Q2_E24    -0.16 95%: reg [-0.25, -0.08] two-level [-0.36, -0.05] x1.8  TRAINING-HORIZON BETTER; excludes 0: yes
+  Q1_E368   +0.56 95%: reg [+0.31, +0.83] two-level [+0.19, +1.08] x1.7  LABEL-FREE BETTER; excludes 0: yes
+  Q2_E368   +0.05 95%: reg [-0.09, +0.22] two-level [-0.12, +0.34] x1.5  NOT SETTLED; excludes 0: NO
+  Q3_vs_E1  -0.12 95%: reg [-0.22, -0.03] two-level [-0.25, +0.01] x1.3  ONE-STEP BETTER; excludes 0: NO
+  Q3_vs_E8  -0.28 95%: reg [-0.37, -0.22] two-level [-0.41, -0.22] x1.2  TRAINING-HORIZON BETTER; excludes 0: yes
+  Q4_vs_E1  +0.63 95%: reg [+0.41, +0.88] two-level [+0.35, +1.09] x1.6  LABEL-FREE BETTER; excludes 0: yes
+  Q4_vs_E8  +0.12 95%: reg [+0.02, +0.23] two-level [+0.03, +0.34] x1.5  LABEL-FREE BETTER; excludes 0: yes
+  Q5_vs_E1  +0.27 95%: reg [+0.04, +0.51] two-level [-0.02, +0.74] x1.6  LABEL-FREE BETTER; excludes 0: NO
+  Q5_vs_E8  +0.01 95%: reg [-0.16, +0.20] two-level [-0.22, +0.34] x1.6  NOT SETTLED; excludes 0: NO
+  Q6        +0.03 95%: reg [-0.02, +0.07] two-level [-0.04, +0.09] x1.4  NOT SETTLED; excludes 0: NO
+A2b X5 without split {1,8} (4 splits; five-split value in brackets)
+  E1 +0.79 [+0.69, +0.86] (+0.78); E8 +0.95 [+0.91, +0.96] (+0.95)
+  lam1 +0.65 [+0.54, +0.72] (+0.67); rJ +0.97 [+0.95, +0.97] (+0.96)
+  Q3_vs_E1: -0.143 [-0.257, -0.038]* (five splits -0.117 [-0.216, -0.026]*)
+  Q3_vs_E8: -0.300 [-0.398, -0.219]* (five splits -0.284 [-0.370, -0.217]*)
+  rJ_vs_E8: +0.022 [+0.002, +0.048]* (five splits +0.011 [-0.010, +0.034])
+A2c Holm over Q3-Q6 (family-wise 5%)
+  Q3_vs_E8  p=0.0000 (MC SE 0.0000) threshold 0.0071 p_holm=0.0000 survives (TRAINING-HORIZON BETTER)
+  Q4_vs_E1  p=0.0000 (MC SE 0.0000) threshold 0.0083 p_holm=0.0000 survives (LABEL-FREE BETTER)
+  Q4_vs_E8  p=0.0106 (MC SE 0.0010) threshold 0.0100 p_holm=0.0530 does not survive (within 2 MC SE) (LABEL-FREE BETTER)
+  Q3_vs_E1  p=0.0139 (MC SE 0.0012) threshold 0.0125 p_holm=0.0556 does not survive (within 2 MC SE) (ONE-STEP BETTER)
+  Q5_vs_E1  p=0.0157 (MC SE 0.0012) threshold 0.0167 p_holm=0.0556 does not survive (within 2 MC SE) (LABEL-FREE BETTER)
+  Q6        p=0.2733 (MC SE 0.0049) threshold 0.0250 p_holm=0.5466 does not survive (NOT SETTLED)
+  Q5_vs_E8  p=0.9438 (MC SE 0.0071) threshold 0.0500 p_holm=0.9438 does not survive (NOT SETTLED)
+A3 split-half (checks from one trajectory per episode, E100 from the other; mean of both): rho [CI] | same-half rho | split minus same-half [CI]; columns F18 all, trained, compressed, X5
+  E1    +0.31 [+0.07, +0.51] | +0.32 | -0.010 [-0.036, +0.017] || -0.49 [-0.66, -0.27] | -0.46 | -0.036 [-0.097, +0.024] || +0.90 [+0.81, +0.94] | +0.89 | +0.012 [-0.012, +0.049] || +0.77 [+0.68, +0.83] | +0.78 | -0.015 [-0.033, -0.000]*
+  E8    +0.77 [+0.64, +0.86] | +0.79 | -0.020 [-0.043, +0.001] || +0.47 [+0.22, +0.68] | +0.52 | -0.046 [-0.092, -0.004]* || +0.94 [+0.88, +0.97] | +0.94 | +0.001 [-0.025, +0.033] || +0.91 [+0.87, +0.93] | +0.94 | -0.027 [-0.051, -0.010]*
+  lam1  +0.73 [+0.64, +0.79] | +0.77 | -0.044 [-0.087, -0.013]* || +0.81 [+0.67, +0.89] | +0.86 | -0.045 [-0.108, -0.000]* || +0.70 [+0.51, +0.82] | +0.77 | -0.063 [-0.161, -0.004]* || +0.62 [+0.54, +0.68] | +0.62 | +0.007 [-0.022, +0.038]
+  rJ    +0.91 [+0.86, +0.94] | +0.92 | -0.014 [-0.041, +0.010] || +0.81 [+0.67, +0.89] | +0.87 | -0.056 [-0.134, +0.001] || +0.94 [+0.87, +0.97] | +0.93 | +0.008 [-0.018, +0.035] || +0.91 [+0.86, +0.93] | +0.94 | -0.035 [-0.064, -0.015]*
