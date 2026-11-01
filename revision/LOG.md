@@ -68,3 +68,10 @@
 - Cuts for 6 pp (T22 order): Sec. 4.3 folded into Discussion (5); synthetic-data sentence; minor wording. Listed in DECISIONS (R9).
 - check_claims 78 (11 new), check_bib strict, submission_checks pass; single 16 pp, two-column 6 pp, abstract 198 words.
 - Commit e9b295c. Notes: revision/notes/R9.md. figures/fig_horizon.* still unstaged (not mine).
+
+## R10 status: COMPLETE (2026-11-02 03:26)
+- Text extracted with pypdf (no pdftotext) to revision/review/paper.txt; air-referee (major revision, borderline) and air-claim-checker (12 findings) run; reports in revision/review/.
+- Fixed: residual's lead fails Holm (abstract, bullet 3); "without retraining"; spread = head disagreement, cause no longer claimed; Holm family Q3–Q6 named; Q5 labels; A4 resampling corrected; split {1,8} reuses F18 models; release's 4 trajectories not "held out"; A2 voice, A7 timestamp; F18/X5 defined before use; many label/wording fixes.
+- Cuts for 6 pp and every decline with its reason: DECISIONS (R10, R10 declined). Traceability for all 30 rows: revision/notes/R10_traceability.md. Triage: revision/notes/R10.md.
+- check_claims 82 (4 new), check_bib strict, submission_checks pass; single 16 pp, two-column 6 pp (no slack), abstract 198 words.
+- Commit 4699b47. Open: declined references need air-bib-checker; figures/fig_horizon.* still unstaged (not mine).

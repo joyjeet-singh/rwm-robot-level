@@ -1,4 +1,4 @@
-Last session: R9, COMPLETE.
-Next action: R10 per REVISION_PLAN.md.
+Last session: R10, COMPLETE.
+Next action: R11 per REVISION_PLAN.md.
 Blockers: none.
-Notes: study FT verdicts in the paper (FT1 restores skill, FT2 nearly as skilled); A7 filled. Sec. 4.3 no longer exists (folded into Discussion item 5); the synthetic-data sentence on zero spread was cut for length. Two-column 6 pages with almost no slack; abstract 198 words. figures/fig_horizon.* remain unstaged (not mine). See revision/notes/R9.md.
+Notes: review reports in revision/review/ (referee.md, claim_checker.md); triage in revision/notes/R10.md; traceability in revision/notes/R10_traceability.md; declines in DECISIONS "R10 declined". Two-column build is exactly 6 pages with no slack (one added word made it 7). figures/fig_horizon.* remain unstaged (not mine).
