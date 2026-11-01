@@ -1,0 +1,43 @@
+% SOURCE of the reviewers' appendix (single-column submission only; R7 fills it and adds it to main_single.tex).
+% Same rules as body.template.tex: every number is a double-brace placeholder read from a result file, and every
+% analysis added in the revision is labelled (exploratory). The body refers to these sections as appendix A1 to A7.
+\appendices
+
+\section{Training settings}\label{app:A1}
+% A1: the full training settings of the rollout-trained parents (keys hp_*: optimiser, learning rate, weight decay,
+% batch, iterations, gradient clipping, the seven non-zero loss weights), stated once and asserted equal across the
+% hp_n_records parents' records; how teacher-forced, N=1, ensemble, likelihood, width-124 (capacity-matched control)
+% and four-times-longer models differ from them; the compression recipes.
+
+\section{What was known before the registration}\label{app:A2}
+% A2: the values quoted in prereg/PREREG.md section 2 (keys pre_ng_R*, pre_ng_RT*, pre_icmai_*, pre_icp*), with the
+% earlier study each comes from. State plainly: the growth rates of the trained F18 models and the residual's ranking
+% of the five-split trained models were known; open were the comparison with E1 and E8, and the compressed copies.
+
+\section{Horizon-matched and split-half checks}\label{app:A3}
+% A3 (exploratory): A1_horizon_matched (keys a1_*): each label-free check computed over 8 and over 100 steps against
+% E100, on F18 and X5, with differences against E8. A3_split_half (keys a3_*): checks on one half of the
+% trajectories, target on the other, beside the same-half baseline; a3_max_drop.
+
+\section{Wider intervals, the five-split pool without split \{1,8\}, and Holm's correction}\label{app:A4}
+% A4 (exploratory): A2a two-level bootstrap (parents and trajectories; keys a2_*), per registered test: interval,
+% width ratio, whether the verdict holds. A2b X5 without split {1,8} (keys a2b_*). A2c Holm over the seven secondary
+% tests (keys a2c_*), with Monte Carlo SE and the tests within 2 SE of their threshold.
+
+\section{Compression and the growth rate}\label{app:A5}
+% A5: growth-rate shift per compression variant (lamshift_*, lampos_*), copies that became unstable
+% (n_unstable_removed of n_removed_copies; n_unstable_wide of n_wide_copies), skill retained K per variant and
+% horizon (K_*), and the earlier registered unit-removal study with fine-tuning (perc_*, incl. the controls perc_ctrl_*
+% and the seed-0 / replication readings). R6 cut from the body for length (candidates for here): the TorchScript
+% timing of 8-bit dynamic quantisation (perc_us_jit_int8, perc_ratio_jit, perc_ratio_eager); fp16 K (K_fp16_h368).
+
+\section{Run-time signals}\label{app:A6}
+% A6: the text moved out of Sec. 4.3 by R6, unchanged (revision/notes/R6_moved.md): AUROC of the kinematic score,
+% ensemble disagreement and the step counter (icp_auc_*); the step-wise growth rate against the counter (ng_q3_*);
+% event-triggered against scheduled re-synchronisation (icp_h7_*); physics repairs (icp_G, icp_J_x).
+% Also cut from Sec. 4.1 by R6 (place here or in A1 if wanted): the shared-trunk share (shared_pct) and per-head
+% rollout coverage (cov1_h100, cov1_h100_per); teacher-forced 368-step errors along training (ng_pathB_E_*).
+
+\section{Study FT: fine-tuning the pruned copies}\label{app:A7}
+% A7: the study registered in prereg/PREREG_FT.md before any fine-tuned model existed (R3): design, arms, decision
+% rules and results from scripts/ft_stats.py, with any departure recorded in ANOMALIES.md. R9 writes it.

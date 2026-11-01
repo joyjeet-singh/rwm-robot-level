@@ -112,9 +112,9 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
     def fk(x):
         """skill retained: one decimal from 95% up (where whole per cents hide the loss), else whole per cents"""
         v = 100 * x
-        if abs(v) >= 99.95:
+        if v >= 99.95:                                               # R6: was abs(v), which printed K <= -100% as 100%
             return "100\\%"
-        return (f"{v:.1f}" if abs(v) >= 95 else f"{v:.0f}").replace("-", "$-$") + r"\%"
+        return (f"{v:.1f}" if v >= 95 else f"{v:.0f}").replace("-", "$-$") + r"\%"
     for var, d in S["D2_skill_retained_X5"].items():
         for h, w in d.items():
             put(f"K_{var}_{h}", fk(w["K"]), s, f"D2_skill_retained_X5.{var}.{h}.K")

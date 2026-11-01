@@ -119,15 +119,6 @@
  },
  "not_traced": [],
  "cited_without_entry": [],
- "entry_never_cited": [
-  "hess2023generalized",
-  "kuleshov2018accurate",
-  "lambert2020objective",
-  "malik2019calibrated",
-  "manek2019stable",
-  "mikhaeil2022chaotic",
-  "rigter2022rambo",
-  "yu2021combo"
- ],
- "uncited_allowed": true
+ "entry_never_cited": [],
+ "uncited_allowed": false
 }
