@@ -1,0 +1,98 @@
+{
+ "entries": {
+  "li2025rwm": [
+   "PerconAI:li2025rwm",
+   "ICPAIAS:li2025rwm",
+   "NGCAPS:li2025rwm"
+  ],
+  "li2025rwmu": [
+   "PerconAI:li2025rwmu",
+   "ICPAIAS:li2025rwmu"
+  ],
+  "hafner2025": [
+   "ICPAIAS:hafner2025"
+  ],
+  "chua2018": [
+   "ICPAIAS:chua2018"
+  ],
+  "janner2019": [
+   "PerconAI:janner2019",
+   "ICPAIAS:janner2019",
+   "NGCAPS:janner2019mbpo"
+  ],
+  "yu2020mopo": [
+   "ICPAIAS:yu2020mopo"
+  ],
+  "lakshminarayanan2017": [
+   "ICPAIAS:lakshminarayanan2017"
+  ],
+  "lu2022": [
+   "ICPAIAS:lu2022"
+  ],
+  "williams1989": [
+   "NGCAPS:williams1989"
+  ],
+  "bengio2015scheduled": [
+   "NGCAPS:bengio2015scheduled"
+  ],
+  "venkatraman2015": [
+   "PerconAI:venkatraman2015",
+   "ICPAIAS:venkatraman2015",
+   "NGCAPS:venkatraman2015"
+  ],
+  "talvitie2017": [
+   "PerconAI:talvitie2017",
+   "ICPAIAS:talvitie2017"
+  ],
+  "lambert2021": [
+   "PerconAI:lambert2021",
+   "ICPAIAS:lambert2021"
+  ],
+  "lambert2022compounding": [
+   "NGCAPS:lambert2022compounding"
+  ],
+  "benettin1980": [
+   "NGCAPS:benettin1980"
+  ],
+  "pascanu2013difficulty": [
+   "NGCAPS:pascanu2013difficulty"
+  ],
+  "miller2019stable": [
+   "NGCAPS:miller2019stable"
+  ],
+  "engelken2024lyapunov": [
+   "NGCAPS:engelken2024lyapunov"
+  ],
+  "schafer2026": [
+   "ICPAIAS:schafer2026"
+  ],
+  "isermann2005": [
+   "ICPAIAS:isermann2005"
+  ],
+  "han2016": [
+   "PerconAI:han2016"
+  ],
+  "liu2019rethinking": [
+   "PerconAI:liu2019rethinking"
+  ],
+  "fu2026": [
+   "PerconAI:fu2026"
+  ],
+  "pavlova2026": [
+   "PerconAI:pavlova2026"
+  ],
+  "cameron2008": [
+   "PerconAI:cameron2008",
+   "ICPAIAS:cameron2008"
+  ],
+  "agarwal2021": [
+   "PerconAI:agarwal2021"
+  ],
+  "nosek2018prereg": [
+   "NGCAPS:nosek2018prereg"
+  ]
+ },
+ "not_traced": [],
+ "cited_without_entry": [],
+ "entry_never_cited": []
+}

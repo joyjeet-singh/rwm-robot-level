@@ -1,0 +1,34 @@
+/usr/local/lib/python3.13/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+X5 A_18_s0 12s
+X5 A_18_s1 19s
+X5 A_18_s2 26s
+X5 A_18_s3 34s
+X5 A_18_s4 42s
+X5 A5_18_s0 52s
+X5 A5_18_s1 62s
+X5 A5_18_s2 73s
+X5 B_18_s0 81s
+X5 B_18_s1 89s
+X5 B_18_s2 97s
+X5 A_18_s0__fp16 104s
+X5 A_18_s0__int8w 111s
+X5 A_18_s0__u10 118s
+X5 A_18_s0__u20 125s
+X5 A_18_s0__u30 132s
+X5 A_18_s0__u50 140s
+X5 A_18_s0__s192 146s
+X5 A_18_s0__s128 151s
+X5 A_18_s1__fp16 159s
+X5 A_18_s1__int8w 166s
+X5 A_18_s1__u10 174s
+X5 A_18_s1__u20 181s
+X5 A_18_s1__u30 189s
+X5 A_18_s1__u50 197s
+X5 A_18_s1__s192 204s
+X5 A_18_s1__s128 209s
+X5 A_18_s2__fp16 217s
+X5 A_18_s2__int8w 224s
+X5 A_18_s2__u10 232s
+X5 A_18_s2__u20 240s
+X5 A_18_s2__u30 248s

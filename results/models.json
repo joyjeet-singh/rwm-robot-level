@@ -1,0 +1,2189 @@
+{
+ "F18": [
+  {
+   "key": "A_s0",
+   "pool": "R",
+   "group": "A (M32,N8)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s1",
+   "pool": "R",
+   "group": "A (M32,N8)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s2",
+   "pool": "R",
+   "group": "A (M32,N8)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s3",
+   "pool": "R",
+   "group": "A (M32,N8)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s4",
+   "pool": "R",
+   "group": "A (M32,N8)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A5_s0",
+   "pool": "R",
+   "group": "A ensemble-5",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 5,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "923e3a0b935cff3cb611cf6b35eea83701df4a78f02a22e3f10a6a2e945b9496",
+   "path": "rwm_repro/runs/armA_seed0_ens5/weights_2500.pt"
+  },
+  {
+   "key": "A5_s1",
+   "pool": "R",
+   "group": "A ensemble-5",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 5,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e756ca16fe2cd4e1615ca27b47d9bb519dd0d4da6dfe263758b1d5bbdaabeaaa",
+   "path": "rwm_repro/runs/armA_seed1_ens5/weights_2500.pt"
+  },
+  {
+   "key": "A5_s2",
+   "pool": "R",
+   "group": "A ensemble-5",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 5,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "2688b16030a57b4b4201bc844a9e1b3607df8734e7b62b1f7b7efb11ed5d9652",
+   "path": "rwm_repro/runs/armA_seed2_ens5/weights_2500.pt"
+  },
+  {
+   "key": "nll_s0",
+   "pool": "R",
+   "group": "A NLL objective",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "a1a339b27b077712b0a87b4df4718437933db3e6a370b8b08f941fab30129367",
+   "path": "rwm_repro/runs/armA_seed0_nll/weights_2500.pt"
+  },
+  {
+   "key": "w124_s0",
+   "pool": "R",
+   "group": "A width 124",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "898778de0aebfe2d11566c149c7593e2f5942f2b5919060e46c79fecdc5bf9f1",
+   "path": "rwm_repro/runs/armA_seed0_m49h124/weights_2500.pt"
+  },
+  {
+   "key": "nll_s1",
+   "pool": "R",
+   "group": "A NLL objective",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "a1873894b44fc1f025e681bdb61949922876406fad1ce6e83b5276ba914451a4",
+   "path": "rwm_repro/runs/armA_seed1_nll/weights_2500.pt"
+  },
+  {
+   "key": "w124_s1",
+   "pool": "R",
+   "group": "A width 124",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "297f34abc5ca58bf0e2c4b7ba021b9bbfd7fafb61424dc740959d1a299afbf8c",
+   "path": "rwm_repro/runs/armA_seed1_m49h124/weights_2500.pt"
+  },
+  {
+   "key": "nll_s2",
+   "pool": "R",
+   "group": "A NLL objective",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "40779720f15872162685111d63db978f2010741c7b2d2e847b49d68b549c012c",
+   "path": "rwm_repro/runs/armA_seed2_nll/weights_2500.pt"
+  },
+  {
+   "key": "w124_s2",
+   "pool": "R",
+   "group": "A width 124",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "64efae63103f25d9a1954c880d3e08d4aff49e80bfa2b46aa9a2e833b6d4875f",
+   "path": "rwm_repro/runs/armA_seed2_m49h124/weights_2500.pt"
+  },
+  {
+   "key": "nll_s3",
+   "pool": "R",
+   "group": "A NLL objective",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e7d1799e0486fb1c78b4041eb4fbcf1ca73a4de07bb39501df100ec5f02307d9",
+   "path": "rwm_repro/runs/armA_seed3_nll/weights_2500.pt"
+  },
+  {
+   "key": "w124_s3",
+   "pool": "R",
+   "group": "A width 124",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "0ca0b515c5695dcf1d1e80a7a00689db43c2c4cecd087a60055869084b8ecfb6",
+   "path": "rwm_repro/runs/armA_seed3_m49h124/weights_2500.pt"
+  },
+  {
+   "key": "nll_s4",
+   "pool": "R",
+   "group": "A NLL objective",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "4ceb096192df546fd5fd4cf1dc15e72dfb97b5004e3e2bb6a1e79ba35b0bc14e",
+   "path": "rwm_repro/runs/armA_seed4_nll/weights_2500.pt"
+  },
+  {
+   "key": "w124_s4",
+   "pool": "R",
+   "group": "A width 124",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "4cb009e5f4e1773794c1a3ea17d958ead718cbf0bd7ba2d5510d14213cdb8ef8",
+   "path": "rwm_repro/runs/armA_seed4_m49h124/weights_2500.pt"
+  },
+  {
+   "key": "contam_s0",
+   "pool": "R",
+   "group": "A contaminated data",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "850f392b6370fcbf283913cb97a1ce43f2b60c29ffc177d91646889786608d33",
+   "path": "rwm_repro/runs/armA_seed0_contam/weights_2500.pt"
+  },
+  {
+   "key": "dup_s0",
+   "pool": "R",
+   "group": "A duplicated data",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "d7853e26fd1fcfe3ab0d95ab1ddf65bbfe20c8973140a49ddc1abf07714d186d",
+   "path": "rwm_repro/runs/armA_seed0_dup/weights_2500.pt"
+  },
+  {
+   "key": "A10k_s0",
+   "pool": "R",
+   "group": "A 10k iterations",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "4dbb6871f69e6b7a3e7014fb0ae7effb8366860f6bd0c84af717c10ea64c6625",
+   "path": "rwm_repro/runs/armA_seed0_10k/weights_10000.pt"
+  },
+  {
+   "key": "mn_M1_N8_s0",
+   "pool": "R",
+   "group": "sweep M1 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 1
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "6d44bc8c24423b081a7ce65826b92c798c6a37420677248cda0eb4ccfa2cc474",
+   "path": "rwm_repro/runs/mn_M1_N8_seed0/weights_2500.pt"
+  },
+  {
+   "key": "mn_M2_N8_s0",
+   "pool": "R",
+   "group": "sweep M2 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 2
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "814561c6434e003cf38b1c983681af36b5b8bb9ef45167d315534aff5c6f2981",
+   "path": "rwm_repro/runs/mn_M2_N8_seed0/weights_2500.pt"
+  },
+  {
+   "key": "mn_M8_N8_s0",
+   "pool": "R",
+   "group": "sweep M8 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 8
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "aed65c4ae49a45ff537b1c7ebcac3ca03ff7e0cbe3991e505bfca3dbb8b716ae",
+   "path": "rwm_repro/runs/mn_M8_N8_seed0/weights_2500.pt"
+  },
+  {
+   "key": "mn_M16_N8_s0",
+   "pool": "R",
+   "group": "sweep M16 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 16
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "9d21da29063eeef4a97c4f6b324c88e1c95ac2c49c23694b3fbb2b16eb26a7eb",
+   "path": "rwm_repro/runs/mn_M16_N8_seed0/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N2_s0",
+   "pool": "R",
+   "group": "sweep M32 N2",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 2,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e87f2fb691974700909c0e02ca2e2e5a28155540100be5da24a61beaf2176923",
+   "path": "rwm_repro/runs/mn_M32_N2_seed0/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N16_s0",
+   "pool": "R",
+   "group": "sweep M32 N16",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 16,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e63d968f8f8c3a1fdd412bc5a5e657dc18041df4c6184374ef6d95dc12c44d62",
+   "path": "rwm_repro/runs/mn_M32_N16_seed0/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N32_s0",
+   "pool": "R",
+   "group": "sweep M32 N32",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 32,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "dbffa617f3be35cdba881e5ccbcb825720771da4c3105449ed1d7ba3a463efba",
+   "path": "rwm_repro/runs/mn_M32_N32_seed0/weights_2500.pt"
+  },
+  {
+   "key": "contam_s1",
+   "pool": "R",
+   "group": "A contaminated data",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "fccb082fd5ab56774964d19dfddda3c0cdc915810c4dee57830f8cb3fdd24c71",
+   "path": "rwm_repro/runs/armA_seed1_contam/weights_2500.pt"
+  },
+  {
+   "key": "dup_s1",
+   "pool": "R",
+   "group": "A duplicated data",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "4ca9a935a9448267bb856191d4d98adecc813e5b2ca3be13b06eafbb6701a63f",
+   "path": "rwm_repro/runs/armA_seed1_dup/weights_2500.pt"
+  },
+  {
+   "key": "A10k_s1",
+   "pool": "R",
+   "group": "A 10k iterations",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c88b20a136c7364475e1bf74b3919b33de1ebad9293de521cfe259ed8474ee6e",
+   "path": "rwm_repro/runs/armA_seed1_10k/weights_10000.pt"
+  },
+  {
+   "key": "mn_M1_N8_s1",
+   "pool": "R",
+   "group": "sweep M1 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 1
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "434f66e76a8c037e27c85e1eae4e32552e4da4fc18ef0ba4d9df4caf66a22812",
+   "path": "rwm_repro/runs/mn_M1_N8_seed1/weights_2500.pt"
+  },
+  {
+   "key": "mn_M2_N8_s1",
+   "pool": "R",
+   "group": "sweep M2 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 2
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "641c71e9eb6ef803ab1fb140d7c53cb12a68696f31abca437a1c1e7102dd7166",
+   "path": "rwm_repro/runs/mn_M2_N8_seed1/weights_2500.pt"
+  },
+  {
+   "key": "mn_M8_N8_s1",
+   "pool": "R",
+   "group": "sweep M8 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 8
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "dfb0cc2d693417336a08fe1d1c4b5bebe90a81c42e80f1ba67b46c9cc8119724",
+   "path": "rwm_repro/runs/mn_M8_N8_seed1/weights_2500.pt"
+  },
+  {
+   "key": "mn_M16_N8_s1",
+   "pool": "R",
+   "group": "sweep M16 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 16
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "30d3e345bd43320a24a925ebbb9c478f5482c9d459d5318062330d60324f3a5c",
+   "path": "rwm_repro/runs/mn_M16_N8_seed1/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N2_s1",
+   "pool": "R",
+   "group": "sweep M32 N2",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 2,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7399ab2077f1dbabda0f50b624bc803dbc495400a4cf805f5d66314bb3f714f5",
+   "path": "rwm_repro/runs/mn_M32_N2_seed1/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N16_s1",
+   "pool": "R",
+   "group": "sweep M32 N16",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 16,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "61364639939ce59832fb1c7ef89c1b97d00db16ca7a6d2f9b829dcb745a7123d",
+   "path": "rwm_repro/runs/mn_M32_N16_seed1/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N32_s1",
+   "pool": "R",
+   "group": "sweep M32 N32",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 32,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "3cd438582a2e84249c079ac80482ad481256d48e2192858e363b8ece79b1bed9",
+   "path": "rwm_repro/runs/mn_M32_N32_seed1/weights_2500.pt"
+  },
+  {
+   "key": "contam_s2",
+   "pool": "R",
+   "group": "A contaminated data",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "889ddf0ac8b67f751832df315112d28821548adef0b89783f95a02bdffb8b1e1",
+   "path": "rwm_repro/runs/armA_seed2_contam/weights_2500.pt"
+  },
+  {
+   "key": "dup_s2",
+   "pool": "R",
+   "group": "A duplicated data",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "208d50b41af748294d5ee802ce7bf77bff7d0c07ab3aa82b37ff09ecb6c60a03",
+   "path": "rwm_repro/runs/armA_seed2_dup/weights_2500.pt"
+  },
+  {
+   "key": "A10k_s2",
+   "pool": "R",
+   "group": "A 10k iterations",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "d8e3f43edf8a6f76c25e34d814a7a7c4c35779bbb7ec90e76c5f49a9ec2a192c",
+   "path": "rwm_repro/runs/armA_seed2_10k/weights_10000.pt"
+  },
+  {
+   "key": "mn_M1_N8_s2",
+   "pool": "R",
+   "group": "sweep M1 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 1
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "1ac6438356ee0f149d250d7cdfdbc94fef7754fbbd074b621abeea0bb8113bad",
+   "path": "rwm_repro/runs/mn_M1_N8_seed2/weights_2500.pt"
+  },
+  {
+   "key": "mn_M2_N8_s2",
+   "pool": "R",
+   "group": "sweep M2 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 2
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b8d62ed5b1808462c038c665f4707c421ac5ce15df6a05ba20169a9f402612ec",
+   "path": "rwm_repro/runs/mn_M2_N8_seed2/weights_2500.pt"
+  },
+  {
+   "key": "mn_M8_N8_s2",
+   "pool": "R",
+   "group": "sweep M8 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 8
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "fd32e7e36a0ff508545433de9f4cc2b8632c789c8a0cd749914419ce75ebe494",
+   "path": "rwm_repro/runs/mn_M8_N8_seed2/weights_2500.pt"
+  },
+  {
+   "key": "mn_M16_N8_s2",
+   "pool": "R",
+   "group": "sweep M16 N8",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 8,
+    "M": 16
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "cd3aac468a57069cb4054a2455de15ed5136cf5f20e2adcbcd081602ade26668",
+   "path": "rwm_repro/runs/mn_M16_N8_seed2/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N2_s2",
+   "pool": "R",
+   "group": "sweep M32 N2",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 2,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "04bff3684624af66e667a3530dc5c20050a1f702b3d3bcc8629c176677ccc357",
+   "path": "rwm_repro/runs/mn_M32_N2_seed2/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N16_s2",
+   "pool": "R",
+   "group": "sweep M32 N16",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 16,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "a66463e3f73d187ed64606ce97a55dc3cad4fa348b344b648a07f5f86be49573",
+   "path": "rwm_repro/runs/mn_M32_N16_seed2/weights_2500.pt"
+  },
+  {
+   "key": "mn_M32_N32_s2",
+   "pool": "R",
+   "group": "sweep M32 N32",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 32,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bf0c63a7fd3efb3cb860c989000d5ccacb201bb2076f2fe7370ecf1e816df332",
+   "path": "rwm_repro/runs/mn_M32_N32_seed2/weights_2500.pt"
+  },
+  {
+   "key": "B_s0",
+   "pool": "T",
+   "group": "B (teacher forced)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "fcadae6d57cb52bfe3f2987f2a3e7fb17d4b6c4075844bd77d048e32c92723fb",
+   "path": "rwm_repro/runs/armB_seed0/weights_2500.pt"
+  },
+  {
+   "key": "B10k_s0",
+   "pool": "T",
+   "group": "B 10k iterations",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "a8e20cf9ef3f0ed0380ba031559fdd497f9e2a0a3a681ce0de39820b4e66f0c1",
+   "path": "rwm_repro/runs/armB_seed0_10k/weights_10000.pt"
+  },
+  {
+   "key": "mn_M32_N1_s0",
+   "pool": "T",
+   "group": "sweep M32 N1",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 1,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "44198d58196f12d0c0390c231190d1c44b9b36dd1359ba4f6e566b423ffacbf2",
+   "path": "rwm_repro/runs/mn_M32_N1_seed0/weights_2500.pt"
+  },
+  {
+   "key": "B_s1",
+   "pool": "T",
+   "group": "B (teacher forced)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "f223866442dfc38a931f10373a6e2eb7babf9411a583ed7c77c3b658b9a8ac5e",
+   "path": "rwm_repro/runs/armB_seed1/weights_2500.pt"
+  },
+  {
+   "key": "B10k_s1",
+   "pool": "T",
+   "group": "B 10k iterations",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b473bd70d5afdcbb1065e7ef49e32e85d4941719ec1bf290e4a91a09b8165754",
+   "path": "rwm_repro/runs/armB_seed1_10k/weights_10000.pt"
+  },
+  {
+   "key": "mn_M32_N1_s1",
+   "pool": "T",
+   "group": "sweep M32 N1",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 1,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "8999c57f9ec5a6c22c82d8f807f5723100e918418d2917ae80c2df2e1b5663a7",
+   "path": "rwm_repro/runs/mn_M32_N1_seed1/weights_2500.pt"
+  },
+  {
+   "key": "B_s2",
+   "pool": "T",
+   "group": "B (teacher forced)",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "fd43ad6bcbcbc5903f993f91023c594a7ba331c40112e570b9730ef33d267eb0",
+   "path": "rwm_repro/runs/armB_seed2/weights_2500.pt"
+  },
+  {
+   "key": "B10k_s2",
+   "pool": "T",
+   "group": "B 10k iterations",
+   "variant": null,
+   "variant_info": null,
+   "extra": {},
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "2431bc1ba09229d305d364abb53d422ef79d39a7299f8c3692f1fb743c8240a2",
+   "path": "rwm_repro/runs/armB_seed2_10k/weights_10000.pt"
+  },
+  {
+   "key": "mn_M32_N1_s2",
+   "pool": "T",
+   "group": "sweep M32 N1",
+   "variant": null,
+   "variant_info": null,
+   "extra": {
+    "N": 1,
+    "M": 32
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "f6830f2d97bfbb580f2e6e9fe844144ee46a5fe8f0fbc6708ba740601e8f1d27",
+   "path": "rwm_repro/runs/mn_M32_N1_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__fp16",
+   "pool": "C",
+   "group": "compressed fp16",
+   "variant": "fp16",
+   "variant_info": {
+    "kind": "fp16"
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__int8w",
+   "pool": "C",
+   "group": "compressed int8w",
+   "variant": "int8w",
+   "variant_info": {
+    "kind": "int8w",
+    "max_scale": 0.0018660719469776304
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__u10",
+   "pool": "C",
+   "group": "compressed u10",
+   "variant": "u10",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.1,
+    "pool_entries": 1410944,
+    "pruned_entries": 141094,
+    "threshold_abs": 0.003613115521147847
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__u20",
+   "pool": "C",
+   "group": "compressed u20",
+   "variant": "u20",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.2,
+    "pool_entries": 1410944,
+    "pruned_entries": 282189,
+    "threshold_abs": 0.008573475293815136
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__u30",
+   "pool": "C",
+   "group": "compressed u30",
+   "variant": "u30",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014321974478662014
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__u50",
+   "pool": "C",
+   "group": "compressed u50",
+   "variant": "u50",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027257049456238747
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__s192",
+   "pool": "C",
+   "group": "compressed s192",
+   "variant": "s192",
+   "variant_info": {
+    "kind": "structured",
+    "width": 192
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s0__s128",
+   "pool": "C",
+   "group": "compressed s128",
+   "variant": "s128",
+   "variant_info": {
+    "kind": "structured",
+    "width": 128
+   },
+   "extra": {
+    "parent": "A_s0"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "bc4e0dfbcff28b994e3acabbae2d6f1d833331dc5bfad5cc9aa8f410385bd4b0",
+   "path": "rwm_repro/runs/armA_seed0/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__fp16",
+   "pool": "C",
+   "group": "compressed fp16",
+   "variant": "fp16",
+   "variant_info": {
+    "kind": "fp16"
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__int8w",
+   "pool": "C",
+   "group": "compressed int8w",
+   "variant": "int8w",
+   "variant_info": {
+    "kind": "int8w",
+    "max_scale": 0.0020241467502173476
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__u10",
+   "pool": "C",
+   "group": "compressed u10",
+   "variant": "u10",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.1,
+    "pool_entries": 1410944,
+    "pruned_entries": 141094,
+    "threshold_abs": 0.0037509978283196688
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__u20",
+   "pool": "C",
+   "group": "compressed u20",
+   "variant": "u20",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.2,
+    "pool_entries": 1410944,
+    "pruned_entries": 282189,
+    "threshold_abs": 0.008572679944336414
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__u30",
+   "pool": "C",
+   "group": "compressed u30",
+   "variant": "u30",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014207061380147934
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__u50",
+   "pool": "C",
+   "group": "compressed u50",
+   "variant": "u50",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027050457894802094
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__s192",
+   "pool": "C",
+   "group": "compressed s192",
+   "variant": "s192",
+   "variant_info": {
+    "kind": "structured",
+    "width": 192
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s1__s128",
+   "pool": "C",
+   "group": "compressed s128",
+   "variant": "s128",
+   "variant_info": {
+    "kind": "structured",
+    "width": 128
+   },
+   "extra": {
+    "parent": "A_s1"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "7fc6d34b49b002cb2c91013827a30010b7d73e154b519fc728cbbf8533cb93f0",
+   "path": "rwm_repro/runs/armA_seed1/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__fp16",
+   "pool": "C",
+   "group": "compressed fp16",
+   "variant": "fp16",
+   "variant_info": {
+    "kind": "fp16"
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__int8w",
+   "pool": "C",
+   "group": "compressed int8w",
+   "variant": "int8w",
+   "variant_info": {
+    "kind": "int8w",
+    "max_scale": 0.001996756773295365
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__u10",
+   "pool": "C",
+   "group": "compressed u10",
+   "variant": "u10",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.1,
+    "pool_entries": 1410944,
+    "pruned_entries": 141094,
+    "threshold_abs": 0.003967969678342342
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__u20",
+   "pool": "C",
+   "group": "compressed u20",
+   "variant": "u20",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.2,
+    "pool_entries": 1410944,
+    "pruned_entries": 282189,
+    "threshold_abs": 0.00887181144207716
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__u30",
+   "pool": "C",
+   "group": "compressed u30",
+   "variant": "u30",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014494975097477436
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__u50",
+   "pool": "C",
+   "group": "compressed u50",
+   "variant": "u50",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.027319442480802536
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__s192",
+   "pool": "C",
+   "group": "compressed s192",
+   "variant": "s192",
+   "variant_info": {
+    "kind": "structured",
+    "width": 192
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s2__s128",
+   "pool": "C",
+   "group": "compressed s128",
+   "variant": "s128",
+   "variant_info": {
+    "kind": "structured",
+    "width": 128
+   },
+   "extra": {
+    "parent": "A_s2"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "c42f121422ce5e331dba7364534bf36fe41d75a7f412c492ad5a6576b02b2e29",
+   "path": "rwm_repro/runs/armA_seed2/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__fp16",
+   "pool": "C",
+   "group": "compressed fp16",
+   "variant": "fp16",
+   "variant_info": {
+    "kind": "fp16"
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__int8w",
+   "pool": "C",
+   "group": "compressed int8w",
+   "variant": "int8w",
+   "variant_info": {
+    "kind": "int8w",
+    "max_scale": 0.0021811578217453844
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__u10",
+   "pool": "C",
+   "group": "compressed u10",
+   "variant": "u10",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.1,
+    "pool_entries": 1410944,
+    "pruned_entries": 141094,
+    "threshold_abs": 0.0038540081586688757
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__u20",
+   "pool": "C",
+   "group": "compressed u20",
+   "variant": "u20",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.2,
+    "pool_entries": 1410944,
+    "pruned_entries": 282189,
+    "threshold_abs": 0.008703731000423431
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__u30",
+   "pool": "C",
+   "group": "compressed u30",
+   "variant": "u30",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014302860014140606
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__u50",
+   "pool": "C",
+   "group": "compressed u50",
+   "variant": "u50",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.02718915417790413
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__s192",
+   "pool": "C",
+   "group": "compressed s192",
+   "variant": "s192",
+   "variant_info": {
+    "kind": "structured",
+    "width": 192
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s3__s128",
+   "pool": "C",
+   "group": "compressed s128",
+   "variant": "s128",
+   "variant_info": {
+    "kind": "structured",
+    "width": 128
+   },
+   "extra": {
+    "parent": "A_s3"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "e44e15f5fc31556c7d16647c96edf91bb0d5a4b8b8ad72078ad841a3e60ad260",
+   "path": "rwm_repro/runs/armA_seed3/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__fp16",
+   "pool": "C",
+   "group": "compressed fp16",
+   "variant": "fp16",
+   "variant_info": {
+    "kind": "fp16"
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__int8w",
+   "pool": "C",
+   "group": "compressed int8w",
+   "variant": "int8w",
+   "variant_info": {
+    "kind": "int8w",
+    "max_scale": 0.002277556601471788
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__u10",
+   "pool": "C",
+   "group": "compressed u10",
+   "variant": "u10",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.1,
+    "pool_entries": 1410944,
+    "pruned_entries": 141094,
+    "threshold_abs": 0.003783676540479064
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__u20",
+   "pool": "C",
+   "group": "compressed u20",
+   "variant": "u20",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.2,
+    "pool_entries": 1410944,
+    "pruned_entries": 282189,
+    "threshold_abs": 0.00861359667032957
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__u30",
+   "pool": "C",
+   "group": "compressed u30",
+   "variant": "u30",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1410944,
+    "pruned_entries": 423283,
+    "threshold_abs": 0.014201134443283081
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__u50",
+   "pool": "C",
+   "group": "compressed u50",
+   "variant": "u50",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1410944,
+    "pruned_entries": 705472,
+    "threshold_abs": 0.026948364451527596
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__s192",
+   "pool": "C",
+   "group": "compressed s192",
+   "variant": "s192",
+   "variant_info": {
+    "kind": "structured",
+    "width": 192
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  },
+  {
+   "key": "A_s4__s128",
+   "pool": "C",
+   "group": "compressed s128",
+   "variant": "s128",
+   "variant_info": {
+    "kind": "structured",
+    "width": 128
+   },
+   "extra": {
+    "parent": "A_s4"
+   },
+   "ensemble": 1,
+   "finite": true,
+   "arena": "18",
+   "starts": [
+    999,
+    1399,
+    7999,
+    8399
+   ],
+   "sha256": "b5e0fa1123cb4ae935a3b925fb0801e765cfd3ac25f8f1cf0b653582eb69d24a",
+   "path": "rwm_repro/runs/armA_seed4/weights_2500.pt"
+  }
+ ]
+}

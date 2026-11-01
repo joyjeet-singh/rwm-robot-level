@@ -42,7 +42,7 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
         put(f"{q.lower()}_delta", r2(v["delta"]), s, f"{q}.delta")
         put(f"{q.lower()}_ci975", cib(*v["ci97.5"], f=r2), s, f"{q}.ci97.5")
         put(f"{q.lower()}_ci95", cib(*v["ci95"], f=r2), s, f"{q}.ci95")
-        put(f"{q.lower()}_verdict", v["verdict"], s, f"{q}.verdict")
+        put(f"{q.lower()}_verdict", v["verdict"].lower(), s, f"{q}.verdict")
         put(f"{q.lower()}_tau_lam", r2(v["tau_new"]), s, f"{q}.tau_new")
         put(f"{q.lower()}_tau_{base}", r2(v["tau_base"]), s, f"{q}.tau_base")
         for tgt in ("E24", "E368"):
@@ -52,7 +52,7 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
             put(f"{k}_rho_base", r2(w["rho_base"]), s, f"{q}_{tgt}.rho_base")
             put(f"{k}_delta", r2(w["delta"]), s, f"{q}_{tgt}.delta")
             put(f"{k}_ci", cib(*w["ci95"], f=r2), s, f"{q}_{tgt}.ci95")
-            put(f"{k}_verdict", w["verdict"], s, f"{q}_{tgt}.verdict")
+            put(f"{k}_verdict", w["verdict"].lower(), s, f"{q}_{tgt}.verdict")
 
     # ---- Q3 (X5 within folds), Q4 (kinematic residual), Q5 (R and C only)
     for key, q in (("q3_1", "Q3_vs_E1"), ("q3_8", "Q3_vs_E8")):
@@ -61,20 +61,20 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
         put(f"{key}_rho_base", r2(v["rho_base_mean"]), s, f"{q}.rho_base_mean")
         put(f"{key}_delta", r2(v["delta"]), s, f"{q}.delta")
         put(f"{key}_ci", cib(*v["ci95"], f=r2), s, f"{q}.ci95")
-        put(f"{key}_verdict", v["verdict"], s, f"{q}.verdict")
+        put(f"{key}_verdict", v["verdict"].lower(), s, f"{q}.verdict")
     for key, q in (("q4_1", "Q4_vs_E1"), ("q4_8", "Q4_vs_E8"), ("q5_1", "Q5_vs_E1"), ("q5_8", "Q5_vs_E8")):
         v = S[q]
         put(f"{key}_rho_new", r2(v["rho_new"]), s, f"{q}.rho_new")
         put(f"{key}_rho_base", r2(v["rho_base"]), s, f"{q}.rho_base")
         put(f"{key}_delta", r2(v["delta"]), s, f"{q}.delta")
         put(f"{key}_ci", cib(*v["ci95"], f=r2), s, f"{q}.ci95")
-        put(f"{key}_verdict", v["verdict"], s, f"{q}.verdict")
+        put(f"{key}_verdict", v["verdict"].lower(), s, f"{q}.verdict")
 
     # ---- Q6 and per-variant stability shifts (X5, 25 parents)
     v = S["Q6"]
     put("q6_mean", r2(v["mean"]), s, "Q6.mean")
     put("q6_ci", cib(*v["ci95"], f=r2), s, "Q6.ci95")
-    put("q6_verdict", v["verdict"], s, "Q6.verdict")
+    put("q6_verdict", v["verdict"].lower(), s, "Q6.verdict")
     put("q6_npos", str(v["n_positive_lam1"]), s, "Q6.n_positive_lam1")
     put("q6_nparents", str(v["n_parents"]), s, "Q6.n_parents")
     put("parent_lam", r2(S["parent_mean_lam1_X5"]), s, "parent_mean_lam1_X5")
@@ -88,9 +88,12 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
     g = S["D1_groups_F18"]
     names = {1: "sweep M32 N1", 2: "sweep M32 N2", 8: "A (M32,N8)", 16: "sweep M32 N16", 32: "sweep M32 N32"}
     for n, gname in names.items():
-        for k in ("E1", "E8", "E100", "E368"):
+        for k in ("E1", "E8", "E24", "E100", "E368"):
             put(f"N{n}_{k}", sig(g[gname][k], 2), s, f"D1_groups_F18.{gname}.{k}")
         put(f"N{n}_lam", r2(g[gname]["lam1"]), s, f"D1_groups_F18.{gname}.lam1")
+    for k in ("E1", "E8", "E24", "E100", "E368"):
+        put(f"N1overN8_{k}", sig(g[names[1]][k] / g[names[8]][k], 2), s,
+            f"D1_groups_F18.{names[1]}.{k} / D1_groups_F18.{names[8]}.{k}")
     for gname, k in (("B (teacher forced)", "B"), ("A (M32,N8)", "A")):
         for q in ("E1", "E100", "E368"):
             put(f"g{k}_{q}", sig(g[gname][q], 2), s, f"D1_groups_F18.{gname}.{q}")
