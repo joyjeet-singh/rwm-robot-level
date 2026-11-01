@@ -1,0 +1,23 @@
+% Single-column, anonymous submission build (AIR 2027 call: "initial submissions in single-column format with no
+% page limit"). The body is shared with main_twocol.tex; edit body.template.tex only.
+\documentclass[11pt]{article}
+\ifdefined\pdfinfoomitdate \pdfinfoomitdate=1 \fi
+\ifdefined\pdftrailerid \pdftrailerid{} \fi
+\ifdefined\pdfsuppressptexinfo \pdfsuppressptexinfo=-1 \fi
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,xcolor,microtype,url}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks,pdfauthor={},pdftitle={},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}]{hyperref}
+\linespread{1.08}
+\newcommand{\figw}{0.72\linewidth}
+\newcommand{\figwide}{0.9\linewidth}
+\newenvironment{widetable}[1][t]{\begin{table}[#1]}{\end{table}}
+\newenvironment{widefigure}[1][t]{\begin{figure}[#1]}{\end{figure}}
+\newenvironment{IEEEkeywords}{\par\noindent\textbf{Keywords:}\ }{\par}
+\newcommand{\anonauthor}{Anonymous Author(s)}
+\begin{document}
+\input{body.tex}
+\end{document}

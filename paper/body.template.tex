@@ -1,0 +1,136 @@
+% SOURCE of the paper body, shared by main_single.tex and main_twocol.tex. Numbers are never typed here: every
+% double-brace placeholder is filled by scripts/build_paper.py from results/paper_numbers.json, which
+% scripts/paper_numbers.py and scripts/air_numbers.py read from result files.
+\title{One Step Ahead Is Not Enough: Testing a Learned Quadruped Simulator at the Horizon It Is Used}
+\author{\anonauthor}
+\maketitle
+
+\begin{abstract}
+%%ABSTRACT%%
+\end{abstract}
+
+\begin{IEEEkeywords}
+learned simulators, world models, legged robots, model-based reinforcement learning, Lyapunov exponents,
+model compression, uncertainty
+\end{IEEEkeywords}
+
+\section{Introduction}\label{sec:intro}
+A legged robot can learn to walk inside a \emph{learned simulator}: a neural network that predicts the robot's next
+state from its recent states and motor commands, run forward on its own predictions for many steps. Such a run is
+called a \emph{rollout}, and the number of steps it lasts is its \emph{horizon}. The Robotic World Model
+(RWM)~\cite{li2025rwm} learns a simulator of this kind from the joint and body measurements of an ANYmal~D
+quadruped and imagines 24 steps per policy update; its follow-up, RWM-U~\cite{li2025rwmu}, trains a walking policy
+entirely inside 100-step imagined rollouts and runs it on the real robot. Image-based world models work the same
+way~\cite{hafner2025}. In every case the simulator is used far beyond one step, and because each prediction becomes
+the next input, small errors are fed back and can grow~\cite{venkatraman2015,talvitie2017,lambert2022compounding,janner2019}.
+
+Yet such simulators are usually trained on one-step targets (\emph{teacher forcing}~\cite{williams1989}: the network
+always sees the true previous state) and checked by their one-step error on held-out data. Compression for on-board
+use is judged the same way~\cite{han2016}, and the uncertainty estimates that offline methods use to distrust the
+simulator are fitted one step at a time~\cite{chua2018,yu2020mopo}. This paper asks two questions of a learned
+legged-robot simulator: \emph{when does a one-step check give the wrong answer about a simulator that will be used
+100 steps ahead}, and \emph{is there a cheap check, needing no recorded future, that does better?}
+
+We answer them on RWM's open-source dynamics model. We rebuilt it from the papers and the release, matched the
+release's losses and gradients exactly before training anything, and trained {{n_trained}} models on a laptop-class
+processor, without a graphics card; with {{n_compressed}} compressed copies and the authors' released model we
+measured {{n_sims}} simulators. Decision rules were committed to version control before the data that tested them
+existed. Our contributions are:
+\begin{itemize}
+\item \textbf{A horizon-resolved audit} (Table~\ref{tab:decisions}): for the training objective, the training
+horizon, compression and the size of the uncertainty estimate, the one-step answer differs from the answer at the
+horizon of use, in direction or by an order of magnitude.
+\item \textbf{A stability account.} The leading finite-time Lyapunov exponent, the average rate at which a
+simulator amplifies a small error, is positive for simulators trained one step ahead and negative for those trained
+on their own rollouts, and falls steadily as the training horizon grows.
+\item \textbf{A pre-registered comparison of pre-deployment checks} on {{n_P}} simulators, replicated on {{n_X}}
+across five data splits: %%CONTRIB_CHECKS%%
+\item \textbf{Limits of label-free signals at run time.} Read step by step, neither the growth rate, kinematic
+consistency nor ensemble disagreement flags bad steps reliably, and the ensemble's spread ranks error correctly but
+understates it by a factor that grows with the horizon.
+\end{itemize}
+
+\section{Related Work}\label{sec:related}
+\textbf{Compounding error.} Training a sequence model on its own predictions rather than on true inputs is an
+established remedy for errors that grow along a rollout~\cite{bengio2015scheduled,venkatraman2015,talvitie2017,lambert2021},
+and model-based reinforcement learning limits how far a model is rolled out for the same reason~\cite{janner2019}.
+These works measure the error that grows; we ask which pre-deployment check predicts it, and add a property of the
+network that causes it.
+\textbf{Uncertainty for model-based control.} Ensembles~\cite{lakshminarayanan2017,chua2018} estimate uncertainty,
+and offline methods penalise imagined reward by their disagreement~\cite{yu2020mopo,li2025rwmu}; Lu et
+al.~\cite{lu2022} compare such penalties by how well they track model error. We measure the released penalty's
+coverage, horizon by horizon.
+\textbf{Stability of recurrent networks.} Exploding and vanishing gradients follow products of a recurrent network's
+Jacobians~\cite{pascanu2013difficulty}; contracting recurrent models are easier to train and
+approximate~\cite{miller2019stable}; Lyapunov spectra characterise chaotic recurrent networks~\cite{engelken2024lyapunov}.
+We use the leading exponent, computed by Benettin's method~\cite{benettin1980}, as a check on a trained robot
+simulator.
+\textbf{Physics and compression.} Kinematic consistency has been used to diagnose long-horizon failure of imagined
+rollouts~\cite{schafer2026}, in the spirit of parity relations in fault detection~\cite{isermann2005}. Compressed
+world models are judged by planning success or task reward~\cite{fu2026}, or by a summary of error growth along a
+rollout~\cite{pavlova2026}; pruning is often matched by training a small network from scratch~\cite{liu2019rethinking}.
+
+\section{System and Protocol}\label{sec:setup}
+\textbf{Robot data.} The release contains {{rows}} recorded steps of an ANYmal~D trotting on flat ground at 50~Hz:
+ten 20-second episodes in which the commanded velocity changes once, recorded from the authors' physics simulation
+of the robot. Each step holds a 45-number state (the body's linear and angular velocity, the direction of gravity
+seen from the body, and the angle, speed and torque of each of the 12 joints) and the 12 joint commands. These data
+are {{budget_pct}} of what the original model was trained on.
+
+\textbf{Simulator.} The network is RWM's: two layers of gated recurrent units (GRU, a standard recurrent layer) of
+width 256 read the last 32 states and commands (the \emph{history}) and predict the change to the next state; side
+heads predict foot contacts and do not feed the forecast. RWM trains it on its own 8-step rollouts (\emph{rollout
+training}); its released checkpoint has five output heads on one shared GRU trunk, whose spread is the uncertainty
+RWM-U uses.
+
+\textbf{Rebuild and verification.} Before any training, our rebuild's outputs equal the release's bit for bit, and
+its losses and gradients differ by {{diff_max}} across the {{diff_terms}} loss terms and {{diff_tensors}} parameter
+tensors of the released objective. Two defects of the release matter for evaluation. Its termination column is
+always zero, so {{win_cross}} of the {{win_naive}} training windows splice the end of one episode onto the start of
+the next; we recover the boundaries from the reset rows. And its evaluation feeds each command one step late:
+scored causally, the released model's one-step error falls by {{stale_h1}} {{stale_h1_ci}}, while at 100 steps the
+change, {{stale_h100}} {{stale_h100_ci}}, is not resolved, so a long-horizon check would never have revealed it.
+
+\textbf{Models.} %%MODELS%%
+
+\textbf{Held-out arenas.} Two 400-step windows that overlap are not independent evidence, so every comparison counts
+only non-overlapping ones. Each held-out episode yields two, each read as 32 steps of history and 368 forecast
+steps (7.36~s). Most models were trained with episodes 1 and 8 held out (\emph{F18}: 4 independent trajectories);
+the main training methods were also trained on five fixed splits that hold each episode out once (\emph{X5}: each
+model scored on its own split's 4 trajectories, 20 in all).
+
+\textbf{Measures.} The error of a prediction is the mean absolute error over the 45 state numbers, each divided by
+its standard deviation in the data. $E_h$ is the error over $h$-step rollouts started from every fourth position of
+the held-out trajectories, each after its 32 true history steps ($E_1$: every position, one step ahead); $E_{368}$
+is the error of the single 368-step rollout per trajectory. The \emph{floor} predicts that nothing changes, holding
+the last history state. A compressed model's \emph{skill retained} is $K(h)=1-\Delta(h)/S(h)$, where $\Delta$ is
+its extra error over its uncompressed parent and $S$ the parent's advantage over the floor; $K<0$ means worse than
+predicting no change.
+The \emph{growth rate} $\lambda_1$ is the leading finite-time Lyapunov exponent of the rollout: picture two copies
+of the simulator started from almost identical internal states and driven by the same commands; $\lambda_1$ is the
+average exponential rate, per second, at which the gap between them grows ($\lambda_1>0$) or shrinks ($<0$). We
+compute it over the 367 steps of each 368-step rollout from exact Jacobian--vector products by Benettin's
+method~\cite{benettin1980}, in double precision, from a fixed set of start directions. It needs the history and the
+commands, never a future state. The \emph{kinematic residual} $\bar r_J$ asks whether predicted joint angles change
+as the predicted joint speeds say (trapezoid rule), each joint in units of the recording's own residual, averaged
+over the rollout. For readers who think in metres we also report joint-angle error in degrees and the error in the
+body's planar position, dead-reckoned identically from predicted and recorded body velocity and yaw rate.
+
+\textbf{Statistics and pre-registration.} Intervals are 95\% percentile intervals from 20{,}000 bootstrap draws that
+resample the independent unit: whole trajectories for comparisons of methods~\cite{cameron2008,agarwal2021}, models
+for correlations across models. A result is \emph{pre-registered} only if its decision rule was committed to version
+control before its data existed~\cite{nosek2018prereg}; the rule reads a verdict only when the interval excludes
+zero, and NOT SETTLED otherwise. Everything else is descriptive. Analyses ran on two processor cores with no graphics
+card.
+
+\section{Results}\label{sec:results}
+%%RESULTS%%
+
+\section{Discussion}\label{sec:discussion}
+%%DISCUSSION%%
+
+\section{Conclusion}\label{sec:conclusion}
+%%CONCLUSION%%
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}

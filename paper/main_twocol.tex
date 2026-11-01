@@ -1,0 +1,19 @@
+% Two-column build, used only to check that the content fits the 6-page camera-ready limit. The camera-ready
+% template is sent to accepted authors; this uses IEEE's conference class as a stand-in of similar density.
+\documentclass[conference,a4paper]{IEEEtran}
+\ifdefined\pdfinfoomitdate \pdfinfoomitdate=1 \fi
+\ifdefined\pdftrailerid \pdftrailerid{} \fi
+\ifdefined\pdfsuppressptexinfo \pdfsuppressptexinfo=-1 \fi
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs,xcolor,microtype,url}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks,pdfauthor={},pdftitle={},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}]{hyperref}
+\newcommand{\figw}{\columnwidth}
+\newcommand{\figwide}{\columnwidth}
+\newenvironment{widetable}[1][t]{\begin{table*}[#1]}{\end{table*}}
+\newenvironment{widefigure}[1][t]{\begin{figure}[#1]}{\end{figure}}
+\newcommand{\anonauthor}{\IEEEauthorblockN{Anonymous Author(s)}}
+\begin{document}
+\input{body.tex}
+\end{document}
