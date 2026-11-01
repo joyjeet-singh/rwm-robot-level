@@ -1,4 +1,4 @@
-Last session: R8, COMPLETE.
-Next action: R9 per REVISION_PLAN.md.
+Last session: R9, COMPLETE.
+Next action: R10 per REVISION_PLAN.md.
 Blockers: none.
-Notes: two-column build is 6 pages with no slack and abstract is 200 words; R9's FT text needs matching cuts. A7 empty. figures/fig_horizon.*, results/raw/, results/ft* remain unstaged (not mine). See revision/notes/R8.md.
+Notes: study FT verdicts in the paper (FT1 restores skill, FT2 nearly as skilled); A7 filled. Sec. 4.3 no longer exists (folded into Discussion item 5); the synthetic-data sentence on zero spread was cut for length. Two-column 6 pages with almost no slack; abstract 198 words. figures/fig_horizon.* remain unstaged (not mine). See revision/notes/R9.md.

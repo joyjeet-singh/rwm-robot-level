@@ -60,3 +60,11 @@
 - check_claims.py: 67 assertions (46 before); list in revision/notes/R8_claims.md. All five checks pass; two-column 6 pages, abstract 200 words.
 - air-claim-checker run; fixes (Q5 labels, pathB sentence, exploratory/descriptive labels, narrower wording) in revision/notes/R8.md.
 - Open for R10: items in R8.md "Not changed". A7 still empty for R9.
+
+## R9 status: COMPLETE (2026-11-02 03:10)
+- Job R3 complete: 30 runs (U30F, U50F), 90 models scored; C-FT1–C-FT4 pass for all; no exclusion or anomaly.
+- ft_stats.py (unedited): FT1 FINE-TUNING RESTORES SKILL (+63.9 pts [54.4, 76.0]); FT2 NEARLY AS SKILLED (99.9% [99.5, 100.4]); secondary agree; one-step reading not settled.
+- revision_numbers.study_ft(): ft_* keys (1017 total). Text: abstract clause, Sec. 4.1 two sentences, Table 1 FT row, Discussion (2), Limitations, Conclusion, appendix A7 (two tables).
+- Cuts for 6 pp (T22 order): Sec. 4.3 folded into Discussion (5); synthetic-data sentence; minor wording. Listed in DECISIONS (R9).
+- check_claims 78 (11 new), check_bib strict, submission_checks pass; single 16 pp, two-column 6 pp, abstract 198 words.
+- Commit e9b295c. Notes: revision/notes/R9.md. figures/fig_horizon.* still unstaged (not mine).
