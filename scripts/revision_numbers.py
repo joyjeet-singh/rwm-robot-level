@@ -147,9 +147,9 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
     study_ft(put, sig, sgn, cib, dp)
 
 
-def _exp10(x):
-    """1e-05 -> $1\\times10^{-5}$"""
-    m, e = f"{x:.0e}".split("e")
+def _exp10(x, d=0):
+    """1e-05 -> $1\\times10^{-5}$; d: decimals of the mantissa"""
+    m, e = f"{x:.{d}e}".split("e")
     return f"${m}\\times10^{{{int(e)}}}$"
 
 
@@ -340,7 +340,7 @@ def study_ft(put, sig, sgn, cib, dp):
         ok = sum(1 for x in ch[c].values() if (x["passed"] if isinstance(x, dict) else x) is True)
         assert ok == len(ch[c])
         put("ft_" + c.replace("-", "").lower() + "_pass", f"{ok} of {len(ch[c])}", rm, f"checks.{c}.*.passed")
-    put("ft_cft4_maxrel", _exp10(max(x["max_rel_per_trajectory"] for x in ch["C-FT4"].values())), rm,
+    put("ft_cft4_maxrel", _exp10(max(x["max_rel_per_trajectory"] for x in ch["C-FT4"].values()), 1), rm,
         "checks.C-FT4.*.max_rel_per_trajectory (max)")
     put("ft_n_scored", str(len(M["models"])), rm, "models (count)")
 

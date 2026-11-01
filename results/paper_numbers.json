@@ -2687,7 +2687,7 @@
  "ft_cft4_maxrel": {
   "path": "checks.C-FT4.*.max_rel_per_trajectory (max)",
   "source": "AIR 2027/results/ft_models.json",
-  "value": "$2\\times10^{-7}$"
+  "value": "$2.2\\times10^{-7}$"
  },
  "ft_cft4_pass": {
   "path": "checks.C-FT4.*.passed",

@@ -53,3 +53,22 @@
 - K above 100% is printed as such (new fk in revision_numbers.study_ft; air_numbers' fk caps at 100%). Table 1 caption says ">100%: better than the parent"; A7 states the control alone reaches 102.3%.
 - The registration time is printed without time zone (double-blind); the commit hash is a key but not printed.
 - A7's one-step reading is reported as "not separated (not settled)", not as "one step did not mislead" (the weaker statement).
+
+## R10
+- The claim checker was given, beyond R8 step 3's files, `results/ft_stats.json` and `prereg/PREREG_FT.md`, because R9 added study FT text after R8's list was written. Read-only; no rule affected.
+- Two-column length: the fixes added text, so these were cut or moved (no limitation, failure or scope statement lost; each survives elsewhere): the earlier 500/10,000-iteration teacher-forcing growth-rate sentence (cut); the 8-bit dynamic-quantisation result (moved to appendix A5); the "from scratch" sentence shortened with a pointer to A5; the Sec. 4.2 closing "recorded commands" sentence (kept in Discussion (3), Limitations, Conclusion); Fig. 2 caption's repeat of the pruning point; Discussion (5)'s "re-synchronise on a schedule" advice (the claim checker found it wider than A6); Intro "on a small fraction of its data" (stated in Sec. 4.1).
+- The abstract no longer gives the zero-spread cause: the spread factor is the heads' disagreement (`n8_k_rel_epi`, epistemic), and the variance collapse concerns each head's own variance, so "spread too small: the loss is lowest at zero spread" overstated the link. Bullet 1 and Sec. 4.1 now state them as two facts.
+- A7 no longer prints the registration time (referee: anonymity); "committed before any fine-tuned pruned model existed" stays, and the supplement carries the commits.
+- `revision_numbers._exp10` gained a decimals argument; only `ft_cft4_maxrel` uses it (2×10⁻⁷ → 2.2×10⁻⁷; the true maximum is 2.18×10⁻⁷).
+
+## R10 declined
+- New analyses: calibration of our own held-out five-head ensembles (referee M6); intervals on Table 1's error ratios (referee m9); a constant-velocity row in Table 1 / curve in Fig. 1 (referee M7: it is a position error in metres, not the state error, and the figure would need new data). No new experiments in R10.
+- New references (Ljung; Piroddi & Spinelli 2003; Ross & Bagnell 2012; Asadi et al. 2019; Lohmiller & Slotine 1998; Hwangbo et al. 2019): reasonable, but each needs verifying through air-bib-checker, which R10 may not use, and there is no page room. Recommend the author add Lohmiller & Slotine (contraction) and Hwangbo et al. if space is found.
+- Title change (referee M7): left to the author; R6 listed alternatives (T23).
+- Moving the window-matched analysis into a main-text table, and further restructuring (referee M4, M9, m12): no room at six pages; the result is stated in Sec. 4.2 and Table 4.
+- Splice count 352 (referee m2): correct. Episode lengths are 999 + 9 × 1,000 + 1 orphan row (`rwm_repro/results/step0_regimes.json` window_accounting), so one more window crosses than 9 × 39.
+- Public registry (m14): not possible after the fact; the supplement (R11) carries the commits.
+- λ1 across widths (m13), a glossary (m11), "within band at 6 of 6 horizons" (m11): no room; the λ1 caveat ("network's own coordinates") is in Limitations.
+- Abstract "(2.6: 4 trajectories)" (claim checker 8): no word room (198/200); Table 1 names "8 on F18, 4".
+- Claim checker 7 (the int8 verdict label): the sentence moved to A5 and still reports the registered value; Table 1's row already says "8-bit weights", and Limitations says "this study's 8-bit variant rounds weights only".
+- Fig. 1 "about 7%" (claim checker 11): "close to its parent" used instead, so no number is typed.

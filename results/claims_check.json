@@ -77,7 +77,11 @@
   "A7: all four checks passed for every run; no arm excluded; no undefined draw": true,
   "A7: probe projected the study within the cap, so the 50% arm ran": true,
   "Limitations: only the 30% and 50% pruned copies were fine-tuned in this study": true,
-  "Sec. 4.1: unretrained 30% copies of the FT parents had lost most 100-step skill (below one half)": true
+  "Sec. 4.1: unretrained 30% copies of the FT parents had lost most 100-step skill (below one half)": true,
+  "bullet 2: lambda_1 > 0 for every model trained one or two steps ahead; < 0 for every other rollout-trained model (F18)": true,
+  "A5: every copy with lambda_1 > 0 is 50%-pruned or width-reduced": true,
+  "Sec. 4.1: 10% and 20% shifts similar to 30%, intervals exclude zero (exploratory)": true,
+  "Sec. 4.2/Discussion: released model positive lambda but 100-step error below the floor": true
  },
  "failed": []
 }

@@ -221,6 +221,21 @@ CLAIMS.update({
         FTp["FT1"]["K_orig_noft"] < 0.5,
 })
 
+# R10: sentences added or reworded after the fresh-eyes review.
+_short = [k for k in f18 if k.startswith(("mn_M32_N1_", "mn_M32_N2_")) or f18[k]["pool"] == "T"]
+CLAIMS.update({
+    "bullet 2: lambda_1 > 0 for every model trained one or two steps ahead; < 0 for every other rollout-trained model (F18)":
+        all(f18[k]["lam1"] > 0 for k in _short)
+        and all(r["lam1"] < 0 for k, r in f18.items() if r["pool"] == "R" and k not in _short),
+    "A5: every copy with lambda_1 > 0 is 50%-pruned or width-reduced":
+        sum(LS[v]["n_positive_lam1"] for v in ("u10", "u20", "u30", "u50", "s192", "s128"))
+        == sum(LS[v]["n_positive_lam1"] for v in ("u50", "s192", "s128")) > 0,
+    "Sec. 4.1: 10% and 20% shifts similar to 30%, intervals exclude zero (exploratory)":
+        all(LS[u]["ci95"][0] > 0 and abs(LS[u]["mean"] - LS["u30"]["mean"]) < 0.02 for u in ("u10", "u20")),
+    "Sec. 4.2/Discussion: released model positive lambda but 100-step error below the floor":
+        S["D5_released"]["lam1"] > 0 and S["D5_released"]["E100"] < S["D5_released"]["floor"]["E100"],
+})
+
 if __name__ == "__main__":
     out = {k: bool(v) for k, v in CLAIMS.items()}
     failed = [k for k, v in out.items() if not v]

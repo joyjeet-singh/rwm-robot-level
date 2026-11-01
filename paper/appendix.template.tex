@@ -36,7 +36,7 @@ further training: 16-bit and 8-bit weights, removal of the smallest weights over
 50\%), and removal of units so that the hidden width is 192 or 128.
 
 \section{What was known before the registration}\label{app:A2}
-Section 2 of \texttt{PREREG.md} states what the author had read before any model was run through this folder's code.
+Section 2 of the registration (\texttt{PREREG.md}, supplementary material) states what we had read before any model was run through this study's code.
 For the growth rate $\lambda_1$ on the F18 pool, an earlier study found Spearman {{pre_ng_R_rho}} {{pre_ng_R_ci}}
 with the 368-step error over {{pre_ng_R_n}} rollout-trained models, and {{pre_ng_RT_rho}} {{pre_ng_RT_ci}} over
 {{pre_ng_RT_n}} rollout-trained and teacher-forced ones. On the five splits, $\lambda_1$ ranked {{pre_icmai_all_n}} models at
@@ -108,8 +108,8 @@ $\bar r_J$ & {{a3_F18_rJ_rho}} {{a3_F18_rJ_ci}} & {{a3_F18_rJ_same}} & {{a3_X5_r
 \end{table}
 
 \section{Wider intervals, the five-split pool without split \{1,8\}, and Holm's correction}\label{app:A4}
-All of this section is exploratory. The registered intervals resample the held-out trajectories. The wider intervals
-also resample the parent models, in two levels, with {{a2_ndraws}} draws. They are {{a2_median_ratio}} times as wide as the
+All of this section is exploratory. The registered intervals on correlations resample models (within each split on
+X5). The wider intervals resample parent models and held-out trajectories together, in two levels, with {{a2_ndraws}} draws. They are {{a2_median_ratio}} times as wide as the
 registered ones (median; {{a2_median_ratio_t2}} for the correlations of Table~\ref{tab:checks} and {{a2_median_ratio_tests}} for
 the registered differences; range {{a2_ratio_min}} to {{a2_ratio_max}}). Of the {{a2_n_tests}} registered verdicts,
 {{a2_n_hold}} hold and {{a2_n_lost}} do not.
@@ -140,7 +140,7 @@ F18, compressed & $E_1$ & {{x2_c_E1}} & & {{a2_t2_f18_compressed_e1_ci}} & \\
 X5 & $E_1$ & {{q3_1_rho_base}} & & {{a2_t2_x5_e1_ci}} & {{a2b_X5_E1_rho}} {{a2b_X5_E1_ci}} \\
  & $E_8$ & {{q3_8_rho_base}} & & {{a2_t2_x5_e8_ci}} & {{a2b_X5_E8_rho}} {{a2b_X5_E8_ci}} \\
  & $\lambda_1$ & {{q3_1_rho_new}} & & {{a2_t2_x5_lam1_ci}} & {{a2b_X5_lam1_rho}} {{a2b_X5_lam1_ci}} \\
- & $\bar r_J$ & {{x1_rJ}} & & {{a2_t2_x5_rj_ci}} & {{a2b_X5_rJ_rho}} {{a2b_X5_rJ_ci}} \\
+ & $\bar r_J$ & {{x1_rJ}} (E) & & {{a2_t2_x5_rj_ci}} & {{a2b_X5_rJ_rho}} {{a2b_X5_rJ_ci}} \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -149,15 +149,17 @@ Without split \{1, 8\}, $\lambda_1$ minus $E_1$ is {{a2b_q3_vs_e1_delta}} {{a2b_
 {{a2b_q3_vs_e8_delta}} {{a2b_q3_vs_e8_ci}}, and $\bar r_J$ minus $E_8$ is {{a2b_rj_vs_e8_delta}} {{a2b_rj_vs_e8_ci}}.
 
 Table~\ref{tab:app-tests} lists the registered differences. Holm's correction keeps the chance of any false finding among
-the {{a2c_n_family}} secondary tests at {{a2c_alpha}}, and {{a2c_n_survive}} of them survive. Its $p$-values come from a
+the {{a2c_n_family}} secondary tests of Q3--Q6 at {{a2c_alpha}}, and {{a2c_n_survive}} of them survive. The readings of Q1 and
+Q2 at 24 and 368 steps, study FT's secondary tests and every exploratory analysis are outside this family and
+uncorrected. Its $p$-values come from a
 Monte Carlo resampling, so a value close to {{a2c_alpha}} is itself uncertain (``near'' marks the tests within two
 standard errors of the threshold).
 
 \begin{table}[h]
 \centering
 \caption{Registered differences in Spearman correlation (first minus second check; Q1 and Q2 at 97.5\%, the rest at 95\%),
-with the registered and the two-level interval, whether the registered verdict still holds, and, for the seven secondary
-tests, Holm's adjusted $p$ with whether it survives and whether it is near the threshold. Two-level and Holm columns are exploratory.}
+with the registered and the two-level interval, whether the registered verdict still holds, and, for the seven secondary tests of
+Q3--Q6, Holm's adjusted $p$ with whether it survives and whether it is near the threshold. Two-level and Holm columns are exploratory.}
 \label{tab:app-tests}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -175,8 +177,8 @@ Q3: $\lambda_1-E_1$, five splits & {{q3_1_delta}} & {{q3_1_ci}} & {{a2_q3_vs_e1_
 Q3: $\lambda_1-E_8$, five splits & {{q3_8_delta}} & {{q3_8_ci}} & {{a2_q3_vs_e8_ci}} & {{a2_q3_vs_e8_holds}} & {{a2c_q3_vs_e8_pholm}} ({{a2c_q3_vs_e8_survives}}; {{a2c_q3_vs_e8_near}}) \\
 Q4: $\bar r_J-E_1$, F18 & {{q4_1_delta}} & {{q4_1_ci}} & {{a2_q4_vs_e1_ci}} & {{a2_q4_vs_e1_holds}} & {{a2c_q4_vs_e1_pholm}} ({{a2c_q4_vs_e1_survives}}; {{a2c_q4_vs_e1_near}}) \\
 Q4: $\bar r_J-E_8$, F18 & {{q4_8_delta}} & {{q4_8_ci}} & {{a2_q4_vs_e8_ci}} & {{a2_q4_vs_e8_holds}} & {{a2c_q4_vs_e8_pholm}} ({{a2c_q4_vs_e8_survives}}; {{a2c_q4_vs_e8_near}}) \\
-Q5: $\lambda_1-E_1$, compressed & {{q5_1_delta}} & {{q5_1_ci}} & {{a2_q5_vs_e1_ci}} & {{a2_q5_vs_e1_holds}} & {{a2c_q5_vs_e1_pholm}} ({{a2c_q5_vs_e1_survives}}; {{a2c_q5_vs_e1_near}}) \\
-Q5: $\lambda_1-E_8$, compressed & {{q5_8_delta}} & {{q5_8_ci}} & {{a2_q5_vs_e8_ci}} & {{a2_q5_vs_e8_holds}} & {{a2c_q5_vs_e8_pholm}} ({{a2c_q5_vs_e8_survives}}; {{a2c_q5_vs_e8_near}}) \\
+Q5: $\lambda_1-E_1$, no one-step-trained & {{q5_1_delta}} & {{q5_1_ci}} & {{a2_q5_vs_e1_ci}} & {{a2_q5_vs_e1_holds}} & {{a2c_q5_vs_e1_pholm}} ({{a2c_q5_vs_e1_survives}}; {{a2c_q5_vs_e1_near}}) \\
+Q5: $\lambda_1-E_8$, no one-step-trained & {{q5_8_delta}} & {{q5_8_ci}} & {{a2_q5_vs_e8_ci}} & {{a2_q5_vs_e8_holds}} & {{a2c_q5_vs_e8_pholm}} ({{a2c_q5_vs_e8_survives}}; {{a2c_q5_vs_e8_near}}) \\
 Q6: growth-rate shift of pruned copies & {{q6_mean}} & {{q6_ci}} & {{a2_q6_ci}} & {{a2_q6_holds}} & {{a2c_q6_pholm}} ({{a2c_q6_survives}}; {{a2c_q6_near}}) \\
 \bottomrule
 \end{tabular}}
@@ -186,8 +188,8 @@ Q6: growth-rate shift of pruned copies & {{q6_mean}} & {{q6_ci}} & {{a2_q6_ci}} 
 Table~\ref{tab:app-comp} gives, for every compression variant of the {{q6_nparents}} five-split parents, the shift in
 growth rate, how many copies have $\lambda_1>0$, and the skill retained $K$ (the share of the parent's advantage over
 predicting no change that the copy keeps). In all, {{n_unstable_removed}} of the {{n_removed_copies}} copies with
-weights or units removed have $\lambda_1>0$, and {{n_unstable_wide}} of the {{n_wide_copies}} copies pruned by 50\% or
-reduced in width.
+weights or units removed have $\lambda_1>0$, all of them among the {{n_wide_copies}} copies pruned by 50\% or reduced in
+width.
 
 \begin{table}[h]
 \centering
@@ -215,8 +217,10 @@ Width 128 & {{lam_s128}} & {{lamshift_s128}} {{lamshift_s128_ci}} & {{lampos_s12
 
 An earlier registered study of the same recipe, with 500 fine-tuning iterations, is summarised in
 Table~\ref{tab:app-perc}. Fine-tuned narrow copies are compared with the equally fine-tuned full-width model, as in the
-body; the control row fine-tunes the unreduced model in the same way. Q4 is that study's comparison of fine-tuning
-with training from scratch at the same width.
+body; the control row fine-tunes the unreduced model in the same way. Its last column compares fine-tuning
+with training from scratch at the same width. In a registered test of PyTorch's 8-bit dynamic quantisation (weights
+and activations; the release's relative error), the model kept {{perc_int8_K}} {{perc_int8_K_ci}} of its 368-step
+skill.
 
 \begin{table}[h]
 \centering
@@ -228,7 +232,7 @@ against training from scratch at 368 steps.}
 \setlength{\tabcolsep}{3pt}
 \fittable{\begin{tabular}{@{}llccc@{}}
 \toprule
-Reading & Width & $K_{100}$ & $K_{368}$ & Q4 (368 steps) \\
+Reading & Width & $K_{100}$ & $K_{368}$ & Fine-tuned vs scratch (368 steps) \\
 \midrule
 First run & 192 & {{perc_K_first_w192_h100}} {{perc_K_first_w192_h100_ci}} & {{perc_K_first_w192_h368}} {{perc_K_first_w192_h368_ci}} & {{perc_Q4_first_w192}} {{perc_Q4_first_w192_ci}} \\
  & 128 & {{perc_K_first_w128_h100}} {{perc_K_first_w128_h100_ci}} & {{perc_K_first_w128_h368}} {{perc_K_first_w128_h368_ci}} & {{perc_Q4_first_w128}} {{perc_Q4_first_w128_ci}} \\
@@ -258,8 +262,7 @@ angles onto the approximate integration rule multiplied it by {{icp_J_x}}.
 % A7: the study registered in prereg/PREREG_FT.md before any fine-tuned model existed (R3): design, arms, decision
 % rules and results from scripts/ft_stats.py (results/ft_stats.json); no departure was recorded in ANOMALIES.md.
 \textbf{Design.} Study FT asked whether a short fine-tuning, with the pruned weights held at zero, restores the
-long-horizon skill that magnitude pruning removes; its rules and analysis code were committed ({{ft_reg_time}}, local
-time) before any fine-tuned pruned model existed. The parents were the {{ft_nparents}} rollout-trained five-split
+long-horizon skill that magnitude pruning removes; its rules and analysis code were committed before any fine-tuned pruned model existed. The parents were the {{ft_nparents}} rollout-trained five-split
 models with seeds {{ft_seeds}}, the seeds for which an earlier study had fine-tuned unpruned controls. Each parent's
 smallest 30\% of weight-matrix entries ({{ft_pruned_u30}}) were set to zero, and the copy was fine-tuned for
 {{ft_iters}} iterations by the controls' protocol (the parent's training episodes, rollout loss, settings and seed,
