@@ -22,3 +22,14 @@ smoke test reran the scripts on a copy on this Mac (Python 3.11.15, torch 2.2.2,
   PDF text is identical apart from word spacing; the PDF files differ in size (different TeX Live build).
 - **Working tree:** `figures/fig_checks.png` and `figures/fig_horizon.png` already differed from the last commit
   before R0 ran anything; left as they are.
+
+## Revision round 1 (R0-R11)
+
+None of these touches a registered verdict.
+- **Study FT:** C-FT1-C-FT4 passed for every model; no exclusion and no anomaly (R9).
+- **Exploratory analyses (R1-R2):** written after the registered results; labelled exploratory everywhere. Registered Q1-Q6 and Table 2 reproduce exactly.
+- **Two-column length:** exactly six pages with no slack; text was cut in R9 and R10 to keep it (DECISIONS).
+- **Declined review points** and their reasons: DECISIONS "R10 declined" (new analyses, new references needing bib checks, title change).
+- **Working tree:** `figures/fig_horizon.pdf` and `.png` differ from the last commit; they were already different before the round and were left alone.
+- **Supplement (R11):** in the zip copy only, a local path (`stage_out.py`, `common.py`) and the author-name patterns of `submission_checks.py` were replaced by placeholders. `PREREG.md` is kept byte-identical (its hash is evidence); it names a generic download folder, with no name.
+- **Registration time zone:** git commit times of the FT registration carry a +05:30 offset; the supplement README gives UTC.

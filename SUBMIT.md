@@ -3,7 +3,7 @@
 **Deadline:** papers are accepted from 15 Nov 2026 to **31 Dec 2026** (Microsoft CMT; the portal link is on
 advancesinrobotics.com/2027-IITGN). Notification 28 Feb 2027; camera-ready and registration 30 May 2027.
 
-**Upload:** `paper/AIR2027_submission.pdf` (single column, anonymous; the call allows any length at this stage).
+**Upload:** `paper/AIR2027_submission.pdf` (single column, anonymous; the call allows any length at this stage). The appendix (A1-A7) is for this single-column submission only; cut it for the camera-ready, which must fit six two-column pages (no slack: one added word makes seven).
 `paper/AIR2027_twocolumn_check.pdf` is for you only: it shows the same text fits six two-column pages, which the
 camera-ready must. The official template is e-mailed to accepted authors; the text will need re-flowing into it.
 
@@ -19,12 +19,12 @@ camera-ready must. The official template is e-mailed to accepted authors; the te
    reviewer searching for the topic could find it. That does not break the rules as written ("author names and identities must not appear
    anywhere in the submitted paper"), but do not link, mention or upload those pages with the submission, and
    avoid publicising this exact title until decisions are out.
-3. **Supplementary material.** None is required. If CMT offers an upload, an anonymised zip of `prereg/`,
-   `scripts/` and `results/` (without `raw_*.npz` if size-limited) supports the "will be released" sentence.
-   Check it for your name first (`grep -ri joyjeet`), including inside the git history bundle, which must not be
-   included.
+3. **Supplementary material (optional; your decision).** `submission/AIR2027_supplement.zip` is built and scanned for
+   identifying text (`README_SUPPLEMENT.md` inside says what it holds and the registration times). It has never been
+   uploaded. Upload it only if CMT offers a slot and you choose to; the paper's "will be released" sentences do not depend on it.
+   Re-scan it for your name first (`unzip` into an empty folder, then `grep -ri`); never include the git history bundle.
 4. **AI-use statement.** The paper ends with a short declaration that an AI assistant wrote code, ran analyses
-   and drafted text under your direction. Keep it, and edit it to describe your own role accurately.
+   and drafted text under your direction. **You must edit it** to describe your own role accurately, and check AIR 2027's rules on AI-assisted writing.
 5. **Read the paper once end to end.** Every number is generated from a result file, every reference was traced
    to a record an earlier study checked, and an independent re-computation agrees; but you are the author.
    Re-open each reference link listed in the earlier studies' `bib_verified.json` files.

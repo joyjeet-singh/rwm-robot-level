@@ -74,3 +74,22 @@ earlier studies (their files are cited per number in `results/paper_numbers.json
 teacher-forcing test and the uncertainty measurements (`../rwm_repro`), the training-horizon stability rule and
 the run-time growth signal (`../NGCAPS`), the kinematic alarm, repair and re-synchronisation tests (`../ICPAIAS`),
 and 8-bit dynamic quantisation and CPU timing (`../PerconAI`).
+
+## Revision round 1 (added)
+
+The paper was revised after an internal review. What is new:
+
+- **Study FT** (registered before any fine-tuned model existed: `prereg/PREREG_FT.md`, `scripts/ft_stats.py`): does a short fine-tune on
+  multi-step error restore the skill that a one-step-only model lacks? 30 runs, 90 models. Results: `results/ft_stats.json`,
+  `results/ft_report.txt`, `results/raw_FT.npz`, `results/ft_models.json`. Verdicts: FT1 FINE-TUNING RESTORES SKILL, FT2 NEARLY AS SKILLED;
+  the one-step reading is not settled.
+- **Appendix** (`paper/appendix.template.tex`, A1-A7: settings, statistics, horizon-matched checks, replication, compression, floors, study FT).
+  It is for the single-column submission only; it is cut from the six-page camera-ready.
+- **Exploratory analyses** (`scripts/revision_analyses.py`, `results/revision_exploratory.json`, `.txt`; labelled exploratory in the paper) and
+  `scripts/revision_recheck.py` (`results/revision_recheck.json`).
+- **New scripts:** `ft_eval.py`, `ft_unstructured.py`, `ft_stats.py`, `revision_numbers.py` (adds the `ft_*` and revision keys to
+  `paper_numbers.py`), `pdf_tools.py` (pypdf fallback when poppler is absent), `smoke_compare.py`.
+- **Order after the original scripts:** `revision_analyses.py`, `ft_eval.py` (training: a job), `ft_stats.py`, `revision_recheck.py`, then
+  `check_bib.py`, `paper_numbers.py`, `build_paper.py`, `check_claims.py`, `submission_checks.py`. Final pipeline run three times: the same two PDFs each time.
+- `submission/AIR2027_supplement.zip`: optional anonymous supplement for reviewers (built locally, never uploaded).
+- `revision/`: plan, log, notes, review and report (`revision/REPORT.md`).

@@ -75,3 +75,9 @@
 - Cuts for 6 pp and every decline with its reason: DECISIONS (R10, R10 declined). Traceability for all 30 rows: revision/notes/R10_traceability.md. Triage: revision/notes/R10.md.
 - check_claims 82 (4 new), check_bib strict, submission_checks pass; single 16 pp, two-column 6 pp (no slack), abstract 198 words.
 - Commit 4699b47. Open: declined references need air-bib-checker; figures/fig_horizon.* still unstaged (not mine).
+
+## R11 status: COMPLETE (2026-11-02 03:40)
+- Pipeline run 3 times: all checks pass; byte-identical PDFs. Single column 16 pp sha256 b121a247bfe2b88806c6932da95611db30cf0342c2d7bd8bd870f856c38a42a4; two-column 6 pp sha256 7aece6789f466fe2ffe8a76309dba79f87ea5262e811b43f09191666a9a6d0bf.
+- Supplement submission/AIR2027_supplement.zip (33 MB, raw kept), scanned; neutralised two paths and name patterns in the copy; PREREG.md byte-identical.
+- Updated README.md, SUBMIT.md, ANOMALIES.md; wrote revision/REPORT.md. Referee score: borderline.
+- Commit "R11: final", tag air2027-revision-1, history.bundle regenerated and verified. figures/fig_horizon.* still unstaged (not mine).
