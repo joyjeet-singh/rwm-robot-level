@@ -714,6 +714,206 @@
   "source": "AIR 2027/results/revision_exploratory.json",
   "value": "$-$0.073"
  },
+ "a1t_F18all_E1": {
+  "path": "A1_horizon_matched.F18.all.E100.E1.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.32"
+ },
+ "a1t_F18all_E8": {
+  "path": "A1_horizon_matched.F18.all.E100.E8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.84"
+ },
+ "a1t_F18all_lam1_100": {
+  "path": "A1_horizon_matched.F18.all.E100.lam1_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.77"
+ },
+ "a1t_F18all_lam1_24": {
+  "path": "A1_horizon_matched.F18.all.E100.lam1_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.33"
+ },
+ "a1t_F18all_lam1_368": {
+  "path": "A1_horizon_matched.F18.all.E100.lam1_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.80"
+ },
+ "a1t_F18all_lam1_8": {
+  "path": "A1_horizon_matched.F18.all.E100.lam1_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.21"
+ },
+ "a1t_F18all_rJ_100": {
+  "path": "A1_horizon_matched.F18.all.E100.rJ_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.94"
+ },
+ "a1t_F18all_rJ_24": {
+  "path": "A1_horizon_matched.F18.all.E100.rJ_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.88"
+ },
+ "a1t_F18all_rJ_368": {
+  "path": "A1_horizon_matched.F18.all.E100.rJ_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.95"
+ },
+ "a1t_F18all_rJ_8": {
+  "path": "A1_horizon_matched.F18.all.E100.rJ_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.83"
+ },
+ "a1t_F18cp_E1": {
+  "path": "A1_horizon_matched.F18.compressed.E100.E1.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.89"
+ },
+ "a1t_F18cp_E8": {
+  "path": "A1_horizon_matched.F18.compressed.E100.E8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.96"
+ },
+ "a1t_F18cp_lam1_100": {
+  "path": "A1_horizon_matched.F18.compressed.E100.lam1_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.58"
+ },
+ "a1t_F18cp_lam1_24": {
+  "path": "A1_horizon_matched.F18.compressed.E100.lam1_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "$-$0.30"
+ },
+ "a1t_F18cp_lam1_368": {
+  "path": "A1_horizon_matched.F18.compressed.E100.lam1_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.82"
+ },
+ "a1t_F18cp_lam1_8": {
+  "path": "A1_horizon_matched.F18.compressed.E100.lam1_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "$-$0.60"
+ },
+ "a1t_F18cp_rJ_100": {
+  "path": "A1_horizon_matched.F18.compressed.E100.rJ_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.97"
+ },
+ "a1t_F18cp_rJ_24": {
+  "path": "A1_horizon_matched.F18.compressed.E100.rJ_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.95"
+ },
+ "a1t_F18cp_rJ_368": {
+  "path": "A1_horizon_matched.F18.compressed.E100.rJ_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.94"
+ },
+ "a1t_F18cp_rJ_8": {
+  "path": "A1_horizon_matched.F18.compressed.E100.rJ_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.90"
+ },
+ "a1t_F18tr_E1": {
+  "path": "A1_horizon_matched.F18.trained.E100.E1.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "$-$0.50"
+ },
+ "a1t_F18tr_E8": {
+  "path": "A1_horizon_matched.F18.trained.E100.E8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.63"
+ },
+ "a1t_F18tr_lam1_100": {
+  "path": "A1_horizon_matched.F18.trained.E100.lam1_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.90"
+ },
+ "a1t_F18tr_lam1_24": {
+  "path": "A1_horizon_matched.F18.trained.E100.lam1_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.80"
+ },
+ "a1t_F18tr_lam1_368": {
+  "path": "A1_horizon_matched.F18.trained.E100.lam1_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.85"
+ },
+ "a1t_F18tr_lam1_8": {
+  "path": "A1_horizon_matched.F18.trained.E100.lam1_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.72"
+ },
+ "a1t_F18tr_rJ_100": {
+  "path": "A1_horizon_matched.F18.trained.E100.rJ_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.83"
+ },
+ "a1t_F18tr_rJ_24": {
+  "path": "A1_horizon_matched.F18.trained.E100.rJ_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.70"
+ },
+ "a1t_F18tr_rJ_368": {
+  "path": "A1_horizon_matched.F18.trained.E100.rJ_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.91"
+ },
+ "a1t_F18tr_rJ_8": {
+  "path": "A1_horizon_matched.F18.trained.E100.rJ_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.60"
+ },
+ "a1t_X5_E1": {
+  "path": "A1_horizon_matched.X5.E100.E1.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.78"
+ },
+ "a1t_X5_E8": {
+  "path": "A1_horizon_matched.X5.E100.E8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.95"
+ },
+ "a1t_X5_lam1_100": {
+  "path": "A1_horizon_matched.X5.E100.lam1_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.56"
+ },
+ "a1t_X5_lam1_24": {
+  "path": "A1_horizon_matched.X5.E100.lam1_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.19"
+ },
+ "a1t_X5_lam1_368": {
+  "path": "A1_horizon_matched.X5.E100.lam1_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.67"
+ },
+ "a1t_X5_lam1_8": {
+  "path": "A1_horizon_matched.X5.E100.lam1_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "$-$0.02"
+ },
+ "a1t_X5_rJ_100": {
+  "path": "A1_horizon_matched.X5.E100.rJ_100.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.96"
+ },
+ "a1t_X5_rJ_24": {
+  "path": "A1_horizon_matched.X5.E100.rJ_24.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.93"
+ },
+ "a1t_X5_rJ_368": {
+  "path": "A1_horizon_matched.X5.E100.rJ_368.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.96"
+ },
+ "a1t_X5_rJ_8": {
+  "path": "A1_horizon_matched.X5.E100.rJ_8.rho",
+  "source": "AIR 2027/results/revision_exploratory.json",
+  "value": "+0.88"
+ },
  "a2_median_ratio": {
   "path": "median of all 29 width_ratio values",
   "source": "AIR 2027/results/revision_exploratory.json",
@@ -1839,6 +2039,16 @@
   "source": "AIR 2027/results/stats.json",
   "value": "+0.68"
  },
+ "hp_10k_iters": {
+  "path": "hyperparameters.iterations (other settings equal)",
+  "source": "rwm_repro/results/step5_armA_seed0_10k.json",
+  "value": "10{,}000"
+ },
+ "hp_M": {
+  "path": "hyperparameters.history_horizon (M=32)",
+  "source": "rwm_repro/results/mn_sweep_run_M32_N1_seed0.json",
+  "value": "32"
+ },
  "hp_batch": {
   "path": "hyperparameters.batch",
   "source": "rwm_repro/results/step5_armA_seed0.json",
@@ -1848,6 +2058,16 @@
   "path": "hyperparameters.gradient_clipping (null)",
   "source": "rwm_repro/results/step5_armA_seed0.json",
   "value": "none"
+ },
+ "hp_ens_n": {
+  "path": "hyperparameters.ensemble",
+  "source": "rwm_repro/results/step5_armA_seed0_ens5.json",
+  "value": "5"
+ },
+ "hp_hidden": {
+  "path": "hyperparameters.rnn_hidden_size",
+  "source": "rwm_repro/results/mn_sweep_run_M32_N1_seed0.json",
+  "value": "256"
  },
  "hp_iters": {
   "path": "hyperparameters.iterations",
@@ -1864,6 +2084,16 @@
   "source": "rwm_repro/results/step5_armA_seed0.json",
   "value": "$1\\times10^{-4}$"
  },
+ "hp_n1_N": {
+  "path": "hyperparameters.forecast_horizon",
+  "source": "rwm_repro/results/mn_sweep_run_M32_N1_seed0.json",
+  "value": "1"
+ },
+ "hp_n1_n_records": {
+  "path": "mn_sweep_run_M32_N1_seed0-2 compared with the parent",
+  "source": "rwm_repro/results/mn_sweep_run_M32_N1_seed0.json",
+  "value": "3"
+ },
  "hp_n_loss_terms": {
   "path": "number of non-zero loss weights",
   "source": "rwm_repro/results/step5_armA_seed0.json",
@@ -1878,6 +2108,21 @@
   "path": "make_optimizer: torch.optim.Adam",
   "source": "rwm_repro/src/rwm_train.py",
   "value": "Adam"
+ },
+ "hp_parent_N": {
+  "path": "F18 A_s0 extra.N",
+  "source": "AIR 2027/results/models.json",
+  "value": "8"
+ },
+ "hp_tf_n_records": {
+  "path": "step5_armB_seed0-2: teacher_forcing true, batch/iterations/lr/wd/loss weights/clipping equal to the parent's",
+  "source": "rwm_repro/results/step5_armB_seed0.json",
+  "value": "3"
+ },
+ "hp_w124_hidden": {
+  "path": "hyperparameters.rnn_hidden_size",
+  "source": "rwm_repro/results/step5_armA_seed0_m49h124.json",
+  "value": "124"
  },
  "hp_wd": {
   "path": "hyperparameters.weight_decay",

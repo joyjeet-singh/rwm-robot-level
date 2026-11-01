@@ -41,6 +41,14 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
             put(f"a1_{name}_{lab}_delta", r3(v["delta"]), r, f"{a1}.diffs_vs_E100.{d}.{sub}.delta")
             put(f"a1_{name}_{lab}_ci", cib(*v["ci95"], f=r3), r, f"{a1}.diffs_vs_E100.{d}.{sub}.ci95")
 
+    # horizon-matched table: every check window against E100 for each F18 pool and X5 (appendix A3, exploratory)
+    for name, blk, path in (("F18all", A1["F18"]["all"]["E100"], "F18.all.E100"),
+                            ("F18tr", A1["F18"]["trained"]["E100"], "F18.trained.E100"),
+                            ("F18cp", A1["F18"]["compressed"]["E100"], "F18.compressed.E100"),
+                            ("X5", A1["X5"]["E100"], "X5.E100")):
+        for k in ("lam1_8", "lam1_24", "lam1_100", "lam1_368", "rJ_8", "rJ_24", "rJ_100", "rJ_368", "E1", "E8"):
+            put(f"a1t_{name}_{k}", r2(blk[k]["rho"]), r, f"{a1}.{path}.{k}.rho")
+
     # ---- b. A2: two-level intervals (exploratory)
     A2, a2 = R["A2a_two_level"], "A2a_two_level"
     put("a2_ndraws", f"{A2['n_draws']:,}".replace(",", "{,}"), r, f"{a2}.n_draws")
@@ -187,6 +195,37 @@ def earlier_studies(put, sig, cib, dp):
     assert ref["gradient_clipping"] is None
     put("hp_clip", "none", src, "hyperparameters.gradient_clipping (null)")
     put("hp_n_records", str(len(recs)), src, "parents whose records were compared (step5_armA_seed0-4, x3_run_armA_ho*_seed0-4)")
+
+    # how the other F18 models' records differ from the rollout-trained parent (appendix A1)
+    def hp_of(name):
+        return _ld(os.path.join(RWM_RESULTS, name))
+    iters = lambda n: f"{n:,}".replace(",", "{,}")                                       # noqa: E731
+    tfs = [hp_of(f"step5_armB_seed{i}.json") for i in range(3)]
+    assert all(t["teacher_forcing"] and all(t["hyperparameters"][h] == ref[h] for h in same) for t in tfs)
+    put("hp_tf_n_records", str(len(tfs)), _rel(os.path.join(RWM_RESULTS, "step5_armB_seed0.json")),
+        "step5_armB_seed0-2: teacher_forcing true, batch/iterations/lr/wd/loss weights/clipping equal to the parent's")
+    n1s = [hp_of(f"mn_sweep_run_M32_N1_seed{i}.json") for i in range(3)]
+    n8 = hp_of("mn_sweep_run_M16_N8_seed0.json")["hyperparameters"]
+    n1_src = _rel(os.path.join(RWM_RESULTS, "mn_sweep_run_M32_N1_seed0.json"))
+    for t in n1s:
+        h = t["hyperparameters"]
+        assert not t["teacher_forcing"] and h["forecast_horizon"] == 1 and h["history_horizon"] == 32
+        assert all(h[k] == ref[k] for k in same) and h["rnn_hidden_size"] == 256 and h["rnn_num_layers"] == 2
+    put("hp_n1_N", str(n1s[0]["hyperparameters"]["forecast_horizon"]), n1_src, "hyperparameters.forecast_horizon")
+    put("hp_M", str(n1s[0]["hyperparameters"]["history_horizon"]), n1_src, "hyperparameters.history_horizon (M=32)")
+    put("hp_hidden", str(n1s[0]["hyperparameters"]["rnn_hidden_size"]), n1_src, "hyperparameters.rnn_hidden_size")
+    parentA = [r for r in _ld(os.path.join(C.RESULTS, "models.json"))["F18"] if r["key"] == "A_s0"][0]
+    put("hp_parent_N", str(parentA["extra"]["N"]), _rel(os.path.join(C.RESULTS, "models.json")), "F18 A_s0 extra.N")
+    put("hp_n1_n_records", str(len(n1s)), n1_src, "mn_sweep_run_M32_N1_seed0-2 compared with the parent")
+    t10 = hp_of("step5_armA_seed0_10k.json")["hyperparameters"]
+    assert all(t10[k] == ref[k] for k in same if k != "iterations")
+    put("hp_10k_iters", iters(t10["iterations"]), _rel(os.path.join(RWM_RESULTS, "step5_armA_seed0_10k.json")),
+        "hyperparameters.iterations (other settings equal)")
+    w124 = hp_of("step5_armA_seed0_m49h124.json")["hyperparameters"]
+    put("hp_w124_hidden", str(w124["rnn_hidden_size"]), _rel(os.path.join(RWM_RESULTS, "step5_armA_seed0_m49h124.json")),
+        "hyperparameters.rnn_hidden_size")
+    put("hp_ens_n", str(hp_of("step5_armA_seed0_ens5.json")["hyperparameters"]["ensemble"]),
+        _rel(os.path.join(RWM_RESULTS, "step5_armA_seed0_ens5.json")), "hyperparameters.ensemble")
 
     # ---- h. what was known before the registration (PREREG.md section 2)
     def rho(file, path, rho_key, ci_key, name, n=None):

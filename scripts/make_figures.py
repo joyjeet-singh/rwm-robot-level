@@ -88,10 +88,12 @@ def fig_checks():
     fl = st["floor_F18"]["E100"]
     fam = {"R": ("rollout-trained", BLUE, "o"), "T": ("trained one step ahead", ORANGE, "^"),
            "C": ("compressed copies", AQUA, "s")}
-    fig, axs = plt.subplots(1, 2, figsize=(3.45, 2.05), sharey=True)
+    fig, axs = plt.subplots(1, 3, figsize=(3.45, 2.0), sharey=True)
     plain = FuncFormatter(lambda v, _: f"{v:g}")
-    for ax, (xk, xl, rk) in zip(axs, (("E1", "one-step error $E_1$", "Q1"),
-                                      ("lam1", r"growth rate $\lambda_1$ (1/s)", "Q1"))):
+    d1 = st["D1_rho_F18"]
+    for ax, (xk, xl, rk) in zip(axs, (("E1", "one-step\nerror $E_1$", "Q1"),
+                                      ("lam1", "growth rate\n$\\lambda_1$ (1/s)", "Q1"),
+                                      ("rJ", "kinematic\nresidual", "D1"))):
         for p, (lab, colr, mk) in fam.items():
             rr = [r for r in table if r["pool"] == p]
             x = np.array([r[xk] for r in rr])
@@ -108,14 +110,22 @@ def fig_checks():
             ax.xaxis.set_major_formatter(plain)
             ax.xaxis.set_minor_locator(NullLocator())
             rho, pos = st[rk]["rho_base"], (0.04, 0.95, "left", "top")
-        else:
+        elif xk == "lam1":
             ax.axvline(0, color="#d6d5d0", lw=0.8, zorder=0)
             rho, pos = st[rk]["rho_new"], (0.96, 0.05, "right", "bottom")
-        ax.set_xlabel(xl)
-        ax.text(pos[0], pos[1], f"Spearman {rho:+.2f}", transform=ax.transAxes, fontsize=6.3, color=INK,
+            ax.xaxis.set_major_locator(FixedLocator([-1, 0, 1]))
+        else:
+            ax.set_xscale("log")
+            ax.xaxis.set_major_locator(FixedLocator([1, 2, 5]))
+            ax.xaxis.set_major_formatter(plain)
+            ax.xaxis.set_minor_locator(NullLocator())
+            rho, pos = d1["rJ~E100"]["rho"], (0.96, 0.05, "right", "bottom")
+        ax.set_xlabel(xl, fontsize=6.5)
+        ax.tick_params(labelsize=6)
+        ax.text(pos[0], pos[1], f"Spearman\n{rho:+.2f}", transform=ax.transAxes, fontsize=5.8, color=INK,
                 ha=pos[2], va=pos[3])
         ax.grid(True, which="major", color="#ecebe7", lw=0.5)
-    axs[0].set_ylabel("100-step error $E_{100}$")
+    axs[0].set_ylabel("100-step error $E_{100}$", fontsize=6.5)
     axs[0].text(0.97, fl * 1.08, "floor", transform=axs[0].get_yaxis_transform(), ha="right", fontsize=5.8,
                 color=MUTED)
     h, l_ = axs[0].get_legend_handles_labels()

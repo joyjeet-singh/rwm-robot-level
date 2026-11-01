@@ -1,42 +1,258 @@
-% SOURCE of the reviewers' appendix (single-column submission only; R7 fills it and adds it to main_single.tex).
-% Same rules as body.template.tex: every number is a double-brace placeholder read from a result file, and every
-% analysis added in the revision is labelled (exploratory). The body refers to these sections as appendix A1 to A7.
-\appendices
+% SOURCE of the appendix (single-column submission only; scripts/build_paper.py fills it into appendix.tex and
+% main_single.tex inputs it after the references). Same rules as body.template.tex: every number is a double-brace
+% placeholder read from a result file, and every analysis added in the revision is labelled (exploratory).
+% The body refers to these sections as appendix A1 to A7; main_single.tex numbers them A1, A2, ...
 
 \section{Training settings}\label{app:A1}
-% A1: the full training settings of the rollout-trained parents (keys hp_*: optimiser, learning rate, weight decay,
-% batch, iterations, gradient clipping, the seven non-zero loss weights), stated once and asserted equal across the
-% hp_n_records parents' records; how teacher-forced, N=1, ensemble, likelihood, width-124 (capacity-matched control)
-% and four-times-longer models differ from them; the compression recipes.
+All rollout-trained models of the F18 and five-split pools were trained with the settings in Table~\ref{tab:app-train}.
+The optimiser is {{hp_optimiser}}; gradient clipping: {{hp_clip}}. The loss has {{hp_n_loss_terms}} non-zero terms,
+with weights {{hp_loss_weights}}. These settings were checked to be identical in the training records of all
+{{hp_n_records}} parent models of the five-split pool. The recurrent network has two GRU layers of {{hp_hidden}} units
+and reads {{hp_M}} past steps.
+
+\begin{table}[h]
+\centering
+\caption{What differs between the rollout-trained parent, the teacher-forced models and the $N{=}1$ models. A blank means
+the setting equals the parent's. Records compared: {{hp_tf_n_records}} teacher-forced and {{hp_n1_n_records}} $N{=}1$ models.}
+\label{tab:app-train}
+\footnotesize
+\fittable{\begin{tabular}{@{}lccc@{}}
+\toprule
+Setting & Rollout-trained parent & Teacher-forced & $N{=}1$ \\
+\midrule
+Learning rate / weight decay / batch & {{hp_lr}} / {{hp_wd}} / {{hp_batch}} & & \\
+Iterations & {{hp_iters}} & & \\
+Loss target & own predictions fed back & recorded states fed in & own predictions \\
+Steps predicted per window ($N$) & {{hp_parent_N}} & {{hp_parent_N}} & {{hp_n1_N}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Other F18 models differ from the parent in one setting each. The longer-trained models ran {{hp_10k_iters}}
+iterations (the teacher-forced ones as well). The ensembles have {{hp_ens_n}} members. The capacity-matched control has
+{{hp_w124_hidden}} hidden units. The likelihood model replaces the squared error by a Gaussian likelihood, and two
+further models train on contaminated or duplicated data. The compressed copies are made from the finished parents without
+further training: 16-bit and 8-bit weights, removal of the smallest weights over the whole network (10, 20, 30 and
+50\%), and removal of units so that the hidden width is 192 or 128.
 
 \section{What was known before the registration}\label{app:A2}
-% A2: the values quoted in prereg/PREREG.md section 2 (keys pre_ng_R*, pre_ng_RT*, pre_icmai_*, pre_icp*), with the
-% earlier study each comes from. State plainly: the growth rates of the trained F18 models and the residual's ranking
-% of the five-split trained models were known; open were the comparison with E1 and E8, and the compressed copies.
+Section 2 of \texttt{PREREG.md} states what the author had read before any model was run through this folder's code.
+For the growth rate $\lambda_1$ on the F18 pool, an earlier study found Spearman {{pre_ng_R_rho}} {{pre_ng_R_ci}}
+with the 368-step error over {{pre_ng_R_n}} rollout-trained models, and {{pre_ng_RT_rho}} {{pre_ng_RT_ci}} over
+{{pre_ng_RT_n}} rollout-trained and teacher-forced ones. On the five splits, $\lambda_1$ ranked {{pre_icmai_all_n}} models at
+{{pre_icmai_all_rho}} {{pre_icmai_all_ci}}, and the {{pre_icmai_roll_n}} rollout-trained ones among them at
+{{pre_icmai_roll_rho}} {{pre_icmai_roll_ci}} (not settled). The mean kinematic residual ranked {{pre_icp_n}} models at
+{{pre_icp_rho}} {{pre_icp_ci}}, much of it through the difference between training methods. Earlier studies also
+showed that teacher forcing beats rollout training at one step but loses at 368 steps, and that moderate pruning
+without fine-tuning loses skill at long horizons.
+Open were the one-step and 8-step errors computed from every position of the held-out data, the correlation of any
+short-horizon error with any long-horizon error, and the growth rate or residual of any compressed copy. The raw
+arrays of the earlier growth-rate study were used for one consistency check only, and no statistic is taken from them.
 
 \section{Horizon-matched and split-half checks}\label{app:A3}
-% A3 (exploratory): A1_horizon_matched (keys a1_*): each label-free check computed over 8 and over 100 steps against
-% E100, on F18 and X5, with differences against E8. A3_split_half (keys a3_*): checks on one half of the
-% trajectories, target on the other, beside the same-half baseline; a3_max_drop.
+Table~\ref{tab:app-horizon} gives the Spearman correlation with the 100-step error $E_{100}$ when the growth rate
+and the kinematic residual are computed over a window of 8, 24, 100 or 368 steps (exploratory). The one-step and 8-step
+errors are shown for comparison. Over 8 steps the growth rate's correlation is {{a1_F18_lam1_8_rho}} on F18 and
+{{a1_X5_lam1_8_rho}} on X5, against {{a1_F18_lam1_100_rho}} and {{a1_X5_lam1_100_rho}} over 100 steps.
+With both checks computed over 8 steps, the residual's lead over the 8-step error was {{a1_F18_rj8_e8_delta}}
+{{a1_F18_rj8_e8_ci}} on F18 and {{a1_X5_rj8_e8_delta}} {{a1_X5_rj8_e8_ci}} on X5; over 100 steps it was
+{{a1_F18_rj100_e8_delta}} {{a1_F18_rj100_e8_ci}} on F18 and {{a1_X5_rj100_e8_delta}} {{a1_X5_rj100_e8_ci}} on X5 (all exploratory).
+
+\begin{table}[h]
+\centering
+\caption{Spearman correlation of each check with $E_{100}$ by the window the check is computed over, for F18 (4 held-out
+trajectories; all simulators, trained, compressed) and X5 (20 trajectories) (exploratory).}
+\label{tab:app-horizon}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\fittable{\begin{tabular}{@{}lcccc@{}}
+\toprule
+Check (window) & F18, all & F18, trained & F18, compressed & X5 \\
+\midrule
+One-step error $E_1$ & {{a1t_F18all_E1}} & {{a1t_F18tr_E1}} & {{a1t_F18cp_E1}} & {{a1t_X5_E1}} \\
+8-step error $E_8$ & {{a1t_F18all_E8}} & {{a1t_F18tr_E8}} & {{a1t_F18cp_E8}} & {{a1t_X5_E8}} \\
+\midrule
+$\lambda_1$ (8 steps) & {{a1t_F18all_lam1_8}} & {{a1t_F18tr_lam1_8}} & {{a1t_F18cp_lam1_8}} & {{a1t_X5_lam1_8}} \\
+$\lambda_1$ (24 steps) & {{a1t_F18all_lam1_24}} & {{a1t_F18tr_lam1_24}} & {{a1t_F18cp_lam1_24}} & {{a1t_X5_lam1_24}} \\
+$\lambda_1$ (100 steps) & {{a1t_F18all_lam1_100}} & {{a1t_F18tr_lam1_100}} & {{a1t_F18cp_lam1_100}} & {{a1t_X5_lam1_100}} \\
+$\lambda_1$ (368 steps) & {{a1t_F18all_lam1_368}} & {{a1t_F18tr_lam1_368}} & {{a1t_F18cp_lam1_368}} & {{a1t_X5_lam1_368}} \\
+\midrule
+$\bar r_J$ (8 steps) & {{a1t_F18all_rJ_8}} & {{a1t_F18tr_rJ_8}} & {{a1t_F18cp_rJ_8}} & {{a1t_X5_rJ_8}} \\
+$\bar r_J$ (24 steps) & {{a1t_F18all_rJ_24}} & {{a1t_F18tr_rJ_24}} & {{a1t_F18cp_rJ_24}} & {{a1t_X5_rJ_24}} \\
+$\bar r_J$ (100 steps) & {{a1t_F18all_rJ_100}} & {{a1t_F18tr_rJ_100}} & {{a1t_F18cp_rJ_100}} & {{a1t_X5_rJ_100}} \\
+$\bar r_J$ (368 steps) & {{a1t_F18all_rJ_368}} & {{a1t_F18tr_rJ_368}} & {{a1t_F18cp_rJ_368}} & {{a1t_X5_rJ_368}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Table~\ref{tab:app-split} computes each check on one half of the trajectories and the target on the other half
+(exploratory), beside the correlation when both use the same half. The largest drop is {{a3_max_drop}}.
+
+\begin{table}[h]
+\centering
+\caption{Split-half check (exploratory): Spearman correlation with $E_{100}$ when the check and the target come from
+different halves of the held-out trajectories, with its 95\% interval, and when both come from the same half.}
+\label{tab:app-split}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\fittable{\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & F18, other half & F18, same half & X5, other half & X5, same half \\
+\midrule
+$E_1$ & {{a3_F18_E1_rho}} {{a3_F18_E1_ci}} & {{a3_F18_E1_same}} & {{a3_X5_E1_rho}} {{a3_X5_E1_ci}} & {{a3_X5_E1_same}} \\
+$E_8$ & {{a3_F18_E8_rho}} {{a3_F18_E8_ci}} & {{a3_F18_E8_same}} & {{a3_X5_E8_rho}} {{a3_X5_E8_ci}} & {{a3_X5_E8_same}} \\
+$\lambda_1$ & {{a3_F18_lam1_rho}} {{a3_F18_lam1_ci}} & {{a3_F18_lam1_same}} & {{a3_X5_lam1_rho}} {{a3_X5_lam1_ci}} & {{a3_X5_lam1_same}} \\
+$\bar r_J$ & {{a3_F18_rJ_rho}} {{a3_F18_rJ_ci}} & {{a3_F18_rJ_same}} & {{a3_X5_rJ_rho}} {{a3_X5_rJ_ci}} & {{a3_X5_rJ_same}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 \section{Wider intervals, the five-split pool without split \{1,8\}, and Holm's correction}\label{app:A4}
-% A4 (exploratory): A2a two-level bootstrap (parents and trajectories; keys a2_*), per registered test: interval,
-% width ratio, whether the verdict holds. A2b X5 without split {1,8} (keys a2b_*). A2c Holm over the seven secondary
-% tests (keys a2c_*), with Monte Carlo SE and the tests within 2 SE of their threshold.
+All of this section is exploratory. The registered intervals resample the held-out trajectories. The wider intervals
+also resample the parent models, in two levels, with {{a2_ndraws}} draws. They are {{a2_median_ratio}} times as wide as the
+registered ones (median; {{a2_median_ratio_t2}} for the correlations of Table~\ref{tab:checks} and {{a2_median_ratio_tests}} for
+the registered differences; range {{a2_ratio_min}} to {{a2_ratio_max}}). Of the {{a2_n_tests}} registered verdicts,
+{{a2_n_hold}} hold and {{a2_n_lost}} do not.
+
+\begin{table}[h]
+\centering
+\caption{Table~\ref{tab:checks}'s correlations with $E_{100}$, with the registered interval (where one was computed) and
+the two-level 95\% interval (exploratory); for X5 also without the split \{1, 8\}, which repeats F18's held-out pair (exploratory).}
+\label{tab:app-two}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}llcccc@{}}
+\toprule
+Pool & Check & Registered & Registered 95\% & Two-level 95\% & Without \{1, 8\} \\
+\midrule
+F18, all & $E_1$ & {{q1_rho_e1}} & {{rho_E1_E100_ci}} & {{a2_t2_f18_all_e1_ci}} & \\
+ & $E_8$ & {{q2_rho_e8}} & {{rho_E8_E100_ci}} & {{a2_t2_f18_all_e8_ci}} & \\
+ & $\lambda_1$ & {{q1_rho_lam}} & {{rho_lam1_E100_ci}} & {{a2_t2_f18_all_lam1_ci}} & \\
+ & $\bar r_J$ & {{q4_1_rho_new}} & {{rho_rJ_E100_ci}} & {{a2_t2_f18_all_rj_ci}} & \\
+F18, trained & $E_1$ & {{x2_tc_E1}} & {{x2_tc_E1_ci}} & {{a2_t2_f18_trained_e1_ci}} & \\
+ & $E_8$ & {{x2_tc_E8}} & {{x2_tc_E8_ci}} & {{a2_t2_f18_trained_e8_ci}} & \\
+ & $\lambda_1$ & {{x2_tc_lam1}} & {{x2_tc_lam1_ci}} & {{a2_t2_f18_trained_lam1_ci}} & \\
+ & $\bar r_J$ & {{x2_tc_rJ}} & {{x2_tc_rJ_ci}} & {{a2_t2_f18_trained_rj_ci}} & \\
+F18, compressed & $E_1$ & {{x2_c_E1}} & & {{a2_t2_f18_compressed_e1_ci}} & \\
+ & $E_8$ & {{x2_c_E8}} & & {{a2_t2_f18_compressed_e8_ci}} & \\
+ & $\lambda_1$ & {{x2_c_lam1}} & & {{a2_t2_f18_compressed_lam1_ci}} & \\
+ & $\bar r_J$ & {{x2_c_rJ}} & & {{a2_t2_f18_compressed_rj_ci}} & \\
+X5 & $E_1$ & {{q3_1_rho_base}} & & {{a2_t2_x5_e1_ci}} & {{a2b_X5_E1_rho}} {{a2b_X5_E1_ci}} \\
+ & $E_8$ & {{q3_8_rho_base}} & & {{a2_t2_x5_e8_ci}} & {{a2b_X5_E8_rho}} {{a2b_X5_E8_ci}} \\
+ & $\lambda_1$ & {{q3_1_rho_new}} & & {{a2_t2_x5_lam1_ci}} & {{a2b_X5_lam1_rho}} {{a2b_X5_lam1_ci}} \\
+ & $\bar r_J$ & {{x1_rJ}} & & {{a2_t2_x5_rj_ci}} & {{a2b_X5_rJ_rho}} {{a2b_X5_rJ_ci}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Without split \{1, 8\}, $\lambda_1$ minus $E_1$ is {{a2b_q3_vs_e1_delta}} {{a2b_q3_vs_e1_ci}}, $\lambda_1$ minus $E_8$ is
+{{a2b_q3_vs_e8_delta}} {{a2b_q3_vs_e8_ci}}, and $\bar r_J$ minus $E_8$ is {{a2b_rj_vs_e8_delta}} {{a2b_rj_vs_e8_ci}}.
+
+Table~\ref{tab:app-tests} lists the registered differences. Holm's correction keeps the chance of any false finding among
+the {{a2c_n_family}} secondary tests at {{a2c_alpha}}, and {{a2c_n_survive}} of them survive. Its $p$-values come from a
+Monte Carlo resampling, so a value close to {{a2c_alpha}} is itself uncertain (``near'' marks the tests within two
+standard errors of the threshold).
+
+\begin{table}[h]
+\centering
+\caption{Registered differences in Spearman correlation (first minus second check; Q1 and Q2 at 97.5\%, the rest at 95\%),
+with the registered and the two-level interval, whether the registered verdict still holds, and, for the seven secondary
+tests, Holm's adjusted $p$ with whether it survives and whether it is near the threshold. Two-level and Holm columns are exploratory.}
+\label{tab:app-tests}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}lccccc@{}}
+\toprule
+Test & Estimate & Registered & Two-level & Holds & Holm $p$ (survives; near) \\
+\midrule
+Q1: $\lambda_1-E_1$ at 100 steps, F18 & {{q1_delta}} & {{q1_ci975}} & {{a2_q1_ci}} & {{a2_q1_holds}} & -- \\
+Q2: $\lambda_1-E_8$ at 100 steps, F18 & {{q2_delta}} & {{q2_ci975}} & {{a2_q2_ci}} & {{a2_q2_holds}} & -- \\
+Q1 at 24 steps & {{q1_e24_delta}} & {{q1_e24_ci}} & {{a2_q1_e24_ci}} & {{a2_q1_e24_holds}} & -- \\
+Q1 at 368 steps & {{q1_e368_delta}} & {{q1_e368_ci}} & {{a2_q1_e368_ci}} & {{a2_q1_e368_holds}} & -- \\
+Q2 at 24 steps & {{q2_e24_delta}} & {{q2_e24_ci}} & {{a2_q2_e24_ci}} & {{a2_q2_e24_holds}} & -- \\
+Q2 at 368 steps & {{q2_e368_delta}} & {{q2_e368_ci}} & {{a2_q2_e368_ci}} & {{a2_q2_e368_holds}} & -- \\
+Q3: $\lambda_1-E_1$, five splits & {{q3_1_delta}} & {{q3_1_ci}} & {{a2_q3_vs_e1_ci}} & {{a2_q3_vs_e1_holds}} & {{a2c_q3_vs_e1_pholm}} ({{a2c_q3_vs_e1_survives}}; {{a2c_q3_vs_e1_near}}) \\
+Q3: $\lambda_1-E_8$, five splits & {{q3_8_delta}} & {{q3_8_ci}} & {{a2_q3_vs_e8_ci}} & {{a2_q3_vs_e8_holds}} & {{a2c_q3_vs_e8_pholm}} ({{a2c_q3_vs_e8_survives}}; {{a2c_q3_vs_e8_near}}) \\
+Q4: $\bar r_J-E_1$, F18 & {{q4_1_delta}} & {{q4_1_ci}} & {{a2_q4_vs_e1_ci}} & {{a2_q4_vs_e1_holds}} & {{a2c_q4_vs_e1_pholm}} ({{a2c_q4_vs_e1_survives}}; {{a2c_q4_vs_e1_near}}) \\
+Q4: $\bar r_J-E_8$, F18 & {{q4_8_delta}} & {{q4_8_ci}} & {{a2_q4_vs_e8_ci}} & {{a2_q4_vs_e8_holds}} & {{a2c_q4_vs_e8_pholm}} ({{a2c_q4_vs_e8_survives}}; {{a2c_q4_vs_e8_near}}) \\
+Q5: $\bar r_J-E_1$, compressed & {{q5_1_delta}} & {{q5_1_ci}} & {{a2_q5_vs_e1_ci}} & {{a2_q5_vs_e1_holds}} & {{a2c_q5_vs_e1_pholm}} ({{a2c_q5_vs_e1_survives}}; {{a2c_q5_vs_e1_near}}) \\
+Q5: $\bar r_J-E_8$, compressed & {{q5_8_delta}} & {{q5_8_ci}} & {{a2_q5_vs_e8_ci}} & {{a2_q5_vs_e8_holds}} & {{a2c_q5_vs_e8_pholm}} ({{a2c_q5_vs_e8_survives}}; {{a2c_q5_vs_e8_near}}) \\
+Q6: growth-rate shift of pruned copies & {{q6_mean}} & {{q6_ci}} & {{a2_q6_ci}} & {{a2_q6_holds}} & {{a2c_q6_pholm}} ({{a2c_q6_survives}}; {{a2c_q6_near}}) \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 \section{Compression and the growth rate}\label{app:A5}
-% A5: growth-rate shift per compression variant (lamshift_*, lampos_*), copies that became unstable
-% (n_unstable_removed of n_removed_copies; n_unstable_wide of n_wide_copies), skill retained K per variant and
-% horizon (K_*), and the earlier registered unit-removal study with fine-tuning (perc_*, incl. the controls perc_ctrl_*
-% and the seed-0 / replication readings). R6 cut from the body for length (candidates for here): the TorchScript
-% timing of 8-bit dynamic quantisation (perc_us_jit_int8, perc_ratio_jit, perc_ratio_eager); fp16 K (K_fp16_h368).
+Table~\ref{tab:app-comp} gives, for every compression variant of the {{q6_nparents}} five-split parents, the shift in
+growth rate, how many copies have $\lambda_1>0$, and the skill retained $K$ (the share of the parent's advantage over
+predicting no change that the copy keeps). In all, {{n_unstable_removed}} of the {{n_removed_copies}} copies with
+weights or units removed have $\lambda_1>0$, and {{n_unstable_wide}} of the {{n_wide_copies}} copies pruned by 50\% or
+reduced in width.
+
+\begin{table}[h]
+\centering
+\caption{Compressed copies of the five-split parents: mean growth rate $\lambda_1$ of the copies, mean shift from the
+parent (95\% interval), copies with $\lambda_1>0$, and skill retained $K$ at 8, 100 and 368 steps (negative: worse than predicting
+no change).}
+\label{tab:app-comp}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}lccccccc@{}}
+\toprule
+Variant & $\lambda_1$ (1/s) & Shift & Copies $\lambda_1>0$ & $K_8$ & $K_{100}$ & $K_{368}$ \\
+\midrule
+16-bit weights & {{lam_fp16}} & {{lamshift_fp16}} {{lamshift_fp16_ci}} & {{lampos_fp16}} & {{K_fp16_h8}} & {{K_fp16_h100}} & {{K_fp16_h368}} \\
+8-bit weights & {{lam_int8w}} & {{lamshift_int8w}} {{lamshift_int8w_ci}} & {{lampos_int8w}} & {{K_int8w_h8}} & {{K_int8w_h100}} & {{K_int8w_h368}} \\
+10\% pruned & {{lam_u10}} & {{lamshift_u10}} {{lamshift_u10_ci}} & {{lampos_u10}} & {{K_u10_h8}} & {{K_u10_h100}} & {{K_u10_h368}} \\
+20\% pruned & {{lam_u20}} & {{lamshift_u20}} {{lamshift_u20_ci}} & {{lampos_u20}} & {{K_u20_h8}} & {{K_u20_h100}} & {{K_u20_h368}} \\
+30\% pruned & {{lam_u30}} & {{lamshift_u30}} {{lamshift_u30_ci}} & {{lampos_u30}} & {{K_u30_h8}} & {{K_u30_h100}} & {{K_u30_h368}} \\
+50\% pruned & {{lam_u50}} & {{lamshift_u50}} {{lamshift_u50_ci}} & {{lampos_u50}} & {{K_u50_h8}} & {{K_u50_h100}} & {{K_u50_h368}} \\
+Width 192 & {{lam_s192}} & {{lamshift_s192}} {{lamshift_s192_ci}} & {{lampos_s192}} & {{K_s192_h8}} & {{K_s192_h100}} & {{K_s192_h368}} \\
+Width 128 & {{lam_s128}} & {{lamshift_s128}} {{lamshift_s128_ci}} & {{lampos_s128}} & {{K_s128_h8}} & {{K_s128_h100}} & {{K_s128_h368}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+An earlier registered study of the same recipe, with 500 fine-tuning iterations, is summarised in
+Table~\ref{tab:app-perc}. Fine-tuned narrow copies are compared with the equally fine-tuned full-width model, as in the
+body; the control row fine-tunes the unreduced model in the same way. Q4 is that study's comparison of fine-tuning
+with training from scratch at the same width.
+
+\begin{table}[h]
+\centering
+\caption{Skill retained $K$ of fine-tuned narrow copies at 100 and 368 steps in the first run, its replication and
+the pooled runs (95\% intervals); the unreduced control (pooled); and the registered label and difference for fine-tuning
+against training from scratch at 368 steps.}
+\label{tab:app-perc}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}llccc@{}}
+\toprule
+Reading & Width & $K_{100}$ & $K_{368}$ & Q4 (368 steps) \\
+\midrule
+First run & 192 & {{perc_K_first_w192_h100}} {{perc_K_first_w192_h100_ci}} & {{perc_K_first_w192_h368}} {{perc_K_first_w192_h368_ci}} & {{perc_Q4_first_w192}} {{perc_Q4_first_w192_ci}} \\
+ & 128 & {{perc_K_first_w128_h100}} {{perc_K_first_w128_h100_ci}} & {{perc_K_first_w128_h368}} {{perc_K_first_w128_h368_ci}} & {{perc_Q4_first_w128}} {{perc_Q4_first_w128_ci}} \\
+Replication & 192 & {{perc_K_rep_w192_h100}} {{perc_K_rep_w192_h100_ci}} & {{perc_K_rep_w192_h368}} {{perc_K_rep_w192_h368_ci}} & {{perc_Q4_rep_w192}} {{perc_Q4_rep_w192_ci}} \\
+ & 128 & {{perc_K_rep_w128_h100}} {{perc_K_rep_w128_h100_ci}} & {{perc_K_rep_w128_h368}} {{perc_K_rep_w128_h368_ci}} & {{perc_Q4_rep_w128}} {{perc_Q4_rep_w128_ci}} \\
+Pooled & 192 & {{perc_K_pool_w192_h100}} {{perc_K_pool_w192_h100_ci}} & {{perc_K_pool_w192_h368}} {{perc_K_pool_w192_h368_ci}} & {{perc_Q4_pool_w192}} {{perc_Q4_pool_w192_ci}} \\
+ & 128 & {{perc_K_pool_w128_h100}} {{perc_K_pool_w128_h100_ci}} & {{perc_K_pool_w128_h368}} {{perc_K_pool_w128_h368_ci}} & {{perc_Q4_pool_w128}} {{perc_Q4_pool_w128_ci}} \\
+Control (unreduced) & & {{perc_ctrl_pool_h100}} {{perc_ctrl_pool_h100_ci}} & {{perc_ctrl_pool_h368}} {{perc_ctrl_pool_h368_ci}} & -- \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 \section{Run-time signals}\label{app:A6}
-% A6: the text moved out of Sec. 4.3 by R6, unchanged (revision/notes/R6_moved.md): AUROC of the kinematic score,
-% ensemble disagreement and the step counter (icp_auc_*); the step-wise growth rate against the counter (ng_q3_*);
-% event-triggered against scheduled re-synchronisation (icp_h7_*); physics repairs (icp_G, icp_J_x).
-% Also cut from Sec. 4.1 by R6 (place here or in A1 if wanted): the shared-trunk share (shared_pct) and per-head
-% rollout coverage (cov1_h100, cov1_h100_per); teacher-forced 368-step errors along training (ng_pathB_E_*).
+A check that ranks whole simulators need not flag individual bad steps. Earlier analyses of these models, on
+the same held-out trajectories of the five splits, found that none of the label-free signals is a usable alarm for a
+step that is worse than holding the last state. On the rollout-trained ensembles, a combined kinematic-consistency
+score reached an area under the ROC curve (AUROC; 0.5 is chance) of {{icp_auc_phys}} {{icp_auc_phys_ci}}, ensemble
+disagreement {{icp_auc_dis}} and a plain step counter {{icp_auc_counter}}. Averaged over models of all three kinds, the growth
+rate read step by step (over the last eight steps) reached {{ng_q3_auc}}, below the step counter's {{ng_q3_counter}}
+(difference {{ng_q3_delta}} {{ng_q3_ci}}; registered: \textsc{worse than counter}). Re-synchronising the simulator with the recorded state when the
+kinematic score fired gave {{icp_h7_excess}} {{icp_h7_ci}} more 368-step error than the same number of
+re-synchronisations on a fixed schedule (registered: \textsc{schedule better}). Physics helps as a repair only where it is exact: rescaling the predicted
+gravity direction to unit length changed the 368-step error by {{icp_G}} {{icp_G_ci}}, while forcing the joint
+angles onto the approximate integration rule multiplied it by {{icp_J_x}}.
 
 \section{Study FT: fine-tuning the pruned copies}\label{app:A7}
 % A7: the study registered in prereg/PREREG_FT.md before any fine-tuned model existed (R3): design, arms, decision
