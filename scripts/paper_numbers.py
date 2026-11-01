@@ -22,6 +22,7 @@ SRC = {
     "checks": os.path.join(C.RESULTS, "checks.json"),
     "models": os.path.join(C.RESULTS, "models.json"),
     "figfacts": os.path.join(C.RESULTS, "figure_facts.json"),
+    "explo": os.path.join(C.RESULTS, "exploratory.json"),
 }
 J = {}
 
@@ -76,7 +77,7 @@ def cib(lo, hi, f):
 
 def put(key, value, source, path):
     assert key not in N, key
-    N[key] = {"value": value, "source": source, "path": path}
+    N[key] = {"value": str(value), "source": source, "path": path}
 
 
 def tm(key):
@@ -117,7 +118,7 @@ def earlier():
     put("x3_gap", sgn(tm_float("x3_gap")), t, "x3_gap")
     lo, hi = tm_ci("x3_ci")
     put("x3_ci", cib(lo, hi, sgn), t, "x3_ci")
-    put("x3_ratio", sig(tm_float("x3_ratio_h368"), 2), t, "x3_ratio_h368")
+    put("x3_ratio", tm("x3_ratio_h368")[0], t, "x3_ratio_h368")
     put("x3_eps_pos", tm("x3_eps_pos")[0], t, "x3_eps_pos")
     put("x3_n_eps", tm("x3_n_eps")[0], t, "x3_n_eps")
     put("x3_p", tm("n7_x3_ep_p_h368")[0], t, "n7_x3_ep_p_h368")
@@ -129,19 +130,19 @@ def earlier():
     put("x3_h1_unit", tm("x3_h1_unit")[0], t, "x3_h1_unit")
     # uncertainty of the released ensemble
     for h in (1, 100, 368):
-        put(f"k_h{h}", sig(tm_float(f"n8_k_rel_epi_h{h}"), 2), t, f"n8_k_rel_epi_h{h}")
+        put(f"k_h{h}", tm(f"n8_k_rel_epi_h{h}")[0], t, f"n8_k_rel_epi_h{h}")
     put("cov1_h100", sig(tm_float("x9_rel_mean_cov1_h100"), 2) + r"\%", t, "x9_rel_mean_cov1_h100")
-    put("cov1_h100_per", sig(tm_float("x9_rel_per_cov1_h100"), 2) + r"\%", t, "x9_rel_per_cov1_h100")
+    put("cov1_h100_per", tm("x9_rel_per_cov1_h100")[0] + r"\%", t, "x9_rel_per_cov1_h100")
     put("cov1_h1", sig(tm_float("d1n_epi_cov1_h1"), 2) + r"\%", t, "d1n_epi_cov1_h1")
     put("cov_nom1", tm("v3_cov_nominal1")[0] + r"\%", t, "v3_cov_nominal1")
     put("cov_nom2", tm("v3_cov_nominal2")[0] + r"\%", t, "v3_cov_nominal2")
     put("dis_spear_h100", sgn(tm_float("n11_d2_sp_epi_h100")), t, "n11_d2_sp_epi_h100")
     put("shared_pct", sig(tm_float("v1_shared_pct"), 2) + r"\%", t, "v1_shared_pct")
     put("synth_span", sig(tm_float("e5s_span"), 2), t, "e5s_span")
-    put("synth_under", sig(tm_float("e5s_mse_under"), 2), t, "e5s_mse_under")
+    put("synth_under", tm("e5s_mse_under")[0], t, "e5s_mse_under")
     put("synth_nll", sig(tm_float("e5s_nll_ratio"), 2), t, "e5s_nll_ratio")
     put("x7_summary", tm("x7_summary")[0].lower(), t, "x7_summary")
-    put("cov2_perh_h100", sig(tm_float("n9_epi_perh_cov2_h100"), 2) + r"\%", t, "n9_epi_perh_cov2_h100")
+    put("cov2_perh_h100", tm("n9_epi_perh_cov2_h100")[0] + r"\%", t, "n9_epi_perh_cov2_h100")
 
     # NGCAPS: training horizon and stability (pre-registered Q4), run-time growth signal (Q3)
     g, ng = load("ngcaps"), rel("ngcaps")
@@ -154,8 +155,8 @@ def earlier():
     assert q3["verdict"] == "WORSE THAN COUNTER"
     put("ng_q3_auc", sig(q3["mean_auc_g"], 2), ng, "Q3.mean_auc_g")
     put("ng_q3_counter", sig(q3["mean_auc_counter"], 2), ng, "Q3.mean_auc_counter")
-    put("ng_q3_delta", sgn(q3["delta_auc_g_minus_counter"], 2), ng, "Q3.delta_auc_g_minus_counter")
-    put("ng_q3_ci", cib(*q3["ci"], f=lambda v: sgn(v, 2)), ng, "Q3.ci")
+    put("ng_q3_delta", dp(q3["delta_auc_g_minus_counter"], 2, signed=True), ng, "Q3.delta_auc_g_minus_counter")
+    put("ng_q3_ci", cib(*q3["ci"], f=lambda v: dp(v, 2, signed=True)), ng, "Q3.ci")
     tp = g["descriptive"]["training_paths"]
     put("ng_pathA_lam_500", sgn(tp["A_500"]["lam1"]), ng, "descriptive.training_paths.A_500.lam1")
     put("ng_pathA_lam_10000", sgn(tp["A_10000"]["lam1"]), ng, "descriptive.training_paths.A_10000.lam1")
@@ -173,8 +174,8 @@ def earlier():
     v, nv = load("icp_verdicts")["families"], rel("icp_verdicts")
     h7 = v["use"]["tests"]["H7"]
     assert h7["verdict"] == "SCHEDULE BETTER"
-    put("icp_h7_excess", sig(100 * (math.exp(h7["estimate"]) - 1), 2) + r"\%", nv, "families.use.tests.H7.estimate")
-    put("icp_h7_ci", cib(*h7["ci"], f=lambda x: sig(100 * (math.exp(x) - 1), 2) + r"\%"), nv,
+    put("icp_h7_excess", f"{100 * (math.exp(h7['estimate']) - 1):.1f}" + r"\%", nv, "families.use.tests.H7.estimate")
+    put("icp_h7_ci", cib(*h7["ci"], f=lambda x: f"{100 * (math.exp(x) - 1):.1f}" + r"\%"), nv,
         "families.use.tests.H7.ci")
     r, nr = load("icp_repair")["A5"]["ens5"], rel("icp_repair")
     put("icp_G", sig(100 * (r["err|G|368"]["ratio"] - 1), 2) + r"\%", nr, "A5.ens5.err|G|368.ratio")
@@ -185,9 +186,9 @@ def earlier():
     # PerconAI: 8-bit dynamic quantisation (pre-registered Q1) and CPU time per step
     p, npc = load("perc")["keys"], rel("perc")
     assert p["e2.Q1_int8_dynamic.label"]["value"] == "KEEPS"
-    put("perc_int8_K", pct(p["e2.Q1_int8_dynamic.K.est"]["value"], 3), npc, "keys.e2.Q1_int8_dynamic.K.est")
+    put("perc_int8_K", f"{100 * p['e2.Q1_int8_dynamic.K.est']['value']:.1f}" + r"\%", npc, "keys.e2.Q1_int8_dynamic.K.est")
     put("perc_int8_K_ci", cib(p["e2.Q1_int8_dynamic.K.lo"]["value"], p["e2.Q1_int8_dynamic.K.hi"]["value"],
-                              lambda x: pct(x, 3)), npc, "keys.e2.Q1_int8_dynamic.K.lo/hi")
+                              lambda x: f"{100 * x:.1f}" + r"\%"), npc, "keys.e2.Q1_int8_dynamic.K.lo/hi")
     us = lambda k: p[f"e1c.{k}.step_b1_t1.us.median"]["value"]                          # noqa: E731
     put("perc_us_fp32", sig(us("a25_fp32"), 3), npc, "keys.e1c.a25_fp32.step_b1_t1.us.median")
     put("perc_us_jit_int8", sig(us("a25_jit_int8_dynamic"), 3), npc,

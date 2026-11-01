@@ -6,7 +6,19 @@
 \maketitle
 
 \begin{abstract}
-%%ABSTRACT%%
+Learned simulators let legged robots learn by imagination, running a neural network on its own predictions for tens
+to hundreds of steps, yet they are usually trained and checked one step ahead. We rebuilt the open quadruped simulator
+of the Robotic World Model, matched its released gradients exactly, and measured {{n_sims}} versions of it on a CPU.
+One-step checks misjudged the training objective, the training horizon, pruning and the size of the uncertainty
+estimate: teacher forcing is {{ab_h1_pct_better}} more accurate one step ahead and {{ab_h100_ratio}} times as wrong
+over 2~s; training one step ahead yields a simulator that amplifies its own errors; pruning 30\% of weights keeps
+{{K_u30_h1}} of the skill one step ahead but {{K_u30_h100}} at 2~s; and the ensemble's uncertainty is too small by
+{{k_h1}} times one step ahead and {{k_h100}} times at 2~s. In a pre-registered comparison over {{n_P}} simulators, the
+leading Lyapunov exponent, the rate at which a simulator amplifies a small error, ranked the 2-second error better than
+one-step error (Spearman {{q1_rho_lam}} against {{q1_rho_e1}}) and could not be separated from an 8-step check, without
+using any recorded future. It did not replicate on a pool made mostly of compressed copies, because pruning adds bias
+rather than instability; a kinematic-consistency residual matched or beat every other check on both pools. We distil a
+checklist for vetting learned robot simulators before use.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -43,8 +55,11 @@ horizon of use, in direction or in size.
 \item \textbf{A stability account.} The leading finite-time Lyapunov exponent, the average rate at which a
 simulator amplifies a small error, is positive for simulators trained one step ahead and negative for those trained
 on their own rollouts, and falls steadily as the training horizon grows.
-\item \textbf{A pre-registered comparison of pre-deployment checks} on {{n_P}} simulators, replicated on {{n_X}}
-across five data splits: %%CONTRIB_CHECKS%%
+\item \textbf{A pre-registered comparison of pre-deployment checks} on {{n_P}} simulators, with a registered
+replication on {{n_X}} across five data splits: one-step validation error ranked the error at the horizon of use poorly, and across training choices
+backwards; the label-free growth rate ranked it far better and as well as an 8-step check, but did not replicate on a
+pool of compressed copies, where pruning adds bias that it cannot see; a label-free kinematic residual matched or
+beat every other check on both pools.
 \item \textbf{Limits of label-free signals at run time.} Read step by step, neither the growth rate, kinematic
 consistency nor ensemble disagreement flags bad steps reliably, and the ensemble's spread ranks error correctly but
 understates it by a factor that grows with the horizon.
@@ -73,7 +88,7 @@ rollout~\cite{pavlova2026}; pruning is often matched by training a small network
 \section{System and Protocol}\label{sec:setup}
 \textbf{Robot data.} The release contains {{rows}} recorded steps of an ANYmal~D trotting on flat ground at 50~Hz:
 ten 20-second episodes in which the commanded velocity appears to change once. Every episode starts from an exact
-reset, so the data come from a physics simulation rather than the hardware. Each step holds a 45-number state (the body's linear and angular velocity, the direction of gravity
+reset, so the data evidently come from a physics simulation rather than the hardware. Each step holds a 45-number state (the body's linear and angular velocity, the direction of gravity
 seen from the body, and the angle, speed and torque of each of the 12 joints) and the 12 joint commands. These data
 are {{budget_pct}} of what the original model was trained on.
 
@@ -129,7 +144,11 @@ body's planar position, dead-reckoned identically from predicted and recorded bo
 resample the independent unit: whole trajectories for comparisons of methods~\cite{cameron2008,agarwal2021}, models
 for correlations across models. A result is \emph{pre-registered} only if its decision rule was committed to version
 control before its data existed~\cite{nosek2018prereg}; the rule reads a verdict only when the interval excludes
-zero, and \textsc{not settled} otherwise. Everything else is descriptive. Analyses ran on two processor cores with no graphics
+zero, and \textsc{not settled} otherwise. The comparison of Sec.~\ref{sec:checks} was registered for this paper: its
+questions, pools, measures and rules were committed, and copied to a second machine, before any model was run
+through its code, with two primary questions judged at 97.5\% (Bonferroni). Other verdicts come from rules
+registered in the same way for earlier, unpublished analyses of these models, and are marked as such. Everything else is
+descriptive or, where it was added after the registered results were seen, exploratory. Analyses ran on two processor cores with no graphics
 card.
 
 \section{Results}\label{sec:results}
@@ -147,63 +166,69 @@ how much the ensemble's spread must be multiplied to cover 68\% of outcomes, as 
 \label{tab:decisions}
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{@{}llccccl@{}}
+\fittable{\begin{tabular}{@{}llccccl@{}}
 \toprule
 Decision & Measure & 1 step & 24 steps & 100 steps & 368 steps & Models, trajectories \\
 \midrule
 Training objective & error ratio, teacher-forced / rollout & {{ab_h1_ratio}} & {{ab_h24_ratio}} & {{ab_h100_ratio}} & {{ab_h368_ratio}} & 40 on X5, 20 \\
-Training horizon & error ratio, $N{=}1$ / $N{=}8$ & {{N1overN8_E1}} & {{N1overN8_E24}} & {{N1overN8_E100}} & {{N1overN8_E368}} & 6 on F18, 4 \\
+Training horizon & error ratio, $N{=}1$ / $N{=}8$ & {{N1overN8_E1}} & {{N1overN8_E24}} & {{N1overN8_E100}} & {{N1overN8_E368}} & 8 on F18, 4 \\
 Pruning 30\% of weights & skill retained $K$ & {{K_u30_h1}} & {{K_u30_h24}} & {{K_u30_h100}} & {{K_u30_h368}} & 25 + 25 on X5, 20 \\
 8-bit weights & skill retained $K$ & {{K_int8w_h1}} & {{K_int8w_h24}} & {{K_int8w_h100}} & {{K_int8w_h368}} & 25 + 25 on X5, 20 \\
-Width 192, not fine-tuned & skill retained $K$ & {{K_s192_h1}} & {{K_s192_h24}} & {{K_s192_h100}} & {{K_s192_h368}} & 25 + 25 on X5, 20 \\
+Pruning 20\% of weights & skill retained $K$ & {{K_u20_h1}} & {{K_u20_h24}} & {{K_u20_h100}} & {{K_u20_h368}} & 25 + 25 on X5, 20 \\
 Ensemble uncertainty & spread factor & {{k_h1}} & -- & {{k_h100}} & {{k_h368}} & released, 20 \\
 Stale command in evaluation & error increase & {{stale_h1}} & -- & {{stale_h100}} (n.s.) & -- & released, 20 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{widetable}
 
 \begin{widefigure}[t]
 \centering
 \includegraphics[width=\figw]{figures/fig_horizon.pdf}
 \caption{Error at each forecast step on the 20 held-out trajectories of the five splits (models averaged within
-each trajectory). Teacher forcing starts level with rollout training and drifts beyond the floor (holding the last
-state) from step {{fig_B_cross}}; the 30\%-pruned copy tracks its parent for tens of steps, then passes the floor at
-step {{fig_U_cross}}. Vertical lines: the imagination horizons of RWM and RWM-U.}
+each trajectory). All three simulators start together; teacher forcing first exceeds the floor (holding the last
+state) at step {{fig_B_cross}}, and the 30\%-pruned copy, which starts within a few per cent of its parent, at step
+{{fig_U_cross}}. Vertical lines: the imagination horizons of RWM and RWM-U.}
 \label{fig:horizon}
 \end{widefigure}
 
-\textbf{Training objective.} Teacher forcing is trained on the one-step target and wins there: on
-{{x3_h1_n}} non-overlapping {{x3_h1_unit}}-step windows of the five splits its one-step error is lower by
-{{x3_h1_gap}} {{x3_h1_ci}} (the release's relative error). Within a few steps the order reverses and the gap grows
-(Fig.~\ref{fig:horizon}). At 368 steps a decision rule committed before the runs found the teacher-forced error
-higher by {{x3_gap}} {{x3_ci}} ({{x3_ratio}}$\times$), on all {{x3_eps_pos}} of the {{x3_n_eps}} held-out episodes
-(sign test $p={}${{x3_p}}): \textsc{{{x3_reading}}}. In physical terms, after 2~s of imagined walking the
-teacher-forced simulator has misplaced the robot by {{ph_pos_h100_B}}~m on average, against {{ph_pos_h100_A}}~m for
-rollout training (the robot covers {{dist_h100}}~m), and after 7.4~s by {{ph_pos_h368_B}} against
-{{ph_pos_h368_A}}~m; its joint angles over the first 2~s are off by {{ph_jdeg_h100_B}}$^\circ$ against
-{{ph_jdeg_h100_A}}$^\circ$.
+\textbf{Training objective.} Teacher forcing is trained on the one-step target and wins there: its one-step error
+is {{ab_h1_pct_better}} lower than rollout training's on the 20 held-out trajectories ({{ab_h1_diff}} {{ab_h1_ci}}),
+as an earlier registered analysis found on {{x3_h1_n}} short windows with the release's relative error
+({{x3_h1_gap}} {{x3_h1_ci}}). By 8 steps the order has reversed on {{ab_h8_nworse}} of the 20 trajectories, and
+the gap then grows with the horizon (Table~\ref{tab:decisions}, Fig.~\ref{fig:horizon}). At 368 steps a decision rule committed before the runs found the teacher-forced error
+higher by {{x3_gap}} {{x3_ci}} in the release's relative error ({{x3_ratio}}$\times$; \textsc{{{x3_reading}}}), and
+all {{x3_n_eps}} held-out episodes favour rollout training (sign test $p={}${{x3_p}}). In physical terms, over the first 2~s of imagined walking
+the teacher-forced simulator's joint angles are off by {{ph_jdeg_h100_B}}$^\circ$ on average against
+{{ph_jdeg_h100_A}}$^\circ$ for rollout training ({{ph_jdeg_h1_B}}$^\circ$ and {{ph_jdeg_h1_A}}$^\circ$ one step ahead), and over
+7.4~s by {{ph_jdeg_h368_B}}$^\circ$ against {{ph_jdeg_h368_A}}$^\circ$. Dead-reckoned from the predicted velocities,
+it misplaces the robot by {{ph_pos_h100_B}}~m after 2~s against {{ph_pos_h100_A}}~m (the robot covers
+{{dist_h100}}~m), and by {{ph_pos_h368_B}} against {{ph_pos_h368_A}}~m after 7.4~s. For position over 2~s neither
+beats extrapolating the last measured velocity ({{ph_pos_h100_floor}}~m); by 7.4~s rollout training does
+({{ph_pos_h368_floor}}~m) and teacher forcing does not.
 
 \textbf{Training horizon and stability.} With the history fixed at 32 steps, the model trained one step ahead
-($N=1$) is about as good as the $N=8$ model one step ahead (error ratio {{N1overN8_E1}}) and {{N1overN8_E100}} times
-worse at 100 steps (Table~\ref{tab:decisions}). The growth rate explains why: it is positive for $N=1$
+($N=1$) is the more accurate one step ahead (error ratio {{N1overN8_E1}} against $N=8$) and {{N1overN8_E100}} times
+worse at 100 steps (Table~\ref{tab:decisions}); conversely the $N=32$ model has the highest one-step error of the
+nine configurations ({{N32_E1}}) and the lowest 100-step error ({{N32_E100}}). The growth rate explains why: it is positive for $N=1$
 ({{N1_lam}}/s), so two copies of that simulator started a hair apart drift further apart, and it falls steadily as
 the training horizon grows, through {{N2_lam}}, {{N8_lam}} and {{N16_lam}} to {{N32_lam}}/s at $N=32$; the sign
 changes between two and eight steps. A rule committed before that analysis read Spearman's $\rho(N,\lambda_1)=$
 {{ng_q4_rho}} {{ng_q4_ci}} over {{ng_q4_n}} models (\textsc{longer is more stable}). On the five splits,
-{{x5_lampos_B}} of teacher-forced models have $\lambda_1>0$ against {{x5_lampos_A}} of rollout-trained ones.
+every teacher-forced model has $\lambda_1>0$ and no rollout-trained one does.
 Longer teacher-forced training makes this worse even as accuracy improves: from 500 to 10{,}000 iterations its
 growth rate rises from {{ng_pathB_lam_500}} to {{ng_pathB_lam_10000}}/s while its 368-step error falls from
 {{ng_pathB_E_2500}} (at 2{,}500) to {{ng_pathB_E_10000}}, whereas rollout-trained models become steadily more
 stable ({{ng_pathA_lam_500}} to {{ng_pathA_lam_10000}}/s).
 
 \textbf{Compression.} Setting the smallest 30\% of weights to zero without retraining keeps {{K_u30_h1}} of the
-parent's skill one step ahead and {{K_u30_h24}} at 24 steps, so a one-step or short test would pass it, but
-{{K_u30_h100}} at 100 steps and {{K_u30_h368}} at 368 steps: by the end it is worse than predicting no change
-(Fig.~\ref{fig:horizon}). Its growth rate rises by {{lamshift_u30}}/s {{lamshift_u30_ci}} over its parent's
-(registered: \textsc{{{q6_verdict}}}), and {{q6_npos}} of the {{q6_nparents}} pruned copies have $\lambda_1>0$.
-8-bit weights keep {{K_int8w_h1}} of the skill one step ahead and {{K_int8w_h368}} at 368 steps, and 16-bit
-weights {{K_fp16_h368}}. Removing units to width 192 fails at every horizon ({{K_s192_h1}} one step ahead), as
-earlier work found; it needs fine-tuning. In a pre-registered test of PyTorch's 8-bit dynamic quantisation (weights
+parent's skill one step ahead and {{K_u30_h24}} at 24 steps, but {{K_u30_h100}} at 100 steps and {{K_u30_h368}} at
+368 steps: by the end it is worse than predicting no change (Fig.~\ref{fig:horizon}). Yet pruning barely moves the growth rate: 30\% pruning changes $\lambda_1$ by
+{{lamshift_u30}}/s {{lamshift_u30_ci}} (registered: \textsc{{{q6_verdict}}}) and
+none of the {{q6_nparents}} pruned copies has $\lambda_1>0$, so a pruned simulator is biased rather than
+unstable (Sec.~\ref{sec:checks}). Pruning 20\% keeps {{K_u20_h1}} of the skill one step ahead and {{K_u20_h368}}
+at 368 steps (Table~\ref{tab:decisions}). 8-bit weights keep {{K_int8w_h1}} of the skill one step ahead and {{K_int8w_h368}}
+at 368 steps, and 16-bit weights {{K_fp16_h368}}. Removing units to width 192 fails at every horizon
+({{K_s192_h1}} one step ahead) and needs fine-tuning. In a pre-registered test of PyTorch's 8-bit dynamic quantisation (weights
 and activations; the release's relative error), the model kept {{perc_int8_K}} {{perc_int8_K_ci}} of its skill at
 368 steps, and compiled with TorchScript it ran a one-robot step in {{perc_us_jit_int8}}~$\mu$s on a 2017 dual-core
 laptop processor, {{perc_ratio_jit}} times the compiled 32-bit time; uncompiled, 8-bit was slower ({{perc_ratio_eager}}
@@ -231,65 +256,102 @@ code (Sec.~\ref{sec:setup}). The candidates were two labelled checks, the one-st
 that use only the network, a recorded history and the commands, the growth rate $\lambda_1$ and the kinematic
 residual $\bar r_J$. The target was $E_{100}$, the error over the 100-step horizon of RWM-U's imagined rollouts.
 
-%%CHECKS_RESULT%%
+Table~\ref{tab:checks} and Fig.~\ref{fig:checks} give the result. Across the {{n_P}} simulators of F18, one-step
+error ranked the 100-step error poorly (Spearman {{q1_rho_e1}}), the growth rate well ({{q1_rho_lam}}) and the 8-step
+error about as well ({{q2_rho_e8}}). The first primary comparison favours the label-free check, $\lambda_1$ over $E_1$
+by {{q1_delta}} {{q1_ci975}} (\textsc{{{q1_verdict}}}); the second cannot separate it from the 8-step error
+({{q2_delta}} {{q2_ci975}}, \textsc{{{q2_verdict}}}). The same held at 368 steps; at 24 steps, which the 8-step windows
+nearly cover, the 8-step error ranked ahead of the growth rate. Without the one-step-trained models ({{n_RC}} simulators) the
+growth rate still ranked better than one-step error ({{q5_1_delta}} {{q5_1_ci}}). The kinematic residual, also label-free,
+ranked best of all ({{q4_1_rho_new}}), ahead even of the 8-step error ({{q4_8_delta}} {{q4_8_ci}},
+\textsc{{{q4_8_verdict}}}).
+
+Where one-step error goes wrong is visible in Fig.~\ref{fig:checks}: the models trained one or two steps ahead have
+among the lowest one-step errors and 100-step errors several times those of the best rollout-trained models. Split by what differs between the simulators
+(exploratory), one-step error ranks the training choices backwards (Spearman {{x2_tc_E1}} {{x2_tc_E1_ci}} over the
+{{x2_tc_n}} trained models of F18; {{x3_unc_E1}} within the five splits), while every check ranks the compressed
+copies of one model well ({{x2_c_lam1}} to {{x2_c_E8}}). In practice, choosing among the nine training configurations
+of each seed by one-step error picked a model trained one or two steps ahead for every seed, with a 100-step error {{regret_E1_ratio}} times the best available; choosing by the growth rate picked the
+best configuration for {{n_pick_lam_best}} of the three seeds and came within {{regret_lam1}} of the best 100-step
+error on average.
+
+The registered replication on the five splits did not hold for the growth rate. There, where 40 of every
+{{n_X_fold}} simulators are compressed copies, one-step error ranked better than the growth rate ({{q3_1_delta}}
+{{q3_1_ci}}, \textsc{{{q3_1_verdict}}}) and the 8-step error better still ({{q3_8_rho_base}}). The reason is what the growth rate measures:
+whether a simulator amplifies small differences. Moderate pruning makes a simulator biased, not unstable, so
+$\lambda_1$ barely moves while the 100-step skill drains away (Sec.~\ref{sec:decisions}), and a negative growth rate
+certifies nothing: of the {{d4_F18_worse_total}} F18 simulators worse than holding the last state at 100 steps,
+{{d4_F18_non_worse}} had $\lambda_1\le0$. The authors' released model shows the converse: on its 20 trajectories,
+which it may have trained on, its one-step error is low ({{rel_E1}}, against {{released_floor_E1}} for the floor),
+yet its growth rate is positive ({{rel_lam}}/s) and over 368 steps its error exceeds the floor's ({{rel_E368}}
+against {{released_floor_E368}}). The kinematic residual, registered on F18 only, also ranked the five-split pool
+best (exploratory: {{x1_rJ}}, level with the 8-step error).
 
 \begin{widetable}[t]
 \centering
-\caption{Which pre-deployment check ranks the 100-step error $E_{100}$? Spearman correlation across models (1 is a
-perfect ranking). Differences are against the labelled checks, with 97.5\% intervals for the two primary
-comparisons (Bonferroni) and 95\% otherwise, from resampling models (within each split on X5). F18: {{n_P}}
-simulators on 4 held-out trajectories; without one-step-trained: the {{n_RC}} rollout-trained and compressed ones;
-X5: {{n_X}} simulators, correlations within each of the five splits ({{n_X_fold}} each) averaged.}
+\caption{Which pre-deployment check ranks the 100-step error $E_{100}$? Spearman correlation across simulators (1 is
+a perfect ranking, negative is backwards). Columns: the {{n_P}} simulators of F18 (4 held-out trajectories), split
+(exploratory) into the {{x2_tc_n}} that differ in how they were trained and the {{x2_c_n}} compressed copies; and the
+{{n_X}} simulators of the five splits (20 trajectories), correlated within each split and averaged. Below: the
+registered comparisons, with 97.5\% intervals for the two primary ones and 95\% otherwise, from resampling
+simulators (within splits on X5). E: exploratory.}
 \label{tab:checks}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lcccc@{}}
+\fittable{\begin{tabular}{@{}lccccc@{}}
 \toprule
- & Needs recorded & F18, all & F18, without & X5, five \\
-Check & future states & ({{n_P}}) & one-step-trained ({{n_RC}}) & splits ({{n_X}}) \\
+ & Needs recorded & F18, all & F18, training & F18, & X5, five \\
+Check & future states & ({{n_P}}) & choices ({{x2_tc_n}}, E) & compressed ({{x2_c_n}}, E) & splits ({{n_X}}) \\
 \midrule
-One-step error $E_1$ & yes & {{q1_rho_e1}} & {{q5_1_rho_base}} & {{q3_1_rho_base}} \\
-8-step error $E_8$ & yes & {{q2_rho_e8}} & {{q5_8_rho_base}} & {{q3_8_rho_base}} \\
-Growth rate $\lambda_1$ & no & {{q1_rho_lam}} & {{q5_1_rho_new}} & {{q3_1_rho_new}} \\
-Kinematic residual $\bar r_J$ & no & {{q4_1_rho_new}} & -- & -- \\
+One-step error $E_1$ & yes & {{q1_rho_e1}} & {{x2_tc_E1}} & {{x2_c_E1}} & {{q3_1_rho_base}} \\
+8-step error $E_8$ & yes & {{q2_rho_e8}} & {{x2_tc_E8}} & {{x2_c_E8}} & {{q3_8_rho_base}} \\
+Growth rate $\lambda_1$ & no & {{q1_rho_lam}} & {{x2_tc_lam1}} & {{x2_c_lam1}} & {{q3_1_rho_new}} \\
+Kinematic residual $\bar r_J$ & no & {{q4_1_rho_new}} & {{x2_tc_rJ}} & {{x2_c_rJ}} & {{x1_rJ}} (E) \\
 \midrule
-$\lambda_1$ minus $E_1$ & & {{q1_delta}} {{q1_ci975}} & {{q5_1_delta}} {{q5_1_ci}} & {{q3_1_delta}} {{q3_1_ci}} \\
-\quad verdict & & \textsc{{{q1_verdict}}} & \textsc{{{q5_1_verdict}}} & \textsc{{{q3_1_verdict}}} \\
-$\lambda_1$ minus $E_8$ & & {{q2_delta}} {{q2_ci975}} & {{q5_8_delta}} {{q5_8_ci}} & {{q3_8_delta}} {{q3_8_ci}} \\
-\quad verdict & & \textsc{{{q2_verdict}}} & \textsc{{{q5_8_verdict}}} & \textsc{{{q3_8_verdict}}} \\
-$\bar r_J$ minus $E_1$ & & {{q4_1_delta}} {{q4_1_ci}} & -- & -- \\
-$\bar r_J$ minus $E_8$ & & {{q4_8_delta}} {{q4_8_ci}} & -- & -- \\
+$\lambda_1$ minus $E_1$ & & {{q1_delta}} {{q1_ci975}} & & & {{q3_1_delta}} {{q3_1_ci}} \\
+\quad verdict & & \textsc{{{q1_verdict}}} & & & \textsc{{{q3_1_verdict}}} \\
+$\lambda_1$ minus $E_8$ & & {{q2_delta}} {{q2_ci975}} & & & {{q3_8_delta}} {{q3_8_ci}} \\
+\quad verdict & & \textsc{{{q2_verdict}}} & & & \textsc{{{q3_8_verdict}}} \\
+$\bar r_J$ minus $E_8$ & & {{q4_8_delta}} {{q4_8_ci}} & & & {{x1_rJ_minus_E8}} {{x1_rJ_minus_E8_ci}} (E) \\
+\quad verdict & & \textsc{{{q4_8_verdict}}} & & & -- \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{widetable}
 
 \begin{widefigure}[t]
 \centering
 \includegraphics[width=\figw]{figures/fig_checks.pdf}
-\caption{%%FIG2_CAPTION%%}
+\caption{One-step error (left) and growth rate (right) against 100-step error for the {{n_P}} simulators of F18
+(4 held-out trajectories). Models trained one or two steps ahead have among the lowest one-step errors but high
+100-step errors, and positive growth rates. Compressed copies (squares) spread vertically at nearly constant growth
+rate: pruning adds bias, not instability. Dashed: the floor, holding the last state.}
 \label{fig:checks}
 \end{widefigure}
 
 \subsection{What label-free signals cannot do at run time}\label{sec:runtime}
-A check that ranks whole simulators need not flag individual bad steps. Earlier registered tests on the same
-held-out trajectories found that none of the label-free signals is a usable alarm for a step that is worse than
-holding the last state. On the rollout-trained ensembles, a combined kinematic-consistency score reached an area
-under the ROC curve (AUROC; 0.5 is chance) of {{icp_auc_phys}} {{icp_auc_phys_ci}}, ensemble disagreement
-{{icp_auc_dis}} and a plain step counter {{icp_auc_counter}}. Averaged over models of all three kinds, the growth
+A check that ranks whole simulators need not flag individual bad steps. Earlier analyses of these models, on
+the same held-out trajectories of the five splits, found that none of the label-free signals is a usable alarm for a
+step that is worse than holding the last state. On the rollout-trained ensembles, a combined kinematic-consistency
+score reached an area under the ROC curve (AUROC; 0.5 is chance) of {{icp_auc_phys}} {{icp_auc_phys_ci}}, ensemble
+disagreement {{icp_auc_dis}} and a plain step counter {{icp_auc_counter}}. Averaged over models of all three kinds, the growth
 rate read step by step (over the last eight steps) reached {{ng_q3_auc}}, below the step counter's {{ng_q3_counter}}
-(difference {{ng_q3_delta}} {{ng_q3_ci}}, \textsc{worse than counter}). Re-synchronising the simulator with the recorded state when the
+(difference {{ng_q3_delta}} {{ng_q3_ci}}; registered: \textsc{worse than counter}). Re-synchronising the simulator with the recorded state when the
 kinematic score fired gave {{icp_h7_excess}} {{icp_h7_ci}} more 368-step error than the same number of
-re-synchronisations on a fixed schedule. Physics helps as a repair only where it is exact: rescaling the predicted
+re-synchronisations on a fixed schedule (registered: \textsc{schedule better}). Physics helps as a repair only where it is exact: rescaling the predicted
 gravity direction to unit length changed the 368-step error by {{icp_G}} {{icp_G_ci}}, while forcing the joint
 angles onto the approximate integration rule multiplied it by {{icp_J_x}}.
 
 \section{Discussion}\label{sec:discussion}
-\textbf{A checklist for vetting a learned robot simulator.} Each item costs minutes on a CPU.
+\textbf{A checklist for vetting a learned robot simulator.} Every check below takes seconds per model on a
+CPU.
 (1)~\emph{Train for the horizon of use.} Training on the model's own rollouts, eight or more steps ahead here, gave
 simulators that damp their own errors; one-step training gave simulators that amplify them, whatever their one-step
 accuracy. (2)~\emph{Validate at the horizon of use}, on held-out episodes, counting independent trajectories rather
 than overlapping windows: one-step and short-horizon scores mis-ranked the training objective and passed a pruned
-model that fails by 2~s. (3)~%%CHECKLIST3%% (4)~\emph{Read ensemble spread as a ranking}, and rescale it per horizon,
+model that has lost most of its skill by 2~s. (3)~\emph{Without recordings, check consistency and stability.} The kinematic residual matched or beat every
+other check at ranking the 100-step error on both pools, at the cost of a few arithmetic operations per step; a positive growth rate flags a
+simulator that amplifies its own errors, as one-step training produces, but a negative one certifies nothing, because
+compression adds bias that it does not see. (4)~\emph{Read ensemble spread as a ranking}, and rescale it per horizon,
 on held-out episodes, before using it as an interval. (5)~\emph{Do not rely on label-free run-time alarms};
 re-synchronise with measurements on a schedule.
 
@@ -299,10 +361,17 @@ independent trajectories and the five splits twenty, which bounds every interval
 models as independent although they share training data, so their intervals may be too narrow. No policy is trained,
 so what a mis-ranked or miscalibrated simulator costs a controller is not measured. The growth rate is a finite-time
 exponent in the network's own coordinates and depends on the start direction by tenths of 1/s; compressed copies
-were not fine-tuned, and the 8-bit variant rounds weights only.
+were not fine-tuned, and the 8-bit variant rounds weights only. The registered replication of the growth-rate
+comparison failed on the five-split pool, and the kinematic residual's standing there is exploratory.
 
 \section{Conclusion}\label{sec:conclusion}
-%%CONCLUSION_TEXT%%
+A learned legged-robot simulator should be judged at the horizon at which it will be used. On one open
+quadruped simulator, checks made one step ahead favoured teacher forcing, one-step training and a pruned model that
+loses most of its skill by 2~s, and an uncertainty estimate whose shortfall grows with the horizon. Multi-step
+validation fixes this when recordings exist. When they do not, the network itself can still be questioned: whether it
+amplifies its own errors, which separated good training choices from bad ones, and whether its predicted joints move
+as its predicted speeds say, which ranked simulators best of all here. Neither replaces a recording for catching
+errors as they happen.
 
 \section*{Reproducibility and use of AI tools}
 Every number in this paper is generated from result files by scripts that refuse to build the paper if a value is

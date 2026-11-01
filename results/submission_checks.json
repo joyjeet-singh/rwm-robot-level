@@ -1,0 +1,27 @@
+{
+ "single": {
+  "pages": 10,
+  "identifying_strings": [],
+  "metadata": {
+   "Title": "",
+   "Author": "",
+   "Creator": "",
+   "Producer": ""
+  },
+  "fonts_not_embedded": [],
+  "question_marks_refs": 0
+ },
+ "twocol": {
+  "pages": 6,
+  "identifying_strings": [],
+  "metadata": {
+   "Title": "",
+   "Author": "",
+   "Creator": "",
+   "Producer": ""
+  },
+  "fonts_not_embedded": [],
+  "question_marks_refs": 0
+ },
+ "failures": []
+}

@@ -109,11 +109,16 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
         put(f"rhoRC_{a}", r2(v["rho"]), s, f"D1_rho_RC.{kk}.rho")
 
     # ---- D2: skill retained by the compressed variants (X5)
+    def fk(x):
+        """skill retained: one decimal from 95% up (where whole per cents hide the loss), else whole per cents"""
+        v = 100 * x
+        if abs(v) >= 99.95:
+            return "100\\%"
+        return (f"{v:.1f}" if abs(v) >= 95 else f"{v:.0f}").replace("-", "$-$") + r"\%"
     for var, d in S["D2_skill_retained_X5"].items():
         for h, w in d.items():
-            put(f"K_{var}_{h}", sig(100 * w["K"], 2) + r"\%", s, f"D2_skill_retained_X5.{var}.{h}.K")
-            put(f"K_{var}_{h}_ci", cib(*w["ci95"], f=lambda x: sig(100 * x, 2) + r"\%"), s,
-                f"D2_skill_retained_X5.{var}.{h}.ci95")
+            put(f"K_{var}_{h}", fk(w["K"]), s, f"D2_skill_retained_X5.{var}.{h}.K")
+            put(f"K_{var}_{h}_ci", cib(*w["ci95"], f=fk), s, f"D2_skill_retained_X5.{var}.{h}.ci95")
 
     # ---- D3: rollout training against teacher forcing on X5, normalised and physical units
     d3 = S["D3_arms_X5"]
@@ -165,6 +170,38 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
     picks = d6["picks"]
     put("n_pick_E1_N1", str(sum(picks[f"E1_s{i}"].startswith("mn_M32_N1_") for i in range(3))), s,
         "D6_config_choice_F18.picks.E1_s*")
+
+    # ---- derived values used in prose (each from the same fields)
+    put("ab_h1_pct_better", sig(100 * (1 - d3["h1"]["B_over_A"]), 2) + r"\%", s, "100*(1 - D3_arms_X5.h1.B_over_A)")
+    w = S["D4_F18"]
+    put("d4_F18_worse_total", str(w["lam_pos"][0] + w["lam_nonpos"][0]), s, "D4_F18 lam_pos[0] + lam_nonpos[0]")
+    best = d6["best_E100_mean"]
+    put("regret_E1_ratio", sig((best + d6["regret"]["E1"]["mean"]) / best, 2), s,
+        "(D6.best_E100_mean + D6.regret.E1.mean) / D6.best_E100_mean")
+    put("n_pick_E1_onestep", str(sum(picks[f"E1_s{i}"].startswith(("mn_M32_N1_", "mn_M32_N2_")) for i in range(3))), s,
+        "D6_config_choice_F18.picks.E1_s* that are N=1 or N=2 models")
+    put("n_pick_lam_best", str(sum(v == 0 for v in d6["regret"]["lam1"]["per_seed"])), s,
+        "D6_config_choice_F18.regret.lam1.per_seed == 0")
+    put("released_floor_E368", sig(d5["floor"]["E368"], 2), s, "D5_released.floor.E368")
+    put("released_floor_E1", sig(d5["floor"]["E1"], 2), s, "D5_released.floor.E1")
+    put("released_lam_pos_traj", sig(100 * d5["lam1_positive_share_traj"], 2) + r"\%", s,
+        "D5_released.lam1_positive_share_traj")
+
+    # ---- exploratory (results/exploratory.json; labelled exploratory in the paper)
+    X, x = load("explo"), rel("explo")
+    for k in ("E1", "E8", "lam1", "rJ"):
+        put(f"x2_tc_{k}", r2(X["X2_training_choices"][k]["rho"]), x, f"X2_training_choices.{k}.rho")
+        put(f"x2_tc_{k}_ci", cib(*X["X2_training_choices"][k]["ci95"], f=r2), x, f"X2_training_choices.{k}.ci95")
+        put(f"x2_c_{k}", r2(X["X2_compressed"][k]["rho"]), x, f"X2_compressed.{k}.rho")
+        put(f"x3_unc_{k}", r2(X["X3_uncompressed"][k]), x, f"X3_uncompressed.{k}")
+        put(f"x3_c_{k}", r2(X["X3_compressed"][k]), x, f"X3_compressed.{k}")
+    put("x2_tc_n", str(X["X2_training_choices"]["n"]), x, "X2_training_choices.n")
+    put("x2_c_n", str(X["X2_compressed"]["n"]), x, "X2_compressed.n")
+    put("x1_rJ", r2(X["X1_rJ_vs_E1"]["rho_new_mean"]), x, "X1_rJ_vs_E1.rho_new_mean")
+    put("x1_rJ_minus_E1", r2(X["X1_rJ_vs_E1"]["delta"]), x, "X1_rJ_vs_E1.delta")
+    put("x1_rJ_minus_E1_ci", cib(*X["X1_rJ_vs_E1"]["ci95"], f=r2), x, "X1_rJ_vs_E1.ci95")
+    put("x1_rJ_minus_E8", r2(X["X1_rJ_vs_E8"]["delta"]), x, "X1_rJ_vs_E8.delta")
+    put("x1_rJ_minus_E8_ci", cib(*X["X1_rJ_vs_E8"]["ci95"], f=r2), x, "X1_rJ_vs_E8.ci95")
 
     # ---- figure facts
     put("fig_B_cross", str(F["B_cross_floor_step"]), f, "B_cross_floor_step")

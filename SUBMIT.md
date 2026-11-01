@@ -33,4 +33,4 @@ camera-ready must. The official template is e-mailed to accepted authors; the te
 
 ## Title, abstract and keywords for the form
 
-See `paper/body.tex` (generated): title, abstract and keywords are at the top.
+`paper/ABSTRACT.txt` has the title, abstract and keywords as plain text, generated from the paper itself.

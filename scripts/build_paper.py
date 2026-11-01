@@ -74,3 +74,23 @@ if __name__ == "__main__":
     out["numbers_used"] = len(used)
     json.dump(out, open(os.path.join(C.RESULTS, "build.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
+
+
+def plain_abstract():
+    """Title and abstract as plain text for the submission form (from the generated body.tex)."""
+    body = open(os.path.join(PAPER, "body.tex")).read()
+    title = re.search(r"\\title\{(.*?)\}\n", body, flags=re.S).group(1)
+    ab = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", body, flags=re.S).group(1)
+    kw = re.search(r"\\begin\{IEEEkeywords\}(.*?)\\end\{IEEEkeywords\}", body, flags=re.S).group(1)
+    def clean(t):
+        t = t.replace("$-$", "-").replace(r"\%", "%").replace("~", " ").replace(r"\,", " ")
+        t = re.sub(r"\$([^$]*)\$", r"\1", t)
+        t = re.sub(r"\\[a-zA-Z]+\{([^}]*)\}", r"\1", t)
+        return re.sub(r"\s+", " ", t).strip()
+    out = f"TITLE\n{clean(title)}\n\nABSTRACT\n{clean(ab)}\n\nKEYWORDS\n{clean(kw)}\n"
+    open(os.path.join(PAPER, "ABSTRACT.txt"), "w").write(out)
+    return len(clean(ab).split())
+
+
+if __name__ == "__main__":
+    print("abstract words:", plain_abstract())

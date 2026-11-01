@@ -16,6 +16,10 @@ learned simulator becomes over the horizon at which it is used.
 | `results/stats.json`, `results/stats_report.txt` | every registered and descriptive result of the new study |
 | `results/model_table.json`, `results/raw_*.npz` | per-model and per-step quantities behind them |
 | `results/checks.json`, `results/check_numbers.json` | pre-registered checks; independent re-computation |
+| `results/exploratory.json` | analyses added after the registered results were seen |
+| `results/claims_check.json` | every qualitative sentence of the paper checked against the numbers |
+| `results/timeline.json` | commit times of the pre-registration, code and first data |
+| `paper/ABSTRACT.txt` | title, abstract and keywords as plain text for the submission form |
 | `results/paper_numbers.json` | every number in the paper, with the file and field it came from |
 | `results/bib_check.json`, `results/submission_checks.json` | references traced; anonymity and page checks |
 | `figures/` | the two figures |
@@ -23,6 +27,21 @@ learned simulator becomes over the horizon at which it is used.
 | `SUBMIT.md` | what only the author can do before submitting |
 | `ANOMALIES.md` | problems found after the pre-registration |
 | `history.bundle` | the git history of this folder (`git clone history.bundle air-history`) |
+
+## The new study's registered verdicts (details and numbers: `results/stats_report.txt`, Table 2 of the paper)
+
+| Question | Pool | Verdict |
+|---|---|---|
+| Q1 (primary): growth rate vs one-step error, ranking 100-step error | F18, 97 simulators | LABEL-FREE BETTER |
+| Q2 (primary): growth rate vs 8-step error | F18, 97 | NOT SETTLED |
+| Q3: replication of Q1 / Q2 within the five splits | X5, 255 | ONE-STEP BETTER / TRAINING-HORIZON BETTER (replication failed) |
+| Q4: kinematic residual vs one-step / 8-step error | F18, 97 | LABEL-FREE BETTER / LABEL-FREE BETTER |
+| Q5: Q1 / Q2 without the one-step-trained models | F18, 88 | LABEL-FREE BETTER / NOT SETTLED |
+| Q6: does 30% pruning raise the growth rate? | X5, 25 parents | NOT SETTLED |
+
+Exploratory (written after these were seen, `scripts/exploratory.py`): split by what differs between simulators,
+one-step error ranks *training choices* backwards and *compressed copies* well; the kinematic residual also ranks the
+five-split pool best, level with the 8-step error.
 
 ## Reproducing
 
@@ -34,10 +53,12 @@ python checks.py            # pre-registered checks C1-C5 (1 minute)
 python compute.py F18 X5 REL   # every model's rollouts, errors, exponents, residuals (about 45 minutes, 2 cores)
 python stats.py             # every registered question and descriptive result
 python check_numbers.py     # independent re-computation of the registered statistics
+python exploratory.py       # exploratory analyses (labelled so in the paper)
 python make_figures.py
 python check_bib.py         # every reference traced to an earlier verified record
 python paper_numbers.py     # every number the paper prints, with its source
 python build_paper.py       # fills the template, builds both PDFs, refuses on a missing number
+python check_claims.py      # the paper's qualitative sentences against the numbers
 python submission_checks.py # anonymity, metadata, fonts, page count
 ```
 
