@@ -1,0 +1,43 @@
+{
+ "probe": "fold 1-8, seed 0, level 0.30",
+ "iterations": 20,
+ "wall_s": 17.95375393700124,
+ "s_per_iter_mean_after_first": 0.896260317631746,
+ "s_per_iter_max": 0.9585152259987808,
+ "setup_s": 3.446372012000211,
+ "finite": true,
+ "mask_check": {
+  "mask_entries_all_zero": true,
+  "mask_zeros": 423283,
+  "pruned_entries": 423283,
+  "passed": true
+ },
+ "score_one_model_s": 7.436221490999742,
+ "arena_setup_s": 0.009100142000534106,
+ "runs_per_arm": 15,
+ "iterations_per_run": 500,
+ "projected_hours": {
+  "U30F": 1.8815688784494715,
+  "U50F": 1.8815688784494715,
+  "scoring_without_u50": 0.12394966393610755,
+  "scoring_with_u50": 0.18591817636110541,
+  "total_with_u50": 3.9490559332600483,
+  "total_without_u50": 2.005518542385579
+ },
+ "cap_hours": 8.0,
+ "run_u50f": true,
+ "arms": [
+  "P",
+  "U30",
+  "U30F",
+  "CTRL",
+  "U50",
+  "U50F"
+ ],
+ "torch_threads": 2,
+ "torch_version": "2.2.2",
+ "numpy_version": "1.26.4",
+ "python_version": "3.11.15",
+ "machine": "macOS-13.7.8-x86_64-i386-64bit",
+ "note": "U50F is projected at U30F's speed: pruning leaves the matrices dense, so the cost is the same"
+}
