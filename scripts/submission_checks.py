@@ -7,10 +7,11 @@ strict double-blind ("author names and identities must not appear anywhere in th
 import json
 import os
 import re
-import subprocess
+
 import sys
 
 import common as C
+import pdf_tools
 
 PAPER = os.path.join(C.AIR, "paper")
 # identifying strings: the author's name, handles, place, accounts, and the project's public locations
@@ -18,21 +19,14 @@ IDENT = [r"joyjeet", r"\bsingh\b", r"chandigarh", r"punjab", r"gmail", r"github\
          r"orcid", r"0009-0005", r"testingrobo", r"manukau", r"joyjeetsingh", r"rwm-reproduction"]
 
 
-def run(cmd):
-    return subprocess.run(cmd, capture_output=True, text=True).stdout
-
-
 def check(pdf):
     p = os.path.join(PAPER, pdf)
-    text = run(["pdftotext", "-layout", p, "-"])
-    info = run(["pdfinfo", p])
-    fonts = run(["pdffonts", p]).splitlines()[2:]
-    hits = sorted({m for pat in IDENT for m in re.findall(pat, text + info, flags=re.I)})
-    meta = {k.strip(): v.strip() for k, v in (ln.split(":", 1) for ln in info.splitlines() if ":" in ln)}
-    not_embedded = [ln for ln in fonts if ln.split()[-5:-4] == ["no"]]
-    return {"pages": int(meta.get("Pages", 0)), "identifying_strings": hits,
-            "metadata": {k: meta.get(k, "") for k in ("Title", "Author", "Creator", "Producer")},
-            "fonts_not_embedded": not_embedded, "question_marks_refs": len(re.findall(r"\[\?\]|\?\?", text))}
+    d = pdf_tools.pdf_info(p)
+    text = d["text"]
+    hits = sorted({m for pat in IDENT for m in re.findall(pat, text + d["info"], flags=re.I)})
+    return {"pages": d["pages"], "identifying_strings": hits,
+            "metadata": d["meta"],
+            "fonts_not_embedded": d["fonts_not_embedded"], "question_marks_refs": len(re.findall(r"\[\?\]|\?\?", text))}
 
 
 if __name__ == "__main__":
