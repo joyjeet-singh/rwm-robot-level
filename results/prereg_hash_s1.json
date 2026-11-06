@@ -1,0 +1,9 @@
+{
+ "file": "prereg/PREREG_S1.md",
+ "sha256": "c9b15318d70d5f8e3ccc2f7c1ea60b0bc945fbf806ff92b8a6236ffa77ef1865",
+ "hashed_at_utc": "2026-11-06T12:03:00+00:00",
+ "commit": "2cb7d24737bb7e3121f829bd737d0a9a79100dcc",
+ "also": {
+  "scripts/s1_stats.py": "72915643c373e649fd1aabf4e8c48c1ed7d3043281250e2d11fb2d179bf23823"
+ }
+}
