@@ -54,3 +54,11 @@ Pipeline passes (builds identical, claims 107/107, bib, submission checks); two-
 Claim-checker: numbers and labels all matched; 13 wording/scope findings fixed minimally in templates (A8–A10, two body sentences). Notes step1/notes/S7.md; DECISIONS S7-1…4.
 Supplement: scripts/build_supplement.py -> submission/AIR2027_supplement.zip (69.6 MB, 136 files) and _slim.zip (1.4 MB); scans clean (0 hits). Round-1 copy in .cache/.
 Open: the full zip exceeds round 1's 50 MB; author to check the portal limit (slim copy ready). SUBMIT.md not edited. figures/fig_horizon.* still unstaged, not mine.
+
+## S8 status: COMPLETE (2026-11-07 05:10)
+Reviews: air-stats-reviewer FOLLOWS (s1_stats.json matches PREREG_S1.md; no blocking point); air-referee 14 wording/scope points on step1/review/new_material.txt.
+Fixed in templates (no claim strengthened): body Discussion (3) and Conclusion scope, A8 "RWM authors'", glosses, rule order, S1-C1 sentence, CL3/CL5/CL7 wording; A9 AR1/AR2 phrasing, "did not rank"; A10 non-causal wording. DECISIONS S8-1…4 and "S8 declined".
+Recheck: pipeline passes (builds identical, claims 107/107, bib strict, submission checks); two-column 6 pages, submission 19. Supplement rebuilt, both zips scan clean.
+Docs: README Step 1 section and run order; ANOMALIES Step 1 section; SUBMIT supplement paragraph; step1/REPORT.md (500 words).
+Commit "S8: Step 1 complete", tag air2027-step1; history.bundle regenerated and verified.
+Open: GPU decision for Step 2; supplement size vs CMT limit; figures/fig_horizon.* still unstaged (not Step 1's).

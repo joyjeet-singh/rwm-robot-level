@@ -48,3 +48,24 @@
 - **S7-2 Build script not packed.** `scripts/build_supplement.py` contains the identifying patterns it scans for, so it is not in the zip.
 - **S7-3 Body scope.** Claim-checker items 12–13 (add scope words and numbers to the two body sentences) were applied only as "joint commands"; more words push the two-column check to 7 pages. The scope stays in appendix A8.
 - **S7-4 Floor not typed.** The registered correlation floor (0.999) has no number key, so the text says "above the registered floor".
+
+## S8 (2026-11-07)
+- **S8-1 Reviews.** air-referee read `step1/review/new_material.txt` (A8–A10 and the two changed body sentences; 14 points, "weak accept"). air-stats-reviewer read PREREG_S1.md, s1_stats.json and s1_report.txt: **FOLLOWS**, nothing blocking; every label matches its rule and interval, and all pool sizes are right.
+- **S8-2 Text fixed** (templates only; no number, label or claim strengthened):
+  - Body: Discussion (3) "the residual ranked worse … growth rate was not settled" → "ranked less well … growth rate's change was not settled" (not read as "worse than λ1"); Conclusion "a policy's" → "the released policy's"; "on this robot" → "on this robot and RWM's architecture" (A9 now shows other architectures). Two-column still 6 pages.
+  - A8: "the authors'" → "the RWM authors'" (three places; double-blind ambiguity); glosses for imagined return, paired model bootstrap and parent clusters; label rules stated in order; the S1-C1 sentence no longer reads as both failing and passing; CL3 given as two values without a comparison; CL5 named a different quantity; CL7 "three new command sources" → "policy-driven, closed-loop or noisy rollouts".
+  - A9: AR1/AR2 stated as "ranks E100 better than … does"; "barely ranked" → "did not rank (secondary)"; divergence "each … of its 4"; "this CPU" → "one CPU (no GPU)".
+  - A10: "Longer training lowered" → "After longer training … was lower"; "the parent lost little" removed (numbers stay).
+  - `check_claims.py`: two claim descriptions reworded to match; checks unchanged.
+- **S8-3 Supplement rebuilt** (templates and check_claims.py are in it): full 69.6 MB, 136 entries; slim 1.4 MB; both scans 0 hits.
+- **S8-4 Tie verified.** Stats point 5: for the MLP, ρ(r̄J, E100) = ρ(E8, E100) = 0.764 is genuine (13 finite values each, different rankings, same ρ), recomputed from s1_models.json for checking only.
+
+## S8 declined
+- **Referee 3** ("but not a poor one (the released model has one)"): round-1 text, reviewed then; no slack.
+- **Referee 4** ("teacher-forced and one-step-trained"): two distinct groups here (one-step-trained = rollout training with N = 1, Sec. 3), so not merged.
+- **Referee 5, "best"**: kept; it is the round-1 F18 reading (exploratory where labelled). Only the architecture scope was added.
+- **Referee 2, numbers in the body** (0.95 → 0.83): no two-column slack; the numbers are in A8.
+- **Referee 7** (a tag after each secondary label): the paragraph is headed "Secondary readings (95% intervals, not corrected …)"; only CL5 got a note.
+- **Referee 12, remaining terms** (compressed copies, parent, control, skill, arena, earlier reproduction): defined in Sec. 3 and A7, which the referee did not see. No hardware model typed (no typed numbers; double-blind).
+- **Referee, commit hash**: kept; it is the registration's evidence (prereg_hash_s1.json). The repository has never been pushed; the author should keep it private until decisions (REPORT).
+- **Stats 1–3, 6–10** (output lacks draw count, seed, S1-C1 detail, an AR exclusion list; Kendall τ unlabelled; ci95 on primaries; dropped-draw handling; CL8 wording untested; AR3 resampling unit): `s1_stats.py` and its output are frozen by the registration. S1-C1 detail is in `s1_models.json` (F18 r̄J 96.9% within, ρ 0.99999; λ1 100%); the AR training records are all finite (check_claims asserts it); the paper prints no τ; dropped draws were 0 everywhere. No change.

@@ -316,7 +316,7 @@ CLAIMS.update({
         _lab(_ar["AR2"]) == "NOT SETTLED"
         and abs(_ar["AR2"]["rho_new_per_group"][0] - _ar["AR2"]["rho_base_per_group"][0]) < 1e-9
         and all(_ar["AR2"]["rho_new_per_group"][i] > _ar["AR2"]["rho_base_per_group"][i] for i in (1, 2)),
-    "A9: AR3 pooled both not settled, lambda_1 barely ranks (|rho| < 0.2); extended AR1 label-free, AR2 not settled":
+    "A9: AR3 pooled both not settled, lambda_1 does not rank the pool (|rho| < 0.2); extended AR1 label-free, AR2 not settled":
         all(_ar["AR3"]["pooled"][q]["label"] == "NOT SETTLED" for q in ("AR1", "AR2"))
         and abs(_ar["AR3"]["pooled"]["AR1"]["rho_new"]) < 0.2
         and _ar["AR3"]["extended"]["AR1"]["label"] == "LABEL-FREE BETTER"
@@ -328,7 +328,7 @@ CLAIMS.update({
         len(S1X["AR_diverged_recorded"]) == 3
         and all(v["arch"] == "mlp" and v["regime"] == "tf" for v in S1X["AR_diverged_recorded"].values())
         and all(math.isfinite(_arm[k][m]) for k in S1X["AR_diverged_recorded"] for m in ("E100", "lam1_rec", "rJ_rec")),
-    "A10: longer training lowered E100 for both arms, E1 moved by < 0.01; all four statements in every seed":
+    "A10: E100 lower after longer training for both arms, E1 moved by < 0.01; all four statements in every seed":
         all(S1B["b_scores"][a]["10000"]["mean"]["E100"] < S1B["b_scores"][a]["2500"]["mean"]["E100"]
             and abs(S1B["b_scores"][a]["10000"]["mean"]["E1"] - S1B["b_scores"][a]["2500"]["mean"]["E1"]) < 0.01
             for a in ("rollout_trained", "teacher_forced"))

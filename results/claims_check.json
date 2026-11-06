@@ -101,10 +101,10 @@
   "A9: new runs trained 2,500 iterations at 2 threads on F18's split, all finite; S1-C5 passed": true,
   "A9: AR1 label-free better; rests on MLP and Transformer (E1 rho < -0.5); RSSM: E1 ranks well, lambda_1 poorly": true,
   "A9: AR2 not settled; r_J level with E8 in the MLP, above it in RSSM and Transformer": true,
-  "A9: AR3 pooled both not settled, lambda_1 barely ranks (|rho| < 0.2); extended AR1 label-free, AR2 not settled": true,
+  "A9: AR3 pooled both not settled, lambda_1 does not rank the pool (|rho| < 0.2); extended AR1 label-free, AR2 not settled": true,
   "A9: AR4 reversal in 5/5 for MLP and Transformer; RSSM better at 1 step 5/5, worse at 100 in 0/5": true,
   "A9: the runs that diverged under recorded commands are teacher-forced MLPs with finite values": true,
-  "A10: longer training lowered E100 for both arms, E1 moved by < 0.01; all four statements in every seed": true,
+  "A10: E100 lower after longer training for both arms, E1 moved by < 0.01; all four statements in every seed": true,
   "A10: slopes at 10k much smaller than at 2,500 (largest magnitude at 10k below smallest at 2,500)": true,
   "A10: parent kept less than all of the control's skill at every horizon (more training added little)": true
  },

@@ -93,3 +93,44 @@ The paper was revised after an internal review. What is new:
   `check_bib.py`, `paper_numbers.py`, `build_paper.py`, `check_claims.py`, `submission_checks.py`. Final pipeline run three times: the same two PDFs each time.
 - `submission/AIR2027_supplement.zip`: optional anonymous supplement for reviewers (built locally, never uploaded).
 - `revision/`: plan, log, notes, review and report (`revision/REPORT.md`).
+
+## Step 1 (added)
+
+Three CPU-only studies and one engineering task, run under `STEP1_PLAN.md` (log, notes and report in `step1/`;
+`step1/REPORT.md` is the summary). Registration: `prereg/PREREG_S1.md` and `scripts/s1_stats.py`, committed before any
+trained simulator was driven by a policy (hash in `results/prereg_hash_s1.json`).
+
+- **Study CL** (registered): the label-free checks with the authors' released actor supplying the joint commands.
+  Verdicts: CL1 WORSE WITH POLICY COMMANDS, CL2 NOT SETTLED.
+- **Study AR** (registered): the same check comparisons on 38 MLP, RSSM and Transformer simulators, 12 of them newly
+  trained. Verdicts: AR1 LABEL-FREE BETTER, AR2 NOT SETTLED.
+- **Study TB** (descriptive, not registered): does training length (2,500 against 10,000 iterations) change the
+  conclusions? Stored values only.
+- **Task LP:** the authors' lite policy-training code run on this CPU (`scripts/lite/`; nothing in the paper).
+
+**New scripts:** `s1_policy.py` (actor as a command source), `s1_rollout.py` (checks under recorded, policy, closed-loop
+and noisy commands), `s1_arch.py` (MLP, RSSM, Transformer adapters), `s1_train_baseline.py` (copy of the reproduction's
+trainer, changed lines marked `S1:`), `s1_eval.py` (the job), `s1_stats.py` (registered analysis), `s1_extra.py`
+(exploratory), `s1_budget.py` (study TB), `s1_numbers.py` (paper keys, called by `paper_numbers.py`), `test_s1.py`
+(tests i–xi), `s1_probe.py`, `s2_probe.py` (timing probes), `build_supplement.py`, and `lite/` (`run_lite.py`,
+`adapter.py`, `test_lite.py`, `stubs/`).
+
+**New result files:** `results/s1_models.json`, `results/raw_S1.npz`, `results/s1/` (job records),
+`results/s1_stats.json`, `results/s1_report.txt`, `results/s1_extra.json`, `results/s1_budget.json` and `.txt`,
+`results/s1_probe.json`, `results/prereg_hash_s1.json`. New weights go to `runs/s1_baselines/`, lite runs to
+`runs/lite/` (neither committed).
+
+**Run order** (always through `./py`):
+
+```
+./py scripts/s1_probe.py; ./py scripts/s2_probe.py   # timing probes (random-weight models)
+./py scripts/test_s1.py                              # tests i-xi
+zsh step1/jobs/S3.zsh                                # job: s1_eval.py, trains 12 runs and scores every model (hours)
+./py scripts/s1_stats.py                             # registered verdicts -> s1_stats.json, s1_report.txt
+./py scripts/s1_extra.py                             # exploratory additions
+./py scripts/s1_budget.py                            # study TB (descriptive)
+./py scripts/paper_numbers.py; ./py scripts/build_paper.py
+./py scripts/check_claims.py; ./py scripts/check_bib.py; ./py scripts/submission_checks.py
+./py scripts/build_supplement.py                     # optional reviewer supplement
+./py scripts/lite/test_lite.py                       # lite code checks (Task LP; separate from the paper)
+```

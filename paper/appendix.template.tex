@@ -362,12 +362,12 @@ records that it was not.
 % A8: study CL, registered in prereg/PREREG_S1.md (Step 1) before any trained simulator was driven by a policy;
 % results from scripts/s1_stats.py (results/s1_stats.json); X5 noise and closed-loop entries from scripts/s1_extra.py
 % (exploratory). Numbers: scripts/s1_numbers.py.
-\textbf{Scope.} One robot, one trotting gait, simulated data; the authors' released actor; imagined return only.
+\textbf{Scope.} One robot, one trotting gait, simulated data; the RWM authors' released actor; imagined return only (the reward the policy collects inside the learned simulator).
 \textbf{Design.} Study CL asked whether the two label-free checks still rank simulators by their 100-step error when
 a policy, not the recording, supplies the \emph{joint commands} (the 12 joint position targets given at every step).
 Its rules and analysis code were committed at {{s1_reg_time}} (commit {{s1_reg_commit}}), before any trained
 simulator was driven by a policy, and the job that produced every policy, noisy and closed-loop value below started after that commit. The policy
-is the authors' released actor, without action or observation noise; at every step it reads the simulator's own
+is the RWM authors' released actor, without action or observation noise; at every step it reads the simulator's own
 predicted state, the \emph{velocity command} (the walking speed and turning rate it is asked to follow, held at the
 recorded segment's mean) and its own previous joint command. Each simulator was rolled out for 368 steps from the same
 32 recorded history rows as in Sec.~\ref{sec:setup}, under three sources of joint commands: the recorded ones (the
@@ -377,13 +377,13 @@ kinematic residual $\bar r_J$ were computed on each rollout and ranked against t
 recorded commands, $E_{100}$; no new error can be computed, because a rollout driven by the policy has no recorded
 future. F18 ({{s1_nF18}} simulators) is the primary pool, X5 ({{s1_nX5}}) is secondary and the released model is
 for reference only. Two primary differences were registered, with 97.5\% intervals from the registered paired model
-bootstrap: CL1, $\rho(\bar r_J,E_{100})$ with policy commands minus the same with recorded commands, and CL2, the
-same for $\lambda_1$. An interval inside $\pm${{s1_margin}} reads \textsc{unchanged by the command source}; one
+bootstrap (whole simulators resampled, the same draw for both correlations): CL1, $\rho(\bar r_J,E_{100})$ with policy commands minus the same with recorded commands, and CL2, the
+same for $\lambda_1$. The labels apply in this order: an interval inside $\pm${{s1_margin}} reads \textsc{unchanged by the command source}; otherwise, one
 wholly below zero, \textsc{worse with policy commands}; one wholly above, \textsc{better with policy commands};
 anything else, \textsc{not settled}. The job first recomputed the recorded-command checks for every F18 model and
 every fifth X5 model; all agreed with the stored values within the registered tolerance except {{s1_c1_rJ_nout}}
-residuals of the 10{,}000-iteration teacher-forced models, at most {{s1_c1_rJ_maxrel}} apart, which the registered
-check allows (the rank correlation of recomputed with stored values was at least {{s1_c1_rho_min}}, above the registered floor).
+residuals of the 10{,}000-iteration teacher-forced models, at most {{s1_c1_rJ_maxrel}} apart and outside the per-model tolerance; the registered
+check, which tolerates a few such models, still passed (the rank correlation of recomputed with stored values was at least {{s1_c1_rho_min}}, above the registered floor).
 
 \begin{table}[h]
 \centering
@@ -415,8 +415,8 @@ registered rule the checks cannot be called unchanged. CL2 is \textsc{{{s1_cl2_l
 by {{s1_cl2_delta}} {{s1_cl2_ci}}, an interval that includes zero but also reaches beyond the margin.
 
 \textbf{Secondary readings} (95\% intervals, not corrected for multiple tests). Each check's ranking of the
-simulators under policy commands agreed with its ranking under recorded commands, more closely for $\lambda_1$
-({{s1_cl3_lam1_rho}} {{s1_cl3_lam1_ci}}) than for $\bar r_J$ ({{s1_cl3_rJ_rho}} {{s1_cl3_rJ_ci}}; CL3). On X5, the
+simulators under policy commands agreed with its ranking under recorded commands: $\lambda_1$
+{{s1_cl3_lam1_rho}} {{s1_cl3_lam1_ci}}, $\bar r_J$ {{s1_cl3_rJ_rho}} {{s1_cl3_rJ_ci}} (CL3). On X5, the
 residual's change was again \textsc{{{s1_cl4_cl1_label}}} ({{s1_cl4_cl1_delta}} {{s1_cl4_cl1_ci}}), and the growth
 rate's was \textsc{{{s1_cl4_cl2_label}}} ({{s1_cl4_cl2_delta}} {{s1_cl4_cl2_ci}}; CL4). Noisy recorded commands left
 both correlations \textsc{{{s1_cl8_cl1_label}}} ($\bar r_J$: {{s1_cl8_cl1_delta}} {{s1_cl8_cl1_ci}}; $\lambda_1$:
@@ -426,15 +426,15 @@ residual's drop. Within F18, the drop was seen in the {{s1_cl9_trained_n}} train
 {{s1_cl9_compressed_n}} compressed copies it was \textsc{{{s1_cl9_compressed_cl1_label}}}
 ({{s1_cl9_compressed_cl1_delta}} {{s1_cl9_compressed_cl1_ci}}), and the growth rate's change was
 \textsc{{{s1_cl9_trained_cl2_label}}} in both (CL9). The closed-loop growth rate, which also differentiates the
-policy's response to the state, did not rank the simulators ($\rho$ = {{s1_t_F18_lam1_cl}}; CL5
+policy's response to the state, did not rank the simulators ($\rho$ = {{s1_t_F18_lam1_cl}}; CL5, a different quantity from $\lambda_1$ under policy commands:
 \textsc{{{s1_cl5_label}}}, {{s1_cl5_delta}} {{s1_cl5_ci}}). No rollout diverged (no normalised state left $\pm10^3$): none of the {{s1_cl7_ntraj}}
-trajectories of the {{s1_cl7_nmodels}} simulators did, under any of the three new command sources (CL7). The policy's imagined return, the authors' reward terms summed over the policy-driven rollout, fell as
+trajectories of the {{s1_cl7_nmodels}} simulators did, in the policy-driven, closed-loop or noisy rollouts (CL7). The policy's imagined return, the RWM authors' reward terms summed over the policy-driven rollout, fell as
 $E_{100}$ rose ($\rho$ = {{s1_cl6_rho}} {{s1_cl6_ci}}, {{s1_cl6_nexcl}} models left out; CL6). A positive value
 would have meant that less accurate simulators flatter the policy; here they gave it a lower imagined return. This
 concerns imagined return only: no policy was trained or tested in a physics simulator.
 
 \textbf{Exploratory.} Two-level intervals, which resample the four trajectories and then the
-{{s1_tl_nclusters}} parent clusters, are wider: CL1 {{s1_tl_cl1_ci}}, still wholly below zero, and CL2
+{{s1_tl_nclusters}} parent clusters (a trained simulator with its compressed copies), are wider: CL1 {{s1_tl_cl1_ci}}, still wholly below zero, and CL2
 {{s1_tl_cl2_ci}}. The released model ({{s1_rel_ntraj}} trajectories, reference only) had $\lambda_1={}${{s1_rel_lam1_pol}}
 with policy commands against {{s1_rel_lam1_rec}} with recorded ones, and $\bar r_J={}${{s1_rel_rJ_pol}} against
 {{s1_rel_rJ_rec}}.
@@ -458,14 +458,14 @@ are seeds 3 and 4 of both training methods, one step ahead (teacher-forced) and 
 architecture, so that each has five seeds of each method at its default size. The rest of the pool is three larger,
 parameter-matched rollout-trained MLP and Transformer runs each, and two teacher-forced RSSM variants. The new runs
 were trained on F18's split (episodes 1 and 8 held out) for {{s1_ar_iters}} iterations, {{s1_ar_train_h}} hours on
-this CPU in all, by a copy of the reproduction's training script changed only in its outputs, progress reports and
+one CPU in all (no GPU), by a copy of the reproduction's training script changed only in its outputs, progress reports and
 thread count.
 At the job's start the copy reproduced the stored loss curves exactly over 50 iterations for each architecture.
 Every run was scored with its final weights on F18's four held-out trajectories with recorded joint commands, by the
 measures of the main study. Correlations are computed within each architecture and averaged, with runs resampled
-within their architecture (97.5\% intervals for the primary questions). AR1 is the main study's Q1 ($\lambda_1$
-against the one-step error $E_1$) and AR2 its Q4's second question ($\bar r_J$ against the 8-step error $E_8$), with
-their labels.
+within their architecture (97.5\% intervals for the primary questions). AR1 asks whether $\lambda_1$ ranks $E_{100}$
+better than the one-step error $E_1$ does (the main study's Q1), and AR2 whether $\bar r_J$ does better than the 8-step
+error $E_8$ (its Q4's second question); each keeps that question's labels.
 
 \begin{table}[h]
 \centering
@@ -499,7 +499,7 @@ in the other two.
 
 \textbf{Secondary and descriptive readings.} Ranked together across architectures, neither comparison was settled
 (secondary, 95\% intervals; AR1 {{s1_ar3_pooled_ar1_delta}} {{s1_ar3_pooled_ar1_ci}}; AR2 {{s1_ar3_pooled_ar2_delta}} {{s1_ar3_pooled_ar2_ci}};
-AR3), and the growth rate barely ranked the {{s1_ar_n}} runs ($\rho$ = {{s1_art_pooled_lam1}}). With F18's simulators added (also secondary), AR1 was
+AR3), and the growth rate did not rank the {{s1_ar_n}} runs ($\rho$ = {{s1_art_pooled_lam1}}; secondary). With F18's simulators added (also secondary), AR1 was
 \textsc{{{s1_ar3_extended_ar1_label}}} ({{s1_ar3_extended_ar1_delta}} {{s1_ar3_extended_ar1_ci}}) and AR2
 \textsc{{{s1_ar3_extended_ar2_label}}} ({{s1_ar3_extended_ar2_delta}} {{s1_ar3_extended_ar2_ci}}). Pairing the five
 seeds of each method (AR4, descriptive), the teacher-forced run was better one step ahead and worse at 100 steps in
@@ -507,8 +507,8 @@ seeds of each method (AR4, descriptive), the teacher-forced run was better one s
 {{s1_ar4_transformer_n_pairs}} for the Transformer. For the RSSM it was better one step ahead in
 {{s1_ar4_rssm_tf_better_E1}} of {{s1_ar4_rssm_n_pairs}} pairs but worse at 100 steps in {{s1_ar4_rssm_tf_worse_E100}}:
 the reversal seen on RWM's model held for two of the three other architectures. Under recorded commands (exploratory),
-{{s1_ar_ndiv}} teacher-forced MLP runs (seeds {{s1_ar_div_seeds}}) left the divergence bound ($\pm10^3$) on {{s1_ar_div_traj}} of
-their {{s1_ar_ntraj}} trajectories; as registered, their finite values were kept as computed.
+{{s1_ar_ndiv}} teacher-forced MLP runs (seeds {{s1_ar_div_seeds}}) each left the divergence bound ($\pm10^3$) on {{s1_ar_div_traj}} of
+its {{s1_ar_ntraj}} trajectories; as registered, their finite values were kept as computed.
 
 \textbf{What was known before the registration.} The {{s1_ar_nold}} earlier runs' errors in the reproduction's own
 error measure and their training-loss curves were known, as was an earlier exploratory analysis of the residual on
@@ -521,10 +521,10 @@ All of this section is descriptive and concerns one robot, one trotting gait and
 value was computed before the studies of appendices A8 and A9. The main models train for {{hp_iters}} iterations. Over the last 250 iterations the
 training loss was still falling in {{s1_tb_fall_2500}} of {{s1_tb_n_2500}} runs ({{s1_tb_nseeds}} seeds each of
 rollout and teacher-forced training) and, with much smaller slopes, in {{s1_tb_fall_10000}} of {{s1_tb_n_10000}}
-runs trained for 10{,}000 iterations. Longer training lowered the seed-mean 100-step error of rollout-trained models
-from {{s1_tb_ro_2500_E100}} to {{s1_tb_ro_10000_E100}} and of teacher-forced ones from {{s1_tb_tf_2500_E100}} to
+runs trained for 10{,}000 iterations. After longer training, the seed-mean 100-step error was lower: for rollout-trained models
+from {{s1_tb_ro_2500_E100}} to {{s1_tb_ro_10000_E100}} and for teacher-forced ones from {{s1_tb_tf_2500_E100}} to
 {{s1_tb_tf_10000_E100}}, while their one-step errors barely moved ({{s1_tb_ro_2500_E1}} to {{s1_tb_ro_10000_E1}};
 {{s1_tb_tf_2500_E1}} to {{s1_tb_tf_10000_E1}}). In each of the {{s1_tb_nseeds}} seeds and at both lengths, teacher
 forcing was better one step ahead and worse at 100 steps, its growth rate was positive and that of rollout training
 negative. In study FT (appendix~A7), the parent kept {{s1_tb_K_min}} to {{s1_tb_K_max}} of the skill of its control,
-which had 500 more iterations, across horizons: for 500 more iterations, on the X5 arena, the parent lost little.
+which had 500 more iterations, across horizons (500 more iterations, on the X5 arena).

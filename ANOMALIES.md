@@ -33,3 +33,27 @@ None of these touches a registered verdict.
 - **Working tree:** `figures/fig_horizon.pdf` and `.png` differ from the last commit; they were already different before the round and were left alone.
 - **Supplement (R11):** in the zip copy only, a local path (`stage_out.py`, `common.py`) and the author-name patterns of `submission_checks.py` were replaced by placeholders. `PREREG.md` is kept byte-identical (its hash is evidence); it names a generic download folder, with no name.
 - **Registration time zone:** git commit times of the FT registration carry a +05:30 offset; the supplement README gives UTC.
+
+## Step 1 (S0-S8)
+
+None of these departs from `prereg/PREREG_S1.md` or touches a registered verdict (CL1, CL2, AR1, AR2). Details in
+`step1/DECISIONS.md` and `step1/notes/`.
+- **Check S1-C1 (2026-11-07, S6).** Recomputed on this Mac, 3 of F18's 97 kinematic residuals (the 10,000-iteration
+  teacher-forced models B10k_s0-s2) differ from the stored Linux values by up to 0.51% relative, outside the 1e-3
+  per-model tolerance. The registered rule (at least 95% within tolerance, rank correlation at least 0.999) passes:
+  96.9% within, ρ = 0.99999. **Effect:** none; CL uses the stored recorded-command values, as registered. The paper
+  reports the three models and the largest difference (appendix A8).
+- **AR runs that diverged under recorded commands (S6).** Three teacher-forced MLP runs (two earlier ones, seeds 0
+  and 2, and the new seed 4) left the ±1e3 bound on 2 of their 4 trajectories. Handled as registered (S2-4, S3-2):
+  values kept, non-finite ranked worst, count reported; no run dropped.
+- **Imagined return (registered, S1-5).** It reproduces the authors' `dof_acc_l2` term as written, which reads joint
+  positions where joint velocities are meant (`anymal_d_flat.py:105`). Only CL6 uses the return.
+- **Lite code (S4, Task LP; not in the paper).** Runs with two compatibility shims and no install (`torch.load` to
+  CPU; `TensorDictBase.__contains__` for tensordict 0.3.2) and a wandb stub. Timings were taken while job S3 used the
+  other two cores; the 500-iteration hours are projections, not measured runs.
+- **Supplement size (S7).** The full zip is 69.6 MB (round 1: 32.7 MB) because of `raw_S1.npz`; a 1.4 MB slim copy
+  without raw arrays was also built. The author picks one against the portal's limit.
+- **Body pointers (S6-S8).** The two-column check has no slack, so the body names only appendix A8; A9 and A10 have no
+  body pointer, and the Limitations, abstract and introduction were left unchanged (DECISIONS S6-2 to S6-4).
+- **Working tree.** `figures/fig_horizon.pdf` and `.png` still differ from the last commit, as before Step 1; the PDFs
+  include the working copy, which looks identical. Never staged in Step 1.

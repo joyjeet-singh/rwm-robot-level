@@ -1,0 +1,142 @@
+=== BODY (changed sentences, with the sentence before) ===
+[BODY, Discussion item (3) / Conclusion] A positive growth rate marked the one-step-trained rebuilt simulators but not
+a poor one (the released model has one), and a negative one certifies nothing. With the released policy’s joint
+commands the residual ranked worse and the growth rate was not settled (appendix A8).
+[BODY, Discussion item (3) / Conclusion] Without recordings, on this robot, a kinematic residual ranked simulators
+best (level with the 8-step error on the five-split pool; exploratory), and a positive growth rate flagged the
+teacher-forced and one-step-trained simulators. Neither replaces a recording at run time; a policy’s joint commands
+weakened the residual’s ranking (appendix A8).
+
+=== APPENDIX A8–A10 (text as extracted by pypdf) ===
+A8 Checks with a policy in the loop
+Scope.One robot, one trotting gait, simulated data; the authors’ released actor; imagined return only.
+Design.Study CL asked whether the two label-free checks still rank simulators by their 100-step error
+when a policy, not the recording, supplies thejoint commands(the 12 joint position targets given at
+every step). Its rules and analysis code were committed at 2026-11-06 12:02 UTC (commit 2cb7d24),
+before any trained simulator was driven by a policy, and the job that produced every policy, noisy and
+closed-loop value below started after that commit. The policy is the authors’ released actor, without action
+or observation noise; at every step it reads the simulator’s own predicted state, thevelocity command(the
+walking speed and turning rate it is asked to follow, held at the recorded segment’s mean) and its own
+previous joint command. Each simulator was rolled out for 368 steps from the same 32 recorded history
+rows as in Sec. 3, under three sources of joint commands: the recorded ones (the registered setting of the
+16
+main study), the policy’s, and the recorded ones plus Gaussian noise of 0.1 times each joint’s standard
+deviation (a control that changes the commands without a policy). The growth rate λ1 and the kinematic
+residual ¯rJ were computed on each rollout and ranked against the stored 100-step error under recorded
+commands, E100; no new error can be computed, because a rollout driven by the policy has no recorded
+future. F18 (97 simulators) is the primary pool, X5 (255) is secondary and the released model is for
+reference only. Two primary differences were registered, with 97.5% intervals from the registered paired
+model bootstrap: CL1, ρ(¯rJ,E 100) with policy commands minus the same with recorded commands,
+and CL2, the same for λ1. An interval inside ±0.10 readsUNCHANGED BY THE COMMAND SOURCE;
+one wholly below zero,WORSE WITH POLICY COMMANDS; one wholly above,BETTER WITH POLICY
+COMMANDS; anything else,NOT SETTLED. The job first recomputed the recorded-command checks
+for every F18 model and every fifth X5 model; all agreed with the stored values within the registered
+tolerance except 3 residuals of the 10,000-iteration teacher-forced models, at most 0.5% apart, which the
+registered check allows (the rank correlation of recomputed with stored values was at least 0.9999, above
+the registered floor).
+Table 12: Study CL: Spearman correlation ρ of each label-free check with the 100-step error under
+recorded commands, E100, by the source of the joint commands. F18: 97 simulators (recorded: the main
+study’s registered values; policy: primary; noisy: secondary). X5: correlation within each of the five
+splits, averaged (255 simulators; policy: secondary; noisy and closed loop: exploratory). Closed loop:
+the growth rate with the policy’s response differentiated too (secondary on F18).
+F18 X5
+Check recorded policy noisy recorded policy noisy
+Growth rateλ 1 0.80 0.76 0.77 0.67 0.68 0.66
+Growth rate, closed loop –−0.01 – –−0.28 –
+Kinematic residual ¯rJ 0.95 0.83 0.95 0.96 0.90 0.96
+Registered verdicts.CL1 isWORSE WITH POLICY COMMANDS: with the policy’s joint commands,
+the kinematic residual ranked F18’s 100-step error less well (0.83 against 0.95). The difference was
+−0.120 [−0.220, −0.052]; the interval lies wholly below zero and reaches beyond the margin, so by
+the registered rule the checks cannot be called unchanged. CL2 isNOT SETTLED: the growth rate’s
+correlation changed by −0.032 [−0.113, +0.041], an interval that includes zero but also reaches beyond
+the margin.
+Secondary readings(95% intervals, not corrected for multiple tests). Each check’s ranking of the
+simulators under policy commands agreed with its ranking under recorded commands, more closely
+for λ1 (0.93 [0.87, 0.96]) than for ¯rJ (0.83 [0.73, 0.90]; CL3). On X5, the residual’s change was again
+WORSE WITH POLICY COMMANDS( −0.063 [−0.105, −0.033]), and the growth rate’s wasUNCHANGED
+BY THE COMMAND SOURCE(+0.011 [ −0.042, +0.064]; CL4). Noisy recorded commands left both
+correlationsUNCHANGED BY THE COMMAND SOURCE( ¯rJ: −0.002 [−0.011, +0.006]; λ1: −0.029
+[−0.074, +0.003]; CL8), so a small random change of the commands did not reproduce the residual’s
+drop. Within F18, the drop was seen in the 57 trained simulators (WORSE WITH POLICY COMMANDS,
+−0.285 [−0.492, −0.137]); within the 40 compressed copies it wasUNCHANGED BY THE COMMAND
+SOURCE( −0.021 [−0.094, +0.047]), and the growth rate’s change wasNOT SETTLEDin both (CL9).
+The closed-loop growth rate, which also differentiates the policy’s response to the state, did not rank the
+simulators (ρ = −0.01; CL5WORSE WITH POLICY COMMANDS, −0.809 [−1.034, −0.564]). No rollout
+17
+diverged (no normalised state left ±103): none of the 1,408 trajectories of the 352 simulators did, under
+any of the three new command sources (CL7). The policy’s imagined return, the authors’ reward terms
+summed over the policy-driven rollout, fell as E100 rose (ρ = −0.86 [−0.91, −0.77], 0 models left out;
+CL6). A positive value would have meant that less accurate simulators flatter the policy; here they gave it
+a lower imagined return. This concerns imagined return only: no policy was trained or tested in a physics
+simulator.
+Exploratory.Two-level intervals, which resample the four trajectories and then the 57 parent clusters,
+are wider: CL1 [ −0.282, −0.002], still wholly below zero, and CL2 [ −0.139, +0.112]. The released
+model (20 trajectories, reference only) had λ1 = 1.60 with policy commands against 0.70 with recorded
+ones, and ¯rJ =0.70 against 3.28.
+What was known before the registration.The recorded-command correlations on F18 (the table’s
+first column) were registered results of the main study. An earlier analysis had found that the actor
+reproduces the recorded joint commands only partly, and an exploratory one that the simulators respond
+strongly to their joint commands. No simulator had been driven by a policy or by noisy commands, and
+no closed-loop growth rate existed.
+A9 Other simulator architectures
+Scope.One robot, one trotting gait, simulated data; F18’s split; 2,500 training iterations.Design.Study
+AR, registered with study CL in the same commit, asked whether the main study’s registered comparisons
+of checks hold for simulators built on other network architectures: a multilayer perceptron (MLP, a feed-
+forward network over a window of past states and joint commands), a recurrent state-space model (RSSM,
+a recurrent network with a discrete latent state) and a Transformer (an attention network over the same
+window). The pool has 38 runs: 26 that the earlier reproduction had trained and 12 trained for this study
+(MLP 13, RSSM 12, Transformer 13 in all). The new runs are seeds 3 and 4 of both training methods,
+one step ahead (teacher-forced) and on the model’s own rollouts, for each architecture, so that each has
+five seeds of each method at its default size. The rest of the pool is three larger, parameter-matched
+rollout-trained MLP and Transformer runs each, and two teacher-forced RSSM variants. The new runs
+were trained on F18’s split (episodes 1 and 8 held out) for 2,500 iterations, 10.0 hours on this CPU in all,
+by a copy of the reproduction’s training script changed only in its outputs, progress reports and thread
+count. At the job’s start the copy reproduced the stored loss curves exactly over 50 iterations for each
+architecture. Every run was scored with its final weights on F18’s four held-out trajectories with recorded
+joint commands, by the measures of the main study. Correlations are computed within each architecture
+and averaged, with runs resampled within their architecture (97.5% intervals for the primary questions).
+AR1 is the main study’s Q1 ( λ1 against the one-step error E1) and AR2 its Q4’s second question ( ¯rJ
+against the 8-step errorE 8), with their labels.
+Registered verdicts.AR1 isLABEL-FREE BETTER: on average over the three architectures, the
+growth rate ranked the 100-step error better than one-step error did (+0.796 [+0.368, +1.025]). The lead
+rests on the MLP and the Transformer, where one-step error ranked the runs largely in reverse order; in
+the RSSM, one-step error ranked them well and the growth rate poorly (Table 13). AR2 isNOT SETTLED
+(+0.110 [−0.081, +0.356]); the residual’s correlation was level with the 8-step error’s in the MLP and
+above it in the other two.
+Secondary and descriptive readings.Ranked together across architectures, neither comparison was
+settled (secondary, 95% intervals; AR1 −0.164 [−0.793, +0.561]; AR2 −0.202 [−0.526, +0.079]; AR3),
+and the growth rate barely ranked the 38 runs (ρ = −0.11). With F18’s simulators added (also secondary),
+AR1 wasLABEL-FREE BETTER(+0.467 [+0.230, +0.711]) and AR2NOT SETTLED(+0.049 [ −0.016,
++0.128]). Pairing the five seeds of each method (AR4, descriptive), the teacher-forced run was better
+18
+Table 13: Study AR: Spearman correlation ρ of each check with the 100-step error E100, recorded joint
+commands, F18’s held-out trajectories. Rows “all runs” and “with F18” (F18’s 97 stored values added,
+135 in all) rank every simulator together (secondary).
+Pool RunsE 1 E8 λ1 ¯rJ
+MLP 13−0.69 0.76 0.84 0.76
+RSSM 12 0.88 0.86 0.26 0.94
+Transformer 13−0.61 0.73 0.87 0.98
+Mean of the three−0.14 0.78 0.66 0.89
+All runs 38 0.05 0.89−0.11 0.69
+With F18 135 0.24 0.88 0.71 0.93
+one step ahead and worse at 100 steps in 5 of 5 pairs for the MLP and 5 of 5 for the Transformer. For
+the RSSM it was better one step ahead in 5 of 5 pairs but worse at 100 steps in 0: the reversal seen on
+RWM’s model held for two of the three other architectures. Under recorded commands (exploratory), 3
+teacher-forced MLP runs (seeds 0, 2, 4) left the divergence bound (±103) on 2 of their 4 trajectories; as
+registered, their finite values were kept as computed.
+What was known before the registration.The 26 earlier runs’ errors in the reproduction’s own error
+measure and their training-loss curves were known, as was an earlier exploratory analysis of the residual
+on most of them. No growth rate of any of these runs existed, and the 12 new runs had not been trained.
+A10 Training length (descriptive)
+All of this section is descriptive and concerns one robot, one trotting gait and simulated data: it is not
+registered, uses 3 seeds per arm and gives no intervals, and every value was computed before the studies
+of appendices A8 and A9. The main models train for 2,500 iterations. Over the last 250 iterations the
+training loss was still falling in 6 of 6 runs (3 seeds each of rollout and teacher-forced training) and, with
+much smaller slopes, in 5 of 6 runs trained for 10,000 iterations. Longer training lowered the seed-mean
+100-step error of rollout-trained models from 0.251 to 0.181 and of teacher-forced ones from 0.576 to
+0.464, while their one-step errors barely moved (0.089 to 0.085; 0.074 to 0.076). In each of the 3 seeds
+and at both lengths, teacher forcing was better one step ahead and worse at 100 steps, its growth rate was
+positive and that of rollout training negative. In study FT (appendix A7), the parent kept 95.6% to 99.0%
+of the skill of its control, which had 500 more iterations, across horizons: for 500 more iterations, on the
+X5 arena, the parent lost little.
+19
