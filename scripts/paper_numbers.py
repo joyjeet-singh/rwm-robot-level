@@ -205,6 +205,8 @@ if __name__ == "__main__":
     air_numbers.add(put, sig, sgn, pct, cib, dp, load, rel)
     import revision_numbers
     revision_numbers.add(put, sig, sgn, pct, cib, dp, load, rel)
+    import s1_numbers
+    s1_numbers.add(put, sig, sgn, pct, cib, dp, load, rel)
     json.dump(N, open(os.path.join(C.RESULTS, "paper_numbers.json"), "w"), indent=1, sort_keys=True)
     with open(os.path.join(C.RESULTS, "paper_numbers.md"), "w") as f:
         f.write("# Every number the paper can print, and where it comes from\n\n"

@@ -11,7 +11,7 @@
   ],
   "verdict": "LABEL-FREE BETTER",
   "tau_lam": 0.5854810996563575,
-  "tau_base": 0.24570447206497192,
+  "tau_base": 0.24570446735395193,
   "agrees_with_stats": true
  },
  "Q2": {
@@ -26,7 +26,7 @@
   ],
   "verdict": "NOT SETTLED",
   "tau_lam": 0.5854810996563575,
-  "tau_base": 0.7130584120750427,
+  "tau_base": 0.7130584192439864,
   "agrees_with_stats": true
  },
  "Q3_vs_E1": {

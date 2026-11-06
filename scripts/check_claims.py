@@ -4,8 +4,11 @@ order, a sign, "worse than predicting no change", "grows with the horizon") is a
 files the numbers come from. A failing assertion means the sentence is wrong, whatever the number beside it says.
 -> results/claims_check.json; exits non-zero on a failure.
 """
+import datetime
 import json
+import math
 import os
+import subprocess
 import sys
 
 import common as C
@@ -234,6 +237,108 @@ CLAIMS.update({
         all(LS[u]["ci95"][0] > 0 and abs(LS[u]["mean"] - LS["u30"]["mean"]) < 0.02 for u in ("u10", "u20")),
     "Sec. 4.2/Discussion: released model positive lambda but 100-step error below the floor":
         S["D5_released"]["lam1"] > 0 and S["D5_released"]["E100"] < S["D5_released"]["floor"]["E100"],
+})
+
+# S6 (Step 1): studies CL and AR (registered, prereg/PREREG_S1.md) and TB (descriptive): body and appendix A8-A10.
+S1 = json.load(open(os.path.join(C.RESULTS, "s1_stats.json")))
+S1M = json.load(open(os.path.join(C.RESULTS, "s1_models.json")))
+S1X = json.load(open(os.path.join(C.RESULTS, "s1_extra.json")))
+S1B = json.load(open(os.path.join(C.RESULTS, "s1_budget.json")))
+_cl, _ar, _mg = S1["CL"], S1["AR"], S1["margin"]
+_lab = lambda r: r.get("verdict", r.get("label"))                                          # noqa: E731
+_cl7 = [g for p in ("F18", "X5") for g in _cl["CL7"][p].values()]
+_arm = S1M["models"]["AR"]
+_old = [v for v in _arm.values() if not v["new_run"]]
+_new = [v for v in _arm.values() if v["new_run"]]
+_c1 = S1M["checks"]["S1-C1"]["per_pool"]
+_reg = subprocess.run(["git", "log", "--diff-filter=A", "--format=%ct", "--", "prereg/PREREG_S1.md"], cwd=C.AIR,
+                      capture_output=True, text=True, check=True).stdout.split()
+_tb = S1B["c_conclusions"]
+CLAIMS.update({
+    "S1: every registered check S1-C1..C5 passed, so both families give verdicts":
+        all(S1["gates"]["checks"].values()) and S1["gates"]["CL"]["verdict"] and S1["gates"]["AR"]["verdict"],
+    "A8: the job that produced every value started after the registration commit":
+        len(_reg) == 1 and datetime.datetime.fromisoformat(S1M["created"]).timestamp() > int(_reg[0]),
+    "A8: recomputed recorded-command checks agree except 3 F18 residuals of the 10k teacher-forced models, < 1%":
+        all(_c1[p][c]["pass"] for p in _c1 for c in ("lam1", "rJ"))
+        and all(not _c1[p][c]["outside"] for p in _c1 for c in ("lam1", "rJ") if (p, c) != ("F18", "rJ"))
+        and all(f18[k]["group"] == "B 10k iterations" for k in _c1["F18"]["rJ"]["outside"])
+        and _c1["F18"]["rJ"]["max_difference"] < 0.01,
+    "Discussion/Conclusion/A8: CL1 worse with policy commands (97.5% interval below 0, beyond the margin)":
+        _lab(_cl["CL1"]) == "WORSE WITH POLICY COMMANDS" and _cl["CL1"]["ci97.5"][1] < 0
+        and _cl["CL1"]["ci97.5"][0] < -_mg and _cl["CL1"]["rho_new"] < _cl["CL1"]["rho_base"],
+    "Discussion/A8: CL2 not settled (interval includes 0 and reaches beyond the margin)":
+        _lab(_cl["CL2"]) == "NOT SETTLED" and _cl["CL2"]["ci97.5"][0] < -_mg < 0 < _cl["CL2"]["ci97.5"][1],
+    "A8: CL3 rank agreement closer for lambda_1 than for r_J":
+        _cl["CL3"]["lam1"]["rho"] > _cl["CL3"]["rJ"]["rho"],
+    "A8: CL4 on X5: r_J worse with policy commands, lambda_1 unchanged":
+        _cl["CL4"]["CL1"]["label"] == "WORSE WITH POLICY COMMANDS"
+        and _cl["CL4"]["CL2"]["label"] == "UNCHANGED BY THE COMMAND SOURCE",
+    "A8: CL8 noisy commands leave both correlations unchanged":
+        all(_cl["CL8"][q]["label"] == "UNCHANGED BY THE COMMAND SOURCE" for q in ("CL1", "CL2")),
+    "A8: CL9 drop in trained, unchanged in compressed; lambda_1 not settled in both":
+        _cl["CL9"]["trained"]["CL1"]["label"] == "WORSE WITH POLICY COMMANDS"
+        and _cl["CL9"]["compressed"]["CL1"]["label"] == "UNCHANGED BY THE COMMAND SOURCE"
+        and all(_cl["CL9"][g]["CL2"]["label"] == "NOT SETTLED" for g in ("trained", "compressed")),
+    "A8: closed-loop growth rate did not rank the simulators (|rho| < 0.1 on F18); CL5 worse":
+        abs(_cl["CL5"]["rho_new"]) < 0.1 and _cl["CL5"]["label"] == "WORSE WITH POLICY COMMANDS",
+    "A8: CL7 no rollout diverged under policy, closed-loop or noisy commands, F18 and X5":
+        all(g[f"{u}_diverged_{c}"] == 0 for g in _cl7 for u in ("models", "trajectories") for c in ("pol", "cl", "noise")),
+    "A8: CL6 imagined return fell as E100 rose (interval below 0), no model left out":
+        _cl["CL6"]["rho"] < 0 and _cl["CL6"]["ci95"][1] < 0 and _cl["CL6"]["n_excluded_diverged"] == 0,
+    "A8: exploratory two-level intervals wider; CL1's still wholly below zero":
+        _cl["exploratory_two_level"]["CL1"]["ci97.5"][1] < 0
+        and all(_cl["exploratory_two_level"][q]["ci97.5"][1] - _cl["exploratory_two_level"][q]["ci97.5"][0]
+                > _cl[q]["ci97.5"][1] - _cl[q]["ci97.5"][0] for q in ("CL1", "CL2")),
+    "A8: X5 table: recorded and policy columns equal the registered CL4 point estimates":
+        abs(S1X["X5_within_split_mean_rho_with_E100"]["rJ_pol"]["mean"] - _cl["CL4"]["CL1"]["rho_new_mean"]) < 1e-12
+        and abs(S1X["X5_within_split_mean_rho_with_E100"]["lam1_rec"]["mean"] - _cl["CL4"]["CL2"]["rho_base_mean"]) < 1e-12,
+    "A9: pool 38 = 26 earlier + 12 new; new = seeds 3, 4 of tf_s7 and ar_s7 per architecture; five seeds each":
+        len(_old) == 26 and len(_new) == 12
+        and sorted((v["arch"], v["regime"], v["spec"], v["seed"]) for v in _new)
+        == sorted((a, r, "s7", s) for a in ("mlp", "rssm", "transformer") for r in ("tf", "ar") for s in (3, 4))
+        and all(sorted(v["seed"] for v in _arm.values() if (v["arch"], v["regime"], v["spec"]) == (a, r, "s7"))
+                == [0, 1, 2, 3, 4] for a in ("mlp", "rssm", "transformer") for r in ("tf", "ar")),
+    "A9: rest of the pool: 3 matched rollout-trained MLP and Transformer each, 2 teacher-forced RSSM variants":
+        sorted((v["arch"], v["regime"]) for v in _old if v["spec"] == "matched")
+        == [("mlp", "ar")] * 3 + [("transformer", "ar")] * 3
+        and sorted((v["arch"], v["regime"], v["spec"]) for v in _old if v["spec"] in ("x1v1", "x1v2"))
+        == [("rssm", "tf", "x1v1"), ("rssm", "tf", "x1v2")],
+    "A9: new runs trained 2,500 iterations at 2 threads on F18's split, all finite; S1-C5 passed":
+        all(v["iterations"] == 2500 and v["threads"] == 2 and v["holdout_episodes"] == [1, 8] and v["weights_finite"]
+            and not v["loss_ever_nonfinite"] for v in S1M["training"].values())
+        and S1M["checks"]["S1-C5"]["pass"],
+    "A9: AR1 label-free better; rests on MLP and Transformer (E1 rho < -0.5); RSSM: E1 ranks well, lambda_1 poorly":
+        _lab(_ar["AR1"]) == "LABEL-FREE BETTER" and _ar["AR1"]["ci97.5"][0] > 0
+        and _ar["AR1"]["rho_base_per_group"][0] < -0.5 and _ar["AR1"]["rho_base_per_group"][2] < -0.5
+        and _ar["AR1"]["rho_base_per_group"][1] > 0.8 and _ar["AR1"]["rho_new_per_group"][1] < 0.3,
+    "A9: AR2 not settled; r_J level with E8 in the MLP, above it in RSSM and Transformer":
+        _lab(_ar["AR2"]) == "NOT SETTLED"
+        and abs(_ar["AR2"]["rho_new_per_group"][0] - _ar["AR2"]["rho_base_per_group"][0]) < 1e-9
+        and all(_ar["AR2"]["rho_new_per_group"][i] > _ar["AR2"]["rho_base_per_group"][i] for i in (1, 2)),
+    "A9: AR3 pooled both not settled, lambda_1 barely ranks (|rho| < 0.2); extended AR1 label-free, AR2 not settled":
+        all(_ar["AR3"]["pooled"][q]["label"] == "NOT SETTLED" for q in ("AR1", "AR2"))
+        and abs(_ar["AR3"]["pooled"]["AR1"]["rho_new"]) < 0.2
+        and _ar["AR3"]["extended"]["AR1"]["label"] == "LABEL-FREE BETTER"
+        and _ar["AR3"]["extended"]["AR2"]["label"] == "NOT SETTLED",
+    "A9: AR4 reversal in 5/5 for MLP and Transformer; RSSM better at 1 step 5/5, worse at 100 in 0/5":
+        all(_ar["AR4"][a]["both"] == _ar["AR4"][a]["n_pairs"] == 5 for a in ("mlp", "transformer"))
+        and _ar["AR4"]["rssm"]["tf_better_E1"] == 5 and _ar["AR4"]["rssm"]["tf_worse_E100"] == 0,
+    "A9: the runs that diverged under recorded commands are teacher-forced MLPs with finite values":
+        len(S1X["AR_diverged_recorded"]) == 3
+        and all(v["arch"] == "mlp" and v["regime"] == "tf" for v in S1X["AR_diverged_recorded"].values())
+        and all(math.isfinite(_arm[k][m]) for k in S1X["AR_diverged_recorded"] for m in ("E100", "lam1_rec", "rJ_rec")),
+    "A10: longer training lowered E100 for both arms, E1 moved by < 0.01; all four statements in every seed":
+        all(S1B["b_scores"][a]["10000"]["mean"]["E100"] < S1B["b_scores"][a]["2500"]["mean"]["E100"]
+            and abs(S1B["b_scores"][a]["10000"]["mean"]["E1"] - S1B["b_scores"][a]["2500"]["mean"]["E1"]) < 0.01
+            for a in ("rollout_trained", "teacher_forced"))
+        and all(_tb[n][s][k] for n in ("2500", "10000") for s in ("0", "1", "2")
+                for k in ("tf_better_E1", "tf_worse_E100", "lam1_tf_positive", "lam1_rollout_negative")),
+    "A10: slopes at 10k much smaller than at 2,500 (largest magnitude at 10k below smallest at 2,500)":
+        max(abs(S1B["a_still_improving"]["arm_10000"]["slope_min"]), abs(S1B["a_still_improving"]["arm_10000"]["slope_max"]))
+        < min(abs(S1B["a_still_improving"]["arm_2500"]["slope_min"]), abs(S1B["a_still_improving"]["arm_2500"]["slope_max"])),
+    "A10: parent kept less than all of the control's skill at every horizon (more training added little)":
+        all(0.9 < v["K"] < 1 for v in S1B["d_ft_control"]["K_P_vs_CTRL"].values()),
 })
 
 if __name__ == "__main__":

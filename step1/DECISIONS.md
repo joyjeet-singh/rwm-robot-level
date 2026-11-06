@@ -33,3 +33,12 @@
 - **S4-1 Lite runner overrides.** Two compatibility shims were needed without any install: `torch.load(map_location="cpu")` and `TensorDictBase.__contains__` (tensordict 0.3.2). Both keep the meaning of the upstream code. Listed in `step1/notes/S4_lite.md`. A `--seed` flag was added (upstream sets none).
 - **S4-2 Hold-out for imagination starts.** `run_lite.py --holdout` filters the lite dataset's windows after `prepare_data` (every row in a training episode), rather than writing a restricted CSV (8,000 rows would never satisfy the loader's 10,000-row wait). Smoke runs used the lite default (no filter), as the plan says "same settings".
 - **S4-3 Timings.** Measured with job S3 on the other two cores; the 4,096-robot figure comes from 4 iterations. Projections are conservative and unverified for 500 iterations.
+
+## S6 (2026-11-07)
+- **S6-1 X5 noisy and closed-loop columns.** The plan's A8 table asks for noisy commands on X5 too; the registration computes noise only on F18 (CL8) and the closed-loop growth rate only on F18 (CL5). `scripts/s1_extra.py` computes those X5 entries as within-split mean ρ (point estimates, no intervals, no labels), labelled exploratory in the caption. It cross-checks its recorded and policy means against the registered CL4 values. It also lists which AR runs diverged under recorded commands (exploratory).
+- **S6-2 Limitations unchanged.** "Recorded commands are replayed with no controller in the loop and no policy trained, so what a mis-ranked … simulator costs a controller is not measured" is still true: A8 uses the policy's commands, not recorded ones, and no cost to a controller is measured. Each of 6 rewordings that named A8 added a line, which pushed the two-column check to 7 pages.
+- **S6-3 Abstract and introduction unchanged.** "recorded commands, no policy trained" gives the main study's scope, which is still true; the abstract is 198 words and cannot grow.
+- **S6-4 AR and TB do not touch the body.** The body makes no claim about other architectures or about training length, so no body words changed. No pointer was added (no slack).
+- **S6-5 Registration time in UTC** (git %ct), so the paper does not carry a time-zone offset (double-blind).
+- **S6-6 Discussion wording.** "the residual ranked worse" repeats the registered label WORSE WITH POLICY COMMANDS; "the growth rate was not settled" repeats CL2.
+- **S6-7 fig_horizon.** The working copy, a re-render from 1 Nov that looks identical to the committed one, is what the PDFs include. It is not S6's and stays unstaged, as in S3–S5.

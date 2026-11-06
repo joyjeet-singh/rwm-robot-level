@@ -1,0 +1,34 @@
+Step 1 studies CL and AR (prereg/PREREG_S1.md). Registered unless labelled descriptive or exploratory.
+checks: S1-C1 PASS, S1-C2 PASS, S1-C3 PASS, S1-C4 PASS, S1-C5 PASS
+CL (F18 n=97, X5 n=255; missing F18 0, X5 0)
+  CL1 primary: WORSE WITH POLICY COMMANDS  d=-0.120 ci97.5=[-0.220, -0.052] ci95=[-0.204, -0.059] rho_pol=+0.832 rho_rec=+0.951 dropped=0
+  CL2 primary: NOT SETTLED  d=-0.032 ci97.5=[-0.113, +0.041] ci95=[-0.102, +0.031] rho_pol=+0.764 rho_rec=+0.796 dropped=0
+  CL3 lam1: rho(pol, rec)=+0.930 ci95=[+0.873, +0.961]
+  CL3 rJ: rho(pol, rec)=+0.832 ci95=[+0.728, +0.897]
+  CL4 X5 CL1: WORSE WITH POLICY COMMANDS  d=-0.063 ci95=[-0.105, -0.033]
+  CL4 X5 CL2: UNCHANGED BY THE COMMAND SOURCE  d=+0.011 ci95=[-0.042, +0.064]
+  CL5 lam1_cl: WORSE WITH POLICY COMMANDS  d=-0.809 ci95=[-1.034, -0.564] rho_cl=-0.012
+  CL6 rho(return, E100)=-0.857 ci95=[-0.909, -0.770] n=97 (excluded, diverged: 0)
+  CL7 F18 models diverged pol/cl/noise: rollout 0/0/0 of 51; one-step 0/0/0 of 6; compressed 0/0/0 of 40
+  CL7 X5 models diverged pol/cl/noise: rollout 0/0/0 of 40; one-step 0/0/0 of 15; compressed 0/0/0 of 200
+  CL8 noise CL1: UNCHANGED BY THE COMMAND SOURCE  d=-0.002 ci95=[-0.011, +0.006]
+  CL8 noise CL2: UNCHANGED BY THE COMMAND SOURCE  d=-0.029 ci95=[-0.074, +0.003]
+  CL9 trained CL1: WORSE WITH POLICY COMMANDS  d=-0.285 ci95=[-0.492, -0.137] n=57
+  CL9 trained CL2: NOT SETTLED  d=-0.035 ci95=[-0.117, +0.027] n=57
+  CL9 compressed CL1: UNCHANGED BY THE COMMAND SOURCE  d=-0.021 ci95=[-0.094, +0.047] n=40
+  CL9 compressed CL2: NOT SETTLED  d=-0.019 ci95=[-0.117, +0.099] n=40
+  exploratory two-level (57 clusters x 4 trajectories): CL1 ci97.5=[-0.282, -0.002]  CL2 ci97.5=[-0.139, +0.112]
+  released model (reference only): lam1 pol +1.597 rec +0.700; rJ pol +0.701 rec +3.279; diverged pol 0 of 20
+AR (runs per architecture {'mlp': 13, 'rssm': 12, 'transformer': 13}; new runs 12) 
+  diverged under recorded commands: {'mlp': {'runs_diverged': 3, 'runs_lam_nonfinite': 0}, 'rssm': {'runs_diverged': 0, 'runs_lam_nonfinite': 0}, 'transformer': {'runs_diverged': 0, 'runs_lam_nonfinite': 0}}
+  AR1 primary: LABEL-FREE BETTER  d=+0.796 ci97.5=[+0.368, +1.025] ci95=[+0.427, +0.998] dropped=0
+     per architecture rho_check=[0.841, 0.259, 0.868] rho_base=[-0.692, 0.881, -0.61]
+  AR2 primary: NOT SETTLED  d=+0.110 ci97.5=[-0.081, +0.356] ci95=[-0.052, +0.315] dropped=0
+     per architecture rho_check=[0.764, 0.937, 0.984] rho_base=[0.764, 0.86, 0.731]
+  AR3 pooled (n=38) AR1: NOT SETTLED  d=-0.164 ci95=[-0.793, +0.561]
+  AR3 pooled (n=38) AR2: NOT SETTLED  d=-0.202 ci95=[-0.526, +0.079]
+  AR3 extended (n=135) AR1: LABEL-FREE BETTER  d=+0.467 ci95=[+0.230, +0.711]
+  AR3 extended (n=135) AR2: NOT SETTLED  d=+0.049 ci95=[-0.016, +0.128]
+  AR4 (descriptive) mlp: tf better at E1 in 5/5, worse at E100 in 5/5, both 5/5
+  AR4 (descriptive) rssm: tf better at E1 in 5/5, worse at E100 in 0/5, both 0/5
+  AR4 (descriptive) transformer: tf better at E1 in 5/5, worse at E100 in 5/5, both 5/5
