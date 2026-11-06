@@ -34,3 +34,9 @@ Adapter equals the rebuild exactly (200 windows, 1 and 5 heads) and the upstream
 500 its: 0.47/0.39 h at 1,024 robots, 1.88/1.59 h at 4,096 (released/A_s0). Recommend the CPU.
 Step 2: use --holdout (window filter) and 5-head rebuilds (A5_*) so the uncertainty penalty is active. Notes: step1/notes/S4_lite.md; DECISIONS S4-1…3.
 No trained simulator was driven by the CL/AR study code; this task touches no registered result. figures/fig_horizon.* left unstaged (not mine).
+
+## S5 status: COMPLETE (2026-11-06 17:44)
+Study TB (descriptive): scripts/s1_budget.py -> results/s1_budget.{json,txt}; notes step1/notes/S5.md. All inputs existed before this plan; nothing rescored.
+Still falling: 6/6 at 2,500 its, 5/6 at 10,000 (slopes ~10x smaller). At 10,000: TF still better at 1 step, worse at 100, lam1 >0 for TF, <0 for rollout, in all 3 seeds.
+FT control: 500 extra its add little (P holds 0.956-0.990 of CTRL skill).
+Open: figures/fig_horizon.* still not mine, unstaged.

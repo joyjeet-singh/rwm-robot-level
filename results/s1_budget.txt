@@ -1,0 +1,17 @@
+Study TB: training length (DESCRIPTIVE, not registered; 3 seeds, no intervals)
+Stored before this plan: tail slopes, model_table, ft_stats. Nothing rescored.
+(a) still falling (loss slope, last 250 its <0): 2500 its 6/6; 10000 its 5/6
+    slope range 2500: [-7.6e-04,-1.1e-04]; 10000: [-5.1e-05,7.3e-06]
+(b) seed-mean scores         E1     E8    E24   E100   E368   lam1     rJ
+  rollout_  2500    0.089  0.149  0.179  0.251  0.335 -0.425  1.463
+  rollout_ 10000    0.085  0.130  0.151  0.181  0.201 -0.740  1.119
+  teacher_  2500    0.074  0.170  0.283  0.576  2.161  0.675 10.138
+  teacher_ 10000    0.076  0.171  0.269  0.464  0.960  1.531  3.823
+(c) TF vs rollout, seeds 0/1/2/mean (1=yes)   [at 10000 its]
+  TF better at 1 step      1 1 1 1   [2500: 1 1 1 1]
+  TF worse at 100 steps    1 1 1 1   [2500: 1 1 1 1]
+  lam1>0 for TF            1 1 1 1   [2500: 1 1 1 1]
+  lam1<0 for rollout       1 1 1 1   [2500: 1 1 1 1]
+(d) FT control P vs CTRL (+500 its), mean error h1/h8/h24/h100/h368
+  P-CTRL: 0.0026 0.0046 0.0056 0.0117 0.0257
+  K_P_vs_CTRL: 0.975 0.990 0.990 0.978 0.956
