@@ -19,3 +19,11 @@ Added scripts/s1_arch.py (score_arch; adapters for the MLP, RSSM and Transformer
 Probe: scoring all 38 runs takes 6.7 min. The 12 new runs take 9.6 h one at a time at 2 threads, or 8.1 h two at a time.
 DECISIONS S2-1…6. S3 must register the RSSM map (argmax mode, zero derivative) and how a baseline that diverges under recorded commands enters AR.
 No trained baseline was scored. Nothing was trained beyond 50 iterations, and only into .cache/.
+
+## S3 status: COMPLETE (2026-11-06 17:33)
+Registered studies CL and AR: prereg/PREREG_S1.md plus all the S1 code in commit 2cb7d24 (hash results/prereg_hash_s1.json, 924a57a). PREREG_S1.md and s1_stats.py are chmod a-w.
+New: scripts/s1_eval.py (the job driver: checks, CL, training, AR; resumable), s1_stats.py (CL1–CL9, AR1–AR4, exploratory two-level), and tests (x) and (xi). test_s1 passes 24/24.
+air-stats-reviewer: no MUST FIX; 7 SHOULD FIX and 5 notes fixed (DECISIONS S3-8). Decisions S3-1…8.
+Job: step1/jobs/S3.zsh (zsh -n ok), committed 7c753fc. Expect about 11 h, of which 9.6 h is training one run at a time at 2 threads.
+The dry run used random weights only, into .cache/s1_dry. No trained simulator was driven before 2cb7d24.
+Open: figures/fig_horizon.{pdf,png} were already modified when S3 started. They are not S3's and were left unstaged.

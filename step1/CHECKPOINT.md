@@ -1,4 +1,5 @@
 # Checkpoint
-Last session: S2, COMPLETE (2026-11-06 16:58). Code: scripts/s1_arch.py (score_arch), s1_train_baseline.py, s2_probe.py → results/s1_probe.json["S2"]; test_s1.py 22/22 pass (238 s).
-Next: S3 per STEP1_PLAN.md (registration, then job S3). The registration must declare DECISIONS S1-1…7 and S2-1…6, in particular the RSSM step map and the divergence handling of baselines under recorded commands. The recommendation is to train one run at a time at 2 threads (bit-identical to the reproduction; 9.6 h).
+Last session: S3, COMPLETE (2026-11-06 17:33). Registration commit 2cb7d24 (prereg/PREREG_S1.md; hash 924a57a); job committed 7c753fc.
+Next: the launcher runs job S3 (step1/jobs/S3.zsh → ./py scripts/s1_eval.py; about 11 h; progress in results/s1/progress.json; driver log .cache/logs/job_S3_driver_*.log). Sessions S4 and S5 work alongside it with ≤2 threads and ≤10 min computations. S6 runs ./py scripts/s1_stats.py after the job. It must stop BLOCKED if S1-C1, S1-C2 or S1-C3 failed (see results/s1_models.json "checks").
+Never edit: prereg/PREREG_S1.md, scripts/s1_stats.py. Changes go to ANOMALIES.md.
 Blockers: none.
