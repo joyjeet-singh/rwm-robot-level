@@ -1,0 +1,62 @@
+{
+ "purpose": "S1 timing probe of s1_rollout.score_gru (STEP1_PLAN.md S1); random-weight models only",
+ "arena": "F18 (held-out episodes 1, 8), 4 trajectories x 368 forecast steps",
+ "threads": 2,
+ "lyapunov_exponents_p": 1,
+ "repetitions_min_of": 2,
+ "seconds_actor_load": 0.029508113861083984,
+ "seconds_per_model": {
+  "ensemble_1": {
+   "rec_rJ": 0.16033506393432617,
+   "rec_lam": 1.4717929363250732,
+   "pol_rollout_rJ": 0.27309226989746094,
+   "pol_return": 0.4693257808685303,
+   "lam_pol": 1.4633140563964844,
+   "cl": 2.5544068813323975,
+   "noise_rollout_rJ": 0.16305208206176758,
+   "lam_noise": 1.462655782699585,
+   "total": 8.036298036575317,
+   "diverged_trajectories": {
+    "div_pol": 0,
+    "div_cl": 0,
+    "div_noise": 0
+   }
+  },
+  "ensemble_5": {
+   "rec_rJ": 0.24243903160095215,
+   "rec_lam": 2.2100682258605957,
+   "pol_rollout_rJ": 0.3510441780090332,
+   "pol_return": 0.49186205863952637,
+   "lam_pol": 2.228847026824951,
+   "cl": 3.295167922973633,
+   "noise_rollout_rJ": 0.23724102973937988,
+   "lam_noise": 2.1987388134002686,
+   "total": 11.275124073028564,
+   "diverged_trajectories": {
+    "div_pol": 0,
+    "div_cl": 0,
+    "div_noise": 0
+   }
+  }
+ },
+ "projected": {
+  "F18": {
+   "models": 97,
+   "one_head": 94,
+   "five_heads": 3,
+   "hours": 0.219232607682546
+  },
+  "X5": {
+   "models": 255,
+   "one_head": 240,
+   "five_heads": 15,
+   "hours": 0.5827328860759735
+  }
+ },
+ "note": "Projection assumes every model costs what a width-256 GRU costs; width-124 and structurally pruned variants are cheaper, so it is an upper bound for those. Trained models may diverge less or more than random ones, which changes nothing in the cost.",
+ "machine": {
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "torch": "2.2.2",
+  "numpy": "1.26.4"
+ }
+}
