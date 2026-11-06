@@ -1,8 +1,9 @@
 """
-Tests of the Step 1 code (STEP1_PLAN.md, S1 and S2). Saves nothing outside .cache/. Uses only random-weight models,
+Tests of the Step 1 code (STEP1_PLAN.md, S1, S2 and S3). Saves nothing outside .cache/. Uses only random-weight models,
 constructed systems and the stored registered values; no trained simulator is driven by the policy or by noise.
 (vi) compares the trained baselines' one-step predictions with the reproduction's own code (predictions only, no
-error); (ix) trains each class for 50 iterations into .cache/ and compares training losses only.
+error); (ix) trains each class for 50 iterations into .cache/ and compares training losses only. (x) and (xi)
+test the registered labels and s1_stats on constructed values only.
 
   ./py scripts/test_s1.py            all tests
   ./py scripts/test_s1.py ii iv      some
@@ -357,8 +358,132 @@ def test_ix():
     torch.set_num_threads(2)
 
 
+# ------------------------------------------------------------------ (x) registered labels on constructed intervals
+def test_x():
+    """CL1/CL2's rule (PREREG_S1 item 6) and Q1/Q2's labels on constructed intervals."""
+    import s1_stats as SS
+    cases = [([-0.05, 0.05], "UNCHANGED BY THE COMMAND SOURCE"),
+             ([-0.10, 0.10], "UNCHANGED BY THE COMMAND SOURCE"),
+             ([0.0, 0.05], "UNCHANGED BY THE COMMAND SOURCE"),
+             ([0.01, 0.09], "UNCHANGED BY THE COMMAND SOURCE (small increase)"),
+             ([-0.09, -0.01], "UNCHANGED BY THE COMMAND SOURCE (small decrease)"),
+             ([-0.30, -0.05], "WORSE WITH POLICY COMMANDS"),
+             ([-0.11, -0.01], "WORSE WITH POLICY COMMANDS"),
+             ([0.05, 0.30], "BETTER WITH POLICY COMMANDS"),
+             ([0.02, 0.101], "BETTER WITH POLICY COMMANDS"),
+             ([-0.20, 0.20], "NOT SETTLED"),
+             ([-0.05, 0.15], "NOT SETTLED"),
+             ([float("nan"), 0.1], "NOT SETTLED")]
+    got = [(ci, SS.cl_label(ci), want) for ci, want in cases]
+    bad = [(ci, g, w) for ci, g, w in got if g != w]
+    noisy = SS.cl_label([-0.4, -0.2], source="NOISY") == "WORSE WITH NOISY COMMANDS"
+    q = (C.label3([0.1, 0.3], *SS.Q1_LAB) == "LABEL-FREE BETTER" and
+         C.label3([-0.3, -0.1], *SS.Q2_LAB) == "TRAINING-HORIZON BETTER" and
+         C.label3([-0.1, 0.1], *SS.Q1_LAB) == "NOT SETTLED")
+    check("x rule labels on constructed intervals (inside, inside and excluding 0, below, above, straddling)",
+          not bad and noisy and q, f"{len(cases)} CL cases, wrong: {bad}; NOISY wording {noisy}; Q labels {q}")
+
+
+# ------------------------------------------------------------------ (xi) s1_stats on a synthetic s1_models.json
+def synthetic(seed=0):
+    """A constructed table and job output: in F18, rJ_pol equals rJ_rec, lam1_pol equals E100 (a perfect ranking)
+    and lam1_rec is E100 plus noise; in AR, lam1_rec equals E100 within each architecture and E1 is unrelated."""
+    rng = np.random.default_rng(seed)
+    table = {"F18": [], "X5": []}
+    db = {"dry_run": False, "checks": {k: {"pass": True} for k in ("S1-C1", "S1-C2", "S1-C3", "S1-C4", "S1-C5")},
+          "models": {"F18": {}, "X5": {}, "AR": {}, "REL": {}}}
+
+    def add(tag, key, arena, variant, group, e100):
+        lam_rec = e100 + rng.normal(0, 0.3)
+        rj = e100 * 2 + rng.normal(0, 0.2)
+        table[tag].append({"key": key, "arena": arena, "variant": variant, "group": group, "lam1": lam_rec,
+                           "rJ": rj, "E1": rng.normal(), "E8": e100 + rng.normal(0, 0.5), "E100": e100})
+        div = int(rng.random() < 0.1)
+        db["models"][tag][key] = {
+            "cl_group": "compressed" if variant else ("one-step" if group.startswith("B") else "rollout"),
+            "lam1_pol": e100, "rJ_pol": rj, "lam1_cl": e100 + rng.normal(0, 0.1), "lam1_noise": lam_rec,
+            "rJ_noise": rj + rng.normal(0, 0.05), "ret": -e100 + rng.normal(0, 0.1), "ret_unc": 0.0,
+            "n_div_pol": div, "n_div_cl": div, "n_div_noise": 0, "n_traj": 4}
+
+    for i in range(30):
+        add("F18", f"P{i}", "18", None, "B" if i < 6 else "A", rng.random())
+    for i in range(10):
+        add("F18", f"P{i}__u30", "18", "u30", "compressed u30", rng.random())
+    for f in C.FOLDS:
+        for i in range(12):
+            add("X5", f"Q_{C.fid(f)}_{i}", C.fid(f), None, "A", rng.random())
+    for a in ("mlp", "rssm", "transformer"):
+        for reg in ("tf", "ar"):
+            for s in range(5):
+                e100 = rng.random() + (1.0 if reg == "tf" else 0.0)
+                db["models"]["AR"][f"{a}_{reg}_{s}"] = {
+                    "arch": a, "regime": reg, "spec": "s7", "seed": s, "new_run": s >= 3, "E1": e100 - 2.0 * (reg == "tf"),
+                    "E8": rng.random(), "E100": e100, "lam1_rec": e100, "rJ_rec": rng.random(),
+                    "n_div_rec": 0, "n_lam_div": 0}
+    traj = {k: {} for k in ("rJ_pol", "rJ_rec", "lam1_pol", "lam1_rec", "E100")}
+    for t in table["F18"]:
+        s = db["models"]["F18"][t["key"]]
+        for k, v in (("rJ_pol", s["rJ_pol"]), ("rJ_rec", t["rJ"]), ("lam1_pol", s["lam1_pol"]),
+                     ("lam1_rec", t["lam1"]), ("E100", t["E100"])):
+            traj[k][t["key"]] = v + rng.normal(0, 1e-3, 4)
+    return db, table, traj
+
+
+def test_xi():
+    """s1_stats.analyse on a synthetic s1_models.json (2,000 draws instead of 20,000, for time)."""
+    import copy
+    import s1_stats as SS
+    import stats as ST
+    b0 = ST.B
+    ST.B = 2000
+    try:
+        db, table, traj = synthetic()
+        o = SS.analyse(db, table, traj)
+        cl, ar = o["CL"], o["AR"]
+        ok1 = (cl["CL1"]["delta"] == 0 and cl["CL1"]["ci97.5"] == [0.0, 0.0] and
+               cl["CL1"]["verdict"] == "UNCHANGED BY THE COMMAND SOURCE")
+        ok2 = cl["CL2"]["verdict"] == "BETTER WITH POLICY COMMANDS" and abs(cl["CL2"]["rho_new"] - 1.0) < 1e-12
+        ok3 = ar["AR1"]["verdict"] == "LABEL-FREE BETTER" and abs(ar["AR1"]["rho_new_mean"] - 1.0) < 1e-12
+        w = SS.within([[r for r in table["X5"] if r["arena"] == C.fid(f)] for f in C.FOLDS], "lam1", "E1", "E100")
+        ref = ST.boot_diff_within([[r for r in table["X5"] if r["arena"] == C.fid(f)] for f in C.FOLDS],
+                                  "lam1", "E1", "E100")
+        ok4 = w["ci95"] == ref["ci95"] and w["ci97.5"][0] <= w["ci95"][0] and w["ci97.5"][1] >= w["ci95"][1]
+        ok5 = all(ar["AR4"][a]["both"] == 5 for a in SS.ARCHES)
+        n_rep = len(SS.report(o).splitlines())
+        ok6 = cl["CL6"]["n_excluded_diverged"] == sum(v["n_div_pol"] > 0 for v in db["models"]["F18"].values())
+        ok7 = (cl["CL9"]["trained"]["CL1"]["n_models"] == 30 and cl["CL9"]["compressed"]["CL1"]["n_models"] == 10
+               and cl["exploratory_two_level"]["n_clusters"] == 30)
+        g = copy.deepcopy(db)
+        g["checks"]["S1-C3"]["pass"] = False
+        o3 = SS.analyse(g, table)
+        ok8 = (o3["AR"]["AR1"]["verdict"].startswith("NO VERDICT") and o3["AR"]["AR1"]["rule_label"] is None and
+               o3["AR"]["AR3"]["pooled"]["AR1"]["rule_label"] is None and
+               not o3["CL"]["CL1"]["verdict"].startswith("NO"))
+        g["checks"]["S1-C3"]["pass"], g["checks"]["S1-C1"]["pass"] = True, False
+        o1 = SS.analyse(g, table)
+        ok9 = all(o1[f][q]["verdict"].startswith("NO VERDICT") for f, q in (("CL", "CL1"), ("CL", "CL2"),
+                                                                            ("AR", "AR1"), ("AR", "AR2")))
+        g["checks"]["S1-C1"]["pass"], g["checks"]["S1-C2"]["pass"] = True, False
+        o2 = SS.analyse(g, table)
+        ok9 &= o2["CL"]["CL1"]["verdict"].startswith("NO VERDICT") and not o2["AR"]["AR1"]["verdict"].startswith("NO")
+        del g["checks"]["S1-C4"]
+        try:
+            SS.analyse(g, table)
+            ok10 = False
+        except SystemExit:
+            ok10 = True
+    finally:
+        ST.B = b0
+    check("xi s1_stats on a synthetic s1_models.json",
+          all((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10)) and n_rep <= 60,
+          f"CL1 equal ranks {ok1}; CL2 perfect {ok2}; AR1 perfect {ok3}; within 97.5 from same draws {ok4}; AR4 {ok5};"
+          f" CL6 exclusions {ok6}; CL9/two-level counts {ok7}; gates C3 {ok8}, C1/C2 {ok9}; refuses without a check "
+          f"{ok10}; report {n_rep} lines")
+
+
 TESTS = {"i": test_i, "ii": test_ii, "iii": test_iii, "iv": test_iv, "v": test_v,
-         "vi": test_vi, "vii": test_vii, "viii": test_viii, "ix": test_ix}
+         "vi": test_vi, "vii": test_vii, "viii": test_viii, "ix": test_ix,
+         "x": test_x, "xi": test_xi}
 
 if __name__ == "__main__":
     t0 = time.time()
