@@ -27,3 +27,10 @@ air-stats-reviewer: no MUST FIX; 7 SHOULD FIX and 5 notes fixed (DECISIONS S3-8)
 Job: step1/jobs/S3.zsh (zsh -n ok), committed 7c753fc. Expect about 11 h, of which 9.6 h is training one run at a time at 2 threads.
 The dry run used random weights only, into .cache/s1_dry. No trained simulator was driven before 2cb7d24.
 Open: figures/fig_horizon.{pdf,png} were already modified when S3 started. They are not S3's and were left unstaged.
+
+## S4 status: COMPLETE (2026-11-06 18:05)
+Lite policy training runs on this CPU with no install: scripts/lite/run_lite.py, adapter.py, test_lite.py (10/10, 11 s), stubs/wandb/.
+Adapter equals the rebuild exactly (200 windows, 1 and 5 heads) and the upstream class with the released weights. Smoke: 1,024 robots, 10 its: released 3.41 s/it, A_s0 2.78 s/it, 0.70 GB; rewards finite.
+500 its: 0.47/0.39 h at 1,024 robots, 1.88/1.59 h at 4,096 (released/A_s0). Recommend the CPU.
+Step 2: use --holdout (window filter) and 5-head rebuilds (A5_*) so the uncertainty penalty is active. Notes: step1/notes/S4_lite.md; DECISIONS S4-1…3.
+No trained simulator was driven by the CL/AR study code; this task touches no registered result. figures/fig_horizon.* left unstaged (not mine).
