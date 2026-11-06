@@ -40,3 +40,11 @@ Study TB (descriptive): scripts/s1_budget.py -> results/s1_budget.{json,txt}; no
 Still falling: 6/6 at 2,500 its, 5/6 at 10,000 (slopes ~10x smaller). At 10,000: TF still better at 1 step, worse at 100, lam1 >0 for TF, <0 for rollout, in all 3 seeds.
 FT control: 500 extra its add little (P holds 0.956-0.990 of CTRL skill).
 Open: figures/fig_horizon.* still not mine, unstaged.
+
+## S6 status: COMPLETE (2026-11-07 04:56)
+Job S3 finished; checks S1-C1…C5 all PASS. s1_stats.py run unchanged: CL1 WORSE WITH POLICY COMMANDS (−0.120 [−0.220, −0.052]), CL2 NOT SETTLED, AR1 LABEL-FREE BETTER (+0.796 [+0.368, +1.025]), AR2 NOT SETTLED.
+New: scripts/s1_numbers.py (162 keys), scripts/s1_extra.py → results/s1_extra.json (exploratory X5 noisy and closed-loop ρ, AR divergence list).
+Appendix A8 (CL), A9 (AR), A10 (TB, descriptive). Body: Discussion (3) and Conclusion only. Limitations, abstract and intro unchanged (still true; DECISIONS S6-2, S6-3).
+check_claims 107/107 (25 new), check_numbers and submission_checks pass. Two-column 6 pages, submission 19.
+Commit cf87927 (with raw_S1.npz, s1_models/stats/report/extra, results/s1/). Notes step1/notes/S6.md; DECISIONS S6-1…7.
+Open: figures/fig_horizon.* still not mine, unstaged (the PDFs use the working copy, which looks identical).
