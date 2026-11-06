@@ -58,5 +58,95 @@
   "platform": "macOS-13.7.8-x86_64-i386-64bit",
   "torch": "2.2.2",
   "numpy": "1.26.4"
+ },
+ "S2": {
+  "purpose": "S2 timing probe of s1_arch.score_arch and s1_train_baseline (STEP1_PLAN.md S2); random weights for scoring; training written to .cache only",
+  "threads": 2,
+  "arena": "F18 (held-out episodes 1, 8), 4 trajectories",
+  "score_seconds_per_model_random_weights": {
+   "mlp_matched": {
+    "rollout_rJ": 0.18801522254943848,
+    "windows": 0.6618340015411377,
+    "lam": 2.8956778049468994,
+    "total": 3.745853900909424
+   },
+   "mlp_s7": {
+    "rollout_rJ": 0.13309574127197266,
+    "windows": 0.46388983726501465,
+    "lam": 1.67085599899292,
+    "total": 2.2680509090423584
+   },
+   "rssm_s7": {
+    "rollout_rJ": 0.5745692253112793,
+    "windows": 7.0281593799591064,
+    "lam": 4.3135552406311035,
+    "total": 11.916666746139526
+   },
+   "rssm_x1v1": {
+    "rollout_rJ": 0.5701239109039307,
+    "windows": 7.087680101394653,
+    "lam": 4.181733846664429,
+    "total": 11.839903831481934
+   },
+   "rssm_x1v2": {
+    "rollout_rJ": 0.6156091690063477,
+    "windows": 7.626093149185181,
+    "lam": 4.785238027572632,
+    "total": 13.027302742004395
+   },
+   "transformer_matched": {
+    "rollout_rJ": 0.8825230598449707,
+    "windows": 18.967801809310913,
+    "lam": 9.34318995475769,
+    "total": 29.193923234939575
+   },
+   "transformer_s7": {
+    "rollout_rJ": 0.49726295471191406,
+    "windows": 7.168139934539795,
+    "lam": 5.815782070159912,
+    "total": 13.481560945510864
+   }
+  },
+  "load_seconds_per_run": {
+   "mlp": 0.02946925163269043,
+   "rssm": 0.07576990127563477,
+   "transformer": 0.013906240463256836
+  },
+  "runs_to_score": {
+   "mlp_matched": 3,
+   "mlp_s7": 10,
+   "rssm_s7": 10,
+   "rssm_x1v1": 1,
+   "rssm_x1v2": 1,
+   "transformer_matched": 3,
+   "transformer_s7": 10
+  },
+  "projected_minutes_score_all_38": 6.6970407366752625,
+  "train_seconds_per_iter_2_threads": {
+   "mlp_tf_s7": 0.06314387434999844,
+   "mlp_ar_s7": 0.09096300669999664,
+   "rssm_tf_s7": 2.645064411350006,
+   "rssm_ar_s7": 2.0823856971500048,
+   "transformer_tf_s7": 1.004304898800001,
+   "transformer_ar_s7": 1.0113174254499995
+  },
+  "train_seconds_per_iter_rssm_tf_two_side_by_side_1_thread_each": [
+   4.449827109549995,
+   4.452473953100002
+  ],
+  "side_by_side_slowdown": 1.6833139994604205,
+  "recorded_seconds_per_iter_reproduction_seed0": {
+   "mlp_ar_s7": 0.09419021577679669,
+   "mlp_tf_s7": 0.06302449371319963,
+   "rssm_ar_s7": 2.218920119767997,
+   "rssm_tf_s7": 2.6911497115088014,
+   "transformer_ar_s7": 1.074676006732398,
+   "transformer_tf_s7": 1.0264121500535985
+  },
+  "projected_hours_train_12_new": {
+   "one_at_a_time_2_threads": 9.57941571361112,
+   "two_at_a_time_1_thread_each": 8.062582288686366
+  },
+  "note": "Two-at-a-time hours assume every class slows down as the RSSM did side by side (the RSSM is about two thirds of the total). Scoring minutes include loading the weights and use random weights; a trained model costs the same per step."
  }
 }

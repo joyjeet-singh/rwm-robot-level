@@ -1,6 +1,8 @@
 """
-Tests of the Step 1 closed-loop code (STEP1_PLAN.md, S1). Saves nothing. Uses only random-weight models,
+Tests of the Step 1 code (STEP1_PLAN.md, S1 and S2). Saves nothing outside .cache/. Uses only random-weight models,
 constructed systems and the stored registered values; no trained simulator is driven by the policy or by noise.
+(vi) compares the trained baselines' one-step predictions with the reproduction's own code (predictions only, no
+error); (ix) trains each class for 50 iterations into .cache/ and compares training losses only.
 
   ./py scripts/test_s1.py            all tests
   ./py scripts/test_s1.py ii iv      some
@@ -237,7 +239,126 @@ def test_v():
           f"lam1_pol {out['lam1_pol']}, lam1_cl {out['lam1_cl']}, ret {out['ret']}")
 
 
-TESTS = {"i": test_i, "ii": test_ii, "iii": test_iii, "iv": test_iv, "v": test_v}
+# ------------------------------------------------------------------ Study AR adapters (S2)
+REPRO = os.path.join(C.PDM, "rwm_repro")
+
+
+def existing_runs():
+    """The reproduction's 26 baseline runs (S0 item d): runs/baseline_<arch>_<regime>_<spec>_seed<s>/."""
+    import glob
+    return sorted(d for d in glob.glob(os.path.join(REPRO, "runs", "baseline_*_seed*")) if os.path.isdir(d))
+
+
+def test_vi():
+    """One-step predictions on 100 recorded windows equal the reproduction's own baseline code (predictions only)."""
+    import s1_arch as A
+    from baselines.common import action_rows_for
+    ar, _ = compute.setup_arena((1, 8))
+    ks = [C.START + 14 * j for j in range(25)]                                  # 25 positions x 4 trajectories
+    idx = torch.as_tensor([[k - C.START + j for j in range(C.START + 1)] for k in ks])
+    sw = ar["st"][:, idx].reshape(-1, C.START + 1, 45)
+    aw = ar["ac"][:, idx].reshape(-1, C.START + 1, 12)
+    runs = existing_runs()
+    worst, per, split_ok = 0.0, {}, True
+    for rd in runs:
+        name = os.path.basename(rd)
+        rec = json.load(open(os.path.join(REPRO, "results", f"baseline_run_{name[len('baseline_'):]}.json")))
+        split_ok &= rec["hyperparameters"]["holdout_episodes"] == [1, 8]
+        m, info = A.load(rd)
+        with torch.no_grad():
+            if info["arch"] == "rssm":
+                ref = m.rollout(sw, aw, C.START)[:, C.START]
+            else:
+                lo, hi = action_rows_for(C.START, m.history)
+                ref = m.predict(sw[:, :C.START], aw[:, lo:hi])[0]
+        mine = A.predict_one(m, sw, aw)
+        r = float(((mine - ref).norm(dim=-1) / ref.norm(dim=-1)).max())
+        per[info["arch"]] = max(per.get(info["arch"], 0.0), r)
+        worst = max(worst, r)
+    check("vi one-step predictions = reproduction's code (26 runs, 100 windows each)",
+          len(runs) == 26 and split_ok and worst <= 1e-6 and len(sw) == 100,
+          f"{len(runs)} runs, all held out [1, 8]: {split_ok}; max relative difference by class {per}")
+
+
+def test_vii():
+    """The step maps' JVPs match central finite differences; the generic code reproduces the registered GRU functions."""
+    import evalh
+    import s1_arch as A
+    ar, _ = compute.setup_arena((1, 8))
+    st, ac = ar["st"], ar["ac"]
+    res = {}
+    for arch, spec in (("mlp", "s7"), ("mlp", "matched"), ("transformer", "s7"), ("transformer", "matched"),
+                       ("rssm", "s7"), ("rssm", "x1v1"), ("rssm", "x1v2")):
+        torch.manual_seed(0)
+        m = A.build(arch, spec).eval()
+        res[f"{arch}_{spec}"] = A.fd_check(m, st, ac)
+    check("vii JVP vs finite differences (random weights)", max(res.values()) <= 1e-4,
+          ", ".join(f"{k} {v:.1e}" for k, v in res.items()))
+    torch.manual_seed(0)
+    g = C.build_width(256, ensemble_size=1).eval()
+    d_roll = float((A.rollout(g, st, ac) - lyap.rollout_map(g, st, ac)).abs().max())
+    d_win = max(float(np.max(np.abs(A.window_error(g, st, ac, h) - evalh.window_error(g, st, ac, h)[0])
+                             / evalh.window_error(g, st, ac, h)[0])) for h in (1, 8, 100))
+    lam_ref = lyap.lyapunov(g, st, ac, p=1)[0][:, 0]
+    g.float()
+    lam = A.lyapunov(g, st, ac, p=1)[0][:, 0]
+    d_lam = float(np.max(np.abs(lam - lam_ref) / np.abs(lam_ref)))
+    check("vii generic code on a GRU = lyap.rollout_map, evalh, lyap.lyapunov",
+          d_roll == 0.0 and d_win <= 1e-6 and d_lam <= 1e-9,
+          f"rollout max |diff| {d_roll:.1e}; E1/E8/E100 rel {d_win:.1e}; lam1 rel {d_lam:.1e} ({lam_ref})")
+
+
+def test_viii():
+    """score_arch on random weights: finite values of the expected shapes; rollouts equal the reproduction's."""
+    import s1_arch as A
+    ar, sc = compute.setup_arena((1, 8))
+    st, ac = ar["st"], ar["ac"]
+    shapes = {"E1": (4,), "E8": (4,), "E24": (4,), "E100": (4,), "E368": (4,), "lam1_rec": (4,), "rJ_rec": (4,),
+              "err_steps": (4, 368), "rJ_rec_steps": (4, 368), "log1": (4, 367), "div_rec": (4,), "lam_div": (4,)}
+    for arch in A.ARCHES:
+        torch.manual_seed(0)
+        m = A.build(arch, "s7").eval()
+        with torch.no_grad():
+            ref = m.rollout(st, ac, C.START)
+        d = float((A.rollout(m, st, ac) - ref).abs().max() / ref.abs().max())
+        out = A.score_arch(None, ar, sc, model=m)
+        bad = [k for k, shp in shapes.items() if np.shape(out[k]) != shp]
+        fin = all(np.isfinite(out[k]).all() for k in shapes if k not in ("div_rec", "lam_div"))
+        check(f"viii score_arch {arch} (random weights)", not bad and fin and d <= 1e-6 and not out["lam_div"].any(),
+              f"shapes wrong {bad}; finite {fin}; rollout vs reproduction rel {d:.1e}; "
+              f"E100 {np.round(out['E100'], 3)}, lam1 {np.round(out['lam1_rec'], 3)}, div {out['div_rec']}; "
+              f"{sum(out['seconds'].values()):.1f}s")
+
+
+def test_ix():
+    """The training copy reproduces the stored loss curves of tf_s7 seed 0 for 50 iterations (training data only)."""
+    import shutil
+    import s1_arch as A
+    import s1_train_baseline as TB
+    out_dir = os.path.join(C.AIR, ".cache", "s1_test_ix")
+    shutil.rmtree(out_dir, ignore_errors=True)
+    for arch in A.ARCHES:
+        ref = np.array(json.load(open(os.path.join(REPRO, "results", f"baseline_run_{arch}_tf_s7_seed0.json")))
+                       ["curves"]["total"][:50])
+        calls = []
+        t0 = time.time()
+        rec = TB.train(arch, "tf", "s7", 0, iters=50, out_dir=out_dir, threads=2,
+                       progress=lambda *a: calls.append(a[1]))
+        c = np.array(rec["curves"]["total"])
+        r = float(np.max(np.abs(c - ref) / np.abs(ref)))
+        summ = json.load(open(os.path.join(out_dir, "baseline_training.json")))[f"s1_baseline_{arch}_tf_s7_seed0"]
+        rd = os.path.join(out_dir, f"s1_baseline_{arch}_tf_s7_seed0")
+        m = A.build(arch, "s7")
+        m.load_state_dict(torch.load(A.final_weights(rd)[0], weights_only=False)["model_state_dict"], strict=True)
+        check(f"ix training copy {arch} tf_s7 seed 0, 50 iterations",
+              r <= 1e-4 and calls == [50] and summ["weights_finite"] and summ["threads"] == 2,
+              f"max relative loss difference {r:.1e} (bitwise equal at {int((c == ref).sum())}/50 iterations); "
+              f"progress calls {calls}; {time.time() - t0:.0f}s")
+    torch.set_num_threads(2)
+
+
+TESTS = {"i": test_i, "ii": test_ii, "iii": test_iii, "iv": test_iv, "v": test_v,
+         "vi": test_vi, "vii": test_vii, "viii": test_viii, "ix": test_ix}
 
 if __name__ == "__main__":
     t0 = time.time()
