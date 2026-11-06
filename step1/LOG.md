@@ -48,3 +48,9 @@ Appendix A8 (CL), A9 (AR), A10 (TB, descriptive). Body: Discussion (3) and Concl
 check_claims 107/107 (25 new), check_numbers and submission_checks pass. Two-column 6 pages, submission 19.
 Commit cf87927 (with raw_S1.npz, s1_models/stats/report/extra, results/s1/). Notes step1/notes/S6.md; DECISIONS S6-1…7.
 Open: figures/fig_horizon.* still not mine, unstaged (the PDFs use the working copy, which looks identical).
+
+## S7 status: COMPLETE (2026-11-07 05:05)
+Pipeline passes (builds identical, claims 107/107, bib, submission checks); two-column 6 pages, submission 19.
+Claim-checker: numbers and labels all matched; 13 wording/scope findings fixed minimally in templates (A8–A10, two body sentences). Notes step1/notes/S7.md; DECISIONS S7-1…4.
+Supplement: scripts/build_supplement.py -> submission/AIR2027_supplement.zip (69.6 MB, 136 files) and _slim.zip (1.4 MB); scans clean (0 hits). Round-1 copy in .cache/.
+Open: the full zip exceeds round 1's 50 MB; author to check the portal limit (slim copy ready). SUBMIT.md not edited. figures/fig_horizon.* still unstaged, not mine.

@@ -338,7 +338,7 @@ held-out episodes, counting independent trajectories: one-step scores mis-ranked
 little loss in an unretrained pruned model that had lost most of its skill by 2~s (fine-tuning repaired it). (3)~\emph{Without recordings, check consistency and stability.} The
 kinematic residual ranked the 100-step error best on F18 and level with the 8-step error on the five splits
 (exploratory). A positive growth rate marked the one-step-trained rebuilt simulators but not a poor one (the released
-model has one), and a negative one certifies nothing. With a policy's commands the residual ranked worse and the
+model has one), and a negative one certifies nothing. With the released policy's joint commands the residual ranked worse and the
 growth rate was not settled (appendix~A8). (4)~\emph{Read ensemble spread as a ranking}; rescale it per horizon on held-out
 episodes before using it as an interval. (5)~\emph{Do not rely on label-free run-time alarms}: in earlier registered analyses, the growth rate read
 step by step did worse than a step counter, and a kinematic trigger for re-synchronising did worse than a fixed
@@ -359,7 +359,7 @@ five-split pool, and the kinematic residual's standing there is exploratory.
 On this simulator, one-step checks favoured teacher forcing, one-step training and a pruned model that, without fine-tuning, loses most
 skill by 2~s, and understated the ensemble's overconfidence. Without recordings, on this robot, a kinematic residual ranked
 simulators best (level with the 8-step error on the five-split pool; exploratory), and a positive growth rate
-flagged the teacher-forced and one-step-trained simulators. Neither replaces a recording at run time; a policy's commands weakened the residual's ranking
+flagged the teacher-forced and one-step-trained simulators. Neither replaces a recording at run time; a policy's joint commands weakened the residual's ranking
 (appendix~A8).
 
 \textbf{Reproducibility and use of AI tools.} The registrations and code are in the

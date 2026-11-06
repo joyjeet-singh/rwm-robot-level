@@ -42,3 +42,9 @@
 - **S6-5 Registration time in UTC** (git %ct), so the paper does not carry a time-zone offset (double-blind).
 - **S6-6 Discussion wording.** "the residual ranked worse" repeats the registered label WORSE WITH POLICY COMMANDS; "the growth rate was not settled" repeats CL2.
 - **S6-7 fig_horizon.** The working copy, a re-render from 1 Nov that looks identical to the committed one, is what the PDFs include. It is not S6's and stays unstaged, as in S3–S5.
+
+## S7
+- **S7-1 Supplement size.** Round 1 stayed under 50 MB (my own choice; SUBMIT.md names no venue limit). The Step 1 raw arrays (raw_S1.npz, 38 MB) take the full zip to 69.6 MB. Options: drop raw_S1.npz (then s1_stats.py cannot be rerun from the zip), drop round-1 raw files (removes shipped material), or accept the size. Chosen: keep every raw file the scripts read, leave out the redundant results/s1/raw, and also build a 1.4 MB slim zip without raw_*.npz. The author picks per the portal's limit.
+- **S7-2 Build script not packed.** `scripts/build_supplement.py` contains the identifying patterns it scans for, so it is not in the zip.
+- **S7-3 Body scope.** Claim-checker items 12–13 (add scope words and numbers to the two body sentences) were applied only as "joint commands"; more words push the two-column check to 7 pages. The scope stays in appendix A8.
+- **S7-4 Floor not typed.** The registered correlation floor (0.999) has no number key, so the text says "above the registered floor".

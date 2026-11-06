@@ -362,10 +362,11 @@ records that it was not.
 % A8: study CL, registered in prereg/PREREG_S1.md (Step 1) before any trained simulator was driven by a policy;
 % results from scripts/s1_stats.py (results/s1_stats.json); X5 noise and closed-loop entries from scripts/s1_extra.py
 % (exploratory). Numbers: scripts/s1_numbers.py.
+\textbf{Scope.} One robot, one trotting gait, simulated data; the authors' released actor; imagined return only.
 \textbf{Design.} Study CL asked whether the two label-free checks still rank simulators by their 100-step error when
 a policy, not the recording, supplies the \emph{joint commands} (the 12 joint position targets given at every step).
 Its rules and analysis code were committed at {{s1_reg_time}} (commit {{s1_reg_commit}}), before any trained
-simulator was driven by a policy, and the job that produced every value below started after that commit. The policy
+simulator was driven by a policy, and the job that produced every policy, noisy and closed-loop value below started after that commit. The policy
 is the authors' released actor, without action or observation noise; at every step it reads the simulator's own
 predicted state, the \emph{velocity command} (the walking speed and turning rate it is asked to follow, held at the
 recorded segment's mean) and its own previous joint command. Each simulator was rolled out for 368 steps from the same
@@ -382,7 +383,7 @@ wholly below zero, \textsc{worse with policy commands}; one wholly above, \texts
 anything else, \textsc{not settled}. The job first recomputed the recorded-command checks for every F18 model and
 every fifth X5 model; all agreed with the stored values within the registered tolerance except {{s1_c1_rJ_nout}}
 residuals of the 10{,}000-iteration teacher-forced models, at most {{s1_c1_rJ_maxrel}} apart, which the registered
-check allows (rank correlation of recomputed with stored values at least {{s1_c1_rho_min}}).
+check allows (the rank correlation of recomputed with stored values was at least {{s1_c1_rho_min}}, above the registered floor).
 
 \begin{table}[h]
 \centering
@@ -419,8 +420,8 @@ simulators under policy commands agreed with its ranking under recorded commands
 residual's change was again \textsc{{{s1_cl4_cl1_label}}} ({{s1_cl4_cl1_delta}} {{s1_cl4_cl1_ci}}), and the growth
 rate's was \textsc{{{s1_cl4_cl2_label}}} ({{s1_cl4_cl2_delta}} {{s1_cl4_cl2_ci}}; CL4). Noisy recorded commands left
 both correlations \textsc{{{s1_cl8_cl1_label}}} ($\bar r_J$: {{s1_cl8_cl1_delta}} {{s1_cl8_cl1_ci}}; $\lambda_1$:
-{{s1_cl8_cl2_delta}} {{s1_cl8_cl2_ci}}; CL8), so a small random change of the commands does not explain the
-residual's drop. Within F18, the drop came from the {{s1_cl9_trained_n}} trained simulators
+{{s1_cl8_cl2_delta}} {{s1_cl8_cl2_ci}}; CL8), so a small random change of the commands did not reproduce the
+residual's drop. Within F18, the drop was seen in the {{s1_cl9_trained_n}} trained simulators
 (\textsc{{{s1_cl9_trained_cl1_label}}}, {{s1_cl9_trained_cl1_delta}} {{s1_cl9_trained_cl1_ci}}); within the
 {{s1_cl9_compressed_n}} compressed copies it was \textsc{{{s1_cl9_compressed_cl1_label}}}
 ({{s1_cl9_compressed_cl1_delta}} {{s1_cl9_compressed_cl1_ci}}), and the growth rate's change was
@@ -446,6 +447,7 @@ simulator had been driven by a policy or by noisy commands, and no closed-loop g
 \section{Other simulator architectures}\label{app:A9}
 % A9: study AR, registered with study CL (prereg/PREREG_S1.md); results from scripts/s1_stats.py; AR3 secondary,
 % AR4 descriptive; which runs diverged: scripts/s1_extra.py (exploratory).
+\textbf{Scope.} One robot, one trotting gait, simulated data; F18's split; {{s1_ar_iters}} training iterations.
 \textbf{Design.} Study AR, registered with study CL in the same commit, asked whether the main study's registered
 comparisons of checks hold for simulators built on other network architectures: a multilayer perceptron (MLP, a
 feed-forward network over a window of past states and joint commands), a recurrent state-space model (RSSM, a
@@ -488,7 +490,7 @@ With F18 & {{s1_ar3_ext_n}} & {{s1_art_extended_E1}} & {{s1_art_extended_E8}} & 
 \end{tabular}}
 \end{table}
 
-\textbf{Registered verdicts.} AR1 is \textsc{{{s1_ar1_label}}}: averaged over the three architectures, the growth
+\textbf{Registered verdicts.} AR1 is \textsc{{{s1_ar1_label}}}: on average over the three architectures, the growth
 rate ranked the 100-step error better than one-step error did ({{s1_ar1_delta}} {{s1_ar1_ci}}). The lead rests on
 the MLP and the Transformer, where one-step error ranked the runs largely in reverse order; in the RSSM, one-step error
 ranked them well and the growth rate poorly (Table~\ref{tab:app-ar}). AR2 is \textsc{{{s1_ar2_label}}}
@@ -496,15 +498,15 @@ ranked them well and the growth rate poorly (Table~\ref{tab:app-ar}). AR2 is \te
 in the other two.
 
 \textbf{Secondary and descriptive readings.} Ranked together across architectures, neither comparison was settled
-(AR1 {{s1_ar3_pooled_ar1_delta}} {{s1_ar3_pooled_ar1_ci}}; AR2 {{s1_ar3_pooled_ar2_delta}} {{s1_ar3_pooled_ar2_ci}};
-AR3), and the growth rate barely ranked the {{s1_ar_n}} runs ($\rho$ = {{s1_art_pooled_lam1}}). With F18's simulators added, AR1 was
+(secondary, 95\% intervals; AR1 {{s1_ar3_pooled_ar1_delta}} {{s1_ar3_pooled_ar1_ci}}; AR2 {{s1_ar3_pooled_ar2_delta}} {{s1_ar3_pooled_ar2_ci}};
+AR3), and the growth rate barely ranked the {{s1_ar_n}} runs ($\rho$ = {{s1_art_pooled_lam1}}). With F18's simulators added (also secondary), AR1 was
 \textsc{{{s1_ar3_extended_ar1_label}}} ({{s1_ar3_extended_ar1_delta}} {{s1_ar3_extended_ar1_ci}}) and AR2
 \textsc{{{s1_ar3_extended_ar2_label}}} ({{s1_ar3_extended_ar2_delta}} {{s1_ar3_extended_ar2_ci}}). Pairing the five
 seeds of each method (AR4, descriptive), the teacher-forced run was better one step ahead and worse at 100 steps in
 {{s1_ar4_mlp_both}} of {{s1_ar4_mlp_n_pairs}} pairs for the MLP and {{s1_ar4_transformer_both}} of
 {{s1_ar4_transformer_n_pairs}} for the Transformer. For the RSSM it was better one step ahead in
 {{s1_ar4_rssm_tf_better_E1}} of {{s1_ar4_rssm_n_pairs}} pairs but worse at 100 steps in {{s1_ar4_rssm_tf_worse_E100}}:
-the reversal seen on RWM's model held for two of the three other architectures. Under recorded commands,
+the reversal seen on RWM's model held for two of the three other architectures. Under recorded commands (exploratory),
 {{s1_ar_ndiv}} teacher-forced MLP runs (seeds {{s1_ar_div_seeds}}) left the divergence bound ($\pm10^3$) on {{s1_ar_div_traj}} of
 their {{s1_ar_ntraj}} trajectories; as registered, their finite values were kept as computed.
 
@@ -515,7 +517,7 @@ growth rate of any of these runs existed, and the {{s1_ar_nnew}} new runs had no
 
 \section{Training length (descriptive)}\label{app:A10}
 % A10: study TB, scripts/s1_budget.py (results/s1_budget.json); descriptive, not registered.
-All of this section is descriptive: it is not registered, uses {{s1_tb_nseeds}} seeds per arm and gives no intervals, and every
+All of this section is descriptive and concerns one robot, one trotting gait and simulated data: it is not registered, uses {{s1_tb_nseeds}} seeds per arm and gives no intervals, and every
 value was computed before the studies of appendices A8 and A9. The main models train for {{hp_iters}} iterations. Over the last 250 iterations the
 training loss was still falling in {{s1_tb_fall_2500}} of {{s1_tb_n_2500}} runs ({{s1_tb_nseeds}} seeds each of
 rollout and teacher-forced training) and, with much smaller slopes, in {{s1_tb_fall_10000}} of {{s1_tb_n_10000}}
@@ -525,4 +527,4 @@ from {{s1_tb_ro_2500_E100}} to {{s1_tb_ro_10000_E100}} and of teacher-forced one
 {{s1_tb_tf_2500_E1}} to {{s1_tb_tf_10000_E1}}). In each of the {{s1_tb_nseeds}} seeds and at both lengths, teacher
 forcing was better one step ahead and worse at 100 steps, its growth rate was positive and that of rollout training
 negative. In study FT (appendix~A7), the parent kept {{s1_tb_K_min}} to {{s1_tb_K_max}} of the skill of its control,
-which had 500 more iterations, across horizons: for those models, more training added little.
+which had 500 more iterations, across horizons: for 500 more iterations, on the X5 arena, the parent lost little.
