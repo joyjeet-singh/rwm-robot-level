@@ -1,0 +1,103 @@
+{
+ "a": {
+  "pass": true,
+  "total_mass_kg": 57.027869999999986,
+  "inertia_diag_kgm2": [
+   2.904158211479546,
+   6.663013639955138,
+   6.542596177587223
+  ],
+  "max_abs_errors": {
+   "mass_vs_urdf": 7.105427357601002e-15,
+   "com_vs_urdf": 1.214306433183765e-17,
+   "inertia_vs_urdf": 3.975986206938842e-15,
+   "mass_vs_mj_import": 7.105427357601002e-15,
+   "com_vs_mj_import": 1.9949319973733282e-17,
+   "inertia_vs_mj_import": 3.78430536907004e-09
+  },
+  "nbody": 14,
+  "njnt": 13,
+  "nu": 12,
+  "timestep": 0.005,
+  "seconds": 0.03
+ },
+ "b": {
+  "pass": true,
+  "joint_order": [
+   "LF_HAA",
+   "LH_HAA",
+   "RF_HAA",
+   "RH_HAA",
+   "LF_HFE",
+   "LH_HFE",
+   "RF_HFE",
+   "RH_HFE",
+   "LF_KFE",
+   "LH_KFE",
+   "RF_KFE",
+   "RH_KFE"
+  ],
+  "feet_under_own_corners": true,
+  "standing_torque_Nm": [
+   -0.02,
+   -0.02,
+   0.024,
+   0.023,
+   -9.585,
+   11.23,
+   -9.587,
+   11.232,
+   19.911,
+   -17.993,
+   19.914,
+   -17.997
+  ],
+  "recorded_stance_mean_torque_Nm": [
+   0.865,
+   1.287,
+   0.38,
+   -5.43,
+   -4.391,
+   3.083,
+   -6.431,
+   9.656,
+   8.446,
+   -15.696,
+   12.822,
+   -8.447
+  ],
+  "recorded_rows": 134,
+  "hfe_kfe_signs_match": true,
+  "seconds": 0.42
+ },
+ "c": {
+  "pass": true,
+  "max_abs_diff_Nm": 0.0,
+  "kp": 82.57203732911098,
+  "kd": 4.926066943219085,
+  "delay_physics_steps": 4,
+  "seconds": 0.12
+ },
+ "d": {
+  "pass": true,
+  "fell": false,
+  "height_at_1s_m": 0.5458759390050612,
+  "max_drift_after_1s_m": 0.0007045261266763747,
+  "seconds": 0.29
+ },
+ "e": {
+  "pass": true,
+  "max_abs_diff": 0.0,
+  "seconds": 0.35
+ },
+ "f": {
+  "pass": true,
+  "steps": 1000,
+  "all_finite": true,
+  "seconds_per_20s_episode": 1.6465721130371094,
+  "threads": 2,
+  "seconds": 1.68
+ },
+ "all_pass": true,
+ "model_sha256": "ba5c5a22bdf3733cf2a29df3e1e59a2a8cb7ad7c465706c416500bfddc970d60"
+}
