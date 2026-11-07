@@ -1,1 +1,9 @@
 # Improve round — decisions
+
+## I2
+- 24 steps: the released code's 24 (`num_steps_per_env`) is PPO's collection length, not an imagination horizon, so it is not cited; 24 steps stays only as an intermediate evaluation horizon (0.48 s). RWM and RWM-U both imagine 100 steps (keys ext_rwm_imag_steps, ext_rwmu_imag_steps).
+- Data fraction: kept 0.13%, now stated precisely as the main pool's 7,991 training transitions over RWM's 6 million pretraining transitions (RWM Table 1), via ext_* keys. "About 750 times more data" for the released model was weakened: its training data are unrecorded, so the text says RWM *reports* 750 times our transitions.
+- Recommendation: the plan's phrase "a fallback that mainly separates training methods" is not supported by I1 (within the 48 rollout-trained F18 simulators the residual beats E8; the drop from all-97 to rollout-trained is larger for E8 than for the label-free checks). Conservative choice: present label-free checks as a fallback and report the within-method result as mixed, without the "mainly separates training methods" claim.
+- Imagined return: "Step 2" is not named in the paper, so the text says "a candidate for a follow-up study". Called "nominally the strongest" because +0.86 vs the residual's +0.83 is a small gap with overlapping intervals (descriptive).
+- To fit, these moved to the appendix only (still there, with numbers): the loss-still-falling detail (A10), CL5 closed-loop label, CL7 no-divergence count and CL8 numbers (A8), AR3 extended (A9), the head-variance-collapse mechanism (A6). No registered result left the paper.
+- Fit trims also dropped Related Work's repeat of RAMBO (still cited in the Intro) and duplicated clauses (one-step-trained models' errors, already in Fig. 2's caption; the stability account's scope, kept in Limitations).

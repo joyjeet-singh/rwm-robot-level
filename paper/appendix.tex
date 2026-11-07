@@ -145,7 +145,7 @@ $\bar r_J$ & +0.91 [+0.86, +0.94] & +0.92 & +0.91 [+0.86, +0.93] & +0.94 \\
 \end{tabular}}
 \end{table}
 
-\section{Wider intervals, the five-split pool without split \{1,8\}, and Holm's correction}\label{app:A4}
+\section{Wider intervals, the five-split pool without split \{1,8\}, Holm's correction, and rankings within one training method}\label{app:A4}
 All of this section is exploratory. The registered intervals on correlations resample models (within each split on
 X5). The wider intervals resample parent models and held-out trajectories together, in two levels, with 20{,}000 draws. They are 1.5 times as wide as the
 registered ones (median; 1.3 for the correlations of Table~\ref{tab:checks} and 1.6 for
@@ -221,6 +221,48 @@ Q6: growth-rate shift of pruned copies & +0.03 & [$-$0.02, +0.07] & [$-$0.04, +0
 \bottomrule
 \end{tabular}}
 \end{table}
+
+\textbf{Rankings within one training method} (exploratory: added after the registered results were seen; stored
+values only, nothing re-measured). Table~\ref{tab:app-within} repeats the correlations of Table~\ref{tab:checks} within
+three groups: the main pool's 48 rollout-trained simulators, the five-split pool's 40 rollout-trained
+simulators (within each split, averaged), and the main pool's 40 compressed copies. On all 97
+simulators of the main pool the same computation reproduces Table~\ref{tab:checks}. Intervals resample models, as the
+registered ones do; on the five-split pool, the three ensembles of a split may share seeds, so those intervals are
+likely too narrow. An earlier study had found $\lambda_1$ to rank the rollout-trained simulators of the
+main pool, but not of the five splits, against the 368-step error (appendix~A2).
+
+\begin{table}[h]
+\centering
+\caption{Spearman correlation with $E_{100}$ (recorded commands) within one training method, with 95\% intervals
+(exploratory). The imagined return enters negated, so that higher is better for every row. Last two rows: difference
+from the 8-step error's correlation. --: not computed in this analysis.}
+\label{tab:app-within}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}lccc@{}}
+\toprule
+ & F18, rollout-trained & X5, rollout-trained & F18, compressed \\
+Check & (48) & (40) & (40) \\
+\midrule
+One-step error $E_1$ & $-$0.18 [$-$0.49, +0.19] & +0.53 [+0.17, +0.75] & +0.89 [+0.77, +0.95] \\
+8-step error $E_8$ & +0.38 [+0.02, +0.70] & +0.53 [+0.16, +0.75] & +0.96 [+0.91, +0.98] \\
+Growth rate $\lambda_1$ & +0.76 [+0.57, +0.88] & $-$0.21 [$-$0.54, +0.18] & +0.82 [+0.65, +0.91] \\
+Kinematic residual $\bar r_J$ & +0.85 [+0.72, +0.93] & +0.73 [+0.42, +0.89] & +0.94 [+0.85, +0.98] \\
+$\lambda_1$, policy commands & +0.70 [+0.46, +0.85] & -- & +0.80 [+0.64, +0.89] \\
+$\bar r_J$, policy commands & +0.38 [+0.06, +0.65] & -- & +0.92 [+0.83, +0.96] \\
+Imagined return (negated) & +0.61 [+0.35, +0.78] & -- & +0.91 [+0.81, +0.96] \\
+\midrule
+$\lambda_1$ minus $E_8$ & +0.38 [$-$0.01, +0.77] & $-$0.74 [$-$1.09, $-$0.21] & $-$0.14 [$-$0.30, $-$0.04] \\
+$\bar r_J$ minus $E_8$ & +0.47 [+0.13, +0.81] & +0.20 [$-$0.13, +0.56] & $-$0.02 [$-$0.09, +0.04] \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Among the rollout-trained simulators of the main pool, the residual ranked better than the 8-step error, and the
+interval of the growth rate's lead over it only just includes zero; one-step error did not rank them. On the five-split pool the
+growth rate did not rank the rollout-trained simulators and fell below the 8-step error, while the residual's lead was
+not clear. Every check ranked the compressed copies well, the 8-step error best. Under policy commands, the negated
+imagined return ranked the rollout-trained simulators of the main pool nominally less well than $\lambda_1$ did.
 
 \section{Compression and the growth rate}\label{app:A5}
 Table~\ref{tab:app-comp} gives, for every compression variant of the 25 five-split parents, the shift in
@@ -304,7 +346,8 @@ and scored on the tenth, restores $\pm1\sigma$ coverage (within band at 6 of 6 h
 steps: 83.5\% against 95.45\%). The released model's training rows are unrecorded, so none of these
 is a held-out measurement.
 
-\textbf{The released model} (descriptive). Rollout-trained on about 750 times more data, it has low one-step
+\textbf{The released model} (descriptive). Rollout-trained on unrecorded data (RWM reports pretraining on about 750 times as many
+transitions as our main pool's), it has low one-step
 and 100-step errors (0.083 and 0.40; floor 0.21 and 0.80) but is not
 contracting on these trajectories (+0.70/s), which it may have trained on.
 

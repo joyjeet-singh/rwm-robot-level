@@ -68,3 +68,16 @@ def add(put, sig, sgn, pct, cib, dp, load, rel):
     put("ext_ours_transitions", f"{ours:,}".replace(",", "{,}"), _rel(BUDGET), "ours.distinct_transitions")
     frac = pct(ours / ref, 2)
     put("ext_budget_fraction", frac, _rel(BUDGET) + " and " + x, "ours.distinct_transitions / rwm_pretrain_transitions.value")
+
+    # ---- I2: model counts, to reconcile the 101 trained and 200 compressed GRU simulators with the two pools
+    M, m = load("models"), rel("models")
+    f18, x5 = M["F18"], M["X5"]
+    ft = {r["path"] for r in f18 if r["variant"] is None}
+    xt = {r["path"] for r in x5 if r["variant"] is None}
+    assert len(ft) == sum(r["variant"] is None for r in f18) and len(xt) == sum(r["variant"] is None for r in x5)
+    assert {(r["path"], r["variant"]) for r in f18 if r["variant"]} <= {(r["path"], r["variant"]) for r in x5 if r["variant"]}
+    assert "18" in {r["arena"] for r in x5}                                   # F18's split is one of the five
+    put("im_f18_trained", str(len(ft)), m, "F18 entries without a variant (distinct paths)")
+    put("im_x5_trained", str(len(xt)), m, "X5 entries without a variant (distinct paths)")
+    put("im_both_trained", str(len(ft & xt)), m, "trained paths in both F18 and X5")
+    put("im_pool_entries", str(len(f18) + len(x5)), m, "F18 entries + X5 entries")

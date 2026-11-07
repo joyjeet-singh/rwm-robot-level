@@ -3274,6 +3274,11 @@
   "source": "AIR 2027/results/im_within.json",
   "value": "[+0.42, +0.89]"
  },
+ "im_both_trained": {
+  "path": "trained paths in both F18 and X5",
+  "source": "AIR 2027/results/models.json",
+  "value": "11"
+ },
  "im_c_E1": {
   "path": "c.checks.E1.rho",
   "source": "AIR 2027/results/im_within.json",
@@ -3463,6 +3468,21 @@
   "path": "d.checks.rJ_pol.ci95",
   "source": "AIR 2027/results/im_within.json",
   "value": "[+0.73, +0.89]"
+ },
+ "im_f18_trained": {
+  "path": "F18 entries without a variant (distinct paths)",
+  "source": "AIR 2027/results/models.json",
+  "value": "57"
+ },
+ "im_pool_entries": {
+  "path": "F18 entries + X5 entries",
+  "source": "AIR 2027/results/models.json",
+  "value": "352"
+ },
+ "im_x5_trained": {
+  "path": "X5 entries without a variant (distinct paths)",
+  "source": "AIR 2027/results/models.json",
+  "value": "55"
  },
  "k_h1": {
   "path": "n8_k_rel_epi_h1",
