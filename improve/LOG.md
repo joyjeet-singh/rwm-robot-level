@@ -25,3 +25,10 @@ air-claim-checker: numbers all matched; 8 wording points fixed, rest listed in i
 Pipeline: slack PASS (6/6, free slot 0.30 = zero margin, abstract 186), check_numbers all_agree, check_bib OK, submission_checks 0, supplement 0 hits.
 Visual check not possible (no gs; sips black): text-checked. Commit: d2232b8.
 Open: I4 must add no main-text/table height. STEP2_PLAN.md untracked, not mine.
+
+## I4 status: COMPLETE (2026-11-07 22:40)
+Referee 4/10 (weak reject: novelty vs RWM's ablation, data scale, unequal comparison, overclaim in conclusion); stats reviewer 11 problems in 48 sentences.
+Fixed: verdict wording (AR3 pooled not settled, CL5 worse, X5 residual not separated, two of three networks), labels (abstract residual secondary, imagined-return comparison exploratory), conclusion scope, counting sentence split, A3 note on E8/E100 overlap.
+Declined with reasons and two Step 2 candidates: improve/DECISIONS.md (I4). Notes: improve/notes/I4.md; reviews: improve/review/.
+Pipeline: slack PASS (6/6, free slot 0.30, abstract 185), check_claims 159/0, check_numbers all_agree, check_bib OK, submission_checks 0 failures.
+Commit: 5b389d8 (I4: review fixes). Open for author: supplement history names; I3 open items (a), (b).
