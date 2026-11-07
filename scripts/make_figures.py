@@ -43,9 +43,11 @@ def fig_horizon():
     U = group_curve(raw, table, lambda r: r["variant"] == "u30")
     F = np.concatenate([raw[f"floor_{f}"] for f in FOLDS]).mean(0)
     fig, ax = plt.subplots(figsize=(3.45, 2.15))
-    for h, txt in ((24, "24 steps\n(RWM)"), (100, "100 steps\n(RWM-U)")):
-        ax.axvline(h, color="#d6d5d0", lw=0.8, zorder=0)
-        ax.text(h * 1.06, 0.075, txt, color=MUTED, fontsize=5.8, va="bottom")
+    facts = json.load(open(os.path.join(C.RESULTS, "external_facts.json")))
+    h = facts["rwm_imag_steps"]["value"]
+    assert h == facts["rwmu_imag_steps"]["value"], "RWM and RWM-U imagine different horizons"
+    ax.axvline(h, color="#d6d5d0", lw=0.8, zorder=0)
+    ax.text(h * 1.06, 0.075, f"{h} steps\n(RWM, RWM-U)", color=MUTED, fontsize=5.8, va="bottom")
     ax.plot(k, F, color=GRAY, lw=1.2, ls=(0, (4, 2)), label="hold last state (floor)")
     ax.plot(k, B, color=ORANGE, lw=1.6, label="teacher-forced")
     ax.plot(k, U, color=AQUA, lw=1.6, label="rollout-trained, 30% pruned")
@@ -55,7 +57,7 @@ def fig_horizon():
     ax.set_xlim(1, 368)
     ax.set_ylim(0.07, 6)
     plain = FuncFormatter(lambda v, _: f"{v:g}")
-    ax.xaxis.set_major_locator(FixedLocator([1, 8, 24, 100, 368]))
+    ax.xaxis.set_major_locator(FixedLocator([1, 8, 24, h, 368]))
     ax.xaxis.set_major_formatter(plain)
     ax.xaxis.set_minor_locator(NullLocator())
     ax.yaxis.set_major_locator(FixedLocator([0.1, 0.2, 0.5, 1, 2, 5]))

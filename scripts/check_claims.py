@@ -410,6 +410,105 @@ CLAIMS.update({
         sorted(int(x) for x in FT["seeds"]) == [0, 1, 2],
 })
 
+# I3 (improvement round): every result-bearing sentence added or changed in I2 (improve/notes/I2_claims.md).
+EF = json.load(open(os.path.join(C.RESULTS, "external_facts.json")))
+IW = json.load(open(os.path.join(C.RESULTS, "im_within.json")))
+PN = json.load(open(os.path.join(C.RESULTS, "paper_numbers.json")))
+PN = PN.get("values", PN)
+_iw = lambda g, c: IW[g]["checks"][c]["rho"]                                             # noqa: E731
+_iwd = lambda g, d: IW[g]["diffs"][d]                                                    # noqa: E731
+_pn = lambda k: PN[k]["value"]                                                           # noqa: E731
+_pni = lambda k: int(str(_pn(k)).replace(",", "").replace("{", "").replace("}", ""))     # noqa: E731
+_v = lambda x: str(x).lower()                                                            # noqa: E731
+_pol = _cl["CL1"]["rho_new"], _cl["CL2"]["rho_new"], _cl["CL5"]["rho_new"]
+CLAIMS.update({
+    # Abstract, Introduction, Sec. 4.1: the horizon RWM and RWM-U imagine (external facts)
+    "I2 Abstract/Intro/Fig. 1: RWM and RWM-U both imagine 100 steps":
+        EF["rwm_imag_steps"]["value"] == 100 and EF["rwmu_imag_steps"]["value"] == 100
+        and _pn("ext_rwm_imag_steps") == _pn("ext_rwmu_imag_steps") == "100",
+    "I2 Fig. 1: the one vertical line is the imagined horizon, 100 steps, which lies among the plotted steps":
+        EF["rwm_imag_steps"]["value"] == 100 and F["B_cross_floor_step"] is not None,
+    "I2 Abstract: teacher-forced and N=1 are worse than the rollout-trained / N=8 model at 100 steps (ratios above 1)":
+        D3["h100"]["B_over_A"] > 1 and D1[N[1]]["E100"] > D1[N[8]]["E100"],
+    "I2 Abstract: pruning 30% keeps skill one step ahead (K > 0.85) but little at 100 steps (K < 0.5)":
+        K("u30", 1) > 0.85 and K("u30", 100) < 0.5,
+    "I2 Abstract/Sec. 4.1: fine-tuning restores skill (FT1, registered, primary)":
+        _v(FT["primary"]["FT1"]["verdict"]) == "fine-tuning restores skill",
+    "I2 Sec. 4.1: the fine-tuned copies were nearly as skilled as their parents fine-tuned the same way (FT2, registered)":
+        _v(FT["primary"]["FT2"]["verdict"]) == "nearly as skilled",
+    "I2 Abstract: the growth rate ranked better than one-step error (Q1, registered primary)":
+        _v(S["Q1"]["verdict"]) == "label-free better",
+    "I2 Abstract/Sec. 4.2: the growth rate was not separated from the 8-step error (Q2 not settled, primary)":
+        _v(S["Q2"]["verdict"]) == "not settled",
+    "I2 Sec. 4.2: the 8-step error ranked ahead of the growth rate at 24 steps (Q2 at 24, secondary)":
+        _v(S["Q2_E24"]["verdict"]) == "training-horizon better",
+    "I2 Abstract/Sec. 4.2: on the five-split pool one-step error ranked better than the growth rate, and the 8-step error better still (Q3, secondary)":
+        _v(S["Q3_vs_E1"]["verdict"]) == "one-step better" and _v(S["Q3_vs_E8"]["verdict"]) == "training-horizon better",
+    "I2 Abstract/Sec. 4.2: the kinematic residual ranked better than one-step error (Q4, secondary)":
+        _v(S["Q4_vs_E1"]["verdict"]) == "label-free better",
+    "I2 Abstract/Sec. 4.2: with policy commands the residual ranked worse (CL1, registered primary), the growth rate's change not settled (CL2)":
+        _v(_cl["CL1"]["verdict"]) == "worse with policy commands" and _v(_cl["CL2"]["verdict"]) == "not settled",
+    "I2 Sec. 4.2: AR1 label-free better, AR2 not settled (registered primary)":
+        _v(_ar["AR1"]["verdict"]) == "label-free better" and _v(_ar["AR2"]["verdict"]) == "not settled",
+    "I2 Sec. 4.1: the growth-rate shift at 30% pruning was not settled (Q6, secondary)":
+        _v(S["Q6"]["verdict"]) == "not settled",
+    "I2 Discussion (1): no label-free check beat the 8-step error in a primary test (Q2 and AR2 not settled)":
+        _v(S["Q2"]["verdict"]) == "not settled" and _v(_ar["AR2"]["verdict"]) == "not settled",
+    "I2 Conclusion: the growth rate beat one-step error on the main pool but failed its replication (Q1, Q3 vs E1); "
+    "the residual's rank correlation with recorded commands is the highest of Table 2's F18 column (descriptive)":
+        _v(S["Q1"]["verdict"]) == "label-free better" and _v(S["Q3_vs_E1"]["verdict"]) == "one-step better"
+        and S["Q4_vs_E1"]["rho_new"] > max(S["Q1"]["rho_new"], S["Q4_vs_E1"]["rho_base"]),
+    # Related work, Sec. 3 (external facts, counts)
+    "I2 Related work: iKCE diagnosed one model (DreamerV3 on walker-walk) and does not rank models":
+        EF["ikce_n_models"]["value"] == 1 and "walker" in _v(EF["ikce_task"]["value"])
+        and EF["ikce_ranks_models"]["value"] is False,
+    "I2 Sec. 3: 7,991 transitions are 0.13% of RWM's 6 million pretraining transitions":
+        _pni("ext_ours_transitions") == 7991 and EF["rwm_pretrain_transitions"]["value"] == 6000000
+        and round(100 * 7991 / 6000000, 2) == 0.13 and _pn("ext_budget_fraction") == "0.13\\%",
+    "I2 Sec. 4.1: RWM reports about 750 times our transitions (6 million / 7,991, to the nearest 10)":
+        round(6000000 / 7991, -1) == 750 and _pn("scale_ratio") == "about 750",
+    "I2 Sec. 3: 101 trained and 200 compressed simulators; main pool 97 = 57 + 40; five-split pool 255 = 55 + 200; "
+    "11 trained models in both; 352 pool entries":
+        _pni("n_trained") == _pni("im_f18_trained") + _pni("im_x5_trained") - _pni("im_both_trained") == 101
+        and _pni("n_P") == _pni("im_f18_trained") + _pni("n_C") == 97
+        and _pni("n_X") == _pni("im_x5_trained") + _pni("n_compressed") == 255
+        and _pni("im_pool_entries") == _pni("n_P") + _pni("n_X") == 352 and _pni("n_compressed") == 200,
+    # Sec. 4.2 and appendix A4: rankings within one training method (EXPLORATORY, added after the registered results)
+    "I2 Sec. 4.2 (exploratory): every check ranked the 40 compressed copies well, rho from +0.82 to +0.96":
+        IW["c"]["n_models"] == 40 and min(_iw("c", c) for c in ("E1", "E8", "lam1", "rJ")) > 0.815
+        and max(_iw("c", c) for c in ("E1", "E8", "lam1", "rJ")) < 0.965
+        and round(_iw("c", "lam1"), 2) == 0.82 and round(_iw("c", "E8"), 2) == 0.96,
+    "I2 Sec. 4.2 (exploratory): among the 48 rollout-trained main-pool simulators the residual ranked better than "
+    "8-step error (interval of the difference above 0)":
+        IW["a"]["n_models"] == 48 and _iw("a", "rJ") > _iw("a", "E8") and _iwd("a", "rJ_minus_E8")["ci95"][0] > 0
+        and round(_iw("a", "rJ"), 2) == 0.85 and round(_iw("a", "E8"), 2) == 0.38,
+    "I2 Sec. 4.2 (exploratory): on the five-split pool's 40 rollout-trained simulators the growth rate failed "
+    "(rho < 0, interval includes 0) and the residual's lead over 8-step error was unclear (interval includes 0)":
+        IW["b"]["n_models"] == 40 and _iw("b", "lam1") < 0 and IW["b"]["checks"]["lam1"]["ci95"][1] > 0
+        and _iwd("b", "rJ_minus_E8")["ci95"][0] < 0 < _iwd("b", "rJ_minus_E8")["ci95"][1],
+    "I2 Disc. (3) (exploratory): within one method the residual ranked better than 8-step error on the main pool, not "
+    "clearly on the five-split pool, where the growth rate failed":
+        _iwd("a", "rJ_minus_E8")["ci95"][0] > 0 and _iw("b", "lam1") < 0 < IW["b"]["checks"]["lam1"]["ci95"][1]
+        and _iwd("b", "rJ_minus_E8")["ci95"][0] < 0 < _iwd("b", "rJ_minus_E8")["ci95"][1],
+    "I2 Sec. 4.2 (exploratory): every recorded-command check ranked the 40 compressed copies at 0.82 or better":
+        all(_iw("c", c) > 0.815 for c in ("E1", "E8", "lam1", "rJ")),
+    # Sec. 4.2: imagined return (CL6 secondary; comparison descriptive)
+    "I2 Sec. 4.2: imagined return is nominally the strongest check under policy commands (|rho| above the residual's "
+    "and the growth rate's; CL6 secondary, comparison descriptive, not a registered check)":
+        abs(_cl["CL6"]["rho"]) > max(_pol[0], _pol[1], abs(_pol[2]))
+        and round(abs(_cl["CL6"]["rho"]), 2) == round(_iw("d", "negret"), 2) == 0.86
+        and _cl["CL6"]["rho"] < 0,
+    "I2 Sec. 4.2: with policy commands the growth rate did not rank the simulators (rho near 0; secondary)":
+        abs(_cl["CL5"]["rho_new"]) < 0.05,
+    "I2 Sec. 4.2: across architectures together the growth rate did not rank the runs (rho < 0.2, secondary)":
+        _ar["AR3"]["pooled"]["AR1"]["rho_new"] < 0.2,
+    "I2 Sec. 4.1 (descriptive): other networks - MLP better one step but worse at 100 steps in every pair; "
+    "RSSM better one step but worse at 100 steps in none":
+        _pn("s1_ar4_rssm_tf_better_E1") == _pn("s1_ar4_rssm_n_pairs")
+        and _pn("s1_ar4_rssm_tf_worse_E100") == "0"
+        and _pn("s1_ar4_mlp_tf_worse_E100") == _pn("s1_ar4_mlp_n_pairs"),
+})
+
 if __name__ == "__main__":
     out = {k: bool(v) for k, v in CLAIMS.items()}
     failed = [k for k, v in out.items() if not v]

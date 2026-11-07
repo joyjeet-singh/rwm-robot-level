@@ -7,6 +7,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx,booktabs,xcolor,microtype,url}
+% placeins is absent from this TeX install: fall back to a page break, which also flushes pending floats.
+\IfFileExists{placeins.sty}{\usepackage{placeins}}{\newcommand{\FloatBarrier}{\clearpage}}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[hidelinks,pdfauthor={},pdftitle={},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}]{hyperref}
 \newcommand{\figw}{\columnwidth}

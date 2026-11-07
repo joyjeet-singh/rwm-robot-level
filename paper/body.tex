@@ -13,10 +13,10 @@ trained simulators and 200 compressed copies. First, one-step checks picked the 
 (descriptive): teacher forcing and one-step training were better one step ahead but 2.0 and
 2.6 times as wrong at 2~s, the 100-step horizon RWM imagines, and pruning 30\% of
 weights kept 90\% of the skill one step ahead but 39\% at 2~s. Second, fine-tuning restored the
-pruned copies' skill (registered). Third, checks needing no recorded future only partly replaced checks several steps ahead
+30\%-pruned copies' skill (registered). Third, checks needing no recorded future only partly replaced checks several steps ahead
 (registered tests): on 97 GRU simulators the error growth rate ranked them by 2-second error better than one-step
-error, but was not separated from 8-step error and failed a replication; a kinematic residual ranked them better than
-one-step error, but less well under policy-chosen commands. We therefore recommend checking 8 or more steps ahead on
+error, but was not separated from 8-step error and failed a replication (secondary); a kinematic residual ranked them better than
+one-step error, but less well under policy-chosen commands. We recommend checking 8 or more steps ahead on
 held-out episodes, with these checks as a fallback. Scope: simulated data, one robot and trotting gait, no
 physics-simulator test.
 \end{abstract}
@@ -52,7 +52,7 @@ other architectures and a policy in the loop. Our contributions are:
 \begin{itemize}
 \item \textbf{Where one-step checks mislead} (Sec.~\ref{sec:decisions}): one step ahead, teacher forcing, one-step
 training and pruning without retraining look better or nearly harmless; at the horizon of use they are worse, also
-after longer training and in two of three other architectures. Fine-tuning repairs the pruned copies.
+after longer training and in two of three other architectures (descriptive). Fine-tuning repairs the 30\%-pruned copies.
 \item \textbf{A registered comparison of checks that need no recorded future} (Sec.~\ref{sec:checks}): the growth
 rate of small errors and a kinematic residual against one-step and 8-step error, on two pools, three other
 architectures and two sources of joint commands.
@@ -152,23 +152,24 @@ and RWM-U imagine 100 steps.
 (teacher-forced, or $N{=}1$) over the 8-step rollout-trained model's; above 1, the one-step choice is worse. Skill
 retained $K$: the share of the parent's advantage over predicting no change that the copy keeps (${<}0$: worse than
 no change). Spread factor: how many times the released ensemble's spread must grow to cover 68\% of outcomes (--: not
-computed). Fine-tuned row: seeds 0--2 of each split; $K$ is against the unpruned parent, so values above 100\% mostly reflect the extra training (descriptive). Spread factor: released ensemble, on episodes it may have trained on. Last column: models; held-out trajectories.}
+computed), on episodes it may have trained on. Fine-tuned row: seeds 0--2 of each split; $K$ is against the unpruned parent, so values above 100\% mostly reflect the extra training (descriptive).
+Models; held-out trajectories: objective 40 on X5, 20; horizon 8 on F18, 4; compression 25 + 25 on X5, 20 (fine-tuned 15 + 15); ensemble 20.}
 \label{tab:decisions}
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\fittable{\begin{tabular}{@{}llccccl@{}}
+\fittable{\begin{tabular}{@{}lllcccc@{}}
 \toprule
-Choice & Measure & 1 step & 24 steps & 100 steps & 368 steps & Models, trajectories \\
+ & Choice & Measure & 1 step & 24 steps & 100 steps & 368 steps \\
 \midrule
-Training objective & error ratio, teacher-forced / rollout & 0.90 & 1.5 & 2.0 & 5.0 & 40 on X5, 20 \\
-Training horizon & error ratio, $N{=}1$ / $N{=}8$ & 0.86 & 1.8 & 2.6 & 5.4 & 8 on F18, 4 \\
+\emph{Training} & Training objective & error ratio, teacher-forced / rollout & 0.90 & 1.5 & 2.0 & 5.0 \\
+ & Training horizon & error ratio, $N{=}1$ / $N{=}8$ & 0.86 & 1.8 & 2.6 & 5.4 \\
 \midrule
-8-bit weights & skill retained $K$ & 99.7\% & 99.3\% & 97.0\% & 95\% & 25 + 25 on X5, 20 \\
-Pruning 20\% of weights & skill retained $K$ & 97.4\% & 95\% & 80\% & 57\% & 25 + 25 on X5, 20 \\
-Pruning 30\% of weights & skill retained $K$ & 90\% & 83\% & 39\% & $-$41\% & 25 + 25 on X5, 20 \\
-Pruning 30\%, then fine-tuned for 500 iterations & skill retained $K$ & 102.3\% & 100.9\% & 102.2\% & 103.9\% & 15 + 15 on X5, 20 \\
+\emph{Compression} & 8-bit weights & skill retained $K$ & 99.7\% & 99.3\% & 97.0\% & 95\% \\
+ & Pruning 20\% of weights & skill retained $K$ & 97.4\% & 95\% & 80\% & 57\% \\
+ & Pruning 30\% of weights & skill retained $K$ & 90\% & 83\% & 39\% & $-$41\% \\
+ & Pruning 30\%, then fine-tuned for 500 iterations & skill retained $K$ & 102.3\% & 100.9\% & 102.2\% & 103.9\% \\
 \midrule
-Ensemble uncertainty & spread factor & 6.6 & -- & 30.8 & 41.7 & released, 20 \\
+\emph{Uncertainty} & Ensemble uncertainty & spread factor & 6.6 & -- & 30.8 & 41.7 \\
 \bottomrule
 \end{tabular}}
 \end{widetable}
@@ -248,31 +249,33 @@ Kinematic residual $\bar r_J$ & no & +0.95 & +0.83 & +0.96 (E) & +0.76 & +0.94 &
 \end{tabular}}
 \end{widetable}
 
+% Verdict labels: small capitals, ragged right, no hyphenation, so a label never breaks inside a word.
+\newcommand{\vlab}[1]{{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \textsc{#1}\par}}
 \begin{table}[t]
 \centering
-\caption{Registered verdicts. Estimate: difference in Spearman correlation with $E_{100}$, first check minus second
-(CL: policy minus recorded joint commands); FT1: gain in skill retained at 100 steps, in points; FT2: skill retained
-against a parent fine-tuned the same way. AR: the three other architectures, averaged. P: primary, 97.5\% interval; S: secondary, 95\%. $^\dagger$: fails Holm's
-correction (exploratory).}
+\caption{Registered verdicts. Rank correlation: difference in Spearman correlation with $E_{100}$, first check minus second (CL: policy minus recorded joint commands; AR: the three other architectures, averaged). Skill: FT1, gain in skill retained at 100 steps, in points; FT2, skill retained against a parent fine-tuned the same way. P: primary, 97.5\% interval; S: secondary, 95\%. $^\dagger$: fails Holm's correction (exploratory).}
 \label{tab:verdicts}
-\footnotesize
+\scriptsize
 \setlength{\tabcolsep}{2pt}
 \begin{tabular}{@{}llllp{2.5cm}@{}}
 \toprule
  & Comparison & Pool & Estimate & Verdict \\
 \midrule
-Q1 P & $\lambda_1$ vs $E_1$ & F18 & +0.48 [+0.20, +0.79] & \textsc{label-free better} \\
-Q2 P & $\lambda_1$ vs $E_8$ & F18 & $-$0.04 [$-$0.20, +0.14] & \textsc{not settled} \\
-Q3 S & $\lambda_1$ vs $E_1$ & X5 & $-$0.12 [$-$0.22, $-$0.03]$^\dagger$ & \textsc{one-step better} \\
-Q3 S & $\lambda_1$ vs $E_8$ & X5 & $-$0.28 [$-$0.37, $-$0.22] & \textsc{training-horizon better} \\
-Q4 S & $\bar r_J$ vs $E_1$ & F18 & +0.63 [+0.41, +0.88] & \textsc{label-free better} \\
-Q4 S & $\bar r_J$ vs $E_8$ & F18 & +0.12 [+0.02, +0.23]$^\dagger$ & \textsc{label-free better} \\
-AR1 P & $\lambda_1$ vs $E_1$ & AR & +0.796 [+0.368, +1.025] & \textsc{label-free better} \\
-AR2 P & $\bar r_J$ vs $E_8$ & AR & +0.110 [$-$0.081, +0.356] & \textsc{not settled} \\
-CL1 P & $\bar r_J$, policy & F18 & $-$0.120 [$-$0.220, $-$0.052] & \textsc{worse with policy commands} \\
-CL2 P & $\lambda_1$, policy & F18 & $-$0.032 [$-$0.113, +0.041] & \textsc{not settled} \\
-FT1 P & fine-tuned & X5 & +63.9 [54.4, 76.0] & \textsc{fine-tuning restores skill} \\
-FT2 P & fine-tuned & X5 & 99.9\% [99.5\%, 100.4\%] & \textsc{nearly as skilled} \\
+\multicolumn{5}{@{}l}{\emph{Main study: difference in rank correlation}} \\
+Q1 P & $\lambda_1$ vs $E_1$ & F18 & +0.48 [+0.20, +0.79] & \vlab{label-free better} \\
+Q2 P & $\lambda_1$ vs $E_8$ & F18 & $-$0.04 [$-$0.20, +0.14] & \vlab{not settled} \\
+Q3 S & $\lambda_1$ vs $E_1$ & X5 & $-$0.12 [$-$0.22, $-$0.03]$^\dagger$ & \vlab{one-step better} \\
+Q3 S & $\lambda_1$ vs $E_8$ & X5 & $-$0.28 [$-$0.37, $-$0.22] & \vlab{training-horizon better} \\
+Q4 S & $\bar r_J$ vs $E_1$ & F18 & +0.63 [+0.41, +0.88] & \vlab{label-free better} \\
+Q4 S & $\bar r_J$ vs $E_8$ & F18 & +0.12 [+0.02, +0.23]$^\dagger$ & \vlab{label-free better} \\
+\multicolumn{5}{@{}l}{\emph{Study FT: skill}} \\
+FT1 P & fine-tuned & X5 & +63.9 [54.4, 76.0] & \vlab{fine-tuning restores skill} \\
+FT2 P & fine-tuned & X5 & 99.9\% [99.5\%, 100.4\%] & \vlab{nearly as skilled} \\
+\multicolumn{5}{@{}l}{\emph{Studies CL and AR: difference in rank correlation}} \\
+CL1 P & $\bar r_J$, policy & F18 & $-$0.120 [$-$0.220, $-$0.052] & \vlab{worse with policy commands} \\
+CL2 P & $\lambda_1$, policy & F18 & $-$0.032 [$-$0.113, +0.041] & \vlab{not settled} \\
+AR1 P & $\lambda_1$ vs $E_1$ & AR & +0.796 [+0.368, +1.025] & \vlab{label-free better} \\
+AR2 P & $\bar r_J$ vs $E_8$ & AR & +0.110 [$-$0.081, +0.356] & \vlab{not settled} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -286,7 +289,7 @@ backwards ($-$0.50; exploratory). Without the one-step-trained models (Q5), the 
 (exploratory). The kinematic residual ranked best (+0.95; descriptive). The registered rules favoured it
 over both $E_1$ and $E_8$, but only its lead over $E_1$ survives Holm's correction (exploratory).
 
-\textbf{Simulators trained the same way} (exploratory, appendix~A4). Every check ranked the main pool's 40
+\textbf{Simulators trained the same way} (exploratory, appendix~A4). Every recorded-command check ranked the main pool's 40
 compressed copies well (+0.82 to +0.96), and the residual ranked its 48 rollout-trained
 simulators better than 8-step error did (+0.85 against +0.38). On the five-split pool's 40
 rollout-trained simulators, however, the growth rate failed ($-$0.21) and the residual's lead over 8-step error
@@ -339,12 +342,12 @@ small error at each step that accumulates.
 
 \textbf{A checklist from this case study.} (1)~\emph{Check several steps ahead on held-out episodes}: judge a
 simulator by its error 8 or more steps ahead, ideally at the horizon of use, counting independent trajectories.
-One-step error picked the wrong training choices, and no label-free check beat 8-step error in a primary test
-(Table~\ref{tab:verdicts}). (2)~\emph{Fine-tune after pruning}, and check the pruned copy at the horizon of use.
+One-step error picked the wrong training choices, and no label-free check was shown better than 8-step error in a primary test
+(not settled; Table~\ref{tab:verdicts}). (2)~\emph{Fine-tune after pruning}, and check the pruned copy at the horizon of use.
 (3)~\emph{Without recordings, fall back on label-free checks and know their limits}: the residual ranked the main pool
 best with recorded commands (its lead over 8-step error failed multiple-test correction) and less well under a policy.
-Within one training method it beat 8-step error on the main pool's rollout-trained simulators, while the growth rate
-failed on the five-split pool's (exploratory). A positive growth rate flagged one-step-trained simulators (but the
+Within one training method it ranked better than 8-step error on the main pool's rollout-trained simulators, not clearly on the five-split pool's, where the growth rate
+failed (exploratory). A positive growth rate flagged one-step-trained simulators (but the
 released model's is positive too), a negative one certifies nothing, and growth rates did not rank architectures
 together. (4)~\emph{Read ensemble spread as a ranking}, rescaled per horizon on held-out episodes before use as an
 interval, and do not rely on label-free run-time alarms: in earlier registered analyses a growth-rate signal lost to a
@@ -364,8 +367,8 @@ stability account does not cover the released model. Each other architecture has
 \section{Conclusion}\label{sec:conclusion}
 On this simulator, one-step checks favoured teacher forcing, one-step training and a pruned model that, without
 fine-tuning, loses most of its skill by 2~s. Checking 8 or more steps ahead on held-out episodes is the safer test.
-Without recorded futures, the growth rate beat one-step error on the main pool but failed its replication, and the
-kinematic residual ranked best with recorded commands (descriptive) but less well under a policy. Whether these checks
+Without recorded futures, the growth rate beat one-step error on the main pool but failed its replication (secondary), and the
+kinematic residual ranked best on the main pool with recorded commands (descriptive) but less well under a policy. Whether these checks
 predict how well a policy trained inside the simulator walks is the next question.
 
 \textbf{Reproducibility and use of AI tools.} The registrations and code are in the

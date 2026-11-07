@@ -4,6 +4,7 @@
 % placeholder read from a result file, and every analysis added in the revision is labelled (exploratory).
 % The body refers to these sections as appendix A1 to A10; main_single.tex numbers them A1, A2, ...
 
+\FloatBarrier
 \section{Training settings, models and rebuild}\label{app:A1}
 All rollout-trained models of the F18 and five-split pools were trained with the settings in Table~\ref{tab:app-train}.
 The optimiser is Adam; gradient clipping: none. The loss has 7 non-zero terms,
@@ -73,6 +74,7 @@ the nine configurations (0.10) and the lowest 100-step error (0.19). A rule comm
 growth-rate analysis of these models found longer training horizons more stable ($\rho(N,\lambda_1)=$ $-$0.97
 [$-$0.99, $-$0.89], 15 models).
 
+\FloatBarrier
 \section{What was known before the registration}\label{app:A2}
 Section 2 of the registration (\texttt{PREREG.md}, supplementary material) states what we had read before any model was run through this study's code.
 For the growth rate $\lambda_1$ on the F18 pool, an earlier study found Spearman +0.85 [+0.70, +0.93]
@@ -87,6 +89,7 @@ Open were the one-step and 8-step errors computed from every position of the hel
 short-horizon error with any long-horizon error, and the growth rate or residual of any compressed copy. The raw
 arrays of the earlier growth-rate study were used for one consistency check only, and no statistic is taken from them.
 
+\FloatBarrier
 \section{Horizon-matched and split-half checks}\label{app:A3}
 Table~\ref{tab:app-horizon} gives the Spearman correlation with the 100-step error $E_{100}$ when the growth rate
 and the kinematic residual are computed over a window of 8, 24, 100 or 368 steps (exploratory). The one-step and 8-step
@@ -145,6 +148,7 @@ $\bar r_J$ & +0.91 [+0.86, +0.94] & +0.92 & +0.91 [+0.86, +0.93] & +0.94 \\
 \end{tabular}}
 \end{table}
 
+\FloatBarrier
 \section{Wider intervals, the five-split pool without split \{1,8\}, Holm's correction, and rankings within one training method}\label{app:A4}
 All of this section is exploratory. The registered intervals on correlations resample models (within each split on
 X5). The wider intervals resample parent models and held-out trajectories together, in two levels, with 20{,}000 draws. They are 1.5 times as wide as the
@@ -264,6 +268,7 @@ growth rate did not rank the rollout-trained simulators and fell below the 8-ste
 not clear. Every check ranked the compressed copies well, the 8-step error best. Under policy commands, the negated
 imagined return ranked the rollout-trained simulators of the main pool nominally less well than $\lambda_1$ did.
 
+\FloatBarrier
 \section{Compression and the growth rate}\label{app:A5}
 Table~\ref{tab:app-comp} gives, for every compression variant of the 25 five-split parents, the shift in
 growth rate, how many copies have $\lambda_1>0$, and the skill retained $K$ (the share of the parent's advantage over
@@ -336,6 +341,7 @@ Control (unreduced) & & 102\% [101\%, 103\%] & 104\% [101\%, 108\%] & -- \\
 \end{tabular}}
 \end{table}
 
+\FloatBarrier
 \section{Uncertainty and run-time signals}\label{app:A6}
 \textbf{Ensemble spread} (descriptive). The released five-head ensemble's spread, the disagreement among its heads,
 ranks error well (Spearman +0.90 with the 100-step error) but is too small, by a factor that grows with
@@ -363,6 +369,7 @@ re-synchronisations on a fixed schedule (registered: \textsc{schedule better}). 
 gravity direction to unit length changed the 368-step error by $-$3.5\% [$-$5.3\%, $-$2.1\%], while forcing the joint
 angles onto the approximate integration rule multiplied it by 2.3.
 
+\FloatBarrier
 \section{Study FT: fine-tuning the pruned copies}\label{app:A7}
 % A7: the study registered in prereg/PREREG_FT.md before any fine-tuned model existed (R3): design, arms, decision
 % rules and results from scripts/ft_stats.py (results/ft_stats.json); no departure was recorded in ANOMALIES.md.
@@ -463,6 +470,7 @@ fine-tuned magnitude-pruned copy had been trained beyond a few test iterations, 
 unretrained copies for seeds 0--2 alone could have been computed from stored scores, but the registration
 records that it was not.
 
+\FloatBarrier
 \section{Checks with a policy in the loop}\label{app:A8}
 % A8: study CL, registered in prereg/PREREG_S1.md (Step 1) before any trained simulator was driven by a policy;
 % results from scripts/s1_stats.py (results/s1_stats.json); X5 noise and closed-loop entries from scripts/s1_extra.py
@@ -549,6 +557,7 @@ were registered results of the main study. An earlier analysis had found that th
 commands only partly, and an exploratory one that the simulators respond strongly to their joint commands. No
 simulator had been driven by a policy or by noisy commands, and no closed-loop growth rate existed.
 
+\FloatBarrier
 \section{Other simulator architectures}\label{app:A9}
 % A9: study AR, registered with study CL (prereg/PREREG_S1.md); results from scripts/s1_stats.py; AR3 secondary,
 % AR4 descriptive; which runs diverged: scripts/s1_extra.py (exploratory).
@@ -620,6 +629,7 @@ error measure and their training-loss curves were known, as was an earlier explo
 most of them. No
 growth rate of any of these runs existed, and the 12 new runs had not been trained.
 
+\FloatBarrier
 \section{Training length (descriptive)}\label{app:A10}
 % A10: study TB, scripts/s1_budget.py (results/s1_budget.json); descriptive, not registered.
 All of this section is descriptive and concerns one robot, one trotting gait and simulated data: it is not registered, uses 3 seeds per arm and gives no intervals, and every
