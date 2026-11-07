@@ -1,4 +1,4 @@
 # Checkpoint
-Last session: I2, COMPLETE. Next: I3 per IMPROVE_PLAN.md: read improve/notes/I2.md and I2_claims.md. Figure 1 gets one line at rwm_imag_steps (100). Tables 1 and 3; check_claims assertions for I2_claims.md.
-Fit margin: free slot 0.34 against 0.30 needed.
-Blockers: none. external_facts.json quotes are still flagged unchecked against the raw HTML.
+Last session: I3, COMPLETE. Next: I4 per IMPROVE_PLAN.md. Fit margin is zero (free slot 0.30 = needed 0.30): add no height to main text or tables.
+Open items for I4/author: see improve/notes/I3.md (scope sentence in abstract, recommendation basis, unchecked external-fact quotes).
+Blockers: none.

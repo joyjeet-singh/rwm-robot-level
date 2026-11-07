@@ -18,3 +18,10 @@ Checks: slack PASS (6/6 pages, free slot 0.34), check_claims 127/0 failed, check
 Notes: improve/notes/I2.md (I3 instructions: Fig. 1 single 100-step line from external_facts; Tables 1, 3), I2_claims.md (49 lines).
 Open: I3 has 0.04 textheight of margin; AI-use statement mismatches listed for the author in I2.md; figures/fig_horizon.* left unstaged for I3.
 Commit: f4c63cc (I2: text changes).
+
+## I3 status: COMPLETE (2026-11-07 21:50)
+Fig. 1 single 100-step line from external_facts; Tables 1 and 3 regrouped (Table 3 in \scriptsize, DECISIONS.md); FloatBarrier before each appendix section (placeins absent: \clearpage fallback); check_claims 156/0 (+29 for I2_claims).
+air-claim-checker: numbers all matched; 8 wording points fixed, rest listed in improve/notes/I3.md for I4.
+Pipeline: slack PASS (6/6, free slot 0.30 = zero margin, abstract 186), check_numbers all_agree, check_bib OK, submission_checks 0, supplement 0 hits.
+Visual check not possible (no gs; sips black): text-checked. Commit: d2232b8.
+Open: I4 must add no main-text/table height. STEP2_PLAN.md untracked, not mine.
