@@ -21,3 +21,10 @@
 - Tests a–e pass (scripts/s2/test_m3.py, results/s2/m3_tests.json, ~35 s).
 - step2/jobs/pilot.zsh written, zsh -n passes, report dry-run on test outputs. Not run (launcher runs it). Estimated 4–5 h.
 - Committed the calib job's outputs (fidelity results, calibration, frozen model) with this session.
+## M4 status: COMPLETE (2026-11-08 04:33)
+- Gate 2: P1 passed (REL 10% falls), P2 failed (A_s0, B_s0, A_s0__u50 fell in all episodes), P3 passed -> fallback pool registered: REL + 8 compressed copies, seeds 1 and 2 (18 policies).
+- Copies' checks computed before registration with registered functions (results/s2/checks.json; in-sample, all 20 trajectories).
+- prereg/PREREG_S2.md + scripts/s2_stats.py registered (b51a8e5), hash results/prereg_hash_s2.json (2afa114), chmod a-w.
+- air-stats-reviewer: 1 MUST + 6 SHOULD FIX, all fixed before registration.
+- scripts/s2/test_s2.py all pass; scripts/s2_main.py resumable; train_policy.py gains --route rebuilt and REL__<variant>.
+- step2/jobs/main.zsh: 2 workers x 2 threads (probe: side by side ~15% faster); about 20 h. Not run (launcher runs it).
