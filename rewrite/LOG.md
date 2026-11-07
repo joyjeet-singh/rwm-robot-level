@@ -11,3 +11,11 @@
 - air-stats-reviewer checked parts 3 and 7: 3 MUST FIX and 9 SHOULD FIX, all fixed; recorded in DECISIONS.md (W1).
 - Commit a39cdd9 (outline, decisions).
 - Open: the Step 2 abstract sentence will need about 10 words cut (see OUTLINE part 8). Fig. 2 moves to the appendix only as a last resort.
+
+## W2 status: COMPLETE (2026-11-07 13:09)
+- body.template.tex rewritten per OUTLINE: abstract 195 words, prose about 3,400 words, \stepslot at the end of Sec. 4; Table 2 restructured (F18 recorded/policy, X5, MLP/RSSM/Transformer), Table 3 new (12 registered verdicts).
+- Moved to appendix A1 (models, rebuild, measures and training-choice details), A5 (pruning shifts, width removal), A6 (spread, variance collapse, released model; retitled). No renumbering.
+- New scripts/rw_numbers.py (22 rw_t_* format re-prints from s1_stats.json), called after s1_numbers.
+- slack.py PASS: two-column 6 pp, reserve 6 pp, free slot 0.50, abstract 195. check_claims/numbers/bib/submission pass.
+- Files: rewrite/notes/W2.md, W2_claims.md (67 sentences + 2 tables, N/C marks for W3), DECISIONS.md (W2). Commit ce55843.
+- Open: W3 adds/rewords check_claims assertions for rows marked N or C in W2_claims.md.
