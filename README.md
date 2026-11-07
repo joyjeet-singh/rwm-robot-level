@@ -134,3 +134,19 @@ zsh step1/jobs/S3.zsh                                # job: s1_eval.py, trains 1
 ./py scripts/build_supplement.py                     # optional reviewer supplement
 ./py scripts/lite/test_lite.py                       # lite code checks (Task LP; separate from the paper)
 ```
+
+## Rewrite round (W0-W5, added)
+
+The main text (`paper/body.template.tex`) was rewritten around all the evidence (original study, revision round 1,
+Step 1) so that it fits six two-column pages **with a blank Step 2 slot** (0.30 of the text height, one column wide, at
+the end of Sec. 4). Plan: `REWRITE_PLAN.md`; everything else is in `rewrite/`:
+
+- `rewrite/REPORT.md`: the summary for the author (start here); `rewrite/review/section_changes.md`: what changed, section by section.
+- `rewrite/OUTLINE.md` (the plan for the text), `LOG.md`, `CHECKPOINT.md`, `DECISIONS.md`, `notes/` (one note per session), `review/` (the W4 reviews).
+- New scripts: `scripts/slack.py` (fit check: two-column and reserve builds at most six pages, abstract at most 200 words) and
+  `scripts/rw_numbers.py` (22 `rw_t_*` re-prints from `results/s1_stats.json`, called by `paper_numbers.py`).
+- Changed: `body.template.tex`, `appendix.template.tex` (A1, A5, A6 gained material, no renumbering), `check_claims.py` (107 -> 127 assertions), the Step 2 slot in `main_*.tex` and `build_paper.py`.
+- No registration, analysis script or result file was touched, and nothing was rerun.
+
+Run order after the rewrite (always through `./py`): `paper_numbers.py`, `build_paper.py`, `slack.py`, `check_claims.py`,
+`check_numbers.py`, `check_bib.py`, `submission_checks.py`, then optionally `build_supplement.py`.

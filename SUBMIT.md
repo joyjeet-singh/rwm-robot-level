@@ -1,11 +1,19 @@
 # Submitting to AIR 2027 — what only the author can do
 
-**Deadline:** papers are accepted from 15 Nov 2026 to **31 Dec 2026** (Microsoft CMT; the portal link is on
+**Submission window:** papers are accepted from 15 Nov 2026 to **31 Dec 2026** (Microsoft CMT; the portal link is on
 advancesinrobotics.com/2027-IITGN). Notification 28 Feb 2027; camera-ready and registration 30 May 2027.
 
-**Upload:** `paper/AIR2027_submission.pdf` (single column, anonymous; the call allows any length at this stage). The appendix (A1-A10; A8-A10 added in Step 1) is for this single-column submission only; cut it for the camera-ready, which must fit six two-column pages (no slack: one added word makes seven).
-`paper/AIR2027_twocolumn_check.pdf` is for you only: it shows the same text fits six two-column pages, which the
-camera-ready must. The official template is e-mailed to accepted authors; the text will need re-flowing into it.
+**Which PDF:** upload `paper/AIR2027_submission.pdf` (single column, anonymous; the call allows any length at this
+stage). The appendix (A1-A10) is in this PDF only; cut it for the camera-ready, which must fit six two-column pages.
+`paper/AIR2027_twocolumn_check.pdf` is for you only: it shows the main text fits six two-column pages.
+The official template is e-mailed to accepted authors; the text will need re-flowing into it.
+
+**Step 2 slot:** the main text keeps a blank box (0.30 of the text height, one column wide) at the end of Sec. 4 for
+Step 2's result (a policy trained inside a simulator, tested in a physics simulator). The reserve check in
+`scripts/slack.py` shows it still fits six pages (free space 0.32). If Step 2 finishes before 31 Dec, fill the slot
+and change the sentences listed in `rewrite/OUTLINE.md` part 8, then rebuild. If it finishes after you submit, check
+**first** whether CMT lets you replace the file before the deadline (it usually does, but I could not verify it);
+otherwise the result goes into the camera-ready, which has the same room.
 
 ## Before you submit
 
@@ -21,7 +29,7 @@ camera-ready must. The official template is e-mailed to accepted authors; the te
    avoid publicising this exact title until decisions are out.
 3. **Supplementary material (optional; your decision).** Two zips are built and scanned for identifying text by
    `scripts/build_supplement.py` (Step 1, S7); neither has ever been uploaded. `submission/AIR2027_supplement.zip`
-   (69.6 MB, 136 files) holds round 1's contents plus Step 1's registration (`PREREG_S1.md`), scripts, lite code and
+   (69.6 MB, 139 files) holds round 1's contents plus Step 1's registration (`PREREG_S1.md`), scripts, lite code and
    result files, including `raw_S1.npz`; `submission/AIR2027_supplement_slim.zip` (1.4 MB) leaves out every
    `raw_*.npz`, so the statistics cannot be rerun from it. **Check CMT's size limit** and pick one.
    `README_SUPPLEMENT.md` inside says what it holds and gives the registration times in UTC. Upload only if CMT offers

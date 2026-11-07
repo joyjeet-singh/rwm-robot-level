@@ -33,3 +33,9 @@
 - check_claims.py 122 -> 127. Pipeline (W3 step 2) passes: identical double build, slack PASS 6 + 6 pp, free slot 0.32, abstract 197 words.
 - Declined points and Step 2 candidates in DECISIONS.md (W4). Notes: rewrite/notes/W4.md. Commit 2a174e6.
 - Open: free slot 0.32 (was 0.38); supplement not rebuilt since check_claims.py changed (W5).
+
+## W5 status: COMPLETE (2026-11-07 19:00)
+- Change list: rewrite/review/section_changes.md (no latexdiff). README.md, SUBMIT.md updated; rewrite/REPORT.md (489 words).
+- Final pipeline: slack PASS (6 + 6 pp, free slot 0.32, abstract 197), check_claims 127/127, bib and submission checks pass; supplement rebuilt (139 entries, scan 0 hits).
+- ANOMALIES.md unchanged. Commit "W5: rewrite complete", tag air2027-rewrite, history.bundle verified.
+- Open: author must rewrite flagged paragraphs and edit the AI-use statement; confirm CMT allows file replacement.
