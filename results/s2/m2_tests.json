@@ -1,0 +1,67 @@
+{
+ "a": {
+  "pass": true,
+  "place_err": 3.484995918512368e-07,
+  "lowest_foot_m": 1.3877787807814457e-17,
+  "prefix_maxdiff": 0.0,
+  "unstable": false,
+  "err_step1": 0.3195835853204034,
+  "err_step8_mean": 0.4173262457160487,
+  "err_step100_mean": 2.0013238434617038,
+  "seconds": 0.65
+ },
+ "b": {
+  "pass": true,
+  "starts_equal": true,
+  "windows_visited_equal": true,
+  "floor_maxdiff": {
+   "1": 2.7511831812709886e-08,
+   "8": 9.72435122426063e-08,
+   "24": 8.867724143879485e-08,
+   "100": 1.249798138314162e-07
+  },
+  "n_windows_per_traj": {
+   "1": 368,
+   "8": 91,
+   "24": 87,
+   "100": 68
+  },
+  "B": 16,
+  "seconds": 1.16
+ },
+ "c": {
+  "pass": true,
+  "check_episodes": true,
+  "evaluate": true,
+  "cli": true,
+  "replay_before_freeze": true,
+  "calibration_frozen_at_test": false,
+  "seconds": 2.14
+ },
+ "d": {
+  "pass": true,
+  "uncalibrated_constants": {
+   "friction": 0.8,
+   "timeconst": 0.02,
+   "armature": 0.0,
+   "damping": 0.0
+  },
+  "uncal_text_equals_M1_model": true,
+  "written_model_ok": true,
+  "one_traj_seconds": 0.55,
+  "seconds": 0.62
+ },
+ "e": {
+  "pass": true,
+  "steps": 50,
+  "finite": true,
+  "seeded_starts": true,
+  "seconds": 0.56
+ },
+ "all_pass": true,
+ "sha256": {
+  "fidelity.py": "ace83abe2a3943cf80bce26445da6502feb5cac785e46c75128f519f63d6cd8b",
+  "calibrate.py": "6f199f97791237f73e4c14b722ae7e1f962feeba909ecbcc48c7eb2f66ade122",
+  "test_fid.py": "07c85ad5016eb2356d38e37474ed67658c035e336c538fc9b831bf475a1b5119"
+ }
+}

@@ -1,4 +1,4 @@
 # Checkpoint
-Last session: M1, COMPLETE (2026-11-07).
-Next: M2, the fidelity measures and calibration code. Use `scripts/s2/mj_env.py` (`MjEnv`, `set_constants`) and the motor model `actuator.load()` (PD fallback, `results/s2/pd_fit.json`). Read `step2/notes/M1.md` and DECISIONS.md M1 first.
-Blockers: none. Open point for M2: the grid's contact time constants 0.005 and 0.01 coincide under MuJoCo's refsafe (DECISIONS.md M1).
+Last session: M2, COMPLETE (2026-11-07).
+Next: the launcher runs job calib (step2/jobs/calib.zsh). It writes results/s2/calib/, step2/model/calibration.json and anymal_d_cal.xml (frozen, read-only), results/s2/fid_*.json, results/s2_fidelity.json and results/s2_fidelity.txt. Then M3 applies Gate 1 to `gait_authors_policy.calibrated.summary` against `gait_recorded.summary` (step2/notes/M2.md).
+Blockers: none. Later sessions must load step2/model/anymal_d_cal.xml, not MjEnv(constants=...) (DECISIONS.md M2).

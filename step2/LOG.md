@@ -10,3 +10,8 @@
 - MuJoCo 3.10 fusestatic URDF import shifts fused COMs (0.43 kg·m²); model built without it.
 - Probe: 1.7 s per 20-s episode with the authors' policy (2 threads).
 - For M2: contact time constant 0.005 is raised to 0.01 by MuJoCo's refsafe (DECISIONS.md M1).
+## M2 status: COMPLETE (2026-11-07 23:50)
+- scripts/s2/fidelity.py (replay E1/E8/E24/E100 + torque error; gait of the authors' policy; recorded reference), scripts/s2/calibrate.py (108-point grid, training arena, resumable, freeze), scripts/s2/test_fid.py.
+- Tests a–e pass (results/s2/m2_tests.json); windows equal evalh's (floor to 1.3e-7); held-out refused.
+- Grid points are compiled from model text: run-time armature leaves MuJoCo's derived quantities stale (DECISIONS.md M2).
+- step2/jobs/calib.zsh written, passes zsh -n; a dry run of all parts on redirected paths passed. Not run (launcher runs it). Estimated 15–25 min.
