@@ -150,3 +150,17 @@ the end of Sec. 4). Plan: `REWRITE_PLAN.md`; everything else is in `rewrite/`:
 
 Run order after the rewrite (always through `./py`): `paper_numbers.py`, `build_paper.py`, `slack.py`, `check_claims.py`,
 `check_numbers.py`, `check_bib.py`, `submission_checks.py`, then optionally `build_supplement.py`.
+
+## Improvement round (I0-I5, added)
+
+An expert review of the rewritten paper was applied without new experiments. Plan: `IMPROVE_PLAN.md`; everything else is in `improve/`:
+
+- `improve/REPORT.md`: the summary for the author (start here); `improve/review/section_changes.md`: what changed, section by section
+  (`latexdiff` is not installed); `improve/review/referee.md`, `stats.md`: the I4 reviews.
+- `improve/LOG.md`, `CHECKPOINT.md`, `DECISIONS.md` (choices made and points declined), `notes/` (one note per session).
+- New scripts: `scripts/im_facts.py` (writes `results/external_facts.json`: facts from the RWM, RWM-U and iKCE papers, with source, version
+  and quoted line), `scripts/im_within.py` (`results/im_within.json`, `.txt`: rankings among simulators trained the same way; exploratory),
+  `scripts/im_numbers.py` (number keys, called by `paper_numbers.py`).
+- Changed: `body.template.tex`, `appendix.template.tex`, `make_figures.py` (Fig. 1 horizon line), `check_claims.py` (127 -> 159 assertions).
+- No registration, analysis script or earlier result file was touched, and nothing was rerun. Git tags: `air2027-improve-start`, `air2027-improve`.
+- `STEP2_PLAN.md` describes the robot-level test (Step 2); it is not part of this round.

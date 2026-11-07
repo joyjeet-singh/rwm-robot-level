@@ -46,3 +46,12 @@ otherwise the result goes into the camera-ready, which has the same room.
 ## Title, abstract and keywords for the form
 
 `paper/ABSTRACT.txt` has the title, abstract and keywords as plain text, generated from the paper itself.
+
+## After the improvement round (I5)
+
+- **Window:** 15 Nov to 31 Dec 2026 (see the top of this file). The Step 2 slot still fits six pages (`slack.py`: free space 0.30).
+- **Abstract text for the form:** copy it from `paper/ABSTRACT.txt` (185 words, limit 200); do not retype it.
+- **Step 2:** `STEP2_PLAN.md` describes the robot-level test (policies trained inside scored simulators, tested in a physics simulator).
+- **Before submitting:** put the paragraphs flagged in `improve/REPORT.md` into your own words; check the AI-use statement
+  (it does not mention the AI-run reviews and reference checks); check the corrected facts against RWM, RWM-U and iKCE;
+  check the supplement's version-control history for names (`improve/notes/I4.md`).

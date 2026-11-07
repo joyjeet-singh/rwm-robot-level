@@ -32,3 +32,9 @@ Fixed: verdict wording (AR3 pooled not settled, CL5 worse, X5 residual not separ
 Declined with reasons and two Step 2 candidates: improve/DECISIONS.md (I4). Notes: improve/notes/I4.md; reviews: improve/review/.
 Pipeline: slack PASS (6/6, free slot 0.30, abstract 185), check_claims 159/0, check_numbers all_agree, check_bib OK, submission_checks 0 failures.
 Commit: 5b389d8 (I4: review fixes). Open for author: supplement history names; I3 open items (a), (b).
+
+## I5 status: COMPLETE (2026-11-07 22:51)
+No latexdiff: change list written to improve/review/section_changes.md (50 lines). README.md, SUBMIT.md updated; ANOMALIES.md unchanged. improve/REPORT.md written (439 words).
+Final: slack PASS (6/6, free slot 0.30, abstract 185), check_claims 159/0, check_numbers all_agree, check_bib OK, submission_checks 0 failures.
+Committed "I5: improvement round complete", tag air2027-improve, history.bundle (untracked) verified.
+Open for author: see improve/REPORT.md. STEP2_PLAN.md left untracked (not mine).
