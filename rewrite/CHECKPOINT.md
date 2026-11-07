@@ -1,4 +1,4 @@
 # Checkpoint
-Last session: W3, COMPLETE. Branch rewrite. check_claims 122/122; full pipeline passes; slack PASS (6 + 6 pp, free slot 0.38, abstract 194 words); supplement rebuilt, 0 hits.
-Next: W4 (per REWRITE_PLAN.md).
+Last session: W4, COMPLETE. Branch rewrite, commit 2a174e6 (review fixes). check_claims 127/127; full pipeline passes; slack PASS (6 + 6 pp, free slot 0.32, abstract 197 words).
+Next: W5 (per REWRITE_PLAN.md). Rebuild the supplement (check_claims.py changed in W4).
 Blockers: none.

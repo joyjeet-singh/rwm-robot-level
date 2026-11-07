@@ -26,3 +26,10 @@
 - Pipeline passes twice (identical text): slack PASS 6 + 6 pp, free slot 0.38, abstract 194 words; claims, numbers, bib (strict), submission checks pass.
 - ABSTRACT.txt regenerated. Supplement rebuilt (139 entries), scan 0 hits.
 - Open: abstract's 2.0 and 2.6 ratios come from different pools (stated in Table 1); free slot is 0.38, so Step 2 has less margin than after W2.
+
+## W4 status: COMPLETE (2026-11-07 17:33)
+- Extracted the two-column main text to rewrite/review/body.txt; air-referee (3/5, borderline) and air-stats-reviewer (no MUST FIX, 10 SHOULD FIX) reviewed it in parallel; summaries in rewrite/review/W4_reviews.md.
+- body.template.tex: Q5 (secondary, without one-step-trained models) added to Sec. 4.2 with its Holm/two-level failures; "barely moves the growth rate" (x3) rewritten for Q6 NOT SETTLED; labels fixed (intro descriptive, CL7 secondary, exploratory); abstract names the pool and recorded commands; 38% scoped to seeds 0-2; checklist notes the released model's positive lambda_1; Limitations name the 3 lost verdicts, two episodes, no cross-registration correction.
+- check_claims.py 122 -> 127. Pipeline (W3 step 2) passes: identical double build, slack PASS 6 + 6 pp, free slot 0.32, abstract 197 words.
+- Declined points and Step 2 candidates in DECISIONS.md (W4). Notes: rewrite/notes/W4.md. Commit 2a174e6.
+- Open: free slot 0.32 (was 0.38); supplement not rebuilt since check_claims.py changed (W5).
