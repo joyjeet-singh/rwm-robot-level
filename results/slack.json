@@ -1,8 +1,8 @@
 {
  "twocolumn_pages": 6,
- "reserve_pages": 7,
+ "reserve_pages": 6,
  "slot_height": 0.3,
- "abstract_words": 198,
- "free_slot": 0.0,
- "pass": false
+ "abstract_words": 195,
+ "free_slot": 0.5,
+ "pass": true
 }

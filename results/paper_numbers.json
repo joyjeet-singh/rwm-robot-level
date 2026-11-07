@@ -4794,6 +4794,116 @@
   "source": "rwm_repro/results/paper_numbers.json",
   "value": "10{,}000"
  },
+ "rw_t_F18pol_lam1": {
+  "path": "CL.CL2.rho_new",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.76"
+ },
+ "rw_t_F18pol_lam1cl": {
+  "path": "CL.CL5.rho_new",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "$-$0.01"
+ },
+ "rw_t_F18pol_rJ": {
+  "path": "CL.CL1.rho_new",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.83"
+ },
+ "rw_t_armean_E1": {
+  "path": "AR.AR1.rho_base_mean",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "$-$0.14"
+ },
+ "rw_t_armean_E8": {
+  "path": "AR.AR2.rho_base_mean",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.78"
+ },
+ "rw_t_armean_lam1": {
+  "path": "AR.AR1.rho_new_mean",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.66"
+ },
+ "rw_t_armean_rJ": {
+  "path": "AR.AR2.rho_new_mean",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.89"
+ },
+ "rw_t_mlp_E1": {
+  "path": "AR.AR1.rho_base_per_group[0]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "$-$0.69"
+ },
+ "rw_t_mlp_E8": {
+  "path": "AR.AR2.rho_base_per_group[0]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.76"
+ },
+ "rw_t_mlp_lam1": {
+  "path": "AR.AR1.rho_new_per_group[0]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.84"
+ },
+ "rw_t_mlp_n": {
+  "path": "AR.AR1.n_per_group[0]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "13"
+ },
+ "rw_t_mlp_rJ": {
+  "path": "AR.AR2.rho_new_per_group[0]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.76"
+ },
+ "rw_t_rssm_E1": {
+  "path": "AR.AR1.rho_base_per_group[1]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.88"
+ },
+ "rw_t_rssm_E8": {
+  "path": "AR.AR2.rho_base_per_group[1]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.86"
+ },
+ "rw_t_rssm_lam1": {
+  "path": "AR.AR1.rho_new_per_group[1]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.26"
+ },
+ "rw_t_rssm_n": {
+  "path": "AR.AR1.n_per_group[1]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "12"
+ },
+ "rw_t_rssm_rJ": {
+  "path": "AR.AR2.rho_new_per_group[1]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.94"
+ },
+ "rw_t_transformer_E1": {
+  "path": "AR.AR1.rho_base_per_group[2]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "$-$0.61"
+ },
+ "rw_t_transformer_E8": {
+  "path": "AR.AR2.rho_base_per_group[2]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.73"
+ },
+ "rw_t_transformer_lam1": {
+  "path": "AR.AR1.rho_new_per_group[2]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.87"
+ },
+ "rw_t_transformer_n": {
+  "path": "AR.AR1.n_per_group[2]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "13"
+ },
+ "rw_t_transformer_rJ": {
+  "path": "AR.AR2.rho_new_per_group[2]",
+  "source": "AIR 2027/results/s1_stats.json",
+  "value": "+0.98"
+ },
  "s1_ar1_ci": {
   "path": "AR.AR1.ci97.5",
   "source": "AIR 2027/results/s1_stats.json",

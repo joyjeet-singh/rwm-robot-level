@@ -3,7 +3,7 @@
 % placeholder read from a result file, and every analysis added in the revision is labelled (exploratory).
 % The body refers to these sections as appendix A1 to A10; main_single.tex numbers them A1, A2, ...
 
-\section{Training settings}\label{app:A1}
+\section{Training settings, models and rebuild}\label{app:A1}
 All rollout-trained models of the F18 and five-split pools were trained with the settings in Table~\ref{tab:app-train}.
 The optimiser is {{hp_optimiser}}; gradient clipping: {{hp_clip}}. The loss has {{hp_n_loss_terms}} non-zero terms,
 with weights {{hp_loss_weights}}. These settings were checked to be identical in the training records of all
@@ -34,6 +34,43 @@ iterations (the teacher-forced ones as well). The ensembles have {{hp_ens_n}} me
 further models train on contaminated or duplicated data. The compressed copies are made from the finished parents without
 further training: 16-bit and 8-bit weights, removal of the smallest weights over the whole network (10, 20, 30 and
 50\%), and removal of units so that the hidden width is 192 or 128.
+
+\textbf{Models in full.} On F18 we use {{n_R}} rollout-trained models: five seeds of the released configuration, with
+history $M=32$ and training horizon $N=8$; three five-head ensembles; five trained with a likelihood objective; five
+independent width-124 models with, together, as many parameters as one five-head ensemble (a capacity-matched
+control); three each on the release's spliced windows and on as many duplicated windows; three trained four times
+longer; and three seeds of each of seven other $(M,N)$ settings. {{n_T}} were trained one step ahead: three
+teacher-forced, three teacher-forced four times longer, and three with $N=1$ (rollout training whose rollouts last a
+single step). The last {{n_C}} are compressed copies of the five released-configuration models, made without
+fine-tuning. On X5 each split has five rollout-trained models, three rollout-trained ensembles, three teacher-forced
+models and the eight compressed copies of each rollout-trained model ({{n_X_fold}} per split); split \{1, 8\} reuses
+F18's models. Training used Adam (learning rate {{hp_lr}}, weight decay {{hp_wd}}, batches of {{hp_batch}}).
+
+\textbf{Rebuild and verification.} Before any training, our rebuild's outputs equal the release's bit for bit, and
+its losses and gradients differ by {{diff_max}} across the {{diff_terms}} loss terms and {{diff_tensors}} parameter
+tensors of the released objective. The release has two defects. Its termination column is always zero, so
+{{win_cross}} of the {{win_naive}} training windows splice the end of one episode onto the start of the next; we
+recover the boundaries from the reset rows. And its evaluation feeds each command one step late. This raises the
+released model's one-step error by {{stale_h1}} {{stale_h1_ci}} over feeding it on time. At 100 steps the change,
+{{stale_h100}} {{stale_h100_ci}}, is not resolved on the 20 trajectories of the five splits, but it is on the four
+trajectories of episodes 1 and 8 ({{stale_ho_h100}} {{stale_ho_h100_ci}}, in the release's relative error; the
+release may have trained on them).
+
+\textbf{Measures, details.} The growth rate is computed from exact Jacobian--vector products in double precision with
+fixed start directions. The kinematic residual integrates the predicted joint speeds by the trapezoid rule.
+Comparisons of methods average the seeds within each trajectory. Joint-angle error is in degrees; position error is
+the error in planar body position, dead-reckoned identically from predicted and recorded body velocity and yaw rate.
+
+\textbf{Training choices, details.} Teacher forcing's one-step error minus rollout training's is {{ab_h1_diff}}
+{{ab_h1_ci}} (descriptive, 20 trajectories); at 368 steps the earlier registered sign test over the
+{{x3_n_eps}} held-out episodes gave $p={}${{x3_p}}. Over 2~s the teacher-forced simulator misplaces the robot by
+{{ph_pos_h100_B}}~m against {{ph_pos_h100_A}}~m for rollout training (of {{dist_h100}}~m travelled). For position over
+2~s, neither simulator beats assuming that the robot keeps its last measured velocity ({{ph_pos_h100_floor}}~m), a
+strong baseline here because the commanded velocity changes about once per episode; by 7.4~s rollout training beats it
+and teacher forcing does not. With the history fixed at 32 steps, the $N=32$ model has the highest one-step error of
+the nine configurations ({{N32_E1}}) and the lowest 100-step error ({{N32_E100}}). A rule committed before the
+growth-rate analysis of these models found longer training horizons more stable ($\rho(N,\lambda_1)=$ {{ng_q4_rho}}
+{{ng_q4_ci}}, {{ng_q4_n}} models).
 
 \section{What was known before the registration}\label{app:A2}
 Section 2 of the registration (\texttt{PREREG.md}, supplementary material) states what we had read before any model was run through this study's code.
@@ -191,6 +228,17 @@ predicting no change that the copy keeps). In all, {{n_unstable_removed}} of the
 weights or units removed have $\lambda_1>0$, all of them among the {{n_wide_copies}} copies pruned by 50\% or reduced in
 width.
 
+Moderate pruning (10--30\%) adds error while barely changing the growth rate. At 30\%, $\lambda_1$ shifts by
+{{lamshift_u30}}/s {{lamshift_u30_ci}}, which the registered rule (Q6) could not separate from zero; at 10 and 20\%
+the shifts ({{lamshift_u10}} and {{lamshift_u20}}/s) are similar and their intervals barely exclude zero
+(exploratory). Heavier pruning and unit removal do raise it (descriptive: by {{lamshift_u50}}/s at 50\%,
+{{lamshift_s128}}/s at width 128), and {{lampos_s192}} of the {{q6_nparents}} copies at width 192 and {{lampos_s128}}
+at width 128 became unstable. Without fine-tuning, removing units fails: width 192 keeps {{K_s192_h1}} of the skill
+one step ahead. In an earlier registered study, copies fine-tuned for 500 iterations kept most of an equally
+fine-tuned full-width model's 368-step skill at width 192 ({{perc_K_pool_w192_h368}} {{perc_K_pool_w192_h368_ci}},
+three seeds); at width 128 ({{perc_K_pool_w128_h368}}) the result was not settled. Narrow models trained from scratch
+were better at width 128 and not separated at width 192 (Table~\ref{tab:app-perc}).
+
 \begin{table}[h]
 \centering
 \caption{Compressed copies of the five-split parents: mean growth rate $\lambda_1$ of the copies, mean shift from the
@@ -245,8 +293,21 @@ Control (unreduced) & & {{perc_ctrl_pool_h100}} {{perc_ctrl_pool_h100_ci}} & {{p
 \end{tabular}}
 \end{table}
 
-\section{Run-time signals}\label{app:A6}
-A check that ranks whole simulators need not flag individual bad steps. Earlier analyses of these models, on
+\section{Uncertainty and run-time signals}\label{app:A6}
+\textbf{Ensemble spread} (descriptive). The released five-head ensemble's spread, the disagreement among its heads,
+ranks error well (Spearman {{dis_spear_h100}} with the 100-step error) but is too small, by a factor that grows with
+the horizon (Table~\ref{tab:decisions}; the release's relative error), so no single constant repairs it. Separately,
+each head's own variance collapses: the implemented loss is squared error on a prediction sampled from that variance,
+whose expectation, $(\mu-y)^2+\sigma^2$, is smallest at $\sigma=0$. A multiplier per horizon, fitted on nine episodes
+and scored on the tenth, restores $\pm1\sigma$ coverage ({{x7_summary}}) but not the tails ($\pm2\sigma$ at 100
+steps: {{cov2_perh_h100}} against {{cov_nom2}}). The released model's training rows are unrecorded, so none of these
+is a held-out measurement.
+
+\textbf{The released model} (descriptive). Rollout-trained on {{scale_ratio}} times more data, it has low one-step
+and 100-step errors ({{rel_E1}} and {{rel_E100}}; floor {{released_floor_E1}} and {{rel_floor_E100}}) but is not
+contracting on these trajectories ({{rel_lam}}/s), which it may have trained on.
+
+\textbf{Run-time signals.} A check that ranks whole simulators need not flag individual bad steps. Earlier analyses of these models, on
 the same held-out trajectories of the five splits, found that none of the label-free signals is a usable alarm for a
 step that is worse than holding the last state. On the rollout-trained ensembles, a combined kinematic-consistency
 score reached an area under the ROC curve (AUROC; 0.5 is chance) of {{icp_auc_phys}} {{icp_auc_phys_ci}}, ensemble

@@ -33,3 +33,11 @@
   - NOTE 17: keys x3_n_eps, x3_p, k_h1/k_h100 and s1_art_rssm_* exist in paper_numbers.md.
   - NOTE 18 declined: n_trained (101) and n_compressed (200) cover F18 and X5 (paper_numbers.md), not F18 only.
   - NOTE 19: C15 notes CL1 is driven by the trained models (CL9). The two-level interval stays in the appendix (EXPL).
+
+## W2
+- **No new appendix section.** OUTLINE part 5 asked for a new section "Training choices, details" after A1. Inserting it would renumber A2–A10, which the body, the appendix and check_claims descriptions cite as text. Conservative: the material went into A1 (retitled "Training settings, models and rebuild") as a paragraph "Training choices, details"; numbering A1–A10 unchanged.
+- **x2 split columns** were not copied into a new A3 table: A4's `tab:app-two` already prints every x2_tc_* and x2_c_* value. The body points to appendix A4.
+- **Table 3 pools** read F18, X5 and AR (AR = the three other architectures, averaged; defined in the caption). AR and CL estimates keep three decimals, as in A8–A9, so the same value is printed alike in body and appendix.
+- **rw_numbers.py** adds only formatting re-prints (signed, two decimals) of values in `results/s1_stats.json`, so Table 2 reads alike across columns; no new values.
+- **Spare space:** the reserve build still has room for a 0.50 textheight slot; nothing was added back, leaving margin for Step 2.
+- **Wording kept from the old text, flagged for W3:** "moderate pruning adds error but barely moves the growth rate" sits beside Q6 NOT SETTLED (as before); it describes the size of the shift, not a verdict.
