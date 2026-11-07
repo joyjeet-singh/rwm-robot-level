@@ -1,4 +1,4 @@
 # Checkpoint
-Last session: W0, COMPLETE. Branch rewrite.
-Next: W1 (per REWRITE_PLAN.md), using rewrite/notes/W0_map.md and W0_evidence.md. Need about 0.30 textheight freed in the main text (slack.py reports 0.00 free).
+Last session: W1, COMPLETE. Branch rewrite. rewrite/OUTLINE.md written and reviewed.
+Next: W2 (per REWRITE_PLAN.md). Rewrite body.template.tex following rewrite/OUTLINE.md. Place \stepslot at the end of Sec. 4. Build loop until slack.py passes.
 Blockers: none.
