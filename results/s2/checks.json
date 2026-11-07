@@ -1,0 +1,295 @@
+{
+ "what": "Step 2 fallback pool: checks of the released model and its eight compressed copies, computed by the registered functions before registration; no physics number used",
+ "weights": "robotic_world_model_lite/assets/models/pretrain_rnn_ens.pt",
+ "weights_sha256": "2ac8686c8c7736287853c0fe1438c379320068adf97be71609b5f1afb52c6e5a",
+ "arena": "all (20 recorded trajectories; the released model was trained on all ten episodes)",
+ "policy_commands": "the authors' actor in closed loop (s1_rollout.score_gru items pol, lam_pol, p=1)",
+ "sims": [
+  "REL",
+  "REL__fp16",
+  "REL__int8w",
+  "REL__u10",
+  "REL__u20",
+  "REL__u30",
+  "REL__u50",
+  "REL__s192",
+  "REL__s128"
+ ],
+ "models": {
+  "REL": {
+   "key": "REL",
+   "variant": null,
+   "variant_info": null,
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.08256249874830246,
+   "E8": 0.09313379228115082,
+   "E24": 0.12069660425186157,
+   "E100": 0.40389761328697205,
+   "E368": 1.1896084547042847,
+   "lam1": 0.700198436025593,
+   "rJ": 3.278581463525163,
+   "lam1_pol": 1.5969832053550932,
+   "rJ_pol": 0.7008375544959567,
+   "n_div_pol": 0,
+   "ret_authors_actor": 9.725972664505571,
+   "seconds": 35.57990598678589
+  },
+  "REL__fp16": {
+   "key": "REL__fp16",
+   "variant": "fp16",
+   "variant_info": {
+    "kind": "fp16"
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.08255137503147125,
+   "E8": 0.09310612827539444,
+   "E24": 0.12064456939697266,
+   "E100": 0.40356379747390747,
+   "E368": 1.172930121421814,
+   "lam1": 0.6114030940967361,
+   "rJ": 3.257396399997378,
+   "lam1_pol": 1.5798504029899187,
+   "rJ_pol": 0.70104494841365,
+   "n_div_pol": 0,
+   "ret_authors_actor": 9.726673015183588,
+   "seconds": 27.73277997970581
+  },
+  "REL__int8w": {
+   "key": "REL__int8w",
+   "variant": "int8w",
+   "variant_info": {
+    "kind": "int8w",
+    "max_scale": 0.06191308855071781
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.28583186864852905,
+   "E8": 0.4075779318809509,
+   "E24": 0.5779222846031189,
+   "E100": 1.2098336219787598,
+   "E368": 1.888871669769287,
+   "lam1": 0.9627636507263334,
+   "rJ": 7.288430730197348,
+   "lam1_pol": 1.3892090787822737,
+   "rJ_pol": 4.514408053044372,
+   "n_div_pol": 0,
+   "ret_authors_actor": 2.517457065040253,
+   "seconds": 26.085284948349
+  },
+  "REL__u10": {
+   "key": "REL__u10",
+   "variant": "u10",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.1,
+    "pool_entries": 1985920,
+    "pruned_entries": 198592,
+    "threshold_abs": 0.013142919167876244
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.13365575671195984,
+   "E8": 0.15456807613372803,
+   "E24": 0.19408899545669556,
+   "E100": 0.5237684845924377,
+   "E368": 1.266482949256897,
+   "lam1": 0.7838487586964391,
+   "rJ": 3.5352748287896127,
+   "lam1_pol": 1.4835286615661758,
+   "rJ_pol": 1.1046689944407588,
+   "n_div_pol": 0,
+   "ret_authors_actor": 9.486755001486745,
+   "seconds": 26.485960960388184
+  },
+  "REL__u20": {
+   "key": "REL__u20",
+   "variant": "u20",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.2,
+    "pool_entries": 1985920,
+    "pruned_entries": 397184,
+    "threshold_abs": 0.026851434260606766
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.2186669409275055,
+   "E8": 0.29827266931533813,
+   "E24": 0.4580536484718323,
+   "E100": 1.3157415390014648,
+   "E368": 2.1954386234283447,
+   "lam1": 0.7970888764335071,
+   "rJ": 6.971209870487552,
+   "lam1_pol": 1.116417405112037,
+   "rJ_pol": 5.382325002502199,
+   "n_div_pol": 0,
+   "ret_authors_actor": -7.162210460058622,
+   "seconds": 26.696584939956665
+  },
+  "REL__u30": {
+   "key": "REL__u30",
+   "variant": "u30",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.3,
+    "pool_entries": 1985920,
+    "pruned_entries": 595776,
+    "threshold_abs": 0.04165215790271759
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.2984275817871094,
+   "E8": 0.4872291684150696,
+   "E24": 0.6950901746749878,
+   "E100": 1.0535554885864258,
+   "E368": 1.410575032234192,
+   "lam1": 0.22938014789442168,
+   "rJ": 6.976769460117586,
+   "lam1_pol": Infinity,
+   "rJ_pol": Infinity,
+   "n_div_pol": 1,
+   "ret_authors_actor": -168.5011294928286,
+   "seconds": 26.829833984375
+  },
+  "REL__u50": {
+   "key": "REL__u50",
+   "variant": "u50",
+   "variant_info": {
+    "kind": "unstructured",
+    "level": 0.5,
+    "pool_entries": 1985920,
+    "pruned_entries": 992960,
+    "threshold_abs": 0.07867676019668579
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.3701368272304535,
+   "E8": 0.9581025838851929,
+   "E24": 2.0102202892303467,
+   "E100": 7.5626325607299805,
+   "E368": 51.456565856933594,
+   "lam1": 1.796840251623675,
+   "rJ": 362.9735436440452,
+   "lam1_pol": 1.898832218382832,
+   "rJ_pol": 303.71759239808046,
+   "n_div_pol": 0,
+   "ret_authors_actor": -6852.448552487326,
+   "seconds": 26.777125120162964
+  },
+  "REL__s192": {
+   "key": "REL__s192",
+   "variant": "s192",
+   "variant_info": {
+    "kind": "structured",
+    "width": 192
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.25410839915275574,
+   "E8": 0.5235500931739807,
+   "E24": 0.7396641969680786,
+   "E100": 1.1230204105377197,
+   "E368": 1.6487212181091309,
+   "lam1": 0.19106737189934148,
+   "rJ": 7.126856709518658,
+   "lam1_pol": 0.7414320728814744,
+   "rJ_pol": 23.47049632190954,
+   "n_div_pol": 0,
+   "ret_authors_actor": -117.29507617642813,
+   "seconds": 18.87879204750061
+  },
+  "REL__s128": {
+   "key": "REL__s128",
+   "variant": "s128",
+   "variant_info": {
+    "kind": "structured",
+    "width": 128
+   },
+   "ensemble": 5,
+   "arena": "all",
+   "n_traj": 20,
+   "finite_recorded": true,
+   "E1": 0.3258076310157776,
+   "E8": 0.8833812475204468,
+   "E24": 1.595279574394226,
+   "E100": 5.17398738861084,
+   "E368": 26.093324661254883,
+   "lam1": 1.282844691396447,
+   "rJ": 186.87308363825844,
+   "lam1_pol": 1.2729962126616898,
+   "rJ_pol": 245.88662773928573,
+   "n_div_pol": 0,
+   "ret_authors_actor": -3965.3291608028217,
+   "seconds": 15.042586326599121
+  }
+ },
+ "validation_REL_vs_stored": {
+  "E1": {
+   "stored": 0.08256249874830246,
+   "recomputed": 0.08256249874830246,
+   "rel_diff": 0.0
+  },
+  "E8": {
+   "stored": 0.09313378483057022,
+   "recomputed": 0.09313379228115082,
+   "rel_diff": 7.999868802151644e-08
+  },
+  "E24": {
+   "stored": 0.12069660425186157,
+   "recomputed": 0.12069660425186157,
+   "rel_diff": 0.0
+  },
+  "E100": {
+   "stored": 0.4038974344730377,
+   "recomputed": 0.40389761328697205,
+   "rel_diff": 4.4272114419213683e-07
+  },
+  "E368": {
+   "stored": 1.1938625574111938,
+   "recomputed": 1.1896084547042847,
+   "rel_diff": 0.003563310265910256
+  },
+  "lam1": {
+   "stored": 0.7001984361247804,
+   "recomputed": 0.700198436025593,
+   "rel_diff": 1.4165618048401072e-10
+  },
+  "rJ": {
+   "stored": 3.282734543995973,
+   "recomputed": 3.278581463525163,
+   "rel_diff": 0.0012651283297962527
+  },
+  "lam1_pol": {
+   "stored": 1.5969832053550932,
+   "recomputed": 1.5969832053550932,
+   "rel_diff": 0.0
+  },
+  "rJ_pol": {
+   "stored": 0.7008375544959567,
+   "recomputed": 0.7008375544959567,
+   "rel_diff": 0.0
+  }
+ },
+ "torch": "2.2.2",
+ "threads": 2,
+ "seconds_total": 231.79591012001038,
+ "created": "2026-11-08T04:12:09"
+}

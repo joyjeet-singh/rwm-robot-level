@@ -1,0 +1,14 @@
+Step 2 pilot (validation for Gate 2, not results; hand-built MuJoCo ANYmal D, calibrated)
+one seed each; 500 iterations, 4,096 robots; 80 episodes (10 schedules x 8 starts)
+
+policy           falls       falls 95%   return        return 95%  speed   turn 2 feet    imag.  hours
+REL__p0          0.100 [0.062, 0.150]    18.59 [ 17.37,  19.66]  0.210  0.096  0.572     2.07   2.17
+A_s0__p0         1.000 [1.000, 1.000]   -10.37 [-12.71,  -8.28]  0.880  0.650  0.238     5.13   1.79
+B_s0__p0         1.000 [1.000, 1.000]    -3.99 [ -5.27,  -3.17]  0.773  0.686  0.183     3.95   1.70
+A_s0__u50__p0    1.000 [1.000, 1.000]    -6.56 [ -8.71,  -4.75]  0.802  0.683  0.250     3.79   1.55
+authors policy   0.013                    26.28                    0.069  0.061  0.789
+
+falls = share of episodes ending in a fall; return = physics return (lite reward terms in MuJoCo);
+speed in m/s, turn in rad/s; imag. = imagined return, mean of the last 25 training iterations
+Gate 2 is applied by M4: P1 released < 25% falls; P2 one rebuilt policy < 50% falls;
+P3 the four returns not all inside each other's 95% intervals

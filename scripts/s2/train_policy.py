@@ -62,6 +62,15 @@ def sim_row(sim):
     table = json.load(open(os.path.join(AIR, "results", "models.json")))
     if sim == "REL":
         return table["REL"][0]
+    if sim.startswith("REL__"):                # a compressed copy of the released model (Step 2 fallback pool, M4)
+        v = sim.split("__", 1)[1]
+        if v not in K.VARIANTS:
+            raise SystemExit(f"simulator {sim!r}: unknown variant {v!r}")
+        chk = json.load(open(os.path.join(AIR, "results", "s2", "checks.json")))["models"][sim]
+        row = dict(table["REL"][0])
+        row.update({"key": sim, "pool": "S2F", "group": f"compressed {v}", "variant": v,
+                    "variant_info": chk["variant_info"]})
+        return row
     rows = [m for m in table["F18"] if m["key"] == sim]
     if len(rows) != 1:
         raise SystemExit(f"simulator {sim!r} is not one row of pool F18 in results/models.json")
@@ -77,6 +86,8 @@ def build_sim(row):
     m = C.load(path, int(row["ensemble"]))
     if row["variant"]:
         m, info = K.apply(m, row["variant"])
+        if info.get("kind") == "int8w":            # as compute.build records it
+            info = {"kind": "int8w", "max_scale": max(info["scales"].values())}
         want = row["variant_info"] or {}
         for k, v in want.items():
             got = info.get(k)
@@ -115,9 +126,12 @@ def export_actor(run_dir, out_path, iterations):
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--sim", required=True, help="REL or a pool-F18 key of results/models.json")
+    ap.add_argument("--sim", required=True, help="REL, REL__<variant>, or a pool-F18 key of results/models.json")
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--threads", type=int, default=2)
+    ap.add_argument("--route", choices=("auto", "rebuilt"), default="auto",
+                    help="auto: REL through run_lite's released route (the pilot), others rebuilt; rebuilt: every "
+                         "simulator, REL too, through common.load and the lite adapter (the main job, M4)")
     ap.add_argument("--job", default="train", help="job name written to the progress file")
     ap.add_argument("--name", default=None, help="policy name (default <sim>__p<seed>); `_test*` for tests")
     ap.add_argument("--iterations", type=int, default=ITERATIONS)
@@ -158,7 +172,8 @@ def main(argv=None):
     RL.wandb.log = logged
 
     # the simulator: run_lite's own route for the released model; otherwise ours, variant applied
-    if a.sim == "REL":
+    released_route = a.sim == "REL" and a.route == "auto"
+    if released_route:
         model_arg = "released"
     else:
         import adapter
@@ -178,7 +193,7 @@ def main(argv=None):
                     "--max_iterations", str(a.iterations), "--seed", str(a.seed), "--threads", str(a.threads)]
                    + (["--holdout", holdout] if holdout else []))
     wall = time.time() - t0
-    if a.sim != "REL" and len(handed) != 1:
+    if not released_route and len(handed) != 1:
         raise SystemExit("the lite trainer did not take the simulator built here")
 
     run_dir = os.path.join(AIR, "runs", "lite", lite_name)
@@ -189,7 +204,7 @@ def main(argv=None):
     rec = {
         "policy": name, "sim": a.sim, "seed": a.seed, "sim_pool": row.get("pool"), "sim_group": row.get("group"),
         "sim_variant": row.get("variant"), "sim_ensemble": int(row["ensemble"]), "sim_arena": row["arena"],
-        "holdout": holdout or None, "windows_kept_total": summ["windows_kept_total"],
+        "route": "released" if released_route else "rebuilt", "holdout": holdout or None, "windows_kept_total": summ["windows_kept_total"],
         "iterations": a.iterations, "num_envs": a.num_envs, "threads": a.threads,
         "imagined_return": (sum(mr) / len(mr)) if mr else None,
         "imagined_return_iterations": len(mr),
