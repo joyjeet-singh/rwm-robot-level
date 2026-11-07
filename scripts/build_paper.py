@@ -43,7 +43,7 @@ def fill():
     return used
 
 
-def latex(main):
+def copy_inputs():
     os.makedirs(BUILD, exist_ok=True)
     for f in os.listdir(PAPER):
         if f.endswith((".tex", ".bib", ".bst", ".cls")):
@@ -53,11 +53,16 @@ def latex(main):
     for f in os.listdir(C.FIGURES):
         if f.endswith(".pdf"):
             shutil.copy(os.path.join(C.FIGURES, f), figs)
+
+
+def latex(main, copy=True, quick=False):
+    if copy:
+        copy_inputs()
     stem = main[:-4]
     log = []
-    for cmd in (["pdflatex", "-interaction=nonstopmode", "-halt-on-error", main], ["bibtex", stem],
-                ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", main],
-                ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", main]):
+    pl = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", main]
+    # quick: reuse the .bbl/.aux of an earlier full run of the same file (slack.py probes only)
+    for cmd in ((pl, pl) if quick else (pl, ["bibtex", stem], pl, pl)):
         r = subprocess.run(cmd, cwd=BUILD, capture_output=True, text=True)
         log.append(r.stdout[-3000:])
         if r.returncode != 0 and cmd[0] == "pdflatex":
@@ -71,6 +76,36 @@ def latex(main):
     return int(pages[-1]) if pages else None, warn
 
 
+SLOT_DEFAULT = 0.30
+
+
+def slot_definition(h):
+    """The Step 2 slot: a framed box, one column wide and h\\textheight tall (reserve build only)."""
+    return ("\\newcommand{\\stepslot}{\\par\\medskip\\noindent\\fbox{\\parbox[c][%.2f\\textheight][c]"
+            "{\\dimexpr\\columnwidth-2\\fboxsep-2\\fboxrule\\relax}{\\centering\\textbf{Step 2 slot}}}\\par\\medskip}" % h)
+
+
+def build_reserve(h=SLOT_DEFAULT, quick=False):
+    """Two-column build with the Step 2 slot drawn at h*textheight. Needs body.tex (run fill() first).
+    Writes paper/build/reserve_check.pdf; never touches the normal outputs. Returns (pages, warnings)."""
+    copy_inputs()
+    body = open(os.path.join(PAPER, "body.tex")).read()
+    if "\\stepslot" not in body:
+        i = body.find("\\section{Discussion}")
+        if i < 0:
+            sys.exit("reserve build: no \\stepslot and no \\section{Discussion} in body.tex")
+        body = body[:i] + "\\stepslot\n" + body[i:]
+    open(os.path.join(BUILD, "body_reserve.tex"), "w").write(body)
+    main = open(os.path.join(PAPER, "main_twocol.tex")).read()
+    if "\\providecommand{\\stepslot}{}" not in main:
+        sys.exit("reserve build: main_twocol.tex lacks \\providecommand{\\stepslot}{}")
+    main = main.replace("\\providecommand{\\stepslot}{}", slot_definition(h)).replace("\\input{body.tex}", "\\input{body_reserve.tex}")
+    open(os.path.join(BUILD, "main_reserve.tex"), "w").write(main)
+    pages, warn = latex("main_reserve.tex", copy=False, quick=quick)
+    shutil.copy(os.path.join(BUILD, "main_reserve.pdf"), os.path.join(BUILD, "reserve_check.pdf"))
+    return pages, warn
+
+
 if __name__ == "__main__":
     used = fill()
     out = {}
@@ -78,6 +113,11 @@ if __name__ == "__main__":
         pages, warn = latex(main)
         shutil.copy(os.path.join(BUILD, main[:-4] + ".pdf"), os.path.join(PAPER, pdf))
         out[pdf] = {"pages": pages, **warn}
+    if "--reserve" in sys.argv:
+        i = sys.argv.index("--reserve")
+        h = float(sys.argv[i + 1]) if i + 1 < len(sys.argv) and not sys.argv[i + 1].startswith("-") else SLOT_DEFAULT
+        pages, warn = build_reserve(h)
+        out["reserve_check.pdf"] = {"pages": pages, "slot_height": h, **warn}
     out["numbers_used"] = len(used)
     json.dump(out, open(os.path.join(C.RESULTS, "build.json"), "w"), indent=1)
     print(json.dumps(out, indent=1))
