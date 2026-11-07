@@ -13,9 +13,9 @@ forcing and one-step training were better one step ahead but {{ab_h100_ratio}} a
 at 2~s (descriptive; partly registered earlier), also after longer training and in two of three other architectures.
 Pruning 30\% of weights kept {{K_u30_h1}} of the skill one step ahead, {{K_u30_h100}} at 2~s (descriptive);
 fine-tuning restored nearly all of it (registered). The error growth rate, needing no recorded future, ranked
-simulators by 2-second error better than one-step error (registered) on {{n_P}} GRU simulators and, averaged, over
+simulators by 2-second error better than one-step error (registered, recorded commands) on {{n_P}} GRU simulators and, averaged, over
 three other architectures (two carry it). On the GRU pool it was not separated from 8-step error
-(registered) and failed a secondary replication on mostly compressed copies. A kinematic residual ranked them
+(registered) and failed a secondary replication on mostly compressed copies. A kinematic residual ranked that pool
 best with recorded commands (descriptive; its lead over 8-step error failed multiple-test correction), and less
 well under policy-chosen commands (registered). Scope: simulated data, one robot and trotting
 gait, no physics-simulator test.
@@ -52,7 +52,7 @@ RWM's ablation; we add the one-step view, other architectures and a policy in th
 \begin{itemize}
 \item \textbf{Where one-step checks mislead} (Sec.~\ref{sec:decisions}): judged one step ahead, teacher forcing,
 one-step training and pruning without retraining look better or nearly harmless; at the horizon of use they are worse. The
-reversal persists after four times longer training and in two of three other architectures, and fine-tuning repairs
+reversal persists after four times longer training and in two of three other architectures (descriptive), and fine-tuning repairs
 the pruned copies (registered).
 \item \textbf{A registered comparison of checks that need no recorded future} (Sec.~\ref{sec:checks}): the growth
 rate of small errors and a kinematic residual against one-step and 8-step error, on two pools of RWM-style simulators,
@@ -132,7 +132,7 @@ on both pools (primary Q1--Q2, secondary Q3--Q6), study FT on fine-tuning pruned
 and AR on policy commands and other architectures (CL1--CL2, AR1--AR2). Primary questions are judged at 97.5\%. Two parts of the
 first were known from earlier analyses (appendix~A2). Other verdicts come from rules registered for earlier,
 unpublished analyses; those registrations and all code are in the anonymised supplementary material. Secondary
-verdicts are judged at 95\% without correction; Holm's correction over the {{a2c_n_family}} secondary tests of Q3--Q6
+verdicts are judged at 95\% without correction for running several tests; Holm's correction over the {{a2c_n_family}} secondary tests of Q3--Q6
 is exploratory. Everything else is descriptive, or exploratory where it was added after the registered results were
 seen. Resampling parents and trajectories together widens the intervals by a median factor of
 {{a2_median_ratio}} (exploratory, appendix~A4).
@@ -207,10 +207,10 @@ account therefore covers only models trained on this data set.
 \textbf{Compression.} Pruning 30\% of weights without retraining keeps {{K_u30_h1}} of the parent's skill one step
 ahead but {{K_u30_h100}} at 100 steps, and by 368 steps the copy is worse than predicting no change (descriptive). In
 a registered follow-up (appendix~A7), 500 iterations of fine-tuning with the pruned weights held at zero restored the
-100-step skill from {{ft_FT1_Knoft}} to {{ft_FT1_Kft}} (\textsc{{{ft_FT1_verdict}}}); the fine-tuned copies were
+100-step skill of seeds 0--2 from {{ft_FT1_Knoft}} to {{ft_FT1_Kft}} (\textsc{{{ft_FT1_verdict}}}); the fine-tuned copies were
 \textsc{{{ft_FT2_verdict}}} as their parents fine-tuned the same way ({{ft_FT2_K}} {{ft_FT2_ci}}). Skill above
-100\% mostly reflects the extra training, not the pruning (descriptive). Moderate pruning adds error but barely moves the growth
-rate: at 30\% the registered test could not separate the shift ({{lamshift_u30}}/s {{lamshift_u30_ci}}) from zero
+100\% mostly reflects the extra training, not the pruning (descriptive). Moderate pruning adds error, but at 30\% the
+registered test could not separate the shift in growth rate ({{lamshift_u30}}/s {{lamshift_u30_ci}}) from zero
 (\textsc{{{q6_verdict}}}; secondary), and no copy pruned by 10--30\% has $\lambda_1>0$ (appendix~A5). Rounding weights
 to 8 bits keeps {{K_int8w_h100}} of the 100-step skill (descriptive; weights only).
 
@@ -221,8 +221,8 @@ because the implemented loss is smallest at zero variance (appendix~A6).
 
 \subsection{Which check ranks simulators without recorded futures?}\label{sec:checks}
 A label-free check could vet a simulator on new velocity commands, or while a policy drives it. The main registered
-comparison and studies AR and CL asked whether $\lambda_1$ and $\bar r_J$ rank simulators by their 100-step error $E_{100}$ better than the labelled
-one-step and 8-step errors $E_1$ and $E_8$. Table~\ref{tab:checks} gives the correlations, Table~\ref{tab:verdicts}
+comparison and study AR asked whether $\lambda_1$ and $\bar r_J$ rank simulators by their 100-step error $E_{100}$ better than the labelled
+one-step and 8-step errors $E_1$ and $E_8$; study CL asked whether policy commands change that ranking. Rankings use Spearman (rank) correlation. Table~\ref{tab:checks} gives the correlations, Table~\ref{tab:verdicts}
 the registered verdicts.
 
 \begin{widetable}[t]
@@ -283,15 +283,17 @@ one-step error ranked the 100-step error poorly ({{q1_rho_e1}}) and the growth r
 primary question found the growth rate better (\textsc{{{q1_verdict}}}). The second could not separate it from the
 8-step error (\textsc{{{q2_verdict}}}), which ranked ahead of it at 24 steps (secondary). Models trained one step
 ahead have among the lowest one-step but high 100-step errors, and one-step error ranks the {{x2_tc_n}} trained
-models backwards ({{x2_tc_E1}}; exploratory); every check ranks the compressed copies well (appendix~A4). The
+models backwards ({{x2_tc_E1}}; exploratory); every check ranks the compressed copies well (exploratory, appendix~A4). Without the one-step-trained models (Q5),
+the growth rate still ranked better than one-step error ({{q5_1_rho_new}} against {{q5_1_rho_base}};
+\textsc{{{q5_1_verdict}}}; secondary), but this lead fails Holm's correction and the wider intervals (exploratory). The
 kinematic residual ranked best ({{q4_1_rho_new}}; descriptive). The registered rules favoured it over both $E_1$ and
 $E_8$ (secondary), but only its lead over $E_1$ survives Holm's correction (exploratory).
 
 \textbf{Five-split pool.} The registered replication on the five-split pool, where most of the {{n_X_fold}}
 simulators per split are compressed copies, failed for the growth rate: one-step error ranked better than it
-(\textsc{{{q3_1_verdict}}}; secondary), and the 8-step error better still. The first reading is not resolved under
+(\textsc{{{q3_1_verdict}}}; secondary), and the 8-step error better still. The first reading fails Holm's correction and is not resolved under
 the wider intervals, but the growth rate did not beat one-step error in any reading (exploratory, appendix~A4). A possible cause, not tested here,
-is that moderate pruning adds error while barely changing the growth rate, so a negative growth rate certifies
+is that moderate pruning adds error without a shift in growth rate that we could detect (Q6); a negative growth rate certifies
 nothing: of the {{d4_F18_worse_total}} main-pool simulators worse than the floor at 100 steps, {{d4_F18_non_worse}}
 had $\lambda_1\le0$. The kinematic residual, registered on the main pool only, was level with the 8-step error here
 ({{x1_rJ_minus_E8}} {{x1_rJ_minus_E8_ci}}; exploratory).
@@ -314,14 +316,14 @@ With small noise added to the recorded commands instead, both checks were \texts
 Differentiated through the policy as well (closed loop), the growth rate was \textsc{{{s1_cl5_label}}}
 (secondary) and did not rank the simulators ($\rho={}${{rw_t_F18pol_lam1cl}}). Simulators with higher error gave the policy lower imagined return
 ($\rho={}${{s1_cl6_rho}}; secondary), and none of the {{s1_cl7_nmodels}} GRU simulator evaluations (the two pools overlap) diverged under policy,
-closed-loop or noisy commands (descriptive).
+closed-loop or noisy commands (secondary).
 
 \begin{widefigure}[t]
 \centering
 \includegraphics[width=\figw]{figures/fig_checks.pdf}
 \caption{One-step error, growth rate and kinematic residual (left to right) against 100-step error for the {{n_P}}
-simulators of the main pool. Models trained one or two steps ahead have low one-step but high 100-step errors, and
-positive growth rates; compressed copies (squares) spread vertically, with 10--30\% pruning at nearly constant growth rate. Dashed: the
+simulators of the main pool. Models trained one step ahead (teacher forcing, $N=1$) or with $N=2$ have low one-step but high 100-step errors, and
+positive growth rates; compressed copies (squares) spread mostly vertically. Dashed: the
 floor.}
 \label{fig:checks}
 \end{widefigure}
@@ -340,7 +342,7 @@ episodes, counting independent trajectories. (2)~\emph{Fine-tune after pruning},
 horizon of use. (3)~\emph{Without recordings, screen with label-free checks and know their limits}: on the main pool the
 residual ranked RWM-style simulators best with recorded commands, though its lead over 8-step error failed multiple-test
 correction and AR2 was not settled, and less well under a policy; a positive growth rate flagged
-the one-step-trained simulators, a negative one certifies nothing, and growth rates did not rank different
+the one-step-trained simulators (but the released model's is positive too), a negative one certifies nothing, and growth rates did not rank different
 architectures together. (4)~\emph{Read ensemble spread as a ranking}; rescale it per horizon on held-out episodes
 before using it as an interval, and do not rely on label-free run-time alarms: in earlier registered analyses a growth-rate signal lost to a step
 counter, and re-synchronising on a score added error against a fixed schedule (appendix~A6).
@@ -349,12 +351,12 @@ counter, and re-synchronising on a score added error against a fixed schedule (a
 of simulated data, so ``held out'' means other velocity commands of the same gait. The policy drove the simulators
 only in imagination: no policy was trained, and nothing was tested in a physics simulator or on hardware, so what a
 mis-ranked simulator costs a controller is not measured, and imagined return is not walking performance. Under policy
-commands the checks are compared with error under recorded commands. The main pool has four held-out trajectories,
-which bounds every interval. Correlations treat models as independent although they share parents, data and test
+commands the checks are compared with error under recorded commands. The main pool has four held-out trajectories from two episodes,
+which bounds every interval, and no correction is made across the three registrations. Correlations treat models as independent although they share parents, data and test
 trajectories; wider intervals that allow for this leave {{a2_n_lost}} of {{a2_n_tests}} registered verdicts of the two GRU
-pools unresolved (exploratory). The growth rate is a finite-time exponent in the network's own coordinates, and the
+pools unresolved (Q1 at 24 steps, Q3 against $E_1$, Q5 against $E_1$; exploratory). The growth rate is a finite-time exponent in the network's own coordinates, and the
 stability account does not cover the released model. Each other architecture has {{rw_t_rssm_n}} or
-{{rw_t_mlp_n}} runs ({{s1_ar_ndiv}} teacher-forced MLP runs diverged under recorded commands), and the longer-training check has {{s1_tb_nseeds}} seeds and no intervals.
+{{rw_t_mlp_n}} runs ({{s1_ar_ndiv}} teacher-forced MLP runs diverged on some trajectories under recorded commands, kept as registered), and the longer-training check has {{s1_tb_nseeds}} seeds and no intervals.
 
 \section{Conclusion}\label{sec:conclusion}
 On this simulator, one-step checks favoured teacher forcing, one-step training and a pruned model that, without

@@ -392,6 +392,24 @@ CLAIMS.update({
         D1[N[1]]["lam1"] > 0 and D3["lam1_positive_share"]["B"] == 1.0,
 })
 
+# W4 (rewrite): sentences changed after the fresh-eyes review (Q5 in Sec. 4.2, lost verdicts named, labels).
+_a2a = RX["A2a_two_level"]["registered_tests"]
+CLAIMS.update({
+    "Sec. 4.2: Q5 (no one-step-trained models): lambda_1 ranks better than E1 (label-free better, secondary), yet "
+    "fails Holm's correction and the two-level intervals":
+        S["Q5_vs_E1"]["verdict"] == "LABEL-FREE BETTER" and S["Q5_vs_E1"]["rho_new"] > S["Q5_vs_E1"]["rho_base"]
+        and not _holm["Q5_vs_E1"]["rejects_zero"] and not _a2a["Q5_vs_E1"]["two_level_excludes_zero"],
+    "Sec. 4.2: Q3 vs E1 fails Holm's correction and the two-level intervals":
+        not _holm["Q3_vs_E1"]["rejects_zero"] and not _a2a["Q3_vs_E1"]["two_level_excludes_zero"],
+    "Limitations: the verdicts lost under two-level intervals are exactly Q1 at 24 steps, Q3 vs E1 and Q5 vs E1":
+        sorted(k for k, v in _a2a.items() if v["registered_verdict"] != "NOT SETTLED"
+               and not v["two_level_excludes_zero"]) == ["Q1_E24", "Q3_vs_E1", "Q5_vs_E1"],
+    "Checklist: the released (rollout-trained) model's growth rate is positive too":
+        S["D5_released"]["lam1"] > 0,
+    "Sec. 4.1: FT1's skill before fine-tuning (38%) is on seeds 0-2":
+        sorted(int(x) for x in FT["seeds"]) == [0, 1, 2],
+})
+
 if __name__ == "__main__":
     out = {k: bool(v) for k, v in CLAIMS.items()}
     failed = [k for k, v in out.items() if not v]

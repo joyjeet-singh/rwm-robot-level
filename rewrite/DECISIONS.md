@@ -41,3 +41,21 @@
 - **rw_numbers.py** adds only formatting re-prints (signed, two decimals) of values in `results/s1_stats.json`, so Table 2 reads alike across columns; no new values.
 - **Spare space:** the reserve build still has room for a 0.50 textheight slot; nothing was added back, leaving margin for Step 2.
 - **Wording kept from the old text, flagged for W3:** "moderate pruning adds error but barely moves the growth rate" sits beside Q6 NOT SETTLED (as before); it describes the size of the shift, not a verdict.
+
+## W4
+**Step 2 candidates (requested by the referee; not run):**
+- Train a policy inside a few simulators (teacher-forced, rollout-trained, 30% pruned) and test it in a physics simulator. This is Step 2's planned question (OUTLINE part 8).
+- Q1 restricted to rollout-trained models only (no compressed copies, no one-step-trained). The nearest registered result, Q5 (without the one-step-trained models), is now in Sec. 4.2.
+- A training-episode error baseline (8- or 100-step error on the training episodes) as a further check to compare.
+
+**W4 declined (with reason):**
+- Referee 1, drop or gather the status tags: C4 requires labels wherever a result appears. Only small changes were made (definitions added, labels corrected).
+- Referee 2, the released model's positive growth rate in the abstract: no room (197 of 200 words). It is now in checklist item (3) and is already in Sec. 4.1 and Limitations.
+- Referee 5, "label-free" is motivated by new commands, yet the checks use the held-out history and commands: the checks need only the history and joint commands, which exist for new commands. The text is unchanged; the baseline is a Step 2 candidate.
+- Referee 6, a sentence on what is new against [26] and [29], and DayDreamer: the contribution bullets already state the registered comparison. No space (free slot 0.32). New references are outside this round (refs.bib may only drop or fix).
+- Referee 7, change the title, and cut checklist item (4) and the Uncertainty paragraph: the title was kept by W1, the scope is stated in the abstract and the introduction, and item (4) rests on appendix A6. Less change is the conservative choice.
+- Referee 8, the floor at 368 steps: Fig. 1 already shows it; no space.
+- Minor: renaming TRAINING-HORIZON BETTER (it is the registered label); AR/CL/F18/X5 names (defined in Sec. 3); Table 1 "40 on X5" (declined for space).
+- Stats 9, the Holm family excludes the 24- and 368-step readings: the text already says secondary verdicts are uncorrected and Holm covers "the 7 secondary tests of Q3–Q6". Unchanged.
+- Stats 4, write "primary" for "registered" in the abstract: "registered" is accurate and shorter. Unchanged.
+- Supplement not rebuilt in W4 (check_claims.py changed): left to W5's final build.

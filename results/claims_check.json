@@ -121,7 +121,12 @@
   "Sec. 4.1 uncertainty: released ensemble's spread ranks error well (Spearman above 0.5) yet its factor grows with horizon": true,
   "Sec. 4.2: the policy-command drop is in the residual, and the closed-loop growth rate does not rank (|rho| < 0.1)": true,
   "Sec. 4.2: imagined return and error: higher-error simulators gave lower return (rho < 0, secondary)": true,
-  "Discussion: simulators from one-step training amplify errors (lambda_1 > 0 for N=1 and teacher forcing, X5 all B)": true
+  "Discussion: simulators from one-step training amplify errors (lambda_1 > 0 for N=1 and teacher forcing, X5 all B)": true,
+  "Sec. 4.2: Q5 (no one-step-trained models): lambda_1 ranks better than E1 (label-free better, secondary), yet fails Holm's correction and the two-level intervals": true,
+  "Sec. 4.2: Q3 vs E1 fails Holm's correction and the two-level intervals": true,
+  "Limitations: the verdicts lost under two-level intervals are exactly Q1 at 24 steps, Q3 vs E1 and Q5 vs E1": true,
+  "Checklist: the released (rollout-trained) model's growth rate is positive too": true,
+  "Sec. 4.1: FT1's skill before fine-tuning (38%) is on seeds 0-2": true
  },
  "failed": []
 }
