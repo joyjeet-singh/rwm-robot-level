@@ -1,0 +1,15 @@
+{
+ "file": "prereg/PREREG_S2.md",
+ "sha256": "efb364765b96eafc043dd9dde492379e267ba45347b437c0b6ab63f56c772be0",
+ "hashed_at_utc": "2026-11-07T23:03:18+00:00",
+ "commit": "b51a8e50d5db9df67947f99507fe20abf61f3741",
+ "also": {
+  "scripts/s2_stats.py": "06d25f06848749fdfb6d49054a9706f6544bf58b70bd82ce95fe21a2c671e08e",
+  "scripts/s2_main.py": "b5de576db92538a0394f083481423151d4ba398888f168f20996c20af909f0b1",
+  "scripts/s2/test_s2.py": "8b1486844f735ddb159722f4a35386660210325942c062e0f6314f2dd9f511fa",
+  "scripts/s2/fallback_checks.py": "7a1b5f96e808097765f43cabe49c9665b82591e47a7485812ade63db81d4838a",
+  "scripts/s2/train_policy.py": "181ec566908d71b3de57d0e23010bd58e0b5f60c8335c6c955a4a27406c21df4",
+  "scripts/s2/evaluate.py": "d09cd2878f2c3ed35d579def63ed4835a4f08e312995fc8d18aa7a753d98ccd4",
+  "results/s2/checks.json": "23e9daaf219febe57b25b01924f3fa6eba29a312f48d31d7832591e550a351c2"
+ }
+}
