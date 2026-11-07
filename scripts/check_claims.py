@@ -492,16 +492,27 @@ CLAIMS.update({
         and _iwd("b", "rJ_minus_E8")["ci95"][0] < 0 < _iwd("b", "rJ_minus_E8")["ci95"][1],
     "I2 Sec. 4.2 (exploratory): every recorded-command check ranked the 40 compressed copies at 0.82 or better":
         all(_iw("c", c) > 0.815 for c in ("E1", "E8", "lam1", "rJ")),
-    # Sec. 4.2: imagined return (CL6 secondary; comparison descriptive)
-    "I2 Sec. 4.2: imagined return is nominally the strongest check under policy commands (|rho| above the residual's "
-    "and the growth rate's; CL6 secondary, comparison descriptive, not a registered check)":
+    # Sec. 4.2: imagined return (CL6 secondary; comparison exploratory, I4)
+    "I2/I4 Sec. 4.2: imagined return is nominally the strongest check under policy commands (|rho| above the residual's "
+    "and the growth rate's; CL6 secondary, comparison exploratory, not a registered check)":
         abs(_cl["CL6"]["rho"]) > max(_pol[0], _pol[1], abs(_pol[2]))
         and round(abs(_cl["CL6"]["rho"]), 2) == round(_iw("d", "negret"), 2) == 0.86
         and _cl["CL6"]["rho"] < 0,
-    "I2 Sec. 4.2: with policy commands the growth rate did not rank the simulators (rho near 0; secondary)":
-        abs(_cl["CL5"]["rho_new"]) < 0.05,
-    "I2 Sec. 4.2: across architectures together the growth rate did not rank the runs (rho < 0.2, secondary)":
-        _ar["AR3"]["pooled"]["AR1"]["rho_new"] < 0.2,
+    "I4 Sec. 4.2: closed loop, the growth rate ranked the simulators worse (CL5 WORSE WITH POLICY COMMANDS, secondary), "
+    "rho near zero":
+        abs(_cl["CL5"]["rho_new"]) < 0.05 and _cl["CL5"]["label"] == "WORSE WITH POLICY COMMANDS",
+    "I4 Sec. 4.2 and Disc.: across architectures together the growth rate's lead over one-step error was not settled "
+    "(AR3 pooled AR1 NOT SETTLED, secondary); rho descriptive, below 0.2":
+        _ar["AR3"]["pooled"]["AR1"]["label"] == "NOT SETTLED" and _ar["AR3"]["pooled"]["AR1"]["rho_new"] < 0.2,
+    "I4 Abstract: the residual ranked the main pool better than one-step error (Q4 vs E1, secondary, LABEL-FREE BETTER)":
+        S["Q4_vs_E1"]["verdict"] == "LABEL-FREE BETTER" and S["Q4_vs_E1"]["ci95"][0] > 0,
+    "I4 Sec. 4.1: longer training and two of three other networks gave the same reversal (MLP, Transformer all "
+    "pairs; RSSM none)":
+        _pn("s1_ar4_mlp_both") == _pn("s1_ar4_mlp_n_pairs")
+        and _pn("s1_ar4_transformer_both") == _pn("s1_ar4_transformer_n_pairs")
+        and _pn("s1_ar4_rssm_both") == "0",
+    "I4 Sec. 4.2: on X5 the residual was not separated from the 8-step error (X1 interval spans 0; exploratory)":
+        X["X1_rJ_vs_E8"]["ci95"][0] < 0 < X["X1_rJ_vs_E8"]["ci95"][1],
     "I2 Sec. 4.1 (descriptive): other networks - MLP better one step but worse at 100 steps in every pair; "
     "RSSM better one step but worse at 100 steps in none":
         _pn("s1_ar4_rssm_tf_better_E1") == _pn("s1_ar4_rssm_n_pairs")

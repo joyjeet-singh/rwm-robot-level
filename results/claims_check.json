@@ -152,9 +152,12 @@
   "I2 Sec. 4.2 (exploratory): on the five-split pool's 40 rollout-trained simulators the growth rate failed (rho < 0, interval includes 0) and the residual's lead over 8-step error was unclear (interval includes 0)": true,
   "I2 Disc. (3) (exploratory): within one method the residual ranked better than 8-step error on the main pool, not clearly on the five-split pool, where the growth rate failed": true,
   "I2 Sec. 4.2 (exploratory): every recorded-command check ranked the 40 compressed copies at 0.82 or better": true,
-  "I2 Sec. 4.2: imagined return is nominally the strongest check under policy commands (|rho| above the residual's and the growth rate's; CL6 secondary, comparison descriptive, not a registered check)": true,
-  "I2 Sec. 4.2: with policy commands the growth rate did not rank the simulators (rho near 0; secondary)": true,
-  "I2 Sec. 4.2: across architectures together the growth rate did not rank the runs (rho < 0.2, secondary)": true,
+  "I2/I4 Sec. 4.2: imagined return is nominally the strongest check under policy commands (|rho| above the residual's and the growth rate's; CL6 secondary, comparison exploratory, not a registered check)": true,
+  "I4 Sec. 4.2: closed loop, the growth rate ranked the simulators worse (CL5 WORSE WITH POLICY COMMANDS, secondary), rho near zero": true,
+  "I4 Sec. 4.2 and Disc.: across architectures together the growth rate's lead over one-step error was not settled (AR3 pooled AR1 NOT SETTLED, secondary); rho descriptive, below 0.2": true,
+  "I4 Abstract: the residual ranked the main pool better than one-step error (Q4 vs E1, secondary, LABEL-FREE BETTER)": true,
+  "I4 Sec. 4.1: longer training and two of three other networks gave the same reversal (MLP, Transformer all pairs; RSSM none)": true,
+  "I4 Sec. 4.2: on X5 the residual was not separated from the 8-step error (X1 interval spans 0; exploratory)": true,
   "I2 Sec. 4.1 (descriptive): other networks - MLP better one step but worse at 100 steps in every pair; RSSM better one step but worse at 100 steps in none": true
  },
  "failed": []

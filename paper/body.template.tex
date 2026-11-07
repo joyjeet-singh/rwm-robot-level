@@ -6,7 +6,7 @@
 \maketitle
 
 \begin{abstract}
-Learned simulators let legged robots learn in long imagined rollouts, yet are often trained and checked
+Learned simulators let legged robots learn in imagined rollouts, yet are often trained and checked
 one step ahead. We rebuilt the open quadruped simulator of the Robotic World Model (RWM) and measured {{n_trained}}
 trained simulators and {{n_compressed}} compressed copies. First, one-step checks picked the wrong choices
 (descriptive): teacher forcing and one-step training were better one step ahead but {{ab_h100_ratio}} and
@@ -15,8 +15,8 @@ weights kept {{K_u30_h1}} of the skill one step ahead but {{K_u30_h100}} at 2~s.
 30\%-pruned copies' skill (registered). Third, checks needing no recorded future only partly replaced checks several steps ahead
 (registered tests): on {{n_P}} GRU simulators the error growth rate ranked them by 2-second error better than one-step
 error, but was not separated from 8-step error and failed a replication (secondary); a kinematic residual ranked them better than
-one-step error, but less well under policy-chosen commands. We recommend checking 8 or more steps ahead on
-held-out episodes, with these checks as a fallback. Scope: simulated data, one robot and trotting gait, no
+one-step error (secondary), but less well under policy-chosen commands. We recommend checking 8 or more steps ahead on
+held-out episodes, with these checks as fallback. Scope: simulated data, one robot and trotting gait, no
 physics-simulator test.
 \end{abstract}
 
@@ -105,10 +105,10 @@ were trained one step ahead, by \emph{teacher forcing}~\cite{williams1989} (each
 state, never from the model's own prediction) or with $N=1$. The other {{n_C}} are compressed copies, made after
 training: weights rounded to 16 or 8 bits, the smallest 10--50\% of weights set to zero (\emph{pruning}), or GRU units
 removed. The five-split pool repeats the main training methods and compressions on every split. The main pool also holds
-teacher-forced and rollout-trained models trained four times longer. Counted once, the {{n_trained}} trained and {{n_compressed}} compressed GRU
-simulators fill both pools: the main pool's {{n_P}} are {{im_f18_trained}} trained models and {{n_C}} copies, the
-five-split pool's {{n_X}} are {{im_x5_trained}} and {{n_compressed}}, {{im_both_trained}} trained models and the {{n_C}}
-copies are in both (F18's split is one of the five), and study AR adds {{s1_ar_n}} simulators of three other
+teacher-forced and rollout-trained models trained four times longer. Counted once, there are {{n_trained}} trained and {{n_compressed}} compressed GRU
+simulators. The main pool's {{n_P}} are {{im_f18_trained}} trained models and {{n_C}} copies; the
+five-split pool's {{n_X}} are {{im_x5_trained}} trained models and {{n_compressed}} copies; {{im_both_trained}} trained models and the {{n_C}}
+copies are in both (F18's split is one of the five). Study AR adds {{s1_ar_n}} simulators of three other
 architectures trained on F18's split. Training used the release's loss and Adam for {{hp_iters}} iterations unless stated, on a
 CPU (appendix~A1).
 
@@ -131,7 +131,7 @@ correlations. A result is \emph{registered} if its decision rule was committed t
 measurements that test it were run~\cite{nosek2018prereg}; a rule gives a verdict only when its interval clears a stated threshold
 (usually zero), and ``not settled'' otherwise. Three registrations were made for this paper: the comparison of checks
 on both pools (primary Q1--Q2, secondary Q3--Q6), study FT on fine-tuning pruned copies (FT1--FT2), and studies CL
-and AR on policy commands and other architectures (CL1--CL2, AR1--AR2). Primary questions are judged at 97.5\%. The registrations are
+and AR on policy commands and other architectures (CL1--CL2, AR1--AR2). Primary questions use 97.5\% intervals. The registrations are
 commits in our own version control, so their times are self-reported: the supplementary history shows their order but
 no independent timestamp, and the answer to Q1 was largely predictable from earlier analyses (appendix~A2). Other verdicts come from rules registered for earlier,
 unpublished analyses; those registrations and all code are in the anonymised supplementary material. Secondary
@@ -191,7 +191,7 @@ rule found rollout training better on all {{x3_n_eps}} held-out episodes. Over 2
 joint angles are off by {{ph_jdeg_h100_B}}$^\circ$, against {{ph_jdeg_h100_A}}$^\circ$ (body position: appendix~A1).
 Training with $N=1$ shows the same reversal.
 
-Longer training and other networks gave the same reversal (descriptive). Trained four times longer, teacher forcing
+Longer training and two of three other networks gave the same reversal (descriptive). Trained four times longer, teacher forcing
 was still better one step ahead and worse at 100 steps in each of {{s1_tb_nseeds}} seeds (appendix~A10), as in
 {{s1_ar4_mlp_both}} of {{s1_ar4_mlp_n_pairs}} seed pairs of an MLP simulator and {{s1_ar4_transformer_both}} of
 {{s1_ar4_transformer_n_pairs}} of a Transformer; in an RSSM (a recurrent state-space model) it was better one step
@@ -300,7 +300,7 @@ simulators per split are compressed copies, failed for the growth rate: one-step
 intervals, but the growth rate beat one-step error in no reading (exploratory, appendix~A4). A possible cause, not tested here, is that moderate pruning adds error without a shift in growth rate
 that we could detect (Q6); a negative growth rate certifies nothing: of the {{d4_F18_worse_total}} main-pool
 simulators worse than the floor at 100 steps, {{d4_F18_non_worse}} had $\lambda_1\le0$. The kinematic residual,
-registered on the main pool only, was level with the 8-step error here ({{x1_rJ_minus_E8}} {{x1_rJ_minus_E8_ci}};
+registered on the main pool only, was not separated from the 8-step error here ({{x1_rJ_minus_E8}} {{x1_rJ_minus_E8_ci}};
 exploratory).
 
 \textbf{Other architectures.} Study AR repeated the two comparisons that had favoured the label-free checks on
@@ -308,8 +308,8 @@ exploratory).
 growth rate ranked better than one-step error (AR1), carried by the MLP and the Transformer, where one-step error
 ranked the runs largely in reverse; in the RSSM, one-step error ranked them better ({{rw_t_rssm_E1}} against
 {{rw_t_rssm_lam1}}; descriptive). The residual against the 8-step error (AR2) was not settled
-(Table~\ref{tab:verdicts}). Ranked across architectures together, the growth rate did not rank the runs
-($\rho={}${{s1_art_pooled_lam1}}; secondary, appendix~A9).
+(Table~\ref{tab:verdicts}). Ranked across architectures together, the growth rate's lead over one-step error was not settled
+(secondary; $\rho={}${{s1_art_pooled_lam1}}, descriptive; appendix~A9).
 
 \textbf{Policy commands.} Study CL let the RWM authors' released policy, not the recording, supply the joint commands:
 at each step it read the simulator's own predicted state and a fixed velocity command. Such a rollout has no recorded
@@ -317,9 +317,9 @@ future, so the checks were ranked against $E_{100}$ under recorded commands. The
 ({{rw_t_F18pol_rJ}} against {{q4_1_rho_new}}), a drop carried by the trained models and seen again on the five-split
 pool (secondary); the growth rate's change was not settled (Table~\ref{tab:verdicts}). With small noise added to the
 recorded commands instead, both checks were unchanged, and differentiated through the policy as well (closed loop),
-the growth rate did not rank the simulators (secondary, appendix~A8). Simulators with higher error gave the policy lower imagined return
+the growth rate ranked the simulators worse, with $\rho$ near zero (secondary, appendix~A8). Simulators with higher error gave the policy lower imagined return
 ($\rho={}${{s1_cl6_rho}}; secondary). This signal needs a policy and a reward but no recording, and was nominally
-the strongest under policy commands, ahead of the residual's {{rw_t_F18pol_rJ}} (descriptive); it was not registered
+the strongest under policy commands, ahead of the residual's {{rw_t_F18pol_rJ}} (exploratory); it was not registered
 as a check and is a candidate for a follow-up study. 
 \begin{widefigure}[t]
 \centering
@@ -347,7 +347,7 @@ One-step error picked the wrong training choices, and no label-free check was sh
 best with recorded commands (its lead over 8-step error failed multiple-test correction) and less well under a policy.
 Within one training method it ranked better than 8-step error on the main pool's rollout-trained simulators, not clearly on the five-split pool's, where the growth rate
 failed (exploratory). A positive growth rate flagged one-step-trained simulators (but the
-released model's is positive too), a negative one certifies nothing, and growth rates did not rank architectures
+released model's is positive too), a negative one certifies nothing, and growth rates were not shown to rank architectures
 together. (4)~\emph{Read ensemble spread as a ranking}, rescaled per horizon on held-out episodes before use as an
 interval, and do not rely on label-free run-time alarms: in earlier registered analyses a growth-rate signal lost to a
 step counter, and re-synchronising on a score lost to a fixed schedule (appendix~A6).
@@ -365,7 +365,7 @@ stability account does not cover the released model. Each other architecture has
 
 \section{Conclusion}\label{sec:conclusion}
 On this simulator, one-step checks favoured teacher forcing, one-step training and a pruned model that, without
-fine-tuning, loses most of its skill by 2~s. Checking 8 or more steps ahead on held-out episodes is the safer test.
+fine-tuning, loses most of its skill by 2~s. Checking 8 or more steps ahead on held-out episodes is the safer way to rank these simulators.
 Without recorded futures, the growth rate beat one-step error on the main pool but failed its replication (secondary), and the
 kinematic residual ranked best on the main pool with recorded commands (descriptive) but less well under a policy. Whether these checks
 predict how well a policy trained inside the simulator walks is the next question.
