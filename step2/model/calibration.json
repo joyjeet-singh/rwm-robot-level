@@ -1,0 +1,166 @@
+{
+ "what": "Frozen calibration of the hand-built MuJoCo ANYmal D model (scripts/s2/calibrate.py)",
+ "frozen": true,
+ "frozen_at": "2026-11-07T23:56:39",
+ "episodes": [
+  0,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  9
+ ],
+ "grid": {
+  "friction": [
+   0.6,
+   0.8,
+   1.0,
+   1.2
+  ],
+  "timeconst": [
+   0.005,
+   0.01,
+   0.02
+  ],
+  "armature": [
+   0.0,
+   0.02,
+   0.05
+  ],
+  "damping": [
+   0.0,
+   0.5,
+   1.0
+  ]
+ },
+ "rule": "min mean E8 over the training arena; ties by E1; exact ties: larger time constant, earlier point",
+ "chosen": {
+  "friction": 0.6,
+  "timeconst": 0.01,
+  "armature": 0.02,
+  "damping": 0.0
+ },
+ "chosen_index": 12,
+ "effective_timeconst": 0.01,
+ "exact_ties": [
+  3,
+  12
+ ],
+ "objective": {
+  "E8": 0.1725719586424147,
+  "E1": 0.10467208424162876,
+  "torque_Nm_E8": 2.786015824341196
+ },
+ "uncalibrated_point": {
+  "friction": 0.8,
+  "timeconst": 0.02,
+  "armature": 0.0,
+  "damping": 0.0
+ },
+ "top10": [
+  {
+   "index": 12,
+   "friction": 0.6,
+   "timeconst": 0.01,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1725719586424147,
+   "E1": 0.10467208424162876
+  },
+  {
+   "index": 3,
+   "friction": 0.6,
+   "timeconst": 0.005,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1725719586424147,
+   "E1": 0.10467208424162876
+  },
+  {
+   "index": 39,
+   "friction": 0.8,
+   "timeconst": 0.01,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1747561047876362,
+   "E1": 0.10488691833253677
+  },
+  {
+   "index": 30,
+   "friction": 0.8,
+   "timeconst": 0.005,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1747561047876362,
+   "E1": 0.10488691833253677
+  },
+  {
+   "index": 66,
+   "friction": 1.0,
+   "timeconst": 0.01,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1768723212822798,
+   "E1": 0.1050417796354689
+  },
+  {
+   "index": 57,
+   "friction": 1.0,
+   "timeconst": 0.005,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1768723212822798,
+   "E1": 0.1050417796354689
+  },
+  {
+   "index": 93,
+   "friction": 1.2,
+   "timeconst": 0.01,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1781123902280076,
+   "E1": 0.10515551565289753
+  },
+  {
+   "index": 84,
+   "friction": 1.2,
+   "timeconst": 0.005,
+   "armature": 0.02,
+   "damping": 0.0,
+   "E8": 0.1781123902280076,
+   "E1": 0.10515551565289753
+  },
+  {
+   "index": 13,
+   "friction": 0.6,
+   "timeconst": 0.01,
+   "armature": 0.02,
+   "damping": 0.5,
+   "E8": 0.17906707453209028,
+   "E1": 0.10898140687790908
+  },
+  {
+   "index": 4,
+   "friction": 0.6,
+   "timeconst": 0.005,
+   "armature": 0.02,
+   "damping": 0.5,
+   "E8": 0.17906707453209028,
+   "E1": 0.10898140687790908
+  }
+ ],
+ "worst": {
+  "index": 101,
+  "friction": 1.2,
+  "timeconst": 0.02,
+  "armature": 0.0,
+  "damping": 1.0,
+  "E8": 0.23275133665723696
+ },
+ "unstable_windows_total": 0,
+ "base_xml_sha256": "ba5c5a22bdf3733cf2a29df3e1e59a2a8cb7ad7c465706c416500bfddc970d60",
+ "cal_xml_sha256": "15f124fc69601ca8589c33cd6a9eb26068da02db854e88cf2a307a896469dccb",
+ "pd_fit_sha256": "d0c91bd4b83020e14aca6825658d5e7dc5826ae4be1d74767a9c17ae41d89762"
+}

@@ -1,0 +1,19 @@
+Step 2 fidelity (hand-built MuJoCo ANYmal D; validation, not results)
+calibrated constants: friction=0.6, timeconst=0.01, armature=0.02, damping=0.0
+training objective E8 = 0.1726, E1 = 0.1047
+
+(a) replay of recorded joint commands, held-out episodes 1 and 8 (4 trajectories)
+   h   uncal E     cal E     floor  uncal Nm    cal Nm
+   1    0.1297    0.0852    0.1617      2.12      1.58
+   8    0.1810    0.1498    0.4797      2.97      2.43
+  24    0.2501    0.2284    0.6401      3.47      3.19
+ 100    1.0907    1.0386    0.6911      6.98      6.70
+unstable windows (uncal, cal): 0, 0
+
+(b) authors' policy, 10 schedules x 8 starts; (c) recorded data, same schedules
+               falls  2 feet    duty   speed    turn   return
+MuJoCo uncal   0.013   0.756   0.577   0.073   0.061    26.20
+  MuJoCo cal   0.013   0.789   0.562   0.069   0.061    26.28
+    recorded   0.000   0.844   0.538   0.072   0.138      nan
+speed in m/s, turn in rad/s; 2 feet = share of time with exactly two feet down
+Gate 1 is applied by M3 (G1 falls < 10%, G2 |2 feet - recorded| <= 0.10, G3 speed <= 1.5 x recorded)

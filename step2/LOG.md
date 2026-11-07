@@ -15,3 +15,9 @@
 - Tests a–e pass (results/s2/m2_tests.json); windows equal evalh's (floor to 1.3e-7); held-out refused.
 - Grid points are compiled from model text: run-time armature leaves MuJoCo's derived quantities stale (DECISIONS.md M2).
 - step2/jobs/calib.zsh written, passes zsh -n; a dry run of all parts on redirected paths passed. Not run (launcher runs it). Estimated 15–25 min.
+## M3 status: COMPLETE (2026-11-08 00:25)
+- Gate 1 passed (calibrated model, 80 episodes): falls 1.25% (<10%); two feet 0.789 vs 0.844 recorded (gap 5.5 pts); speed error 0.069 vs 0.072 m/s (ratio 0.95).
+- scripts/s2/train_policy.py (wraps run_lite; applies compression variants itself, as run_lite ignores them), evaluate.py (M2 protocol, bootstrap 95% intervals, pre-registration guard), pilot_report.py.
+- Tests a–e pass (scripts/s2/test_m3.py, results/s2/m3_tests.json, ~35 s).
+- step2/jobs/pilot.zsh written, zsh -n passes, report dry-run on test outputs. Not run (launcher runs it). Estimated 4–5 h.
+- Committed the calib job's outputs (fidelity results, calibration, frozen model) with this session.

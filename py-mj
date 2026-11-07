@@ -1,0 +1,12 @@
+#!/bin/zsh
+# ./py-mj <args>: as ./py, with .pylib-mj (MuJoCo and helpers) also on PYTHONPATH.
+emulate -L zsh
+here=${0:A:h}
+export PYTHONDONTWRITEBYTECODE=1
+export PDM_ROOT="${here:h}"
+export PYTHONPATH="$here/scripts${PYTHONPATH:+:$PYTHONPATH}"
+[[ -d "$here/.pylib" ]] && export PYTHONPATH="$PYTHONPATH:$here/.pylib"
+[[ -d "$here/.pylib-mj" ]] && export PYTHONPATH="$PYTHONPATH:$here/.pylib-mj"
+export MPLCONFIGDIR="$here/.cache/matplotlib"
+export PATH="/Library/TeX/texbin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+exec "${here:h}/.venv-rwm311/bin/python" "$@"

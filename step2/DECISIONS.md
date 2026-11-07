@@ -29,3 +29,14 @@
 - **Evaluation starts:** `default_rng([2027, e, j])`; all 12 joints get a uniform ±0.05 rad offset; heading is uniform on (−π, π).
 - **Refusals:** held-out replays (calibrated *and* uncalibrated) and every policy run are refused until `calibration.json` is frozen and its XML hash matches.
 - **Extra, descriptive:** (b) also runs on the uncalibrated model, to help a diagnosis if Gate 1 fails. Gate 1 reads the calibrated run only.
+
+## M3
+- **Gate 1 passed** on the calibrated model (G1 1.25%, G2 gap 5.5 points, G3 ratio 0.95); see `step2/notes/M3.md`.
+- **Released model's fold:** the plan says `--holdout` comes from the simulator's fold. The released model was trained on all ten episodes (`models.json` arena "all"), so its pilot policy gets no holdout; F18 members get `1,8`. Literal reading of the plan; the evaluation uses all ten schedules for every policy either way.
+- **Compressed simulators:** `run_lite.pick_model` ignores the `variant` field and would train in the uncompressed parent. `train_policy.py` builds the model itself (common.load, then compress.apply) and hands it to run_lite; the hash and variant counts are checked against models.json. run_lite is not edited.
+- **Imagined return:** the mean of the lite log's `Train/mean_reward` over the last 25 iterations (the plan says only "from the last iterations"). The mean step reward over the same iterations is kept too.
+- **Interrupted training restarts from iteration 0** (no mid-run resume), so every policy is one seeded, uninterrupted run.
+- **95% intervals** (for P3): percentile bootstrap of the 80-episode mean, resampling the eight starts within each schedule, 10,000 draws, seed 2027. Per-episode values are kept, so M4 can check them another way.
+- **Progress:** every 25 iterations as the plan says, and also after any iteration ending more than 5 minutes after the last write, to keep the 10-minute rule on a slow machine.
+- **Pilot parallelism:** two training workers of two threads each (4 cores, no session running), then four single-thread evaluations.
+- **Pilot teacher-forced model:** B_s0 (seed 0, the plan's "one teacher-forced model").

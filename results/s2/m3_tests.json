@@ -1,0 +1,33 @@
+{
+ "what": "M3 tests (scripts/s2/test_m3.py)",
+ "seconds": 32.69676971435547,
+ "all_pass": true,
+ "a_train_export": {
+  "pass": true,
+  "rc": 0,
+  "tail": null
+ },
+ "b_variant_applied": {
+  "pass": true,
+  "zeros": 705472,
+  "pruned": 705472,
+  "tail": null
+ },
+ "c_released": {
+  "pass": true,
+  "rc": 0,
+  "tail": null
+ },
+ "d_evaluate": {
+  "pass": true,
+  "ret": 8.571220843777715,
+  "steps": 1000,
+  "fell": false,
+  "speed_err": 1.1693550629180391,
+  "turn_err": 0.09752481643359028,
+  "tail": null
+ },
+ "e_guards": {
+  "pass": true
+ }
+}
