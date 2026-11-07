@@ -1,0 +1,156 @@
+{
+ "rwm_imag_steps": {
+  "url": "https://arxiv.org/abs/2501.10100",
+  "version": "v5 (14 Dec 2025); v4 read too, no difference in these items",
+  "paper": "Robotic World Model (RWM)",
+  "value": 100,
+  "unit": "imagined steps per iteration",
+  "section": "Table S11 (MBPO-PPO)",
+  "quote": "imagination steps per iteration: 100",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwm_imag_envs": {
+  "url": "https://arxiv.org/abs/2501.10100",
+  "version": "v5 (14 Dec 2025); v4 read too, no difference in these items",
+  "paper": "Robotic World Model (RWM)",
+  "value": 4096,
+  "unit": "imagined environments",
+  "section": "Table S11 (MBPO-PPO)",
+  "quote": "imagination environments: 4096",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwm_history": {
+  "url": "https://arxiv.org/abs/2501.10100",
+  "version": "v5 (14 Dec 2025); v4 read too, no difference in these items",
+  "paper": "Robotic World Model (RWM)",
+  "value": 32,
+  "unit": "steps",
+  "section": "Sec. 4.1",
+  "quote": "The model is trained with history horizon M=32 and forecast horizon N=8.",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwm_forecast": {
+  "url": "https://arxiv.org/abs/2501.10100",
+  "version": "v5 (14 Dec 2025); v4 read too, no difference in these items",
+  "paper": "Robotic World Model (RWM)",
+  "value": 8,
+  "unit": "steps",
+  "section": "Sec. 4.1",
+  "quote": "The model is trained with history horizon M=32 and forecast horizon N=8.",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwm_pretrain_transitions": {
+  "url": "https://arxiv.org/abs/2501.10100",
+  "version": "v5 (14 Dec 2025); v4 read too, no difference in these items",
+  "paper": "Robotic World Model (RWM)",
+  "value": 6000000,
+  "unit": "state transitions",
+  "section": "Table 1 (RWM pretraining)",
+  "quote": "state transitions: 6M",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwm_ar_beats_tf": {
+  "url": "https://arxiv.org/abs/2501.10100",
+  "version": "v5 (14 Dec 2025); v4 read too, no difference in these items",
+  "paper": "Robotic World Model (RWM)",
+  "value": "RWM-AR outperforms its teacher-forcing counterpart (RWM-TF)",
+  "unit": "statement",
+  "section": "Sec. 4.3",
+  "quote": "RWM-AR significantly outperforms its teacher-forcing counterpart (RWM-TF).",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwm_tf_poor_ar": {
+  "url": "https://arxiv.org/abs/2501.10100",
+  "version": "v5 (14 Dec 2025); v4 read too, no difference in these items",
+  "paper": "Robotic World Model (RWM)",
+  "value": "N=1 is teacher forcing: fast, poor autoregressive performance",
+  "unit": "statement",
+  "section": "App. A.4.1 (varying N)",
+  "quote": "this setting leads to poor autoregressive performance",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwmu_imag_steps": {
+  "url": "https://arxiv.org/abs/2504.16680",
+  "version": "v3 (8 Jan 2026)",
+  "paper": "RWM-U (uncertainty-aware RWM)",
+  "value": 100,
+  "unit": "imagined steps per iteration",
+  "section": "App. A.3.2, Table S11",
+  "quote": "imagination steps per iteration: 100 (Intro: \"100-step episodic rollouts\")",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "rwmu_penalty": {
+  "url": "https://arxiv.org/abs/2504.16680",
+  "version": "v3 (8 Jan 2026)",
+  "paper": "RWM-U (uncertainty-aware RWM)",
+  "value": "r~ = r - lambda*u, u = ensemble variance (epistemic uncertainty)",
+  "unit": "statement",
+  "section": "Sec. 4.2, Eq. 5",
+  "quote": "r~ = r - lambda*u",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "ikce_definition": {
+  "url": "https://arxiv.org/abs/2607.05966",
+  "version": "v1 (7 Jul 2026; only version)",
+  "paper": "iKCE (imagined kinematic consistency error)",
+  "value": "departure of each predicted next state from the kinematic extrapolation of its predecessor (closed-form constant-velocity or constant-acceleration predictor)",
+  "unit": "statement",
+  "section": "Sec. III-A",
+  "quote": "iKCE measures how far each predicted next state departs from the kinematic extrapolation of its predecessor",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "ikce_necessary": {
+  "url": "https://arxiv.org/abs/2607.05966",
+  "version": "v1 (7 Jul 2026; only version)",
+  "paper": "iKCE (imagined kinematic consistency error)",
+  "value": "necessary but not sufficient to certify dynamic imagination",
+  "unit": "statement",
+  "section": "Sec. III-A / Sec. V",
+  "quote": "necessary but not sufficient to certify dynamic imagination; structural, not predictive, by design",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "ikce_n_models": {
+  "url": "https://arxiv.org/abs/2607.05966",
+  "version": "v1 (7 Jul 2026; only version)",
+  "paper": "iKCE (imagined kinematic consistency error)",
+  "value": 1,
+  "unit": "models evaluated",
+  "section": "App. A, Table II",
+  "quote": "DreamerV3 on DMC walker-walk (one model, one task)",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "ikce_task": {
+  "url": "https://arxiv.org/abs/2607.05966",
+  "version": "v1 (7 Jul 2026; only version)",
+  "paper": "iKCE (imagined kinematic consistency error)",
+  "value": "DreamerV3 on DMC walker-walk",
+  "unit": "statement",
+  "section": "App. A, Table II",
+  "quote": "DreamerV3 on DMC walker-walk",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ },
+ "ikce_ranks_models": {
+  "url": "https://arxiv.org/abs/2607.05966",
+  "version": "v1 (7 Jul 2026; only version)",
+  "paper": "iKCE (imagined kinematic consistency error)",
+  "value": false,
+  "unit": "used to rank models",
+  "section": "whole paper (read to the end)",
+  "quote": "no ranking result found; it diagnoses one model (imagined against real-physics rollouts; friction sweep)",
+  "quote_checked_against_raw_html": false,
+  "read_by": "I0 (improve/notes/I0_facts.md)"
+ }
+}

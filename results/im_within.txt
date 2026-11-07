@@ -1,0 +1,39 @@
+I1 within-method rankings, EXPLORATORY (added after the registered results; stored values only).
+Spearman rho with E100 (recorded commands); 95% interval, 20,000 draws of models, default_rng(0); the return
+enters negated. a = 48 rollout-trained (F18); b = 40 rollout-trained (X5: rho per split of 8, averaged, resampled
+within splits; the 3 ensembles per split may share seeds, so b intervals are likely too narrow);
+c = 40 compressed copies (F18); d = all 97 of F18 (its rho values reproduce Table 2 exactly, asserted).
+-- group a (n = 48)
+   E1                       -0.18  [-0.49, +0.19]
+   E8                       +0.38  [+0.02, +0.70]
+   lambda1                  +0.76  [+0.57, +0.88]
+   rJ                       +0.85  [+0.72, +0.93]
+   lambda1 (policy cmds)    +0.70  [+0.46, +0.85]
+   rJ (policy cmds)         +0.38  [+0.06, +0.65]
+   -imagined return         +0.61  [+0.35, +0.78]
+   minus rho(E8): lambda1 +0.38 [-0.01, +0.77]; rJ +0.47 [+0.13, +0.81]
+-- group b (n = 40)
+   E1                       +0.53  [+0.17, +0.75]
+   E8                       +0.53  [+0.16, +0.75]
+   lambda1                  -0.21  [-0.54, +0.18]
+   rJ                       +0.73  [+0.42, +0.89]
+   minus rho(E8): lambda1 -0.74 [-1.09, -0.21]; rJ +0.20 [-0.13, +0.56]
+-- group c (n = 40)
+   E1                       +0.89  [+0.77, +0.95]
+   E8                       +0.96  [+0.91, +0.98]
+   lambda1                  +0.82  [+0.65, +0.91]
+   rJ                       +0.94  [+0.85, +0.98]
+   lambda1 (policy cmds)    +0.80  [+0.64, +0.89]
+   rJ (policy cmds)         +0.92  [+0.83, +0.96]
+   -imagined return         +0.91  [+0.81, +0.96]
+   minus rho(E8): lambda1 -0.14 [-0.30, -0.04]; rJ -0.02 [-0.09, +0.04]
+-- group d (n = 97)
+   E1                       +0.32  [+0.07, +0.54]
+   E8                       +0.84  [+0.71, +0.93]
+   lambda1                  +0.80  [+0.71, +0.85]
+   rJ                       +0.95  [+0.91, +0.97]
+   lambda1 (policy cmds)    +0.76  [+0.68, +0.83]
+   rJ (policy cmds)         +0.83  [+0.73, +0.89]
+   -imagined return         +0.86  [+0.77, +0.91]
+   minus rho(E8): lambda1 -0.04 [-0.18, +0.12]; rJ +0.12 [+0.02, +0.23]
+Already known (appendix A2, an earlier study, lambda1 against the 368-step error): a +0.85, b +0.21.

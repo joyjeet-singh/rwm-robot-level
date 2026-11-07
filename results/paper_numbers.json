@@ -1979,6 +1979,56 @@
   "source": "AIR 2027/results/stats.json",
   "value": "5.9"
  },
+ "ext_budget_fraction": {
+  "path": "ours.distinct_transitions / rwm_pretrain_transitions.value",
+  "source": "rwm_repro/results/task_c2_data_budget.json and AIR 2027/results/external_facts.json",
+  "value": "0.13\\%"
+ },
+ "ext_ikce_n_models": {
+  "path": "ikce_n_models.value (iKCE (imagined kinematic consistency error), App. A, Table II, v1 (7 Jul 2026; only version))",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "1"
+ },
+ "ext_ikce_task": {
+  "path": "ikce_task.value (iKCE (imagined kinematic consistency error), App. A, Table II, v1 (7 Jul 2026; only version))",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "DreamerV3 on DMC walker-walk"
+ },
+ "ext_ours_transitions": {
+  "path": "ours.distinct_transitions",
+  "source": "rwm_repro/results/task_c2_data_budget.json",
+  "value": "7{,}991"
+ },
+ "ext_rwm_forecast": {
+  "path": "rwm_forecast.value (Robotic World Model (RWM), Sec. 4.1, v5 (14 Dec 2025); v4 read too, no difference in these items)",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "8"
+ },
+ "ext_rwm_history": {
+  "path": "rwm_history.value (Robotic World Model (RWM), Sec. 4.1, v5 (14 Dec 2025); v4 read too, no difference in these items)",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "32"
+ },
+ "ext_rwm_imag_envs": {
+  "path": "rwm_imag_envs.value (Robotic World Model (RWM), Table S11 (MBPO-PPO), v5 (14 Dec 2025); v4 read too, no difference in these items)",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "4096"
+ },
+ "ext_rwm_imag_steps": {
+  "path": "rwm_imag_steps.value (Robotic World Model (RWM), Table S11 (MBPO-PPO), v5 (14 Dec 2025); v4 read too, no difference in these items)",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "100"
+ },
+ "ext_rwm_pretrain": {
+  "path": "rwm_pretrain_transitions.value (Robotic World Model (RWM), Table 1 (RWM pretraining), v5 (14 Dec 2025); v4 read too, no difference in these items)",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "6 million"
+ },
+ "ext_rwmu_imag_steps": {
+  "path": "rwmu_imag_steps.value (RWM-U (uncertainty-aware RWM), App. A.3.2, Table S11, v3 (8 Jan 2026))",
+  "source": "AIR 2027/results/external_facts.json",
+  "value": "100"
+ },
  "fig_B_cross": {
   "path": "B_cross_floor_step",
   "source": "AIR 2027/results/figure_facts.json",
@@ -3063,6 +3113,356 @@
   "path": "families.use.tests.H7.estimate",
   "source": "ICPAIAS/results/r2_verdicts.json",
   "value": "10.1\\%"
+ },
+ "im_a_E1": {
+  "path": "a.checks.E1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "$-$0.18"
+ },
+ "im_a_E1_ci": {
+  "path": "a.checks.E1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$0.49, +0.19]"
+ },
+ "im_a_E8": {
+  "path": "a.checks.E8.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.38"
+ },
+ "im_a_E8_ci": {
+  "path": "a.checks.E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.02, +0.70]"
+ },
+ "im_a_dlam1": {
+  "path": "a.diffs.lam1_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.38"
+ },
+ "im_a_dlam1_ci": {
+  "path": "a.diffs.lam1_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$0.01, +0.77]"
+ },
+ "im_a_drJ": {
+  "path": "a.diffs.rJ_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.47"
+ },
+ "im_a_drJ_ci": {
+  "path": "a.diffs.rJ_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.13, +0.81]"
+ },
+ "im_a_lam1": {
+  "path": "a.checks.lam1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.76"
+ },
+ "im_a_lam1_ci": {
+  "path": "a.checks.lam1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.57, +0.88]"
+ },
+ "im_a_lam1pol": {
+  "path": "a.checks.lam1_pol.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.70"
+ },
+ "im_a_lam1pol_ci": {
+  "path": "a.checks.lam1_pol.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.46, +0.85]"
+ },
+ "im_a_n": {
+  "path": "a.n_models",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "48"
+ },
+ "im_a_negret": {
+  "path": "a.checks.negret.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.61"
+ },
+ "im_a_negret_ci": {
+  "path": "a.checks.negret.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.35, +0.78]"
+ },
+ "im_a_rJ": {
+  "path": "a.checks.rJ.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.85"
+ },
+ "im_a_rJ_ci": {
+  "path": "a.checks.rJ.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.72, +0.93]"
+ },
+ "im_a_rJpol": {
+  "path": "a.checks.rJ_pol.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.38"
+ },
+ "im_a_rJpol_ci": {
+  "path": "a.checks.rJ_pol.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.06, +0.65]"
+ },
+ "im_b_E1": {
+  "path": "b.checks.E1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.53"
+ },
+ "im_b_E1_ci": {
+  "path": "b.checks.E1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.17, +0.75]"
+ },
+ "im_b_E8": {
+  "path": "b.checks.E8.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.53"
+ },
+ "im_b_E8_ci": {
+  "path": "b.checks.E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.16, +0.75]"
+ },
+ "im_b_dlam1": {
+  "path": "b.diffs.lam1_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "$-$0.74"
+ },
+ "im_b_dlam1_ci": {
+  "path": "b.diffs.lam1_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$1.09, $-$0.21]"
+ },
+ "im_b_drJ": {
+  "path": "b.diffs.rJ_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.20"
+ },
+ "im_b_drJ_ci": {
+  "path": "b.diffs.rJ_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$0.13, +0.56]"
+ },
+ "im_b_lam1": {
+  "path": "b.checks.lam1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "$-$0.21"
+ },
+ "im_b_lam1_ci": {
+  "path": "b.checks.lam1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$0.54, +0.18]"
+ },
+ "im_b_n": {
+  "path": "b.n_models",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "40"
+ },
+ "im_b_rJ": {
+  "path": "b.checks.rJ.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.73"
+ },
+ "im_b_rJ_ci": {
+  "path": "b.checks.rJ.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.42, +0.89]"
+ },
+ "im_c_E1": {
+  "path": "c.checks.E1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.89"
+ },
+ "im_c_E1_ci": {
+  "path": "c.checks.E1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.77, +0.95]"
+ },
+ "im_c_E8": {
+  "path": "c.checks.E8.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.96"
+ },
+ "im_c_E8_ci": {
+  "path": "c.checks.E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.91, +0.98]"
+ },
+ "im_c_dlam1": {
+  "path": "c.diffs.lam1_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "$-$0.14"
+ },
+ "im_c_dlam1_ci": {
+  "path": "c.diffs.lam1_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$0.30, $-$0.04]"
+ },
+ "im_c_drJ": {
+  "path": "c.diffs.rJ_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "$-$0.02"
+ },
+ "im_c_drJ_ci": {
+  "path": "c.diffs.rJ_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$0.09, +0.04]"
+ },
+ "im_c_lam1": {
+  "path": "c.checks.lam1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.82"
+ },
+ "im_c_lam1_ci": {
+  "path": "c.checks.lam1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.65, +0.91]"
+ },
+ "im_c_lam1pol": {
+  "path": "c.checks.lam1_pol.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.80"
+ },
+ "im_c_lam1pol_ci": {
+  "path": "c.checks.lam1_pol.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.64, +0.89]"
+ },
+ "im_c_n": {
+  "path": "c.n_models",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "40"
+ },
+ "im_c_negret": {
+  "path": "c.checks.negret.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.91"
+ },
+ "im_c_negret_ci": {
+  "path": "c.checks.negret.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.81, +0.96]"
+ },
+ "im_c_rJ": {
+  "path": "c.checks.rJ.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.94"
+ },
+ "im_c_rJ_ci": {
+  "path": "c.checks.rJ.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.85, +0.98]"
+ },
+ "im_c_rJpol": {
+  "path": "c.checks.rJ_pol.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.92"
+ },
+ "im_c_rJpol_ci": {
+  "path": "c.checks.rJ_pol.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.83, +0.96]"
+ },
+ "im_d_E1": {
+  "path": "d.checks.E1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.32"
+ },
+ "im_d_E1_ci": {
+  "path": "d.checks.E1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.07, +0.54]"
+ },
+ "im_d_E8": {
+  "path": "d.checks.E8.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.84"
+ },
+ "im_d_E8_ci": {
+  "path": "d.checks.E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.71, +0.93]"
+ },
+ "im_d_dlam1": {
+  "path": "d.diffs.lam1_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "$-$0.04"
+ },
+ "im_d_dlam1_ci": {
+  "path": "d.diffs.lam1_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[$-$0.18, +0.12]"
+ },
+ "im_d_drJ": {
+  "path": "d.diffs.rJ_minus_E8.delta",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.12"
+ },
+ "im_d_drJ_ci": {
+  "path": "d.diffs.rJ_minus_E8.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.02, +0.23]"
+ },
+ "im_d_lam1": {
+  "path": "d.checks.lam1.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.80"
+ },
+ "im_d_lam1_ci": {
+  "path": "d.checks.lam1.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.71, +0.85]"
+ },
+ "im_d_lam1pol": {
+  "path": "d.checks.lam1_pol.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.76"
+ },
+ "im_d_lam1pol_ci": {
+  "path": "d.checks.lam1_pol.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.68, +0.83]"
+ },
+ "im_d_n": {
+  "path": "d.n_models",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "97"
+ },
+ "im_d_negret": {
+  "path": "d.checks.negret.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.86"
+ },
+ "im_d_negret_ci": {
+  "path": "d.checks.negret.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.77, +0.91]"
+ },
+ "im_d_rJ": {
+  "path": "d.checks.rJ.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.95"
+ },
+ "im_d_rJ_ci": {
+  "path": "d.checks.rJ.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.91, +0.97]"
+ },
+ "im_d_rJpol": {
+  "path": "d.checks.rJ_pol.rho",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "+0.83"
+ },
+ "im_d_rJpol_ci": {
+  "path": "d.checks.rJ_pol.ci95",
+  "source": "AIR 2027/results/im_within.json",
+  "value": "[+0.73, +0.89]"
  },
  "k_h1": {
   "path": "n8_k_rel_epi_h1",
