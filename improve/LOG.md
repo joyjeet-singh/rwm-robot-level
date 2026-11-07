@@ -17,3 +17,4 @@ Facts: RWM/RWM-U imagine 100 steps (24 is only an intermediate horizon); 0.13% =
 Checks: slack PASS (6/6 pages, free slot 0.34), check_claims 127/0 failed, check_numbers all_agree, check_bib OK, submission_checks 0 failures.
 Notes: improve/notes/I2.md (I3 instructions: Fig. 1 single 100-step line from external_facts; Tables 1, 3), I2_claims.md (49 lines).
 Open: I3 has 0.04 textheight of margin; AI-use statement mismatches listed for the author in I2.md; figures/fig_horizon.* left unstaged for I3.
+Commit: f4c63cc (I2: text changes).
