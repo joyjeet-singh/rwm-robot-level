@@ -106,7 +106,22 @@
   "A9: the runs that diverged under recorded commands are teacher-forced MLPs with finite values": true,
   "A10: E100 lower after longer training for both arms, E1 moved by < 0.01; all four statements in every seed": true,
   "A10: slopes at 10k much smaller than at 2,500 (largest magnitude at 10k below smallest at 2,500)": true,
-  "A10: parent kept less than all of the control's skill at every horizon (more training added little)": true
+  "A10: parent kept less than all of the control's skill at every horizon (more training added little)": true,
+  "Table 3: Q1-Q4 verdicts as registered (Q1 label-free better, Q2 not settled, Q3 one-step better than lambda_1 vs E1 and 8-step better vs E8, Q4 label-free better against both)": true,
+  "Table 3: AR1 label-free better, AR2 not settled, CL1 worse with policy commands, CL2 not settled, FT1 restores, FT2 nearly as skilled": true,
+  "Table 3: the 97.5% intervals of Q1, AR1 (above 0) and CL1 (below 0) agree in sign with their verdicts; Q2 and CL2 span 0": true,
+  "Table 3 daggers: Q3 vs E1 and Q4 vs E8 fail Holm's correction; Q3 vs E8 and Q4 vs E1 survive": true,
+  "Sec. 4.1: Q6 (30% pruning shift in lambda_1) not settled": true,
+  "Sec. 4.1: 8-bit weights keep most of the 100-step skill (K above 0.9)": true,
+  "Sec. 4.1: longer training: teacher forcing better at 1 step and worse at 100 in 3 of 3 seeds; loss still falling in most of the 10,000-iteration runs": true,
+  "Sec. 4.1/abstract: reversal in the MLP and the Transformer (5/5), none in the RSSM at 100 steps (0/5)": true,
+  "Sec. 4.2 / Table 2: in the RSSM one-step error ranks better than lambda_1; in the MLP and the Transformer lambda_1 does": true,
+  "Sec. 4.2: five-split pool: most simulators per split are compressed copies": true,
+  "Sec. 4.2: F18 rho: lambda_1 ranks better than E1, E8 not separated (the Q1/Q2 correlations in Table 2)": true,
+  "Sec. 4.1 uncertainty: released ensemble's spread ranks error well (Spearman above 0.5) yet its factor grows with horizon": true,
+  "Sec. 4.2: the policy-command drop is in the residual, and the closed-loop growth rate does not rank (|rho| < 0.1)": true,
+  "Sec. 4.2: imagined return and error: higher-error simulators gave lower return (rho < 0, secondary)": true,
+  "Discussion: simulators from one-step training amplify errors (lambda_1 > 0 for N=1 and teacher forcing, X5 all B)": true
  },
  "failed": []
 }

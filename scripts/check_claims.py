@@ -341,6 +341,57 @@ CLAIMS.update({
         all(0.9 < v["K"] < 1 for v in S1B["d_ft_control"]["K_P_vs_CTRL"].values()),
 })
 
+# W3 (rewrite): assertions for sentences new or changed in the rewritten main text (Sec. 4, Tables 2-3, abstract).
+_ft = FT["primary"]
+_x5 = T["X5"]
+_ar1, _ar2 = _ar["AR1"], _ar["AR2"]
+_holm = RX["A2c_holm"]["tests"]
+CLAIMS.update({
+    "Table 3: Q1-Q4 verdicts as registered (Q1 label-free better, Q2 not settled, Q3 one-step better than lambda_1 vs E1 "
+    "and 8-step better vs E8, Q4 label-free better against both)":
+        (S["Q1"]["verdict"], S["Q2"]["verdict"], S["Q3_vs_E1"]["verdict"], S["Q3_vs_E8"]["verdict"],
+         S["Q4_vs_E1"]["verdict"], S["Q4_vs_E8"]["verdict"])
+        == ("LABEL-FREE BETTER", "NOT SETTLED", "ONE-STEP BETTER", "TRAINING-HORIZON BETTER",
+            "LABEL-FREE BETTER", "LABEL-FREE BETTER"),
+    "Table 3: AR1 label-free better, AR2 not settled, CL1 worse with policy commands, CL2 not settled, FT1 restores, "
+    "FT2 nearly as skilled":
+        (_lab(_ar["AR1"]), _lab(_ar["AR2"]), _lab(_cl["CL1"]), _lab(_cl["CL2"]), _ft["FT1"]["verdict"], _ft["FT2"]["verdict"])
+        == ("LABEL-FREE BETTER", "NOT SETTLED", "WORSE WITH POLICY COMMANDS", "NOT SETTLED",
+            "FINE-TUNING RESTORES SKILL", "NEARLY AS SKILLED"),
+    "Table 3: the 97.5% intervals of Q1, AR1 (above 0) and CL1 (below 0) agree in sign with their verdicts; Q2 and CL2 span 0":
+        S["Q1"]["ci97.5"][0] > 0 and _ar1["ci97.5"][0] > 0 and _cl["CL1"]["ci97.5"][1] < 0
+        and S["Q2"]["ci97.5"][0] < 0 < S["Q2"]["ci97.5"][1] and _cl["CL2"]["ci97.5"][0] < 0 < _cl["CL2"]["ci97.5"][1],
+    "Table 3 daggers: Q3 vs E1 and Q4 vs E8 fail Holm's correction; Q3 vs E8 and Q4 vs E1 survive":
+        not _holm["Q3_vs_E1"]["rejects_zero"] and not _holm["Q4_vs_E8"]["rejects_zero"]
+        and _holm["Q3_vs_E8"]["rejects_zero"] and _holm["Q4_vs_E1"]["rejects_zero"],
+    "Sec. 4.1: Q6 (30% pruning shift in lambda_1) not settled": S["Q6"]["verdict"] == "NOT SETTLED",
+    "Sec. 4.1: 8-bit weights keep most of the 100-step skill (K above 0.9)": K("int8w", 100) > 0.9,
+    "Sec. 4.1: longer training: teacher forcing better at 1 step and worse at 100 in 3 of 3 seeds; loss still falling "
+    "in most of the 10,000-iteration runs":
+        len([k for k in _tb["10000"] if k != "mean"]) == 3
+        and all(_tb["10000"][s_]["tf_better_E1"] and _tb["10000"][s_]["tf_worse_E100"] for s_ in ("0", "1", "2"))
+        and S1B["a_still_improving"]["arm_10000"]["n_falling"] > S1B["a_still_improving"]["arm_10000"]["n"] / 2,
+    "Sec. 4.1/abstract: reversal in the MLP and the Transformer (5/5), none in the RSSM at 100 steps (0/5)":
+        _ar["AR4"]["mlp"]["both"] == _ar["AR4"]["transformer"]["both"] == 5 and _ar["AR4"]["rssm"]["tf_worse_E100"] == 0
+        and _ar["AR4"]["rssm"]["tf_better_E1"] > 0,
+    "Sec. 4.2 / Table 2: in the RSSM one-step error ranks better than lambda_1; in the MLP and the Transformer lambda_1 does":
+        _ar1["rho_base_per_group"][1] > _ar1["rho_new_per_group"][1]
+        and _ar1["rho_new_per_group"][0] > _ar1["rho_base_per_group"][0]
+        and _ar1["rho_new_per_group"][2] > _ar1["rho_base_per_group"][2],
+    "Sec. 4.2: five-split pool: most simulators per split are compressed copies":
+        sum(r["variant"] is not None for r in _x5) / 5 > len(_x5) / 5 / 2,
+    "Sec. 4.2: F18 rho: lambda_1 ranks better than E1, E8 not separated (the Q1/Q2 correlations in Table 2)":
+        S["Q1"]["rho_new"] > S["Q1"]["rho_base"] and S["Q2"]["rho_new"] <= S["Q2"]["rho_base"] + 0.1,
+    "Sec. 4.1 uncertainty: released ensemble's spread ranks error well (Spearman above 0.5) yet its factor grows with horizon":
+        tmf("n11_d2_sp_epi_h100") > 0.5 and tmf("n8_k_rel_epi_h1") > 1,
+    "Sec. 4.2: the policy-command drop is in the residual, and the closed-loop growth rate does not rank (|rho| < 0.1)":
+        _cl["CL1"]["rho_new"] < _cl["CL1"]["rho_base"] and abs(_cl["CL5"]["rho_new"]) < 0.1,
+    "Sec. 4.2: imagined return and error: higher-error simulators gave lower return (rho < 0, secondary)":
+        _cl["CL6"]["rho"] < 0,
+    "Discussion: simulators from one-step training amplify errors (lambda_1 > 0 for N=1 and teacher forcing, X5 all B)":
+        D1[N[1]]["lam1"] > 0 and D3["lam1_positive_share"]["B"] == 1.0,
+})
+
 if __name__ == "__main__":
     out = {k: bool(v) for k, v in CLAIMS.items()}
     failed = [k for k, v in out.items() if not v]

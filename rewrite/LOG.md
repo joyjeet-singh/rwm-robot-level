@@ -19,3 +19,10 @@
 - slack.py PASS: two-column 6 pp, reserve 6 pp, free slot 0.50, abstract 195. check_claims/numbers/bib/submission pass.
 - Files: rewrite/notes/W2.md, W2_claims.md (67 sentences + 2 tables, N/C marks for W3), DECISIONS.md (W2). Commit ce55843.
 - Open: W3 adds/rewords check_claims assertions for rows marked N or C in W2_claims.md.
+
+## W3 status: COMPLETE (2026-11-07 14:10)
+- check_claims.py: 107 -> 122 assertions (Table 3 verdicts and daggers, Q6, 8-bit, TB, AR4, five-split, spread, CL); none removed.
+- air-claim-checker: 14 findings, all fixed minimally in body.template.tex (scope, labels, "agree with", caveats); see rewrite/notes/W3.md.
+- Pipeline passes twice (identical text): slack PASS 6 + 6 pp, free slot 0.38, abstract 194 words; claims, numbers, bib (strict), submission checks pass.
+- ABSTRACT.txt regenerated. Supplement rebuilt (139 entries), scan 0 hits.
+- Open: abstract's 2.0 and 2.6 ratios come from different pools (stated in Table 1); free slot is 0.38, so Step 2 has less margin than after W2.
