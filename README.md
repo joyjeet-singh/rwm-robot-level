@@ -163,4 +163,41 @@ An expert review of the rewritten paper was applied without new experiments. Pla
   `scripts/im_numbers.py` (number keys, called by `paper_numbers.py`).
 - Changed: `body.template.tex`, `appendix.template.tex`, `make_figures.py` (Fig. 1 horizon line), `check_claims.py` (127 -> 159 assertions).
 - No registration, analysis script or earlier result file was touched, and nothing was rerun. Git tags: `air2027-improve-start`, `air2027-improve`.
-- `STEP2_PLAN.md` describes the robot-level test (Step 2); it is not part of this round.
+
+## Step 2 (M0-M6, added)
+
+The robot-level test: do the paper's checks predict how well policies trained inside learned simulators walk in physics?
+The physics is a MuJoCo model of ANYmal D that this round built by hand from the manufacturer's published description
+(BSD 3-Clause). It is not the data's own simulator and not hardware. Plan: `STEP2_PLAN.md`; log, checkpoint, decisions
+and notes in `step2/` (`LOG.md`, `CHECKPOINT.md`, `DECISIONS.md`, `notes/`). Registration: `prereg/PREREG_S2.md` and
+`scripts/s2_stats.py`, committed after the model's two validation gates and before any registered policy was trained
+(hash in `results/prereg_hash_s2.json`).
+
+- **Result (registered):** R0, R1 and R2 are all NOT SETTLED over nine simulators (the released model and its eight
+  compressed copies, two policies each). The fallback pool replaced the planned main-pool one because Gate 2 failed:
+  policies trained in rebuilt single-network simulators fell in every pilot episode. Secondary and exploratory
+  analyses are NOT SETTLED too; the rollout-trained subset is NOT APPLICABLE. Details: Sec. 4.2, Table III, appendices A11 and A12.
+- **Motor model:** the ANYdrive actuator network could not be obtained (`step2/assets/manifest.json`: FAILED), so a PD
+  controller with a fixed delay, fitted to the recorded torques, was used. The network file is not in any deliverable.
+- **Code:** `scripts/s2/` (model build, motor fit, calibration, fidelity, environment, policy training, evaluation, tests),
+  `scripts/s2_main.py` (the 18-policy job), `scripts/s2_stats.py` (registered analysis), `scripts/s2_numbers.py` (283 `s2_*` keys,
+  called by `paper_numbers.py`), `scripts/s2_probe.py` (timing probe).
+- **Results:** `results/s2_stats.json`/`.txt` (registered analysis), `s2_main.json`, `s2_pilot.json`/`.txt` (Gate 2),
+  `s2_fidelity.json`/`.txt` (calibration, held-out replay, Gate 1), `prereg_hash_s2.json`, and `results/s2/` (calibration grid,
+  checks, per-policy training and evaluation records). Weights go to `runs/` (not committed).
+- **Model files:** `step2/model/` (`anymal_d.xml`, `anymal_d_cal.xml`, `calibration.json`). `step2/assets/` (downloaded
+  description, MuJoCo install) is never committed.
+- **Jobs** (run by the author's launchers, never by a session): `step2/jobs/fetch.zsh`, `calib.zsh`, `pilot.zsh`, `main.zsh` (about 20 h).
+- **Changed in M5-M6:** `body.template.tex`, `appendix.template.tex` (A11, A12), `paper_numbers.py` (calls `s2_numbers.py`),
+  `build_paper.py`, `check_claims.py` (159 -> 179 assertions), `build_supplement.py` (Step 2 files). Git tags: `air2027-step2-start`, `air2027-step2`.
+
+Run order after the main job (always through `./py`; MuJoCo work through `./py-mj`):
+
+```
+./py scripts/s2/test_s2.py                           # tests of the registered code
+./py scripts/s2_stats.py                             # registered analysis (run once, unedited)
+./py scripts/paper_numbers.py; ./py scripts/build_paper.py
+./py scripts/slack.py; ./py scripts/check_claims.py; ./py scripts/check_numbers.py
+./py scripts/check_bib.py; ./py scripts/submission_checks.py
+./py scripts/build_supplement.py                     # optional reviewer supplement
+```

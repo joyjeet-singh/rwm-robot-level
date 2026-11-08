@@ -35,3 +35,9 @@
 - Body: run-in paragraph in Sec. 4.2 + R0-R2 block in Table III (a separate table did not fit; DECISIONS M5); abstract, intro, Limitations, Conclusion updated.
 - Appendix A11 (model) and A12 (policies) with five tables.
 - slack.py PASS with reserve 0 (6 pages, abstract 199 words); check_claims and submission_checks pass.
+## M6 status: COMPLETE (2026-11-09 03:05)
+- check_claims.py: 20 Step 2 assertions added (159 -> 179), all pass.
+- Pipeline passes: paper_numbers, build_paper (twice: same .tex and same PDF text), slack (6 pages, reserve 0, abstract 199 words), check_claims, check_numbers (all agree), check_bib, submission_checks.
+- air-claim-checker: 12 wording/scope findings, no number wrong; fixed (3 in part, for space); step2/review/M6_claims.md.
+- Supplement rebuilt with Step 2 (PREREG_S2 byte-exact, scripts/s2, MJCF + BSD notice, s2 results, asset manifest); full 71.0 MB, slim 2.0 MB; scans 0 hits; no ANYdrive file (never obtained).
+- README.md, SUBMIT.md, ANOMALIES.md updated. Not done: tag air2027-step2 (M7).

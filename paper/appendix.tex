@@ -802,8 +802,8 @@ the main study's code, on all 20 recorded trajectories: they are in-sample, beca
 on every episode.
 
 \textbf{Registered results.} All three registered questions were not settled (Table~\ref{tab:verdicts}). Across the
-9 simulators, the 100-step error ranked physics return weakly ($\rho={}$+0.23, 95\%
-[$-$0.87, +0.81]; R0). The growth rate ranked it in reverse ($-$0.35) where one-step error ranked it with the right
+9 simulators, the 100-step error ranked physics return in no direction the interval supports ($\rho={}$+0.23, 95\%
+[$-$0.87, +0.81]; R0). In the point estimates the growth rate ranked it in reverse ($-$0.35) and one-step error with the right
 sign (+0.33); the difference, $-$0.68 (97.5\% [$-$1.50, 0.00]; R1), points towards one-step error but
 does not exclude zero. The kinematic residual and the 8-step error ranked it alike (+0.33 and
 +0.38; R2). Several intervals end exactly at zero, so they include it. The two-level intervals, which also
@@ -812,10 +812,10 @@ resample each simulator's two policies, give the same verdicts (R0 [$-$0.83, +0.
 rollout-trained.
 
 \textbf{Secondary results.} All were not settled (Table~\ref{tab:app-s2sec}). With the fall rate as the outcome, the
-100-step error ranked simulators in reverse ($\rho={}$$-$0.51, [$-$0.95, +0.37]); the two copies with the
-largest errors produced the only policies that never fell (below). The imagined return ranked physics return
-weakly (+0.20, [$-$0.86, +0.74]). In selection, the three simulators that one-step, 8-step and 100-step
-error and the residual each ranked best (\texttt{REL\_\_fp16}, \texttt{REL}, \texttt{REL\_\_u10}) fell short of the three best by physics return by only
+100-step error ranked simulators in reverse in the point estimate ($\rho={}$$-$0.51, [$-$0.95, +0.37]); the two copies with the
+largest errors produced the only policies that never fell (below). The imagined return's point estimate ranked physics return
+positively, with an interval spanning zero (+0.20, [$-$0.86, +0.74]). In selection, the three simulators that one-step, 8-step and 100-step
+error and the residual each ranked best (\texttt{REL\_\_fp16}, \texttt{REL}, \texttt{REL\_\_u10}) fell short of the three best by physics return by
 0.16 (mean of the best three: 13.96); the growth rate's three fell short by 38.43. Neither
 difference was settled (SEL1 $-$38.28 [$-$72.67, 0.00]; SEL2 0.00 [$-$21.16, 0.00]).
 
@@ -848,9 +848,9 @@ policies trained in the released model and its 16-bit copy scored best, but fell
 1.25\% for the authors' policy, whose physics return in the same model was 26.3. The
 policies from the 50\%-pruned copy and the narrowest copy (width 128) stood still: they kept all four feet down at
 least 0.997 of the time, tracked no command (speed error 0.79 and 0.79~m/s)
-and never fell. They scored just below the two best simulators' policies and above all others, while their
+and never fell. They scored below the two best simulators' policies and above all others, while their
 simulators had the largest errors of the pool. Physics return, the registered outcome, thus ranked standing still above
-walking with falls; it measures staying upright as much as walking. The two policy seeds of one simulator often
+most walking that fell; it measures staying upright as much as walking. The two policy seeds of one simulator often
 differed widely (for example $-$108.24 and $-$13.32 for the width-192 copy).
 
 \begin{table}[h]

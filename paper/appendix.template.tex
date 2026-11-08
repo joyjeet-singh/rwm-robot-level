@@ -801,8 +801,8 @@ the main study's code, on all 20 recorded trajectories: they are in-sample, beca
 on every episode.
 
 \textbf{Registered results.} All three registered questions were not settled (Table~\ref{tab:verdicts}). Across the
-{{s2_n_sims}} simulators, the 100-step error ranked physics return weakly ($\rho={}${{s2_r0_rho}}, 95\%
-{{s2_r0_ci}}; R0). The growth rate ranked it in reverse ({{s2_r1_new}}) where one-step error ranked it with the right
+{{s2_n_sims}} simulators, the 100-step error ranked physics return in no direction the interval supports ($\rho={}${{s2_r0_rho}}, 95\%
+{{s2_r0_ci}}; R0). In the point estimates the growth rate ranked it in reverse ({{s2_r1_new}}) and one-step error with the right
 sign ({{s2_r1_base}}); the difference, {{s2_r1_delta}} (97.5\% {{s2_r1_ci}}; R1), points towards one-step error but
 does not exclude zero. The kinematic residual and the 8-step error ranked it alike ({{s2_r2_new}} and
 {{s2_r2_base}}; R2). Several intervals end exactly at zero, so they include it. The two-level intervals, which also
@@ -811,10 +811,10 @@ resample each simulator's two policies, give the same verdicts (R0 {{s2_x_r0_ci}
 rollout-trained.
 
 \textbf{Secondary results.} All were not settled (Table~\ref{tab:app-s2sec}). With the fall rate as the outcome, the
-100-step error ranked simulators in reverse ($\rho={}${{s2_f_r0_rho}}, {{s2_f_r0_ci}}); the two copies with the
-largest errors produced the only policies that never fell (below). The imagined return ranked physics return
-weakly ({{s2_imag_rho}}, {{s2_imag_ci}}). In selection, the three simulators that one-step, 8-step and 100-step
-error and the residual each ranked best ({{s2_sel_err_chosen}}) fell short of the three best by physics return by only
+100-step error ranked simulators in reverse in the point estimate ($\rho={}${{s2_f_r0_rho}}, {{s2_f_r0_ci}}); the two copies with the
+largest errors produced the only policies that never fell (below). The imagined return's point estimate ranked physics return
+positively, with an interval spanning zero ({{s2_imag_rho}}, {{s2_imag_ci}}). In selection, the three simulators that one-step, 8-step and 100-step
+error and the residual each ranked best ({{s2_sel_err_chosen}}) fell short of the three best by physics return by
 {{s2_sel_E1}} (mean of the best three: {{s2_sel_best3}}); the growth rate's three fell short by {{s2_sel_lam1}}. Neither
 difference was settled (SEL1 {{s2_sel1_delta}} {{s2_sel1_ci}}; SEL2 {{s2_sel2_delta}} {{s2_sel2_ci}}).
 
@@ -847,9 +847,9 @@ policies trained in the released model and its 16-bit copy scored best, but fell
 {{s2_g1_cal_falls}} for the authors' policy, whose physics return in the same model was {{s2_g1_cal_ret}}. The
 policies from the 50\%-pruned copy and the narrowest copy (width 128) stood still: they kept all four feet down at
 least {{s2_still_duty_min}} of the time, tracked no command (speed error {{s2_d_u50_speed}} and {{s2_d_s128_speed}}~m/s)
-and never fell. They scored just below the two best simulators' policies and above all others, while their
+and never fell. They scored below the two best simulators' policies and above all others, while their
 simulators had the largest errors of the pool. Physics return, the registered outcome, thus ranked standing still above
-walking with falls; it measures staying upright as much as walking. The two policy seeds of one simulator often
+most walking that fell; it measures staying upright as much as walking. The two policy seeds of one simulator often
 differed widely (for example {{s2_d_s192_ret_p1}} and {{s2_d_s192_ret_p2}} for the width-192 copy).
 
 \begin{table}[h]

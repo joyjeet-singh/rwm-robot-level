@@ -520,6 +520,85 @@ CLAIMS.update({
         and _pn("s1_ar4_mlp_tf_worse_E100") == _pn("s1_ar4_mlp_n_pairs"),
 })
 
+# M6 (Step 2): every result-bearing sentence added in M5 (Sec. 4.2 run-in paragraph, Table III's physics block, abstract,
+# Limitations, Conclusion, appendices A11-A12; step2/notes/M5.md). Registered verdicts stand as registered.
+S2 = json.load(open(os.path.join(C.RESULTS, "s2_stats.json")))
+S2F = json.load(open(os.path.join(C.RESULTS, "s2_fidelity.json")))
+S2P = json.load(open(os.path.join(C.RESULTS, "s2_pilot.json")))
+S2M = json.load(open(os.path.join(C.RESULTS, "s2_main.json")))
+_s2p = S2["premise_and_primary"]
+_s2s = S2["secondary"]
+_s2d = {r["sim"]: r for r in S2["descriptive"]["rows"]}
+_s2rank = sorted(_s2d, key=lambda x: -_s2d[x]["ret"])
+_s2still = [k for k, r in _s2d.items() if r["fall"] == 0]
+_s2pil = S2P["policies"]
+_s2g = S2F["gait_authors_policy"]["calibrated"]["summary"]
+_s2rec = S2F["gait_recorded"]["summary"]
+_s2rep = S2F["replay_held_out"]["calibrated"]["horizons"]
+_s2top = [q["fall"] for sim in ("REL", "REL__fp16") for q in _s2d[sim]["per_policy"]]
+_s2iv = [(v["ret_ci95"][0], v["ret_ci95"][1]) for v in _s2pil.values()]
+CLAIMS.update({
+    "M6 Abstract/Sec. 4.2/Table III: no check was shown to predict physics return nor shown not to "
+    "(R0, R1, R2 all NOT SETTLED, registered)":
+        _s2p["R0"]["label"] == _s2p["R1"]["label"] == _s2p["R2"]["label"] == "NOT SETTLED"
+        and _s2p["R0"]["ci95"][0] < 0 < _s2p["R0"]["ci95"][1] and _s2p["R1"]["ci97.5"][0] < 0 and _s2p["R2"]["ci97.5"][0] < 0,
+    "M6 Abstract/Sec. 4.2: nine simulators, eighteen policies, none failed; the pool is the released model and its eight copies":
+        S2["n_simulators"] == 9 and len(S2M["policies"]) == 18 and not S2["failed_policies"] and not S2["missing_policies"]
+        and sorted(_s2d) == sorted(["REL"] + [f"REL__{v}" for v in
+                                              ("fp16", "int8w", "u10", "u20", "u30", "u50", "s192", "s128")]),
+    "M6 Sec. 4.2: Policies from three rebuilt simulators fell in every pilot episode, the released model's did not (Gate 2: P1, P3 passed, P2 failed)":
+        all(_s2pil[k]["fall_rate"] == 1.0 for k in ("A_s0__p0", "B_s0__p0", "A_s0__u50__p0"))
+        and _s2pil["REL__p0"]["fall_rate"] < 0.25 and not all(lo <= v["ret"] <= hi for lo, hi in _s2iv for v in _s2pil.values()),
+    "M6 Sec. 4.2 (descriptive): the best policies (released model, 16-bit copy) fell in 31% to 45% of episodes; "
+    "the top two simulators by physics return are those two":
+        _s2rank[:2] == ["REL", "REL__fp16"] and round(100 * min(_s2top)) == 31 and round(100 * max(_s2top)) == 45,
+    "M6 A11: the authors' policy walks in the calibrated model (Gate 1): falls < 10%, two-feet gap < 10 points, "
+    "speed-error ratio <= 1.5":
+        _s2g["fall_rate"] < 0.10 and abs(_s2g["two_feet"] - _s2rec["two_feet"]) < 0.10
+        and _s2g["speed_err"] / _s2rec["speed_err"] <= 1.5,
+    "M6 A11 (descriptive): the calibrated model's replay error is below the floor up to 24 steps and above it at 100; "
+    "no window unstable":
+        all(_s2rep[h]["mean"] < _s2rep[h]["floor"] for h in ("1", "8", "24")) and _s2rep["100"]["mean"] > _s2rep["100"]["floor"]
+        and sum(S2F["replay_held_out"]["calibrated"]["unstable_windows"]) == 0,
+    "M6 A11: the policy turned more accurately in the model than the recording did":
+        _s2g["turn_err"] < _s2rec["turn_err"],
+    "M6 A12: all rebuilt-simulator pilot policies had higher imagined returns than the released-model policy":
+        all(_s2pil[k]["imagined_return"] > _s2pil["REL__p0"]["imagined_return"]
+            for k in ("A_s0__p0", "B_s0__p0", "A_s0__u50__p0")),
+    "M6 A12: R1 points towards one-step error (lambda_1 ranks in reverse, E_1 with the right sign) but does not exclude zero":
+        _s2p["R1"]["rho_new"] < 0 < _s2p["R1"]["rho_base"] and _s2p["R1"]["delta"] < 0 and _s2p["R1"]["ci97.5"][1] >= 0,
+    "M6 A12: R0 ranks physics return weakly (rho between 0 and 0.5)": 0 < _s2p["R0"]["rho"] < 0.5,
+    "M6 A12: R2 the residual and 8-step error rank alike (both rho within 0.1)":
+        abs(_s2p["R2"]["rho_new"] - _s2p["R2"]["rho_base"]) < 0.1,
+    "M6 A12 (exploratory): the two-level intervals give the same verdicts (all include 0 / end at 0)":
+        S2["exploratory"]["two_level"]["R0"]["ci95"][0] < 0 < S2["exploratory"]["two_level"]["R0"]["ci95"][1]
+        and S2["exploratory"]["two_level"]["R1"]["ci97.5"][1] >= 0 and S2["exploratory"]["two_level"]["R2"]["ci97.5"][1] >= 0,
+    "M6 A12: the rollout-trained subset is not applicable (one rollout-trained simulator)":
+        _s2s["rollout_subset"]["label"] == "NOT APPLICABLE" and _s2s["rollout_subset"]["n_models"] == 1,
+    "M6 A12 (secondary): every secondary verdict NOT SETTLED":
+        _s2s["fall_rate"]["R0"]["label"] == "NOT SETTLED" and _s2s["imagined_return"]["label"] == "NOT SETTLED"
+        and all(_s2s["fall_rate"][k]["label"] == "NOT SETTLED" for k in ("R1", "R2"))
+        and all(_s2s["policy_commands"][k]["label"] == "NOT SETTLED" for k in ("R1", "R2"))
+        and all(_s2s["selection"][k]["label"] == "NOT SETTLED" for k in ("SEL1", "SEL2")),
+    "M6 A12 (secondary): with fall rate as outcome the 100-step error ranked in reverse (rho < 0, interval includes 0)":
+        _s2s["fall_rate"]["R0"]["rho"] < 0 < _s2s["fall_rate"]["R0"]["ci95"][1],
+    "M6 A12 (secondary): imagined return ranked physics return weakly (0 < rho < 0.5)":
+        0 < _s2s["imagined_return"]["rho"] < 0.5,
+    "M6 A12 (secondary): selection by error checks fell short of the best three by less than the growth rate's did":
+        _s2s["selection"]["checks"]["E1"]["shortfall"] < _s2s["selection"]["checks"]["lam1"]["shortfall"]
+        and _s2s["selection"]["checks"]["E1"]["chosen"] == _s2s["selection"]["checks"]["E8"]["chosen"]
+        == _s2s["selection"]["checks"]["E100"]["chosen"] == _s2s["selection"]["checks"]["rJ"]["chosen"],
+    "M6 A12 (descriptive): the standing-still policies (50% pruned, width 128) never fell, rank 3rd and 4th by physics return, "
+    "and their simulators have the two largest E100":
+        sorted(_s2still) == ["REL__s128", "REL__u50"] and sorted(_s2rank[2:4]) == sorted(_s2still)
+        and sorted(_s2d, key=lambda x: -_s2d[x]["E100"])[:2] == sorted(_s2still, key=lambda x: -_s2d[x]["E100"]),
+    "M6 A12 (descriptive): the two policy seeds of the width-192 copy differ widely":
+        abs(_s2d["REL__s192"]["per_policy"][0]["ret"] - _s2d["REL__s192"]["per_policy"][1]["ret"]) > 10,
+    "M6 Limitations/Conclusion: the registered physics test was committed before the main job (registration commit precedes the results)":
+        subprocess.run(["git", "merge-base", "--is-ancestor", json.load(open(os.path.join(C.RESULTS, "prereg_hash_s2.json")))
+                        .get("commit", "HEAD"), "HEAD"], cwd=C.AIR).returncode == 0,
+})
+
 if __name__ == "__main__":
     out = {k: bool(v) for k, v in CLAIMS.items()}
     failed = [k for k, v in out.items() if not v]

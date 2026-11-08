@@ -57,3 +57,29 @@ None of these departs from `prereg/PREREG_S1.md` or touches a registered verdict
   body pointer, and the Limitations, abstract and introduction were left unchanged (DECISIONS S6-2 to S6-4).
 - **Working tree.** `figures/fig_horizon.pdf` and `.png` still differ from the last commit, as before Step 1; the PDFs
   include the working copy, which looks identical. Never staged in Step 1.
+
+## Step 2 (M0-M6)
+
+None of these changes `prereg/PREREG_S2.md` or a registered verdict (R0, R1, R2 all NOT SETTLED). Details in `step2/DECISIONS.md`.
+- **ANYdrive actuator network not obtained (M0, M1).** Isaac Lab's asset root is read at run time and the file's full URL
+  was never verified; the fetch job's two guesses failed (manifest: FAILED). The fallback fixed in the plan was used: a PD
+  controller with a fixed delay, fitted to the recorded torques ($R^2$ in appendix A11). The torques separate the delay only coarsely.
+- **Gate 2 failed on P2 (M4).** Policies trained in three rebuilt single-network simulators fell in all 80 pilot episodes
+  (the released model's: 10%). By the plan's rule the pool became the released model and its eight compressed copies (9 simulators,
+  2 seeds each), not 25 main-pool simulators. So the physics test says nothing about simulators trained in other ways. Why
+  the rebuilt simulators' policies fall was not studied (one difference: no spread between heads, so the uncertainty penalty is inactive).
+- **Checks for the copies were computed before registration (M4).** They had never been built in earlier rounds; they were
+  computed with the registered functions only, before any pool policy existed, in-sample (the released model saw all ten episodes).
+- **The pilot's registered-pool overlap (M4).** The first prereg text wrongly said no pool-simulator policy existed (the pilot's
+  released-model policy does); the stats reviewer caught it and it was fixed before the commit. That policy is validation, not a result.
+- **Model details a reader might doubt (M1, M2).** Contact time constants below 0.01 s are raised to 0.01 s by MuJoCo, so two
+  grid points were identical (tie broken towards the larger value by a rule fixed before the grid ran). Collision shapes are
+  simplified (no drive housings, no self-collision). The velocity commands used for Gate 1 are segment means read from the data.
+- **Physics return rewards standing still (M5, descriptive).** The two policy pairs that stood still (50%-pruned and width-128
+  copies, never fell) ranked third and fourth by physics return, above every walking policy that fell. The best policies
+  still fell in 31 to 45% of episodes. So a null result here may reflect the outcome and the pilot-level policy quality, not only the checks.
+- **Table placement (M5).** The R0 to R2 rows are a block of Table III, not a separate table (a separate one pushed the
+  two-column check to seven pages). The Step 2 slot became a run-in paragraph; the Limitations lost two clauses for space.
+- **Supplement (M6).** The ANYdrive file is not packed. The MuJoCo version is recorded only in the uncommitted `step2/assets/manifest.json`
+  (shipped inside the supplement as `step2/assets_manifest.json`), not printed in the paper.
+

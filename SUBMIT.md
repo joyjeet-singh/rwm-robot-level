@@ -4,16 +4,15 @@
 advancesinrobotics.com/2027-IITGN). Notification 28 Feb 2027; camera-ready and registration 30 May 2027.
 
 **Which PDF:** upload `paper/AIR2027_submission.pdf` (single column, anonymous; the call allows any length at this
-stage). The appendix (A1-A10) is in this PDF only; cut it for the camera-ready, which must fit six two-column pages.
+stage). The appendix (A1-A12) is in this PDF only; cut it for the camera-ready, which must fit six two-column pages.
 `paper/AIR2027_twocolumn_check.pdf` is for you only: it shows the main text fits six two-column pages.
 The official template is e-mailed to accepted authors; the text will need re-flowing into it.
 
-**Step 2 slot:** the main text keeps a blank box (0.30 of the text height, one column wide) at the end of Sec. 4 for
-Step 2's result (a policy trained inside a simulator, tested in a physics simulator). The reserve check in
-`scripts/slack.py` shows it still fits six pages (free space 0.32). If Step 2 finishes before 31 Dec, fill the slot
-and change the sentences listed in `rewrite/OUTLINE.md` part 8, then rebuild. If it finishes after you submit, check
-**first** whether CMT lets you replace the file before the deadline (it usually does, but I could not verify it);
-otherwise the result goes into the camera-ready, which has the same room.
+**Step 2 is in the paper** (Sec. 4.2 "Walking in a physics simulator", a block of Table III, appendices A11 and A12). There
+is no blank slot any more; `scripts/slack.py` shows the two-column text fits six pages with no spare room (reserve 0), so any
+further addition to the main text needs a cut elsewhere. The result is registered and negative: no check was shown to
+predict how the policies walk (R0 to R2 NOT SETTLED). The physics is a model of ANYmal D built by hand for this paper, not the
+data's simulator and not hardware; the paper says so wherever the result is stated.
 
 ## Before you submit
 
@@ -28,9 +27,9 @@ otherwise the result goes into the camera-ready, which has the same room.
    anywhere in the submitted paper"), but do not link, mention or upload those pages with the submission, and
    avoid publicising this exact title until decisions are out.
 3. **Supplementary material (optional; your decision).** Two zips are built and scanned for identifying text by
-   `scripts/build_supplement.py` (Step 1, S7); neither has ever been uploaded. `submission/AIR2027_supplement.zip`
-   (69.6 MB, 139 files) holds round 1's contents plus Step 1's registration (`PREREG_S1.md`), scripts, lite code and
-   result files, including `raw_S1.npz`; `submission/AIR2027_supplement_slim.zip` (1.4 MB) leaves out every
+   `scripts/build_supplement.py` (Step 1, S7; extended in Step 2, M6); neither has ever been uploaded. `submission/AIR2027_supplement.zip`
+   (71.0 MB, 345 files) holds round 1's contents plus Step 1's and Step 2's registrations (`PREREG_S1.md`, `PREREG_S2.md`), scripts, lite code, the MuJoCo model and
+   result files, including `raw_S1.npz`; `submission/AIR2027_supplement_slim.zip` (2.0 MB) leaves out every
    `raw_*.npz`, so the statistics cannot be rerun from it. **Check CMT's size limit** and pick one.
    `README_SUPPLEMENT.md` inside says what it holds and gives the registration times in UTC. Upload only if CMT offers
    a slot and you choose to; the paper's "will be released" sentences do not depend on it.
@@ -55,3 +54,15 @@ otherwise the result goes into the camera-ready, which has the same room.
 - **Before submitting:** put the paragraphs flagged in `improve/REPORT.md` into your own words; check the AI-use statement
   (it does not mention the AI-run reviews and reference checks); check the corrected facts against RWM, RWM-U and iKCE;
   check the supplement's version-control history for names (`improve/notes/I4.md`).
+
+## After Step 2 (M6)
+
+- **Step 2 checks:** `paper_numbers.py`, `build_paper.py` (run twice: same text), `slack.py`, `check_claims.py` (179 assertions),
+  `check_numbers.py`, `check_bib.py` and `submission_checks.py` all pass. An independent claim check of the Step 2 text against
+  `results/s2_*` and `prereg/PREREG_S2.md` is in `step2/review/` (findings fixed).
+- **Supplement:** rebuilt with Step 2 (`prereg/PREREG_S2.md`, `scripts/s2/`, the MuJoCo model files with the robot description's
+  BSD 3-Clause notice, the `s2` results). Scan: 0 hits. The ANYdrive actuator file is not in it and was never obtained, so there is
+  no URL or sha256 to give; the README inside says so. Check the new size against CMT's limit; the slim copy is the safer choice.
+- **Look at before submitting:** (1) the new paragraph and appendices A11 and A12 in your own words; (2) the "Limitations"
+  sentence on what the physics test covers; (3) that withdrawing the earlier venue papers is done (step 1 above).
+- **The main job** ran about 21 hours (`step2/LOG.md`); nothing was pushed, uploaded or sent.

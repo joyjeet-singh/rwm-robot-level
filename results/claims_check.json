@@ -158,7 +158,27 @@
   "I4 Abstract: the residual ranked the main pool better than one-step error (Q4 vs E1, secondary, LABEL-FREE BETTER)": true,
   "I4 Sec. 4.1: longer training and two of three other networks gave the same reversal (MLP, Transformer all pairs; RSSM none)": true,
   "I4 Sec. 4.2: on X5 the residual was not separated from the 8-step error (X1 interval spans 0; exploratory)": true,
-  "I2 Sec. 4.1 (descriptive): other networks - MLP better one step but worse at 100 steps in every pair; RSSM better one step but worse at 100 steps in none": true
+  "I2 Sec. 4.1 (descriptive): other networks - MLP better one step but worse at 100 steps in every pair; RSSM better one step but worse at 100 steps in none": true,
+  "M6 Abstract/Sec. 4.2/Table III: no check was shown to predict physics return nor shown not to (R0, R1, R2 all NOT SETTLED, registered)": true,
+  "M6 Abstract/Sec. 4.2: nine simulators, eighteen policies, none failed; the pool is the released model and its eight copies": true,
+  "M6 Sec. 4.2: Policies from three rebuilt simulators fell in every pilot episode, the released model's did not (Gate 2: P1, P3 passed, P2 failed)": true,
+  "M6 Sec. 4.2 (descriptive): the best policies (released model, 16-bit copy) fell in 31% to 45% of episodes; the top two simulators by physics return are those two": true,
+  "M6 A11: the authors' policy walks in the calibrated model (Gate 1): falls < 10%, two-feet gap < 10 points, speed-error ratio <= 1.5": true,
+  "M6 A11 (descriptive): the calibrated model's replay error is below the floor up to 24 steps and above it at 100; no window unstable": true,
+  "M6 A11: the policy turned more accurately in the model than the recording did": true,
+  "M6 A12: all rebuilt-simulator pilot policies had higher imagined returns than the released-model policy": true,
+  "M6 A12: R1 points towards one-step error (lambda_1 ranks in reverse, E_1 with the right sign) but does not exclude zero": true,
+  "M6 A12: R0 ranks physics return weakly (rho between 0 and 0.5)": true,
+  "M6 A12: R2 the residual and 8-step error rank alike (both rho within 0.1)": true,
+  "M6 A12 (exploratory): the two-level intervals give the same verdicts (all include 0 / end at 0)": true,
+  "M6 A12: the rollout-trained subset is not applicable (one rollout-trained simulator)": true,
+  "M6 A12 (secondary): every secondary verdict NOT SETTLED": true,
+  "M6 A12 (secondary): with fall rate as outcome the 100-step error ranked in reverse (rho < 0, interval includes 0)": true,
+  "M6 A12 (secondary): imagined return ranked physics return weakly (0 < rho < 0.5)": true,
+  "M6 A12 (secondary): selection by error checks fell short of the best three by less than the growth rate's did": true,
+  "M6 A12 (descriptive): the standing-still policies (50% pruned, width 128) never fell, rank 3rd and 4th by physics return, and their simulators have the two largest E100": true,
+  "M6 A12 (descriptive): the two policy seeds of the width-192 copy differ widely": true,
+  "M6 Limitations/Conclusion: the registered physics test was committed before the main job (registration commit precedes the results)": true
  },
  "failed": []
 }

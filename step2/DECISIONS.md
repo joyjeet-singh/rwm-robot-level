@@ -61,3 +61,7 @@
 - **Limitations shortened for fit:** "what a mis-ranked simulator costs a controller is not measured" and "imagined return is not walking performance" were dropped; the sentence now says policy-command checks were ranked against recorded-command error and policies walked only in a physics model we built, for copies of one simulator. The slot and A12 state the physics test's limits.
 - **MuJoCo version not printed:** its only record is `step2/assets/manifest.json`, which is never committed, so the paper build must not depend on it.
 - **Descriptive claim added in A12:** physics return ranked the two standing-still policy pairs (50%-pruned, width-128 copies; duty ≥ 0.997, never fell) just below the two best and above all others, while their simulators had the largest E100. Asserted in `s2_numbers.py`. It is descriptive, not a registered finding.
+
+## M6
+- **Claim checker fixes kept to the same length** (the two-column text has no spare line). Three suggestions were applied in part or not at all for space: the bootstrap unit (9 simulators) is in Table III's caption but not in Sec. 4.2; the interval width is not in Limitations; the selection intervals are not in A12. All are in `results/s2_stats.json` and `prereg/PREREG_S2.md`. See `step2/review/M6_claims.md`.
+- **Supplement scan:** the manifest's repository URL contains "github.com"; it is neutralised in the staged copy only (`build_supplement.py` NEUTRALISE). The ANYdrive file was never obtained, so the supplement README states that instead of giving a URL and sha256.
