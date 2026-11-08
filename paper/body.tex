@@ -17,8 +17,8 @@ weights kept 90\% of the skill one step ahead but 39\% at 2~s. Second, fine-tuni
 (registered tests): on 97 GRU simulators the error growth rate ranked them by 2-second error better than one-step
 error, but was not separated from 8-step error and failed a replication (secondary); a kinematic residual ranked them better than
 one-step error (secondary), but less well under policy-chosen commands. We recommend checking 8 or more steps ahead on
-held-out episodes, with these checks as fallback. Scope: simulated data, one robot and trotting gait, no
-physics-simulator test.
+held-out episodes, with these checks as fallback. In a hand-built physics model, no check was shown to predict how
+policies from 9 simulators walk (registered). Scope: simulated data, one robot and gait.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -46,7 +46,7 @@ for~\cite{lambert2020objective}. We ask two questions. \emph{When does a one-ste
 simulator used 100 steps ahead?} And \emph{can a cheap check that needs no recorded future states do better?}
 
 We answer on RWM's open-source dynamics model, in a narrow setting: one robot, one trotting gait on flat ground,
-simulated data, and no test of a trained policy in a physics simulator. The main comparisons of checks were
+simulated data, and trained policies tested only in a physics model we built (Sec.~\ref{sec:step2}). The main comparisons of checks were
 registered before their measurements were run. Our first results agree with RWM's ablation and add the one-step view,
 other architectures and a policy in the loop. Our contributions are:
 \begin{itemize}
@@ -253,7 +253,7 @@ Kinematic residual $\bar r_J$ & no & +0.95 & +0.83 & +0.96 (E) & +0.76 & +0.94 &
 \newcommand{\vlab}[1]{{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \textsc{#1}\par}}
 \begin{table}[t]
 \centering
-\caption{Registered verdicts. Rank correlation: difference in Spearman correlation with $E_{100}$, first check minus second (CL: policy minus recorded joint commands; AR: the three other architectures, averaged). Skill: FT1, gain in skill retained at 100 steps, in points; FT2, skill retained against a parent fine-tuned the same way. P: primary, 97.5\% interval; S: secondary, 95\%. $^\dagger$: fails Holm's correction (exploratory).}
+\caption{Registered verdicts. Rank correlation: difference in Spearman correlation with $E_{100}$, first check minus second (CL: policy minus recorded joint commands; AR: the three other architectures, averaged). Skill: FT1, gain in skill retained at 100 steps, in points; FT2, skill retained against a parent fine-tuned the same way. P: primary, 97.5\% interval; S: secondary, 95\%. $^\dagger$: fails Holm's correction (exploratory). PT: physics test (R0: correlation, 95\%).}
 \label{tab:verdicts}
 \scriptsize
 \setlength{\tabcolsep}{2pt}
@@ -276,6 +276,10 @@ CL1 P & $\bar r_J$, policy & F18 & $-$0.120 [$-$0.220, $-$0.052] & \vlab{worse w
 CL2 P & $\lambda_1$, policy & F18 & $-$0.032 [$-$0.113, +0.041] & \vlab{not settled} \\
 AR1 P & $\lambda_1$ vs $E_1$ & AR & +0.796 [+0.368, +1.025] & \vlab{label-free better} \\
 AR2 P & $\bar r_J$ vs $E_8$ & AR & +0.110 [$-$0.081, +0.356] & \vlab{not settled} \\
+\multicolumn{5}{@{}l}{\emph{Physics test: rank correlation with physics return}} \\
+R0 & $E_{100}$ & PT & +0.23 [$-$0.87, +0.81] & \vlab{not settled} \\
+R1 P & $\lambda_1$ vs $E_1$ & PT & $-$0.68 [$-$1.50, 0.00] & \vlab{not settled} \\
+R2 P & $\bar r_J$ vs $E_8$ & PT & $-$0.05 [$-$0.47, 0.00] & \vlab{not settled} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -332,7 +336,14 @@ floor.}
 \label{fig:checks}
 \end{widefigure}
 
-\stepslot
+\textbf{Walking in a physics simulator.}\label{sec:step2}
+% Step 2 (prereg/PREREG_S2.md, scripts/s2_stats.py; keys from scripts/s2_numbers.py). Appendices A11 and A12.
+In a MuJoCo model of ANYmal~D that we built, with a PD motor model fitted to the recorded torques, the authors' policy
+walks (appendix~A11). Policies from three rebuilt simulators fell in every pilot episode, so the registered pool was
+the released model and its eight compressed copies (appendix~A12). No check was shown to predict \emph{physics
+return}, the training reward computed in MuJoCo, nor shown not to (Table~\ref{tab:verdicts}); even the best policies
+fell in 31\% to 45\% of episodes (descriptive). The model is neither the data's
+simulator nor hardware, and the checks are in-sample.
 
 \section{Discussion}\label{sec:discussion}
 \textbf{Why one-step checks mislead here.} A one-step check feeds a simulator true recorded states; in use it reads
@@ -354,10 +365,8 @@ interval, and do not rely on label-free run-time alarms: in earlier registered a
 step counter, and re-synchronising on a score lost to a fixed schedule (appendix~A6).
 
 \textbf{Limitations.} All evidence comes from one robot, one trotting gait on flat ground and ten 20-second episodes
-of simulated data, so ``held out'' means other velocity commands of the same gait. The policy drove the simulators
-only in imagination, against error under recorded commands: no policy was trained or tested in a physics simulator
-or on hardware, so what a mis-ranked simulator costs a controller is not measured, and imagined return is not walking
-performance. The main pool's four held-out trajectories from two episodes bound every interval, and no correction is
+of simulated data, so ``held out'' means other velocity commands of the same gait. Policy-command checks were ranked against recorded-command error, and policies walked only in a physics model
+we built, for copies of one simulator. The main pool's four held-out trajectories from two episodes bound every interval, and no correction is
 made across the three registrations. Correlations treat models as independent although they share parents, data and test
 trajectories; wider intervals that allow for this leave 3 of 13 registered verdicts of the two GRU
 pools unresolved (Q1 at 24 steps, Q3 against $E_1$, Q5 against $E_1$; exploratory). The growth rate is a finite-time exponent in the network's own coordinates, and the
@@ -368,8 +377,8 @@ stability account does not cover the released model. Each other architecture has
 On this simulator, one-step checks favoured teacher forcing, one-step training and a pruned model that, without
 fine-tuning, loses most of its skill by 2~s. Checking 8 or more steps ahead on held-out episodes is the safer way to rank these simulators.
 Without recorded futures, the growth rate beat one-step error on the main pool but failed its replication (secondary), and the
-kinematic residual ranked best on the main pool with recorded commands (descriptive) but less well under a policy. Whether these checks
-predict how well a policy trained inside the simulator walks is the next question.
+kinematic residual ranked best on the main pool with recorded commands (descriptive) but less well under a policy. On copies of one simulator, no check was shown to
+predict walking in a hand-built physics model.
 
 \textbf{Reproducibility and use of AI tools.} The registrations and code are in the
 supplementary material. An AI assistant (Claude, Anthropic), directed by the author(s), wrote

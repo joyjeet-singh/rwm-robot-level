@@ -1,0 +1,43 @@
+Step 2 registered analysis (prereg/PREREG_S2.md); hand-built MuJoCo ANYmal D, not the data's simulator,
+not hardware. Unit: simulator (policy seeds averaged). Spearman rho, checks turned higher-is-better.
+simulators: 9; missing policies: none; failed by their simulator (falls 1, lowest return): none
+left out of the imagined-return analyses: none
+
+R0 premise  rho(-E100, return) = 0.233, 95% [-0.873, 0.810]  -> NOT SETTLED  (dropped draws 0)
+R1 primary rho(-lam1) - rho(-E1) = -0.683 (new -0.350, base 0.333), 97.5% [-1.496, 0.000]  -> NOT SETTLED  (dropped draws 0)
+R2 primary rho(-rJ) - rho(-E8) = -0.050 (new 0.333, base 0.383), 97.5% [-0.470, 0.000]  -> NOT SETTLED  (dropped draws 0)
+
+secondary (95%):
+  fall rate (outcome -falls) R0: rho -0.510 [-0.946, 0.368] -> NOT SETTLED (dropped 0)
+  fall rate (outcome -falls) R1: delta -0.552 [-1.409, 0.000] -> NOT SETTLED (dropped 0)
+  fall rate (outcome -falls) R2: delta -0.050 [-0.412, 0.000] -> NOT SETTLED (dropped 0)
+  policy commands R1: delta -0.733 [-1.684, 0.579] -> NOT SETTLED (dropped 0)
+  policy commands R2: delta 0.133 [-0.211, 0.579] -> NOT SETTLED (dropped 0)
+  rho(imagined return, physics return): 0.200 [-0.862, 0.737] -> NOT SETTLED (dropped 0)
+  selection: best three by physics return, mean 13.96; shortfall of each check's top three:
+    E1           0.16 [0.000, 27.822]  chosen REL__fp16, REL, REL__u10
+    E8           0.16 [0.000, 14.660]  chosen REL__fp16, REL, REL__u10
+    E100         0.16 [0.000, 45.117]  chosen REL__fp16, REL, REL__u10
+    lam1        38.43 [0.000, 74.212]  chosen REL__s192, REL__u30, REL__fp16
+    rJ           0.16 [0.000, 25.965]  chosen REL__fp16, REL, REL__u10
+    lam1_pol    29.71 [3.771, 74.212]  chosen REL__s192, REL__u20, REL__s128
+    rJ_pol       0.16 [0.000, 25.420]  chosen REL, REL__fp16, REL__u10
+    imag        23.56 [0.000, 47.129]  chosen REL__fp16, REL, REL__s192
+    SEL1 shortfall(E1) - shortfall(lam1) = -38.28 [-72.675, 0.000] -> NOT SETTLED
+    SEL2 shortfall(E8) - shortfall(rJ) = 0.00 [-21.162, 0.000] -> NOT SETTLED
+  rollout-trained subset: NOT APPLICABLE (n = 1)
+
+exploratory, two-level intervals (policy seeds resampled within simulators):
+  R0 95% [-0.834, 0.793]; R1 97.5% [-1.437, 0.000]; R2 97.5% [-0.470, 0.000]
+
+descriptive, per simulator:
+  simulator     n   return  falls  speed   turn   imag     E1     E8   E100   lam1       rJ  lam1p      rJp
+  REL           2    16.79  0.369  0.186  0.117   2.41  0.083  0.093  0.404  0.700     3.28  1.597     0.70
+  REL__fp16     2    15.19  0.394  0.188  0.112   2.46  0.083  0.093  0.404  0.611     3.26  1.580     0.70
+  REL__int8w    2     2.70  0.519  0.753  0.154  -4.05  0.286  0.408  1.210  0.963     7.29  1.389     4.51
+  REL__u10      2     9.44  0.381  0.376  0.169  -2.12  0.134  0.155  0.524  0.784     3.54  1.484     1.10
+  REL__u20      2     3.88  0.194  0.829  0.185 -14.91  0.219  0.298  1.316  0.797     6.97  1.116     5.38
+  REL__u30      2   -27.81  0.544  0.832  0.446 -93.77  0.298  0.487  1.054  0.229     6.98    nan      nan
+  REL__u50      2     9.91  0.000  0.792  0.153 -4913.42  0.370  0.958  7.563  1.797   362.97  1.899   303.72
+  REL__s192     2   -60.78  0.562  0.806  0.573  -0.03  0.254  0.524  1.123  0.191     7.13  0.741    23.47
+  REL__s128     2     9.68  0.000  0.793  0.154 -336.10  0.326  0.883  5.174  1.283   186.87  1.273   245.89

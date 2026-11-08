@@ -76,11 +76,13 @@ def latex(main, copy=True, quick=False):
     return int(pages[-1]) if pages else None, warn
 
 
-SLOT_DEFAULT = 0.30
+SLOT_DEFAULT = 0.0          # M5: the Step 2 slot is filled (Sec. step2), so no space is reserved any more
 
 
 def slot_definition(h):
-    """The Step 2 slot: a framed box, one column wide and h\\textheight tall (reserve build only)."""
+    """The Step 2 slot: a framed box, one column wide and h\\textheight tall (reserve build only); empty if h <= 0."""
+    if h <= 0:
+        return "\\newcommand{\\stepslot}{}"
     return ("\\newcommand{\\stepslot}{\\par\\medskip\\noindent\\fbox{\\parbox[c][%.2f\\textheight][c]"
             "{\\dimexpr\\columnwidth-2\\fboxsep-2\\fboxrule\\relax}{\\centering\\textbf{Step 2 slot}}}\\par\\medskip}" % h)
 

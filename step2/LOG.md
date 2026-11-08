@@ -28,3 +28,10 @@
 - air-stats-reviewer: 1 MUST + 6 SHOULD FIX, all fixed before registration.
 - scripts/s2/test_s2.py all pass; scripts/s2_main.py resumable; train_policy.py gains --route rebuilt and REL__<variant>.
 - step2/jobs/main.zsh: 2 workers x 2 threads (probe: side by side ~15% faster); about 20 h. Not run (launcher runs it).
+## M5 status: COMPLETE (2026-11-09 01:39)
+- Main job: 18/18 policies measured, none failed. s2_stats.py run once (unedited): R0, R1, R2 and every secondary/exploratory analysis NOT SETTLED; rollout subset NOT APPLICABLE.
+- R0 +0.23 [-0.87, +0.81]; R1 -0.68 [-1.50, 0.00]; R2 -0.05 [-0.47, 0.00]. Best policies (REL, fp16) fell 31-45%; u50/s128 policies stood still, never fell.
+- scripts/s2_numbers.py (283 s2_* keys) called from paper_numbers.py.
+- Body: run-in paragraph in Sec. 4.2 + R0-R2 block in Table III (a separate table did not fit; DECISIONS M5); abstract, intro, Limitations, Conclusion updated.
+- Appendix A11 (model) and A12 (policies) with five tables.
+- slack.py PASS with reserve 0 (6 pages, abstract 199 words); check_claims and submission_checks pass.

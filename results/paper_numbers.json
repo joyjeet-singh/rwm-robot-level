@@ -6139,6 +6139,1421 @@
   "source": "AIR 2027/results/s1_stats.json",
   "value": "57"
  },
+ "s2_cal_armature": {
+  "path": "calibration.chosen.armature",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.02"
+ },
+ "s2_cal_damping": {
+  "path": "calibration.chosen.damping",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.0"
+ },
+ "s2_cal_friction": {
+  "path": "calibration.chosen.friction",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.6"
+ },
+ "s2_cal_obj_E1": {
+  "path": "calibration.objective.E1",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.10"
+ },
+ "s2_cal_obj_E8": {
+  "path": "calibration.objective.E8",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.17"
+ },
+ "s2_cal_timeconst": {
+  "path": "calibration.chosen.timeconst",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.01"
+ },
+ "s2_cal_worst_E8": {
+  "path": "worst.E8",
+  "source": "AIR 2027/step2/model/calibration.json",
+  "value": "0.23"
+ },
+ "s2_clip_lim": {
+  "path": "clip.effort_limit",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "80"
+ },
+ "s2_clip_sat": {
+  "path": "clip.saturation_effort",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "120"
+ },
+ "s2_clip_vel": {
+  "path": "clip.velocity_limit",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "7.5"
+ },
+ "s2_d_fp16_E1": {
+  "path": "descriptive.rows[REL__fp16].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.08"
+ },
+ "s2_d_fp16_E100": {
+  "path": "descriptive.rows[REL__fp16].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.40"
+ },
+ "s2_d_fp16_E8": {
+  "path": "descriptive.rows[REL__fp16].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.09"
+ },
+ "s2_d_fp16_duty": {
+  "path": "REL__fp16__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.62"
+ },
+ "s2_d_fp16_falls": {
+  "path": "descriptive.rows[REL__fp16].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "39\\%"
+ },
+ "s2_d_fp16_imag": {
+  "path": "descriptive.rows[REL__fp16].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "2.5"
+ },
+ "s2_d_fp16_lam1": {
+  "path": "descriptive.rows[REL__fp16].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.61"
+ },
+ "s2_d_fp16_lam1pol": {
+  "path": "descriptive.rows[REL__fp16].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.58"
+ },
+ "s2_d_fp16_rJ": {
+  "path": "descriptive.rows[REL__fp16].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "3.3"
+ },
+ "s2_d_fp16_ret": {
+  "path": "descriptive.rows[REL__fp16].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "15.19"
+ },
+ "s2_d_fp16_ret_p1": {
+  "path": "descriptive.rows[REL__fp16].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "15.03"
+ },
+ "s2_d_fp16_ret_p2": {
+  "path": "descriptive.rows[REL__fp16].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "15.35"
+ },
+ "s2_d_fp16_speed": {
+  "path": "descriptive.rows[REL__fp16].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.19"
+ },
+ "s2_d_int8w_E1": {
+  "path": "descriptive.rows[REL__int8w].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.29"
+ },
+ "s2_d_int8w_E100": {
+  "path": "descriptive.rows[REL__int8w].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.21"
+ },
+ "s2_d_int8w_E8": {
+  "path": "descriptive.rows[REL__int8w].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.41"
+ },
+ "s2_d_int8w_duty": {
+  "path": "REL__int8w__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.96"
+ },
+ "s2_d_int8w_falls": {
+  "path": "descriptive.rows[REL__int8w].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "52\\%"
+ },
+ "s2_d_int8w_imag": {
+  "path": "descriptive.rows[REL__int8w].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$4.0"
+ },
+ "s2_d_int8w_lam1": {
+  "path": "descriptive.rows[REL__int8w].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.96"
+ },
+ "s2_d_int8w_lam1pol": {
+  "path": "descriptive.rows[REL__int8w].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.39"
+ },
+ "s2_d_int8w_rJ": {
+  "path": "descriptive.rows[REL__int8w].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "7.3"
+ },
+ "s2_d_int8w_ret": {
+  "path": "descriptive.rows[REL__int8w].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "2.70"
+ },
+ "s2_d_int8w_ret_p1": {
+  "path": "descriptive.rows[REL__int8w].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.26"
+ },
+ "s2_d_int8w_ret_p2": {
+  "path": "descriptive.rows[REL__int8w].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "5.15"
+ },
+ "s2_d_int8w_speed": {
+  "path": "descriptive.rows[REL__int8w].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.75"
+ },
+ "s2_d_rel_E1": {
+  "path": "descriptive.rows[REL].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.08"
+ },
+ "s2_d_rel_E100": {
+  "path": "descriptive.rows[REL].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.40"
+ },
+ "s2_d_rel_E8": {
+  "path": "descriptive.rows[REL].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.09"
+ },
+ "s2_d_rel_duty": {
+  "path": "REL__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.62"
+ },
+ "s2_d_rel_falls": {
+  "path": "descriptive.rows[REL].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "37\\%"
+ },
+ "s2_d_rel_imag": {
+  "path": "descriptive.rows[REL].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "2.4"
+ },
+ "s2_d_rel_lam1": {
+  "path": "descriptive.rows[REL].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.70"
+ },
+ "s2_d_rel_lam1pol": {
+  "path": "descriptive.rows[REL].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.60"
+ },
+ "s2_d_rel_rJ": {
+  "path": "descriptive.rows[REL].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "3.3"
+ },
+ "s2_d_rel_ret": {
+  "path": "descriptive.rows[REL].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "16.79"
+ },
+ "s2_d_rel_ret_p1": {
+  "path": "descriptive.rows[REL].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "17.34"
+ },
+ "s2_d_rel_ret_p2": {
+  "path": "descriptive.rows[REL].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "16.24"
+ },
+ "s2_d_rel_speed": {
+  "path": "descriptive.rows[REL].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.19"
+ },
+ "s2_d_s128_E1": {
+  "path": "descriptive.rows[REL__s128].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.33"
+ },
+ "s2_d_s128_E100": {
+  "path": "descriptive.rows[REL__s128].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "5.17"
+ },
+ "s2_d_s128_E8": {
+  "path": "descriptive.rows[REL__s128].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.88"
+ },
+ "s2_d_s128_duty": {
+  "path": "REL__s128__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "1.00"
+ },
+ "s2_d_s128_falls": {
+  "path": "descriptive.rows[REL__s128].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0\\%"
+ },
+ "s2_d_s128_imag": {
+  "path": "descriptive.rows[REL__s128].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$336"
+ },
+ "s2_d_s128_lam1": {
+  "path": "descriptive.rows[REL__s128].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.28"
+ },
+ "s2_d_s128_lam1pol": {
+  "path": "descriptive.rows[REL__s128].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.27"
+ },
+ "s2_d_s128_rJ": {
+  "path": "descriptive.rows[REL__s128].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "187"
+ },
+ "s2_d_s128_ret": {
+  "path": "descriptive.rows[REL__s128].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "9.68"
+ },
+ "s2_d_s128_ret_p1": {
+  "path": "descriptive.rows[REL__s128].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "9.91"
+ },
+ "s2_d_s128_ret_p2": {
+  "path": "descriptive.rows[REL__s128].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "9.45"
+ },
+ "s2_d_s128_speed": {
+  "path": "descriptive.rows[REL__s128].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.79"
+ },
+ "s2_d_s192_E1": {
+  "path": "descriptive.rows[REL__s192].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.25"
+ },
+ "s2_d_s192_E100": {
+  "path": "descriptive.rows[REL__s192].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.12"
+ },
+ "s2_d_s192_E8": {
+  "path": "descriptive.rows[REL__s192].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.52"
+ },
+ "s2_d_s192_duty": {
+  "path": "REL__s192__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.34"
+ },
+ "s2_d_s192_falls": {
+  "path": "descriptive.rows[REL__s192].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "56\\%"
+ },
+ "s2_d_s192_imag": {
+  "path": "descriptive.rows[REL__s192].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.033"
+ },
+ "s2_d_s192_lam1": {
+  "path": "descriptive.rows[REL__s192].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.19"
+ },
+ "s2_d_s192_lam1pol": {
+  "path": "descriptive.rows[REL__s192].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.74"
+ },
+ "s2_d_s192_rJ": {
+  "path": "descriptive.rows[REL__s192].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "7.1"
+ },
+ "s2_d_s192_ret": {
+  "path": "descriptive.rows[REL__s192].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$60.78"
+ },
+ "s2_d_s192_ret_p1": {
+  "path": "descriptive.rows[REL__s192].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$108.24"
+ },
+ "s2_d_s192_ret_p2": {
+  "path": "descriptive.rows[REL__s192].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$13.32"
+ },
+ "s2_d_s192_speed": {
+  "path": "descriptive.rows[REL__s192].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.81"
+ },
+ "s2_d_u10_E1": {
+  "path": "descriptive.rows[REL__u10].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.13"
+ },
+ "s2_d_u10_E100": {
+  "path": "descriptive.rows[REL__u10].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.52"
+ },
+ "s2_d_u10_E8": {
+  "path": "descriptive.rows[REL__u10].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.15"
+ },
+ "s2_d_u10_duty": {
+  "path": "REL__u10__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.64"
+ },
+ "s2_d_u10_falls": {
+  "path": "descriptive.rows[REL__u10].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "38\\%"
+ },
+ "s2_d_u10_imag": {
+  "path": "descriptive.rows[REL__u10].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$2.1"
+ },
+ "s2_d_u10_lam1": {
+  "path": "descriptive.rows[REL__u10].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.78"
+ },
+ "s2_d_u10_lam1pol": {
+  "path": "descriptive.rows[REL__u10].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.48"
+ },
+ "s2_d_u10_rJ": {
+  "path": "descriptive.rows[REL__u10].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "3.5"
+ },
+ "s2_d_u10_ret": {
+  "path": "descriptive.rows[REL__u10].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "9.44"
+ },
+ "s2_d_u10_ret_p1": {
+  "path": "descriptive.rows[REL__u10].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "5.04"
+ },
+ "s2_d_u10_ret_p2": {
+  "path": "descriptive.rows[REL__u10].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "13.84"
+ },
+ "s2_d_u10_speed": {
+  "path": "descriptive.rows[REL__u10].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.38"
+ },
+ "s2_d_u20_E1": {
+  "path": "descriptive.rows[REL__u20].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.22"
+ },
+ "s2_d_u20_E100": {
+  "path": "descriptive.rows[REL__u20].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.32"
+ },
+ "s2_d_u20_E8": {
+  "path": "descriptive.rows[REL__u20].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.30"
+ },
+ "s2_d_u20_duty": {
+  "path": "REL__u20__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.94"
+ },
+ "s2_d_u20_falls": {
+  "path": "descriptive.rows[REL__u20].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "19\\%"
+ },
+ "s2_d_u20_imag": {
+  "path": "descriptive.rows[REL__u20].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$15"
+ },
+ "s2_d_u20_lam1": {
+  "path": "descriptive.rows[REL__u20].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.80"
+ },
+ "s2_d_u20_lam1pol": {
+  "path": "descriptive.rows[REL__u20].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.12"
+ },
+ "s2_d_u20_rJ": {
+  "path": "descriptive.rows[REL__u20].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "7.0"
+ },
+ "s2_d_u20_ret": {
+  "path": "descriptive.rows[REL__u20].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "3.88"
+ },
+ "s2_d_u20_ret_p1": {
+  "path": "descriptive.rows[REL__u20].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "3.43"
+ },
+ "s2_d_u20_ret_p2": {
+  "path": "descriptive.rows[REL__u20].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "4.33"
+ },
+ "s2_d_u20_speed": {
+  "path": "descriptive.rows[REL__u20].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.83"
+ },
+ "s2_d_u30_E1": {
+  "path": "descriptive.rows[REL__u30].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.30"
+ },
+ "s2_d_u30_E100": {
+  "path": "descriptive.rows[REL__u30].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.05"
+ },
+ "s2_d_u30_E8": {
+  "path": "descriptive.rows[REL__u30].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.49"
+ },
+ "s2_d_u30_duty": {
+  "path": "REL__u30__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.61"
+ },
+ "s2_d_u30_falls": {
+  "path": "descriptive.rows[REL__u30].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "54\\%"
+ },
+ "s2_d_u30_imag": {
+  "path": "descriptive.rows[REL__u30].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$94"
+ },
+ "s2_d_u30_lam1": {
+  "path": "descriptive.rows[REL__u30].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.23"
+ },
+ "s2_d_u30_lam1pol": {
+  "path": "descriptive.rows[REL__u30].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "div."
+ },
+ "s2_d_u30_rJ": {
+  "path": "descriptive.rows[REL__u30].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "7.0"
+ },
+ "s2_d_u30_ret": {
+  "path": "descriptive.rows[REL__u30].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$27.81"
+ },
+ "s2_d_u30_ret_p1": {
+  "path": "descriptive.rows[REL__u30].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$7.65"
+ },
+ "s2_d_u30_ret_p2": {
+  "path": "descriptive.rows[REL__u30].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$47.97"
+ },
+ "s2_d_u30_speed": {
+  "path": "descriptive.rows[REL__u30].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.83"
+ },
+ "s2_d_u50_E1": {
+  "path": "descriptive.rows[REL__u50].E1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.37"
+ },
+ "s2_d_u50_E100": {
+  "path": "descriptive.rows[REL__u50].E100",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "7.56"
+ },
+ "s2_d_u50_E8": {
+  "path": "descriptive.rows[REL__u50].E8",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.96"
+ },
+ "s2_d_u50_duty": {
+  "path": "REL__u50__p1/p2.json summary.duty (mean)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "1.00"
+ },
+ "s2_d_u50_falls": {
+  "path": "descriptive.rows[REL__u50].fall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0\\%"
+ },
+ "s2_d_u50_imag": {
+  "path": "descriptive.rows[REL__u50].imag",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$4913"
+ },
+ "s2_d_u50_lam1": {
+  "path": "descriptive.rows[REL__u50].lam1",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.80"
+ },
+ "s2_d_u50_lam1pol": {
+  "path": "descriptive.rows[REL__u50].lam1_pol (non-finite: diverged, ranked worst)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "1.90"
+ },
+ "s2_d_u50_rJ": {
+  "path": "descriptive.rows[REL__u50].rJ",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "363"
+ },
+ "s2_d_u50_ret": {
+  "path": "descriptive.rows[REL__u50].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "9.91"
+ },
+ "s2_d_u50_ret_p1": {
+  "path": "descriptive.rows[REL__u50].per_policy[0].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "10.12"
+ },
+ "s2_d_u50_ret_p2": {
+  "path": "descriptive.rows[REL__u50].per_policy[1].ret",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "9.69"
+ },
+ "s2_d_u50_speed": {
+  "path": "descriptive.rows[REL__u50].speed_err",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.79"
+ },
+ "s2_delay_ms": {
+  "path": "delay_s * 1000",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "20"
+ },
+ "s2_delay_steps": {
+  "path": "delay_physics_steps",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "4"
+ },
+ "s2_envs": {
+  "path": "<policy>.json num_envs (all 18 equal)",
+  "source": "AIR 2027/results/s2/train",
+  "value": "4{,}096"
+ },
+ "s2_f_r0_ci": {
+  "path": "secondary.fall_rate.R0.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.95, +0.37]"
+ },
+ "s2_f_r0_label": {
+  "path": "secondary.fall_rate.R0.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_f_r0_rho": {
+  "path": "secondary.fall_rate.R0.rho",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.51"
+ },
+ "s2_f_r1_base": {
+  "path": "secondary.fall_rate.R1.rho_base",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.26"
+ },
+ "s2_f_r1_ci": {
+  "path": "secondary.fall_rate.R1.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$1.41, 0.00]"
+ },
+ "s2_f_r1_delta": {
+  "path": "secondary.fall_rate.R1.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.55"
+ },
+ "s2_f_r1_label": {
+  "path": "secondary.fall_rate.R1.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_f_r1_new": {
+  "path": "secondary.fall_rate.R1.rho_new",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.81"
+ },
+ "s2_f_r2_base": {
+  "path": "secondary.fall_rate.R2.rho_base",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.21"
+ },
+ "s2_f_r2_ci": {
+  "path": "secondary.fall_rate.R2.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.41, 0.00]"
+ },
+ "s2_f_r2_delta": {
+  "path": "secondary.fall_rate.R2.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.05"
+ },
+ "s2_f_r2_label": {
+  "path": "secondary.fall_rate.R2.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_f_r2_new": {
+  "path": "secondary.fall_rate.R2.rho_new",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.26"
+ },
+ "s2_g1_cal_falls": {
+  "path": "gait_authors_policy.calibrated.summary.fall_rate",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "1.25\\%"
+ },
+ "s2_g1_cal_nfalls": {
+  "path": "gait_authors_policy.calibrated.summary.fall_rate * n",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "1"
+ },
+ "s2_g1_cal_ret": {
+  "path": "gait_authors_policy.calibrated.summary.ret",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "26.3"
+ },
+ "s2_g1_cal_speed": {
+  "path": "gait_authors_policy.calibrated.summary.speed_err",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.069"
+ },
+ "s2_g1_cal_turn": {
+  "path": "gait_authors_policy.calibrated.summary.turn_err",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.061"
+ },
+ "s2_g1_cal_twofeet": {
+  "path": "gait_authors_policy.calibrated.summary.two_feet",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.79"
+ },
+ "s2_g1_gap_pts": {
+  "path": "|gait_authors_policy.calibrated.summary.two_feet - gait_recorded.summary.two_feet| * 100",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "5.6"
+ },
+ "s2_g1_n": {
+  "path": "gait_authors_policy.calibrated.summary.n",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "80"
+ },
+ "s2_g1_rec_speed": {
+  "path": "gait_recorded.summary.speed_err",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.072"
+ },
+ "s2_g1_rec_turn": {
+  "path": "gait_recorded.summary.turn_err",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.138"
+ },
+ "s2_g1_rec_twofeet": {
+  "path": "gait_recorded.summary.two_feet",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.84"
+ },
+ "s2_g1_speed_ratio": {
+  "path": "gait_authors_policy.calibrated.summary.speed_err / gait_recorded.summary.speed_err",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.95"
+ },
+ "s2_g1_uncal_falls": {
+  "path": "gait_authors_policy.uncalibrated.summary.fall_rate",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "1.25\\%"
+ },
+ "s2_g1_uncal_nfalls": {
+  "path": "gait_authors_policy.uncalibrated.summary.fall_rate * n",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "1"
+ },
+ "s2_g1_uncal_ret": {
+  "path": "gait_authors_policy.uncalibrated.summary.ret",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "26.2"
+ },
+ "s2_g1_uncal_speed": {
+  "path": "gait_authors_policy.uncalibrated.summary.speed_err",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.073"
+ },
+ "s2_g1_uncal_turn": {
+  "path": "gait_authors_policy.uncalibrated.summary.turn_err",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.061"
+ },
+ "s2_g1_uncal_twofeet": {
+  "path": "gait_authors_policy.uncalibrated.summary.two_feet",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.76"
+ },
+ "s2_grid_n": {
+  "path": "grid (product of the four lists' lengths)",
+  "source": "AIR 2027/step2/model/calibration.json",
+  "value": "108"
+ },
+ "s2_imag_ci": {
+  "path": "secondary.imagined_return.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.86, +0.74]"
+ },
+ "s2_imag_label": {
+  "path": "secondary.imagined_return.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_imag_rho": {
+  "path": "secondary.imagined_return.rho",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.20"
+ },
+ "s2_iters": {
+  "path": "<policy>.json iterations (all 18 equal)",
+  "source": "AIR 2027/results/s2/train",
+  "value": "500"
+ },
+ "s2_job_hours": {
+  "path": "seconds_this_run / 3600",
+  "source": "AIR 2027/results/s2_main.json",
+  "value": "21"
+ },
+ "s2_kd": {
+  "path": "kd",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "4.93"
+ },
+ "s2_kp": {
+  "path": "kp",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "82.6"
+ },
+ "s2_mass": {
+  "path": "a.total_mass_kg",
+  "source": "AIR 2027/results/s2/m1_tests.json",
+  "value": "57.03"
+ },
+ "s2_n_eps": {
+  "path": "<policy>.json summary.n (all 18 equal)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "80"
+ },
+ "s2_n_policies": {
+  "path": "policies (count, all status measured)",
+  "source": "AIR 2027/results/s2_main.json",
+  "value": "18"
+ },
+ "s2_n_settled": {
+  "path": "premise_and_primary.R0-R2.label (count settled)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0"
+ },
+ "s2_n_sims": {
+  "path": "n_simulators",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "9"
+ },
+ "s2_pc_r1_base": {
+  "path": "secondary.policy_commands.R1.rho_base",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.33"
+ },
+ "s2_pc_r1_ci": {
+  "path": "secondary.policy_commands.R1.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$1.68, +0.58]"
+ },
+ "s2_pc_r1_delta": {
+  "path": "secondary.policy_commands.R1.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.73"
+ },
+ "s2_pc_r1_label": {
+  "path": "secondary.policy_commands.R1.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_pc_r1_new": {
+  "path": "secondary.policy_commands.R1.rho_new",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.40"
+ },
+ "s2_pc_r2_base": {
+  "path": "secondary.policy_commands.R2.rho_base",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.38"
+ },
+ "s2_pc_r2_ci": {
+  "path": "secondary.policy_commands.R2.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.21, +0.58]"
+ },
+ "s2_pc_r2_delta": {
+  "path": "secondary.policy_commands.R2.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.13"
+ },
+ "s2_pc_r2_label": {
+  "path": "secondary.policy_commands.R2.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_pc_r2_new": {
+  "path": "secondary.policy_commands.R2.rho_new",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.52"
+ },
+ "s2_pd_n_eps": {
+  "path": "episodes (count)",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "8"
+ },
+ "s2_pd_r2": {
+  "path": "r2",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "0.93"
+ },
+ "s2_pd_rmse": {
+  "path": "rmse_Nm",
+  "source": "AIR 2027/results/s2/pd_fit.json",
+  "value": "3.4"
+ },
+ "s2_pilot_a_falls": {
+  "path": "policies.A_s0__p0.fall_rate",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "100\\%"
+ },
+ "s2_pilot_a_falls_ci": {
+  "path": "policies.A_s0__p0.fall_rate_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[100\\%, 100\\%]"
+ },
+ "s2_pilot_a_imag": {
+  "path": "policies.A_s0__p0.imagined_return",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "5.13"
+ },
+ "s2_pilot_a_ret": {
+  "path": "policies.A_s0__p0.ret",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "$-$10.37"
+ },
+ "s2_pilot_a_ret_ci": {
+  "path": "policies.A_s0__p0.ret_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[$-$12.71, $-$8.28]"
+ },
+ "s2_pilot_au50_falls": {
+  "path": "policies.A_s0__u50__p0.fall_rate",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "100\\%"
+ },
+ "s2_pilot_au50_falls_ci": {
+  "path": "policies.A_s0__u50__p0.fall_rate_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[100\\%, 100\\%]"
+ },
+ "s2_pilot_au50_imag": {
+  "path": "policies.A_s0__u50__p0.imagined_return",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "3.79"
+ },
+ "s2_pilot_au50_ret": {
+  "path": "policies.A_s0__u50__p0.ret",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "$-$6.56"
+ },
+ "s2_pilot_au50_ret_ci": {
+  "path": "policies.A_s0__u50__p0.ret_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[$-$8.71, $-$4.75]"
+ },
+ "s2_pilot_b_falls": {
+  "path": "policies.B_s0__p0.fall_rate",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "100\\%"
+ },
+ "s2_pilot_b_falls_ci": {
+  "path": "policies.B_s0__p0.fall_rate_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[100\\%, 100\\%]"
+ },
+ "s2_pilot_b_imag": {
+  "path": "policies.B_s0__p0.imagined_return",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "3.95"
+ },
+ "s2_pilot_b_ret": {
+  "path": "policies.B_s0__p0.ret",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "$-$3.99"
+ },
+ "s2_pilot_b_ret_ci": {
+  "path": "policies.B_s0__p0.ret_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[$-$5.27, $-$3.17]"
+ },
+ "s2_pilot_rel_falls": {
+  "path": "policies.REL__p0.fall_rate",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "10\\%"
+ },
+ "s2_pilot_rel_falls_ci": {
+  "path": "policies.REL__p0.fall_rate_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[6\\%, 15\\%]"
+ },
+ "s2_pilot_rel_imag": {
+  "path": "policies.REL__p0.imagined_return",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "2.07"
+ },
+ "s2_pilot_rel_ret": {
+  "path": "policies.REL__p0.ret",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "18.59"
+ },
+ "s2_pilot_rel_ret_ci": {
+  "path": "policies.REL__p0.ret_ci95",
+  "source": "AIR 2027/results/s2_pilot.json",
+  "value": "[17.37, 19.66]"
+ },
+ "s2_r0_ci": {
+  "path": "premise_and_primary.R0.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.87, +0.81]"
+ },
+ "s2_r0_label": {
+  "path": "premise_and_primary.R0.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_r0_rho": {
+  "path": "premise_and_primary.R0.rho",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.23"
+ },
+ "s2_r1_base": {
+  "path": "premise_and_primary.R1.rho_base",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.33"
+ },
+ "s2_r1_ci": {
+  "path": "premise_and_primary.R1.ci97.5",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$1.50, 0.00]"
+ },
+ "s2_r1_delta": {
+  "path": "premise_and_primary.R1.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.68"
+ },
+ "s2_r1_label": {
+  "path": "premise_and_primary.R1.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_r1_new": {
+  "path": "premise_and_primary.R1.rho_new",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.35"
+ },
+ "s2_r2_base": {
+  "path": "premise_and_primary.R2.rho_base",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.38"
+ },
+ "s2_r2_ci": {
+  "path": "premise_and_primary.R2.ci97.5",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.47, 0.00]"
+ },
+ "s2_r2_delta": {
+  "path": "premise_and_primary.R2.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$0.05"
+ },
+ "s2_r2_label": {
+  "path": "premise_and_primary.R2.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_r2_new": {
+  "path": "premise_and_primary.R2.rho_new",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "+0.33"
+ },
+ "s2_reg_commit": {
+  "path": "log --diff-filter=A -- prereg/PREREG_S2.md (%h)",
+  "source": "git",
+  "value": "b51a8e5"
+ },
+ "s2_reg_time": {
+  "path": "log --diff-filter=A -- prereg/PREREG_S2.md (%ct, printed in UTC)",
+  "source": "git",
+  "value": "2026-11-07 23:03 UTC"
+ },
+ "s2_rep_cal_E1": {
+  "path": "replay_held_out.calibrated.horizons.1.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.09"
+ },
+ "s2_rep_cal_E100": {
+  "path": "replay_held_out.calibrated.horizons.100.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "1.04"
+ },
+ "s2_rep_cal_E24": {
+  "path": "replay_held_out.calibrated.horizons.24.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.23"
+ },
+ "s2_rep_cal_E8": {
+  "path": "replay_held_out.calibrated.horizons.8.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.15"
+ },
+ "s2_rep_cal_Nm1": {
+  "path": "replay_held_out.calibrated.horizons.1.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "1.6"
+ },
+ "s2_rep_cal_Nm100": {
+  "path": "replay_held_out.calibrated.horizons.100.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "6.7"
+ },
+ "s2_rep_cal_Nm24": {
+  "path": "replay_held_out.calibrated.horizons.24.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "3.2"
+ },
+ "s2_rep_cal_Nm8": {
+  "path": "replay_held_out.calibrated.horizons.8.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "2.4"
+ },
+ "s2_rep_floor_E1": {
+  "path": "replay_held_out.calibrated.horizons.1.floor",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.16"
+ },
+ "s2_rep_floor_E100": {
+  "path": "replay_held_out.calibrated.horizons.100.floor",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.69"
+ },
+ "s2_rep_floor_E24": {
+  "path": "replay_held_out.calibrated.horizons.24.floor",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.64"
+ },
+ "s2_rep_floor_E8": {
+  "path": "replay_held_out.calibrated.horizons.8.floor",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.48"
+ },
+ "s2_rep_ntraj": {
+  "path": "replay_held_out.calibrated.starts (count)",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "4"
+ },
+ "s2_rep_uncal_E1": {
+  "path": "replay_held_out.uncalibrated.horizons.1.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.13"
+ },
+ "s2_rep_uncal_E100": {
+  "path": "replay_held_out.uncalibrated.horizons.100.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "1.09"
+ },
+ "s2_rep_uncal_E24": {
+  "path": "replay_held_out.uncalibrated.horizons.24.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.25"
+ },
+ "s2_rep_uncal_E8": {
+  "path": "replay_held_out.uncalibrated.horizons.8.mean",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "0.18"
+ },
+ "s2_rep_uncal_Nm1": {
+  "path": "replay_held_out.uncalibrated.horizons.1.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "2.1"
+ },
+ "s2_rep_uncal_Nm100": {
+  "path": "replay_held_out.uncalibrated.horizons.100.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "7.0"
+ },
+ "s2_rep_uncal_Nm24": {
+  "path": "replay_held_out.uncalibrated.horizons.24.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "3.5"
+ },
+ "s2_rep_uncal_Nm8": {
+  "path": "replay_held_out.uncalibrated.horizons.8.torque_Nm",
+  "source": "AIR 2027/results/s2_fidelity.json",
+  "value": "3.0"
+ },
+ "s2_ret_min_sim": {
+  "path": "descriptive.rows[REL__s192].ret (lowest)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$60.78"
+ },
+ "s2_rollout_label": {
+  "path": "secondary.rollout_subset.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not applicable"
+ },
+ "s2_sel1_ci": {
+  "path": "secondary.selection.SEL1.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$72.67, 0.00]"
+ },
+ "s2_sel1_delta": {
+  "path": "secondary.selection.SEL1.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "$-$38.28"
+ },
+ "s2_sel1_label": {
+  "path": "secondary.selection.SEL1.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_sel2_ci": {
+  "path": "secondary.selection.SEL2.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$21.16, 0.00]"
+ },
+ "s2_sel2_delta": {
+  "path": "secondary.selection.SEL2.delta",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.00"
+ },
+ "s2_sel2_label": {
+  "path": "secondary.selection.SEL2.label",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "not settled"
+ },
+ "s2_sel_E1": {
+  "path": "secondary.selection.checks.E1.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.16"
+ },
+ "s2_sel_E100": {
+  "path": "secondary.selection.checks.E100.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.16"
+ },
+ "s2_sel_E100_ci": {
+  "path": "secondary.selection.checks.E100.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[0.00, 45.12]"
+ },
+ "s2_sel_E1_ci": {
+  "path": "secondary.selection.checks.E1.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[0.00, 27.82]"
+ },
+ "s2_sel_E8": {
+  "path": "secondary.selection.checks.E8.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.16"
+ },
+ "s2_sel_E8_ci": {
+  "path": "secondary.selection.checks.E8.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[0.00, 14.66]"
+ },
+ "s2_sel_best3": {
+  "path": "secondary.selection.best_three_mean",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "13.96"
+ },
+ "s2_sel_err_chosen": {
+  "path": "secondary.selection.checks.E1.chosen (= E8, E100, rJ)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "\\texttt{REL\\_\\_fp16}, \\texttt{REL}, \\texttt{REL\\_\\_u10}"
+ },
+ "s2_sel_imag": {
+  "path": "secondary.selection.checks.imag.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "23.56"
+ },
+ "s2_sel_imag_ci": {
+  "path": "secondary.selection.checks.imag.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[0.00, 47.13]"
+ },
+ "s2_sel_lam1": {
+  "path": "secondary.selection.checks.lam1.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "38.43"
+ },
+ "s2_sel_lam1_ci": {
+  "path": "secondary.selection.checks.lam1.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[0.00, 74.21]"
+ },
+ "s2_sel_lam1_pol": {
+  "path": "secondary.selection.checks.lam1_pol.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "29.71"
+ },
+ "s2_sel_lam1_pol_ci": {
+  "path": "secondary.selection.checks.lam1_pol.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[3.77, 74.21]"
+ },
+ "s2_sel_rJ": {
+  "path": "secondary.selection.checks.rJ.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.16"
+ },
+ "s2_sel_rJ_ci": {
+  "path": "secondary.selection.checks.rJ.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[0.00, 25.96]"
+ },
+ "s2_sel_rJ_pol": {
+  "path": "secondary.selection.checks.rJ_pol.shortfall",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "0.16"
+ },
+ "s2_sel_rJ_pol_ci": {
+  "path": "secondary.selection.checks.rJ_pol.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[0.00, 25.42]"
+ },
+ "s2_still_duty_min": {
+  "path": "REL__u50/REL__s128 __p1/p2.json summary.duty (min)",
+  "source": "AIR 2027/results/s2/eval",
+  "value": "0.997"
+ },
+ "s2_still_n": {
+  "path": "descriptive.rows with fall == 0 (count)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "2"
+ },
+ "s2_top_falls_max": {
+  "path": "descriptive.rows[REL, REL__fp16].per_policy.fall (max)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "45\\%"
+ },
+ "s2_top_falls_min": {
+  "path": "descriptive.rows[REL, REL__fp16].per_policy.fall (min)",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "31\\%"
+ },
+ "s2_train_h_max": {
+  "path": "<policy>.json wall_seconds / 3600 (max over 18)",
+  "source": "AIR 2027/results/s2/train",
+  "value": "2.7"
+ },
+ "s2_train_h_min": {
+  "path": "<policy>.json wall_seconds / 3600 (min over 18)",
+  "source": "AIR 2027/results/s2/train",
+  "value": "1.8"
+ },
+ "s2_uncal_armature": {
+  "path": "uncalibrated_point.armature",
+  "source": "AIR 2027/step2/model/calibration.json",
+  "value": "0.00"
+ },
+ "s2_uncal_damping": {
+  "path": "uncalibrated_point.damping",
+  "source": "AIR 2027/step2/model/calibration.json",
+  "value": "0.0"
+ },
+ "s2_uncal_friction": {
+  "path": "uncalibrated_point.friction",
+  "source": "AIR 2027/step2/model/calibration.json",
+  "value": "0.8"
+ },
+ "s2_uncal_timeconst": {
+  "path": "uncalibrated_point.timeconst",
+  "source": "AIR 2027/step2/model/calibration.json",
+  "value": "0.02"
+ },
+ "s2_workers": {
+  "path": "workers",
+  "source": "AIR 2027/results/s2_main.json",
+  "value": "2"
+ },
+ "s2_x_r0_ci": {
+  "path": "exploratory.two_level.R0.ci95",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.83, +0.79]"
+ },
+ "s2_x_r1_ci": {
+  "path": "exploratory.two_level.R1.ci97.5",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$1.44, 0.00]"
+ },
+ "s2_x_r2_ci": {
+  "path": "exploratory.two_level.R2.ci97.5",
+  "source": "AIR 2027/results/s2_stats.json",
+  "value": "[$-$0.47, 0.00]"
+ },
  "scale_ratio": {
   "path": "c2_pct: 100 / c2_pct, to the nearest 10",
   "source": "rwm_repro/results/paper_numbers.json",

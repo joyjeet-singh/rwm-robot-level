@@ -1,7 +1,7 @@
 % SOURCE of the appendix (single-column submission only; scripts/build_paper.py fills it into appendix.tex and
 % main_single.tex inputs it after the references). Same rules as body.template.tex: every number is a double-brace
 % placeholder read from a result file, and every analysis added in the revision is labelled (exploratory).
-% The body refers to these sections as appendix A1 to A10; main_single.tex numbers them A1, A2, ...
+% The body refers to these sections as appendix A1 to A12; main_single.tex numbers them A1, A2, ...
 
 \FloatBarrier
 \section{Training settings, models and rebuild}\label{app:A1}
@@ -644,3 +644,236 @@ from {{s1_tb_ro_2500_E100}} to {{s1_tb_ro_10000_E100}} and for teacher-forced on
 forcing was better one step ahead and worse at 100 steps, its growth rate was positive and that of rollout training
 negative. In study FT (appendix~A7), the parent kept {{s1_tb_K_min}} to {{s1_tb_K_max}} of the skill of its control,
 which had 500 more iterations, across horizons (500 more iterations, on the X5 arena).
+
+\FloatBarrier
+\section{A hand-built MuJoCo ANYmal D}\label{app:A11}
+% A11: the physics test's model (STEP2_PLAN.md design; scripts/s2/build_model.py, mj_env.py, actuator.py, fidelity.py,
+% calibrate.py). Values: results/s2_fidelity.json, results/s2/pd_fit.json, results/s2/m1_tests.json,
+% step2/model/calibration.json (keys from scripts/s2_numbers.py). Validation declared in prereg/PREREG_S2.md, not
+% results; the held-out errors are descriptive.
+\textbf{Scope.} The physics test (Sec.~\ref{sec:step2}, appendix~A12) uses a model of the robot that we wrote for it.
+It is not the simulator that produced the recorded data, and it is not hardware: every statement about walking in
+this appendix and in appendix~A12 is about this model. All of this appendix is validation of the model, fixed or
+measured before the physics test was registered; the held-out errors are descriptive.
+
+\textbf{Build.} A script converts the manufacturer's published ANYmal~D robot description (a URDF file under a BSD
+licence) into a MuJoCo model: a free-floating trunk and 12 hinge joints, {{s2_mass}}~kg in all, with inertias summed
+from the description in double precision. MuJoCo's own URDF import moves the robot's centre of mass when it merges
+fixed parts, so the parts are kept separate. Collision shapes are a box trunk, capsule thighs and shanks and sphere
+feet, and the robot touches only the ground. The physics step is 0.005~s and a policy acts every 0.02~s, as in the
+data. The state that policies and learned simulators read (body velocities, gravity direction, joint angles, speeds
+and torques) is computed from the MuJoCo state by Isaac Lab's definitions for this task.
+
+\textbf{Motor model.} The planned motor model, the ANYdrive actuator network that Isaac Lab uses for this robot, could
+not be obtained, so the fallback fixed in advance was used: a PD controller with a fixed delay, which turns each
+joint command into a torque. It was fitted by least squares to the recorded joint torques of the {{s2_pd_n_eps}}
+training episodes, on steps whose torque was not saturated: $K_p={}${{s2_kp}}~N\,m/rad, $K_d={}${{s2_kd}}~N\,m\,s/rad
+and a delay of {{s2_delay_ms}}~ms ({{s2_delay_steps}} physics steps), with $R^2={}${{s2_pd_r2}} (root-mean-square
+error {{s2_pd_rmse}}~N\,m). The torques separate the delay only coarsely; the shortest delay of the best-fitting group
+was kept. Torque is clipped by Isaac Lab's torque--speed limit for this motor ({{s2_clip_sat}}~N\,m saturation,
+{{s2_clip_lim}}~N\,m limit, {{s2_clip_vel}}~rad/s).
+
+\textbf{Calibration.} Four constants were chosen on a fixed grid of {{s2_grid_n}} points: foot friction (0.6 to 1.2),
+the contact time constant (0.005 to 0.02~s), joint armature (0 to 0.05~kg\,m$^2$) and joint damping (0 to
+1~N\,m\,s/rad). Each point replayed the recorded joint commands from recorded states on the training episodes only,
+and the point with the lowest mean 8-step error was kept, ties broken by one-step error. It was frozen before any
+held-out number or policy was measured. The chosen point has friction {{s2_cal_friction}}, time constant
+{{s2_cal_timeconst}}~s, armature {{s2_cal_armature}}~kg\,m$^2$ and damping {{s2_cal_damping}}, with training-episode
+errors $E_8={}${{s2_cal_obj_E8}} and $E_1={}${{s2_cal_obj_E1}} (worst grid point: $E_8={}${{s2_cal_worst_E8}}). MuJoCo
+raises a time constant below twice the physics step to that floor, so the grid's 0.005~s points behaved as 0.01~s;
+the exact tie this caused was broken towards the larger value, by a rule fixed before the grid was run. The uncalibrated
+model has friction {{s2_uncal_friction}}, time constant {{s2_uncal_timeconst}}~s and no armature or damping.
+
+\textbf{Error on held-out trajectories (descriptive).} Table~\ref{tab:app-s2fid} gives the model's own error when it
+replays the recorded joint commands from recorded states on the {{s2_rep_ntraj}} held-out trajectories of episodes 1
+and 8, with the measures and windows of the main study. No window became unstable. The calibrated model is better than
+the floor up to 24 steps but worse at 100 steps: run open loop on recorded joint commands, its trajectories drift
+away from the recording, as the learned simulators' do. It is a separate physics model in which a policy can walk,
+not a copy of the data's simulator.
+
+\begin{table}[h]
+\centering
+\caption{The MuJoCo model replaying recorded joint commands on the {{s2_rep_ntraj}} held-out trajectories
+(descriptive): mean normalised error $E_h$ (as in the main study), the floor (holding the last state) and the torque
+error (N\,m).}
+\label{tab:app-s2fid}
+\footnotesize
+\begin{tabular}{@{}rccccc@{}}
+\toprule
+$h$ & $E_h$ uncalibrated & $E_h$ calibrated & floor & torque, uncalibrated & torque, calibrated \\
+\midrule
+1 & {{s2_rep_uncal_E1}} & {{s2_rep_cal_E1}} & {{s2_rep_floor_E1}} & {{s2_rep_uncal_Nm1}} & {{s2_rep_cal_Nm1}} \\
+8 & {{s2_rep_uncal_E8}} & {{s2_rep_cal_E8}} & {{s2_rep_floor_E8}} & {{s2_rep_uncal_Nm8}} & {{s2_rep_cal_Nm8}} \\
+24 & {{s2_rep_uncal_E24}} & {{s2_rep_cal_E24}} & {{s2_rep_floor_E24}} & {{s2_rep_uncal_Nm24}} & {{s2_rep_cal_Nm24}} \\
+100 & {{s2_rep_uncal_E100}} & {{s2_rep_cal_E100}} & {{s2_rep_floor_E100}} & {{s2_rep_uncal_Nm100}} & {{s2_rep_cal_Nm100}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Gate 1.} Before the pilot, a gate fixed in advance required the RWM authors' released policy, run in the
+calibrated model on the {{s2_g1_n}} evaluation episodes (appendix~A12), to fall in fewer than 10\% of episodes (G1),
+to keep exactly two feet down for a share of time within 10 percentage points of the recording's (G2), and to track
+the commanded speed with at most 1.5 times the recording's own error (G3). It passed all three
+(Table~\ref{tab:app-s2gate}): {{s2_g1_cal_nfalls}} fall in {{s2_g1_n}} episodes, a two-feet gap of {{s2_g1_gap_pts}}
+points and a speed-error ratio of {{s2_g1_speed_ratio}}. The uncalibrated model passed too. Not gated: the policy
+turned more accurately in the model than the recording did ({{s2_g1_cal_turn}} against {{s2_g1_rec_turn}}~rad/s
+error). The recording's velocity commands are segment means read from the data (appendix~A8), so this comparison is
+loose.
+
+\begin{table}[h]
+\centering
+\caption{Gate 1: the authors' released policy in the MuJoCo model ({{s2_g1_n}} episodes) and the recorded data on the
+same ten command schedules. Two feet: share of time with exactly two feet on the ground. Speed and turn: mean
+tracking error. Physics return as in appendix~A12.}
+\label{tab:app-s2gate}
+\footnotesize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+ & Falls & Two feet & Speed (m/s) & Turn (rad/s) & Physics return \\
+\midrule
+Model, uncalibrated & {{s2_g1_uncal_falls}} & {{s2_g1_uncal_twofeet}} & {{s2_g1_uncal_speed}} & {{s2_g1_uncal_turn}} & {{s2_g1_uncal_ret}} \\
+Model, calibrated & {{s2_g1_cal_falls}} & {{s2_g1_cal_twofeet}} & {{s2_g1_cal_speed}} & {{s2_g1_cal_turn}} & {{s2_g1_cal_ret}} \\
+Recorded data & -- & {{s2_g1_rec_twofeet}} & {{s2_g1_rec_speed}} & {{s2_g1_rec_turn}} & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+\section{Policies trained in the simulators}\label{app:A12}
+% A12: the physics test (prereg/PREREG_S2.md; scripts/s2/train_policy.py, evaluate.py, scripts/s2_main.py,
+% scripts/s2_stats.py). Values: results/s2_pilot.json (Gate 2, validation), results/s2_main.json,
+% results/s2_stats.json, results/s2/eval/ (keys from scripts/s2_numbers.py). R0-R2 registered; the rest labelled.
+\textbf{Scope.} Every result here is about the hand-built MuJoCo model of appendix~A11, not the data's simulator and
+not hardware, and about {{s2_n_sims}} versions of one learned simulator.
+
+\textbf{Registration.} The design, the two gates and the calibration grid were fixed in a plan committed before any
+MuJoCo number existed. The test's rules and analysis code were committed at {{s2_reg_time}} (commit
+{{s2_reg_commit}}), after Gate 1 and the pilot and before any registered policy was trained.
+
+\textbf{Measurement.} A policy is run in the model on the velocity-command schedules of the ten recorded episodes
+(20~s each; each recorded segment's command held at its mean, as in appendix~A8), from eight starts per schedule
+(joint angles moved by up to $\pm$0.05~rad, random heading), {{s2_n_eps}} episodes in all. An episode ends at a fall,
+by Isaac Lab's rule for this task (a contact force above 1~N on the trunk). The primary outcome, \emph{physics
+return}, is the lite training code's own reward computed from MuJoCo states and foot contacts and averaged over the
+episodes: rewards for tracking the commanded speed and turning rate and for feet in the air, and penalties on
+vertical and tilting body motion, torque, joint acceleration, changes of joint command, thigh contacts and moving
+when told to stand. The secondary outcomes are the fall rate (share of episodes ending in a fall) and the speed and
+turn tracking errors. A simulator's score is the mean over its two policies.
+
+\textbf{Pilot (Gate 2; validation, not results).} Four policies, one seed each, were trained by the authors' lite
+code and measured: one in the released model, and three in rebuilt single-network simulators of the main pool (the
+released configuration's seed 0, a teacher-forced model, and the 50\%-pruned copy of seed 0). The gate asked that the
+released-model policy fall in fewer than 25\% of episodes (P1), that at least one rebuilt-simulator policy fall in
+fewer than 50\% (P2), and that the four physics returns not all lie inside each other's intervals (P3). P1 and P3
+passed. P2 failed: all three rebuilt-simulator policies fell in every episode (Table~\ref{tab:app-s2pilot}), although
+their imagined returns were higher than the released-model policy's. Why was not studied; one difference is that a
+single-network simulator gives the lite code no spread between heads, so its uncertainty penalty is inactive. By the
+rule fixed in advance, the registered pool became the fallback pool instead of 25 main-pool simulators.
+
+\begin{table}[h]
+\centering
+\caption{Pilot (Gate 2; validation, not results): one policy per simulator, {{s2_n_eps}} episodes, 95\% bootstrap
+intervals over starts within schedules. Imagined return: mean training reward over the last 25 training iterations,
+inside the simulator.}
+\label{tab:app-s2pilot}
+\footnotesize
+\begin{tabular}{@{}llccc@{}}
+\toprule
+Trained in & Network & Falls & Physics return & Imagined return \\
+\midrule
+Released model & five heads & {{s2_pilot_rel_falls}} {{s2_pilot_rel_falls_ci}} & {{s2_pilot_rel_ret}} {{s2_pilot_rel_ret_ci}} & {{s2_pilot_rel_imag}} \\
+Rebuilt, released settings & one & {{s2_pilot_a_falls}} {{s2_pilot_a_falls_ci}} & {{s2_pilot_a_ret}} {{s2_pilot_a_ret_ci}} & {{s2_pilot_a_imag}} \\
+Rebuilt, teacher-forced & one & {{s2_pilot_b_falls}} {{s2_pilot_b_falls_ci}} & {{s2_pilot_b_ret}} {{s2_pilot_b_ret_ci}} & {{s2_pilot_b_imag}} \\
+Rebuilt, 50\% pruned & one & {{s2_pilot_au50_falls}} {{s2_pilot_au50_falls_ci}} & {{s2_pilot_au50_ret}} {{s2_pilot_au50_ret_ci}} & {{s2_pilot_au50_imag}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Pool and training.} The pool has {{s2_n_sims}} simulators: the released five-head checkpoint and eight copies
+made from it without retraining (every parameter rounded to 16 bits; weights rounded to 8 bits; 10, 20, 30 and 50\%
+of weights pruned; GRU width cut to 192 and 128 units). All have five heads, so the uncertainty penalty is active
+alike. For each, two policies (seeds 1 and 2; {{s2_n_policies}} in all) were trained by the authors' lite code,
+unchanged apart from small compatibility changes, for {{s2_iters}} iterations with {{s2_envs}} imagined robots,
+starting from states of all ten recorded episodes, on which the released model was trained. Each policy took
+{{s2_train_h_min}} to {{s2_train_h_max}} hours on a CPU, and the whole job {{s2_job_hours}} hours. Every policy
+finished training with finite losses and was measured; none failed. The checks were computed before registration, with
+the main study's code, on all 20 recorded trajectories: they are in-sample, because the released model was trained
+on every episode.
+
+\textbf{Registered results.} All three registered questions were not settled (Table~\ref{tab:verdicts}). Across the
+{{s2_n_sims}} simulators, the 100-step error ranked physics return weakly ($\rho={}${{s2_r0_rho}}, 95\%
+{{s2_r0_ci}}; R0). The growth rate ranked it in reverse ({{s2_r1_new}}) where one-step error ranked it with the right
+sign ({{s2_r1_base}}); the difference, {{s2_r1_delta}} (97.5\% {{s2_r1_ci}}; R1), points towards one-step error but
+does not exclude zero. The kinematic residual and the 8-step error ranked it alike ({{s2_r2_new}} and
+{{s2_r2_base}}; R2). Several intervals end exactly at zero, so they include it. The two-level intervals, which also
+resample each simulator's two policies, give the same verdicts (R0 {{s2_x_r0_ci}}, R1 {{s2_x_r1_ci}}, R2
+{{s2_x_r2_ci}}; exploratory). The rollout-trained subset was not applicable: only the released model is itself
+rollout-trained.
+
+\textbf{Secondary results.} All were not settled (Table~\ref{tab:app-s2sec}). With the fall rate as the outcome, the
+100-step error ranked simulators in reverse ($\rho={}${{s2_f_r0_rho}}, {{s2_f_r0_ci}}); the two copies with the
+largest errors produced the only policies that never fell (below). The imagined return ranked physics return
+weakly ({{s2_imag_rho}}, {{s2_imag_ci}}). In selection, the three simulators that one-step, 8-step and 100-step
+error and the residual each ranked best ({{s2_sel_err_chosen}}) fell short of the three best by physics return by only
+{{s2_sel_E1}} (mean of the best three: {{s2_sel_best3}}); the growth rate's three fell short by {{s2_sel_lam1}}. Neither
+difference was settled (SEL1 {{s2_sel1_delta}} {{s2_sel1_ci}}; SEL2 {{s2_sel2_delta}} {{s2_sel2_ci}}).
+
+\begin{table}[h]
+\centering
+\caption{Physics test, secondary analyses (95\% intervals; every verdict NOT SETTLED unless shown). $\rho$: Spearman
+correlation of the negated check with the outcome; differences: label-free check minus error check. Selection:
+shortfall in mean physics return of the check's best three simulators against the best three by physics return.}
+\label{tab:app-s2sec}
+\footnotesize
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Analysis & Outcome & $\rho$ (label-free, error) & Estimate & Verdict \\
+\midrule
+R0, fall rate & $-$falls & $E_{100}$ & {{s2_f_r0_rho}} {{s2_f_r0_ci}} & \textsc{{{s2_f_r0_label}}} \\
+R1, fall rate & $-$falls & $\lambda_1$ {{s2_f_r1_new}}, $E_1$ {{s2_f_r1_base}} & {{s2_f_r1_delta}} {{s2_f_r1_ci}} & \textsc{{{s2_f_r1_label}}} \\
+R2, fall rate & $-$falls & $\bar r_J$ {{s2_f_r2_new}}, $E_8$ {{s2_f_r2_base}} & {{s2_f_r2_delta}} {{s2_f_r2_ci}} & \textsc{{{s2_f_r2_label}}} \\
+R1, policy commands & return & $\lambda_1$ {{s2_pc_r1_new}}, $E_1$ {{s2_pc_r1_base}} & {{s2_pc_r1_delta}} {{s2_pc_r1_ci}} & \textsc{{{s2_pc_r1_label}}} \\
+R2, policy commands & return & $\bar r_J$ {{s2_pc_r2_new}}, $E_8$ {{s2_pc_r2_base}} & {{s2_pc_r2_delta}} {{s2_pc_r2_ci}} & \textsc{{{s2_pc_r2_label}}} \\
+Imagined return & return & imagined return & {{s2_imag_rho}} {{s2_imag_ci}} & \textsc{{{s2_imag_label}}} \\
+SEL1 & return & shortfall $E_1$ {{s2_sel_E1}}, $\lambda_1$ {{s2_sel_lam1}} & {{s2_sel1_delta}} {{s2_sel1_ci}} & \textsc{{{s2_sel1_label}}} \\
+SEL2 & return & shortfall $E_8$ {{s2_sel_E8}}, $\bar r_J$ {{s2_sel_rJ}} & {{s2_sel2_delta}} {{s2_sel2_ci}} & \textsc{{{s2_sel2_label}}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Per simulator (descriptive).} Table~\ref{tab:app-s2desc} gives every simulator's outcomes and checks. The
+policies trained in the released model and its 16-bit copy scored best, but fell in {{s2_top_falls_min}} to
+{{s2_top_falls_max}} of episodes, against {{s2_pilot_rel_falls}} for the pilot's released-model policy and
+{{s2_g1_cal_falls}} for the authors' policy, whose physics return in the same model was {{s2_g1_cal_ret}}. The
+policies from the 50\%-pruned copy and the narrowest copy (width 128) stood still: they kept all four feet down at
+least {{s2_still_duty_min}} of the time, tracked no command (speed error {{s2_d_u50_speed}} and {{s2_d_s128_speed}}~m/s)
+and never fell. They scored just below the two best simulators' policies and above all others, while their
+simulators had the largest errors of the pool. Physics return, the registered outcome, thus ranked standing still above
+walking with falls; it measures staying upright as much as walking. The two policy seeds of one simulator often
+differed widely (for example {{s2_d_s192_ret_p1}} and {{s2_d_s192_ret_p2}} for the width-192 copy).
+
+\begin{table}[h]
+\centering
+\caption{Physics test per simulator (descriptive; two policies each, {{s2_n_eps}} episodes per policy). Return:
+physics return (seed 1, seed 2; mean). Duty: mean share of time a foot is on the ground. Imagined: imagined return.
+Checks on all 20 recorded trajectories (in-sample); $\lambda_1^{\pi}$: growth rate under the authors' policy's
+commands (div.: diverged, ranked worst).}
+\label{tab:app-s2desc}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fittable{\begin{tabular}{@{}lccccccccccccc@{}}
+\toprule
+Simulator & \multicolumn{3}{c}{Return} & Falls & Speed & Duty & Imagined & $E_1$ & $E_8$ & $E_{100}$ & $\lambda_1$ & $\bar r_J$ & $\lambda_1^{\pi}$ \\
+\midrule
+Released & {{s2_d_rel_ret_p1}} & {{s2_d_rel_ret_p2}} & {{s2_d_rel_ret}} & {{s2_d_rel_falls}} & {{s2_d_rel_speed}} & {{s2_d_rel_duty}} & {{s2_d_rel_imag}} & {{s2_d_rel_E1}} & {{s2_d_rel_E8}} & {{s2_d_rel_E100}} & {{s2_d_rel_lam1}} & {{s2_d_rel_rJ}} & {{s2_d_rel_lam1pol}} \\
+16-bit & {{s2_d_fp16_ret_p1}} & {{s2_d_fp16_ret_p2}} & {{s2_d_fp16_ret}} & {{s2_d_fp16_falls}} & {{s2_d_fp16_speed}} & {{s2_d_fp16_duty}} & {{s2_d_fp16_imag}} & {{s2_d_fp16_E1}} & {{s2_d_fp16_E8}} & {{s2_d_fp16_E100}} & {{s2_d_fp16_lam1}} & {{s2_d_fp16_rJ}} & {{s2_d_fp16_lam1pol}} \\
+8-bit weights & {{s2_d_int8w_ret_p1}} & {{s2_d_int8w_ret_p2}} & {{s2_d_int8w_ret}} & {{s2_d_int8w_falls}} & {{s2_d_int8w_speed}} & {{s2_d_int8w_duty}} & {{s2_d_int8w_imag}} & {{s2_d_int8w_E1}} & {{s2_d_int8w_E8}} & {{s2_d_int8w_E100}} & {{s2_d_int8w_lam1}} & {{s2_d_int8w_rJ}} & {{s2_d_int8w_lam1pol}} \\
+Pruned 10\% & {{s2_d_u10_ret_p1}} & {{s2_d_u10_ret_p2}} & {{s2_d_u10_ret}} & {{s2_d_u10_falls}} & {{s2_d_u10_speed}} & {{s2_d_u10_duty}} & {{s2_d_u10_imag}} & {{s2_d_u10_E1}} & {{s2_d_u10_E8}} & {{s2_d_u10_E100}} & {{s2_d_u10_lam1}} & {{s2_d_u10_rJ}} & {{s2_d_u10_lam1pol}} \\
+Pruned 20\% & {{s2_d_u20_ret_p1}} & {{s2_d_u20_ret_p2}} & {{s2_d_u20_ret}} & {{s2_d_u20_falls}} & {{s2_d_u20_speed}} & {{s2_d_u20_duty}} & {{s2_d_u20_imag}} & {{s2_d_u20_E1}} & {{s2_d_u20_E8}} & {{s2_d_u20_E100}} & {{s2_d_u20_lam1}} & {{s2_d_u20_rJ}} & {{s2_d_u20_lam1pol}} \\
+Pruned 30\% & {{s2_d_u30_ret_p1}} & {{s2_d_u30_ret_p2}} & {{s2_d_u30_ret}} & {{s2_d_u30_falls}} & {{s2_d_u30_speed}} & {{s2_d_u30_duty}} & {{s2_d_u30_imag}} & {{s2_d_u30_E1}} & {{s2_d_u30_E8}} & {{s2_d_u30_E100}} & {{s2_d_u30_lam1}} & {{s2_d_u30_rJ}} & {{s2_d_u30_lam1pol}} \\
+Pruned 50\% & {{s2_d_u50_ret_p1}} & {{s2_d_u50_ret_p2}} & {{s2_d_u50_ret}} & {{s2_d_u50_falls}} & {{s2_d_u50_speed}} & {{s2_d_u50_duty}} & {{s2_d_u50_imag}} & {{s2_d_u50_E1}} & {{s2_d_u50_E8}} & {{s2_d_u50_E100}} & {{s2_d_u50_lam1}} & {{s2_d_u50_rJ}} & {{s2_d_u50_lam1pol}} \\
+GRU width 192 & {{s2_d_s192_ret_p1}} & {{s2_d_s192_ret_p2}} & {{s2_d_s192_ret}} & {{s2_d_s192_falls}} & {{s2_d_s192_speed}} & {{s2_d_s192_duty}} & {{s2_d_s192_imag}} & {{s2_d_s192_E1}} & {{s2_d_s192_E8}} & {{s2_d_s192_E100}} & {{s2_d_s192_lam1}} & {{s2_d_s192_rJ}} & {{s2_d_s192_lam1pol}} \\
+GRU width 128 & {{s2_d_s128_ret_p1}} & {{s2_d_s128_ret_p2}} & {{s2_d_s128_ret}} & {{s2_d_s128_falls}} & {{s2_d_s128_speed}} & {{s2_d_s128_duty}} & {{s2_d_s128_imag}} & {{s2_d_s128_E1}} & {{s2_d_s128_E8}} & {{s2_d_s128_E100}} & {{s2_d_s128_lam1}} & {{s2_d_s128_rJ}} & {{s2_d_s128_lam1pol}} \\
+\bottomrule
+\end{tabular}}
+\end{table}
