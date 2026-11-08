@@ -538,7 +538,7 @@ _s2rep = S2F["replay_held_out"]["calibrated"]["horizons"]
 _s2top = [q["fall"] for sim in ("REL", "REL__fp16") for q in _s2d[sim]["per_policy"]]
 _s2iv = [(v["ret_ci95"][0], v["ret_ci95"][1]) for v in _s2pil.values()]
 CLAIMS.update({
-    "M6 Abstract/Sec. 4.2/Table III: no check was shown to predict physics return nor shown not to "
+    "M6/M7 Abstract/Sec. 4.2/Table III: E100's link to physics return and a label-free advantage were not settled "
     "(R0, R1, R2 all NOT SETTLED, registered)":
         _s2p["R0"]["label"] == _s2p["R1"]["label"] == _s2p["R2"]["label"] == "NOT SETTLED"
         and _s2p["R0"]["ci95"][0] < 0 < _s2p["R0"]["ci95"][1] and _s2p["R1"]["ci97.5"][0] < 0 and _s2p["R2"]["ci97.5"][0] < 0,
@@ -592,6 +592,10 @@ CLAIMS.update({
     "and their simulators have the two largest E100":
         sorted(_s2still) == ["REL__s128", "REL__u50"] and sorted(_s2rank[2:4]) == sorted(_s2still)
         and sorted(_s2d, key=lambda x: -_s2d[x]["E100"])[:2] == sorted(_s2still, key=lambda x: -_s2d[x]["E100"]),
+    "M7 Sec. 4.2: the R1 and R2 point estimates favoured the error checks (both differences negative)":
+        _s2p["R1"]["delta"] < 0 and _s2p["R2"]["delta"] < 0,
+    "M7 A12 Scope: the 16-bit copy's E1, E8 and E100 differ from the released model's by less than 0.1%":
+        all(abs(_s2d["REL__fp16"][k] / _s2d["REL"][k] - 1) < 1e-3 for k in ("E1", "E8", "E100")),
     "M6 A12 (descriptive): the two policy seeds of the width-192 copy differ widely":
         abs(_s2d["REL__s192"]["per_policy"][0]["ret"] - _s2d["REL__s192"]["per_policy"][1]["ret"]) > 10,
     "M6 Limitations/Conclusion: the registered physics test was committed before the main job (registration commit precedes the results)":

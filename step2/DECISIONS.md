@@ -65,3 +65,20 @@
 ## M6
 - **Claim checker fixes kept to the same length** (the two-column text has no spare line). Three suggestions were applied in part or not at all for space: the bootstrap unit (9 simulators) is in Table III's caption but not in Sec. 4.2; the interval width is not in Limitations; the selection intervals are not in A12. All are in `results/s2_stats.json` and `prereg/PREREG_S2.md`. See `step2/review/M6_claims.md`.
 - **Supplement scan:** the manifest's repository URL contains "github.com"; it is neutralised in the staged copy only (`build_supplement.py` NEUTRALISE). The ANYdrive file was never obtained, so the supplement README states that instead of giving a URL and sha256.
+
+## M7
+Reviews: step2/review/M7_referee.md, M7_stats.md. Stats review: every MUST and SHOULD FIX done, no result changed. No new analysis.
+To fit six pages, the sentence "Counted once..." and small wordings were cut (the counts remain in the abstract); "cheap" dropped.
+
+### M7 declined
+- Referee 2 (title; "under recorded commands" everywhere): the definition of E_h now says so and Limitations states it; a title change is beyond a wording fix.
+- Referee 3 (episode count and released-policy fall rate in Sec. 4.2): in A12; no room.
+- Referee 4 (one parent = one unit): the paragraph says copies of one simulator; Limitations and A12 too. The exact 0.00 ends are in the JSON, said in A12, and were recomputed by the statistics reviewer.
+- Referee 5 (say label-free checks win partly through long rollouts): Measures gives the steps each check uses; a claim about why they win would be untested.
+- Referee 6: the checklist in Sec. 5 already says no label-free check beat 8-step error in a primary test; no room in abstract and conclusion.
+- Referee 8 (AR1 without the diverged runs): new analysis; barred in M7. Other points are disclosed in Limitations.
+- Referee 11 (restructure): beyond M7's wording fixes.
+- Referee 12, rest (define "registered" in the Abstract, Holm, Q5, Q6): the result markers are defined in Sec. 3; Holm, Q5 and Q6 are named where used; defining them further needs room the six pages lack.
+- Referee 13, rest: "TRAINING-HORIZON BETTER" is a registered label; "3 of 13" counts the verdicts in A4; the 2.0 and 2.6 are both in Table II, with no room for pools in the abstract.
+- Referee 14: no git history is in the supplement (`scripts/build_supplement.py`), so the sentence now says the supplement lists the order; left for the author to check names (REPORT).
+- Stats 12: "Table 3" is the single-column PDF's own numbering of the same table; the registration time is in UTC and PREREG_S2 uses the local date; s2_stats.txt is a frozen result file, the JSON has Infinity (ranked worst as registered).

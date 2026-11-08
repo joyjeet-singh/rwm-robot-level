@@ -57,7 +57,7 @@ data's simulator and not hardware; the paper says so wherever the result is stat
 
 ## After Step 2 (M6)
 
-- **Step 2 checks:** `paper_numbers.py`, `build_paper.py` (run twice: same text), `slack.py`, `check_claims.py` (179 assertions),
+- **Step 2 checks:** `paper_numbers.py`, `build_paper.py` (run twice: same text), `slack.py`, `check_claims.py` (181 assertions),
   `check_numbers.py`, `check_bib.py` and `submission_checks.py` all pass. An independent claim check of the Step 2 text against
   `results/s2_*` and `prereg/PREREG_S2.md` is in `step2/review/` (findings fixed).
 - **Supplement:** rebuilt with Step 2 (`prereg/PREREG_S2.md`, `scripts/s2/`, the MuJoCo model files with the robot description's

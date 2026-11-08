@@ -41,3 +41,8 @@
 - air-claim-checker: 12 wording/scope findings, no number wrong; fixed (3 in part, for space); step2/review/M6_claims.md.
 - Supplement rebuilt with Step 2 (PREREG_S2 byte-exact, scripts/s2, MJCF + BSD notice, s2 results, asset manifest); full 71.0 MB, slim 2.0 MB; scans 0 hits; no ANYdrive file (never obtained).
 - README.md, SUBMIT.md, ANOMALIES.md updated. Not done: tag air2027-step2 (M7).
+## M7 status: COMPLETE (2026-11-09 02:37)
+- Reviews: air-referee score borderline (step2/review/M7_referee.md); air-stats-reviewer: s2_stats.json conforms to the registration, numbers match (M7_stats.md). All its MUST and SHOULD FIX done.
+- Text fixed only; no new analysis. Declined points with reasons in step2/DECISIONS.md under "M7 declined". Sec. 4.2 retitled "Policies in a physics model".
+- Pipeline passes after the fixes: paper_numbers, build_paper (twice, same text), slack (6 pages, reserve 0, abstract 198 words), check_claims (181), check_numbers, check_bib, submission_checks; supplements rebuilt (0 hits).
+- step2/REPORT.md written. Tag air2027-step2 and history.bundle follow this commit. M6's status time (03:05) was a slip: the clock read 02:26 during M7.

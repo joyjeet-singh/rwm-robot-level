@@ -189,7 +189,7 @@ and notes in `step2/` (`LOG.md`, `CHECKPOINT.md`, `DECISIONS.md`, `notes/`). Reg
   description, MuJoCo install) is never committed.
 - **Jobs** (run by the author's launchers, never by a session): `step2/jobs/fetch.zsh`, `calib.zsh`, `pilot.zsh`, `main.zsh` (about 20 h).
 - **Changed in M5-M6:** `body.template.tex`, `appendix.template.tex` (A11, A12), `paper_numbers.py` (calls `s2_numbers.py`),
-  `build_paper.py`, `check_claims.py` (159 -> 179 assertions), `build_supplement.py` (Step 2 files). Git tags: `air2027-step2-start`, `air2027-step2`.
+  `build_paper.py`, `check_claims.py` (159 -> 181 assertions), `build_supplement.py` (Step 2 files). Git tags: `air2027-step2-start`, `air2027-step2`.
 
 Run order after the main job (always through `./py`; MuJoCo work through `./py-mj`):
 

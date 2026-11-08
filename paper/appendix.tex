@@ -745,7 +745,8 @@ Recorded data & -- & 0.84 & 0.072 & 0.138 & -- \\
 % scripts/s2_stats.py). Values: results/s2_pilot.json (Gate 2, validation), results/s2_main.json,
 % results/s2_stats.json, results/s2/eval/ (keys from scripts/s2_numbers.py). R0-R2 registered; the rest labelled.
 \textbf{Scope.} Every result here is about the hand-built MuJoCo model of appendix~A11, not the data's simulator and
-not hardware, and about 9 versions of one learned simulator.
+not hardware, and about 9 versions of one learned simulator. The 16-bit copy nearly duplicates the released
+model: their one-, 8- and 100-step errors are almost the same, so their order on those checks is arbitrary.
 
 \textbf{Registration.} The design, the two gates and the calibration grid were fixed in a plan committed before any
 MuJoCo number existed. The test's rules and analysis code were committed at 2026-11-07 23:03 UTC (commit
@@ -805,9 +806,9 @@ on every episode.
 9 simulators, the 100-step error ranked physics return in no direction the interval supports ($\rho={}$+0.23, 95\%
 [$-$0.87, +0.81]; R0). In the point estimates the growth rate ranked it in reverse ($-$0.35) and one-step error with the right
 sign (+0.33); the difference, $-$0.68 (97.5\% [$-$1.50, 0.00]; R1), points towards one-step error but
-does not exclude zero. The kinematic residual and the 8-step error ranked it alike (+0.33 and
-+0.38; R2). Several intervals end exactly at zero, so they include it. The two-level intervals, which also
-resample each simulator's two policies, give the same verdicts (R0 [$-$0.83, +0.79], R1 [$-$1.44, 0.00], R2
+does not exclude zero. The kinematic residual and the 8-step error had similar point estimates (+0.33 and
++0.38; difference $-$0.05, 97.5\% [$-$0.47, 0.00]; R2). Several intervals end exactly at zero, so they include it. The two-level intervals, which also
+resample each simulator's two policies, also include zero (R0 [$-$0.83, +0.79], R1 [$-$1.44, 0.00], R2
 [$-$0.47, 0.00]; exploratory). The rollout-trained subset was not applicable: only the released model is itself
 rollout-trained.
 
@@ -817,12 +818,16 @@ largest errors produced the only policies that never fell (below). The imagined 
 positively, with an interval spanning zero (+0.20, [$-$0.86, +0.74]). In selection, the three simulators that one-step, 8-step and 100-step
 error and the residual each ranked best (\texttt{REL\_\_fp16}, \texttt{REL}, \texttt{REL\_\_u10}) fell short of the three best by physics return by
 0.16 (mean of the best three: 13.96); the growth rate's three fell short by 38.43. Neither
-difference was settled (SEL1 $-$38.28 [$-$72.67, 0.00]; SEL2 0.00 [$-$21.16, 0.00]).
+difference was settled (SEL1 $-$38.28 [$-$72.67, 0.00]; SEL2 0.00 [$-$21.16, 0.00]). The registered shortfalls,
+with 95\% intervals and no registered label, were: one-step error 0.16 [0.00, 27.82], 8-step error 0.16
+[0.00, 14.66], 100-step error 0.16 [0.00, 45.12], growth rate 38.43 [0.00, 74.21], residual
+0.16 [0.00, 25.96], growth rate under policy commands 29.71 [3.77, 74.21], residual under
+policy commands 0.16 [0.00, 25.42], and imagined return 23.56 [0.00, 47.13].
 
 \begin{table}[h]
 \centering
 \caption{Physics test, secondary analyses (95\% intervals; every verdict NOT SETTLED unless shown). $\rho$: Spearman
-correlation of the negated check with the outcome; differences: label-free check minus error check. Selection:
+correlation of the negated check with the outcome (imagined return is not negated); differences: label-free check minus error check; SEL: error-check shortfall minus label-free shortfall. Selection:
 shortfall in mean physics return of the check's best three simulators against the best three by physics return.}
 \label{tab:app-s2sec}
 \footnotesize
@@ -842,21 +847,20 @@ SEL2 & return & shortfall $E_8$ 0.16, $\bar r_J$ 0.16 & 0.00 [$-$21.16, 0.00] & 
 \end{tabular}
 \end{table}
 
-\textbf{Per simulator (descriptive).} Table~\ref{tab:app-s2desc} gives every simulator's outcomes and checks. The
+\textbf{Per simulator (descriptive).} Table~\ref{tab:app-s2desc} gives each simulator's outcomes and checks, except turn error and the residual under policy commands, which are in the supplement's \texttt{results/s2\_stats.json}. The
 policies trained in the released model and its 16-bit copy scored best, but fell in 31\% to
 45\% of episodes, against 10\% for the pilot's released-model policy and
 1.25\% for the authors' policy, whose physics return in the same model was 26.3. The
 policies from the 50\%-pruned copy and the narrowest copy (width 128) stood still: they kept all four feet down at
 least 0.997 of the time, tracked no command (speed error 0.79 and 0.79~m/s)
-and never fell. They scored below the two best simulators' policies and above all others, while their
-simulators had the largest errors of the pool. Physics return, the registered outcome, thus ranked standing still above
+and never fell. Those two simulators' mean physics returns ranked third and fourth, although they had the largest errors of the pool. Physics return, the registered outcome, thus ranked standing still above
 most walking that fell; it measures staying upright as much as walking. The two policy seeds of one simulator often
 differed widely (for example $-$108.24 and $-$13.32 for the width-192 copy).
 
 \begin{table}[h]
 \centering
 \caption{Physics test per simulator (descriptive; two policies each, 80 episodes per policy). Return:
-physics return (seed 1, seed 2; mean). Duty: mean share of time a foot is on the ground. Imagined: imagined return.
+physics return (seed 1, seed 2; mean). Duty: mean share of time a foot is on the ground (descriptive, not a registered measure; from each policy's evaluation record). Imagined: imagined return.
 Checks on all 20 recorded trajectories (in-sample); $\lambda_1^{\pi}$: growth rate under the authors' policy's
 commands (div.: diverged, ranked worst).}
 \label{tab:app-s2desc}
