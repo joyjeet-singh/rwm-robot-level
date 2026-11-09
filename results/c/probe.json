@@ -1,0 +1,93 @@
+{
+ "what": "Option C job-design probes (hand-built calibrated MuJoCo ANYmal D, fitted PD motor; not Isaac Lab, not hardware). Stand-in rung: generated training shards tiled to 1M rows.",
+ "generation": {
+  "transitions_per_second_per_worker": [
+   1249.4399471096199,
+   1234.2953726571811
+  ],
+  "workers": [
+   {
+    "worker": 0,
+    "rows": 96482,
+    "shards": 4,
+    "seconds": 77.22019791603088
+   },
+   {
+    "worker": 1,
+    "rows": 99573,
+    "shards": 4,
+    "seconds": 80.67193818092346
+   }
+  ],
+  "hours_for_6M_two_workers": 0.6710323170921251
+ },
+ "training": {
+  "standin": {
+   "rows": 1176330,
+   "source_rows": 196055,
+   "copies": 6,
+   "source_shards": 8
+  },
+  "batch": 256,
+  "threads_each": 2,
+  "two_at_once": true,
+  "N8": [
+   {
+    "rung": "standin",
+    "N": 8,
+    "windows": 1049466,
+    "steps": 12,
+    "threads": 2,
+    "seconds_per_step": 11.198632013727382,
+    "seconds_first_step": 16.261720359005267,
+    "peak_rss_gb": 1.7779617309570312
+   },
+   {
+    "rung": "standin",
+    "N": 8,
+    "windows": 1049466,
+    "steps": 12,
+    "threads": 2,
+    "seconds_per_step": 11.190695563452953,
+    "seconds_first_step": 16.19130728201708,
+    "peak_rss_gb": 1.7783279418945312
+   }
+  ],
+  "N1": [
+   {
+    "rung": "standin",
+    "N": 1,
+    "windows": 1070184,
+    "steps": 15,
+    "threads": 2,
+    "seconds_per_step": 6.120927383782275,
+    "seconds_first_step": 5.724128731992096,
+    "peak_rss_gb": 1.6114387512207031
+   },
+   {
+    "rung": "standin",
+    "N": 1,
+    "windows": 1070184,
+    "steps": 15,
+    "threads": 2,
+    "seconds_per_step": 6.130127592785617,
+    "seconds_first_step": 5.725747852993663,
+    "peak_rss_gb": 1.611968994140625
+   }
+  ],
+  "seconds_per_step_N8": 11.194663788590168,
+  "seconds_per_step_N1": 6.1255274882839466
+ },
+ "memory": {
+  "peak_rss_gb_one_training": 1.7783279418945312,
+  "peak_rss_gb_two_trainings_1M_rung": 3.5562896728515625,
+  "conservative_bound_two_trainings_6M_rung_gb": 6.089487075805664,
+  "limit_gb": 6.0
+ },
+ "S_rule": "S = max(2500, int(8 h / seconds per step of N = 8 with two trainings at once))",
+ "steps_in_8h_N8": 2572,
+ "S": 2572,
+ "parallel_two_trainings": false,
+ "job_layout": "one training at a time, 4 threads",
+ "probe_seconds": 326.24293398857117
+}
