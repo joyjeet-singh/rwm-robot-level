@@ -4,6 +4,8 @@ paper/build/
 runs/
 .cache/
 .pylib/
+.pylib-mj/
+optc/data/
 submission/
 history.bundle
 .DS_Store
