@@ -1,0 +1,19 @@
+{
+ "what": "Gate A: sim_6M_N8_s0 on the expert test set, against holding the last state",
+ "source": "results/c/pilot_sims.json",
+ "windows": 40,
+ "episodes": 20,
+ "horizons": {
+  "E8": {
+   "error": 0.09740684926509857,
+   "hold_last_state": 0.39383235573768616,
+   "below": true
+  },
+  "E24": {
+   "error": 0.11606331169605255,
+   "hold_last_state": 0.5351346731185913,
+   "below": true
+  }
+ },
+ "passed": true
+}

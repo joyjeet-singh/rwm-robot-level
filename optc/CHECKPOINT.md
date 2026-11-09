@@ -1,23 +1,24 @@
 # Option C checkpoint
 
-**Last session:** C1, COMPLETE.
+**Last session:** C2, COMPLETE.
 
-**Next action:** the launcher runs the job `optc/jobs/data.zsh`, then starts C2. Sessions must not start the job.
+**Next action:** the launcher runs the job `optc/jobs/pilot.zsh`, then starts C3. Sessions must not start the job.
 
 **Blockers:** none.
 
 **State**
-- Root cause: `optc/notes/C1_rootcause.md`. D3: the penalty alone did not fix it (seed 0 did not fall but did not walk; seed 1 fell every time).
-- Code: `scripts/c/gen_data.py`, `train_sim.py`, `sim_checks.py`, `probe_c1.py`, `test_c1.py`. All tests passed: generator equals Step 2's evaluator (difference 0), windows and fall rule, first 20 losses equal the rebuild's (difference 0), resume to identical weights, checks on both test sets.
-- Tested on small data only. The full 6M generation, the rung files and the 2,572-step trainings have not run.
-- `results/c/probe.json`: S = 2,572; one training at a time, 4 threads (`optc/DECISIONS.md`, C1 item 14). 6M transitions should take about 0.7 h to generate.
-- The job writes `optc/data_manifest.json`, `optc/data/` (shards, `rung_*.npy`, test sets), `runs/c/sim_6M_N8_s0` and `runs/c/sim_10k_N8_s0`, and `results/c/pilot_sims.json`.
+- Gate A passed (`results/c/gate_a.json`).
+- `scripts/c/evaluate.py` (walking score), `train_policy.py` (wrapper of Step 2's route), `pilot_rule.py` (Gate B, retry, iteration rule, Gate C), `gate_a.py`, `test_c2.py`. All C2 tests passed.
+- `results/c_authors.json` is Gate B's reference, measured with the full protocol.
+- No pilot policy has been trained or measured. The longest training tested is one iteration with 64 robots. The job's zsh flow has been syntax-checked only; its Python steps were tested separately, and `pilot_rule.py` on fixtures.
+
+**For the job**
+- D3's 17 s per iteration (five networks, 4,096 robots, 2 threads) implies about 9.5 h for the two pilot policies, and as much again if the retry runs (about 19.5 h with measuring; the plan said 8–17 h). This is an estimate from D3, not measured on this route.
 
 **For later sessions**
-- **C2 must commit `optc/data_manifest.json`** after the job; it did not exist when C1 committed.
-- Batch size is 256 (the rebuild's), not the 1,024 in `optc/notes/C0_facts.md` (`optc/DECISIONS.md`, C1 item 1).
-- Simulators are named `sim_<rung>_N<8|1>_s<seed>`; `final.pt` holds `state_mean` and `state_std`, the rung's own normalisation. Step 2's route (`common.load`, the lite adapter) assumes the config's normalisation, so C2's policy route must use these values.
-- D6's training data is rung `d6` (`train_sim.py --rung d6`).
-- `results/c_diag.json`, `results/c_diag.txt` and the rest of `results/c/` are not committed; C1 staged only `results/c/probe.json`.
+- **C3:** `results/c_pilot.txt` holds the verdicts. If Gate C is not passed, add the 2k rung and record it before registering. Results of the pilot are declared in the registration as known.
+- **C3:** `scripts/c/train_policy.py` accepts only 2,000 iterations for non-test names, and `scripts/c/evaluate.py` only the four saved counts. The main job needs the iteration count from `results/c_pilot.json`: extend the wrapper or take that save from a 2,000-iteration run, and record which.
+- `results/c_diag.*`, `results/c/d3_*` and `results/c/progress.json` remain uncommitted, as C1 left them. Commit the diagnosis results with the session that uses them.
+- Descriptive, not a gate: on the expert set the 6M simulator's kinematic residual r̄J is 9.1, against 0.59 for the real data (`results/c/pilot_sims.json`). Its forecasts beat holding the last state, but its joint motion is much less consistent with the joint speeds it predicts. Keep this in view when interpreting the pilot.
 - The tools refuse `mkdir` under `results/`; create result folders from scripts with `os.makedirs`.
 - The RWM-U and RWM quotes in `optc/notes/C0_facts.md` are unconfirmed; check them against the papers before citing.

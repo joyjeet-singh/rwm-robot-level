@@ -30,3 +30,19 @@ Choices the plan did not settle, the more conservative option taken each time. N
 12. **Checks** use the paper's 400-row windows, so episodes shorter than 400 rows give none; they are counted (`episodes_too_short`) and excluded. Normalisation and residual scales come from each simulator's rung.
 13. **Probe stand-in.** The 1M rung does not exist yet, so the training probe tiled about 196,000 generated rows to 1.18M, using training shards only. Timing and memory do not depend on the values.
 14. **Training layout: one at a time, 4 threads.** Measured peak for two trainings at once on the 1M stand-in was 3.56 GB, under the 6 GB limit. `results/c/probe.json` holds a further bound for the 6M rung (6.09 GB) that adds the larger file's resident pages once per process; it counts the shared file twice, so it overstates physical memory. The probe's conclusion was left as written rather than revised after seeing it, as the more conservative choice. It should cost little: one training alone runs about twice as fast as two at once (`A5` took 5.8 s per step alone; two at once took 11.2 s here), so S and total hours are about the same. S = 2,572 by the design's rule, from the two-at-once N = 8 step time.
+
+## C2 (2026-11-10)
+
+1. **Start states, "at most 100,000 rows".** Read as a cap on the rung's rows, which also caps the windows. A rung of 100,000 rows or fewer is used whole. Otherwise whole episodes are taken in a fixed random order that depends only on the rung (not the policy seed), until the next would not fit. Shares hold only approximately (random episodes, not drawn within source).
+2. **"End at least 1 s before any fall"** means the fall row is at least 50 rows after the window's last row. Episodes that end without a fall are usable to their last row. Tilt is the angle between the base's up axis and vertical, from projected gravity.
+3. **Which command scores a step.** The command the step was taken under, as the task's own reward uses it. Step 2's speed and turn errors keep their own alignment (the next row's command). The two differ on one step of 1,000.
+4. **The step on which a fall happens is scored; every later step scores 0.**
+5. **Divergence.** A non-finite state or a MuJoCo divergence warning (which would silently restart the robot) ends the episode and counts as a fall; the count is reported. On normal episodes the loop equals Step 2's (test).
+6. **Protocol seeds.** Schedules and starts use a new seed, 20275, not Step 2's. The standing-still reference on these 24 schedules is 0.069; the plan's "about 0.09" is the average over all uniform commands, and 48 draws differ from it by about one standard error.
+7. **"The ten recorded schedules"** is Step 2's protocol unchanged: 10 schedules × 8 starts, 80 episodes.
+8. **Intervals.** "95% intervals over episodes" resamples the 96 episodes, and Gate C uses that. Step 2's version (starts within schedules) is reported beside it and is not used by any gate.
+9. **Gate C compares** the 10k policy (weight 1.0; the pilot trains no other) with the kept 6M policy, whatever its weight.
+10. **Retry, "provided it passes Gate B"** is read as the highest scorer among the weights that pass.
+11. **Saves** are taken after exactly 500, 1,000, 1,500 and 2,000 finished iterations, through a hook on the lite log. The lite code's own save at iteration index 500 comes one update later.
+12. **An interrupted policy restarts from iteration 0,** as in Step 2, so each policy is one uninterrupted, seeded run. Finished policies and measured saves are skipped.
+13. **A BLOCKED pilot** is recorded by `scripts/c/pilot_rule.py` in this file and in `optc/LOG.md`, and the job exits 3, which stops the launcher.
