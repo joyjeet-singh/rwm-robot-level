@@ -1,0 +1,33 @@
+Option C diagnosis (descriptive; hand-built calibrated MuJoCo ANYmal D, not Isaac Lab or hardware)
+
+D0 recorded data: 10000 rows, 0 with a fall, 1 with thigh contact
+
+D1 imagination (512 episodes, sampled actions as in training; mean action alongside)
+policy             fell fell/mean  length imag return uncert/step
+REL__p0           0.000     0.002   256.0        2.28     -0.0115
+A_s0__p0          0.000     0.000   256.0        4.99      0.0000
+B_s0__p0          0.000     0.006   256.0        3.86      0.0000
+A_s0__u50__p0     0.002     0.010   255.6        3.65      0.0000
+A5_s0__p0         1.000     1.000    17.4       -0.85     -0.0493
+A5_s0__p1         1.000     1.000    17.2       -0.84     -0.0493
+
+D1 physics and real falls (80 episodes; history 32, last 50 steps; hit within 0.2 s, member average)
+policy            falls  full  short  <33  hit full  hit short
+REL__p0           0.100     8      0    0      0.00          -
+A_s0__p0          1.000    37     33   10      0.00       0.00
+B_s0__p0          1.000     8     27   45      0.12       0.07
+A_s0__u50__p0     1.000    18     48   14      0.00       0.00
+
+D2 distance from training data (mean over 10 neighbours, columns scaled by the data's spread)
+policy            imagined   authors  ratio
+REL__p0               9.32      4.89   1.90
+A_s0__p0             34.82      4.90   7.10
+B_s0__p0             32.37      4.90   6.61
+A_s0__u50__p0        38.73      4.90   7.90
+
+D3 the penalty alone: policies in A5_s0 (five networks, no falls in its data; Step 2's protocol)
+policy            falls         falls 95%   return          return 95%   speed   turn
+A5_s0__p0         0.000  [0.000, 0.000]   -57.83  [ -57.88,  -57.79]   0.798  0.164
+A5_s0__p1         1.000  [1.000, 1.000]    -1.39  [  -1.44,   -1.35]   0.976  0.527
+
+D4 command coverage: 0.128 of training commands lie within 0.2 on every axis of one of 21 recorded commands

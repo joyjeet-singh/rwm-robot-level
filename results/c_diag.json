@@ -1,0 +1,604 @@
+{
+ "what": "Option C diagnosis of Step 2's rebuilt-simulator policies; MuJoCo here is the calibrated hand-built ANYmal D, not Isaac Lab and not hardware. Imagined-episode shares are one seeded draw of 512 episodes.",
+ "D0": {
+  "rows": 10000,
+  "fall_rows": 0,
+  "thigh_contact_rows": 1,
+  "thigh_contact_rows_per_leg": [
+   0,
+   0,
+   1,
+   0
+  ]
+ },
+ "D1": {
+  "REL__p0": {
+   "imagination": {
+    "policy": "REL__p0",
+    "ensemble": 5,
+    "max_episode_length": 256,
+    "sampled": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.0,
+     "mean_length": 256.0,
+     "mean_return": 2.280473232269287,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.01629849709570408,
+      "track_ang_vel_z_exp": 0.00905566941946745,
+      "lin_vel_z_l2": -0.00035135087091475725,
+      "ang_vel_xy_l2": -0.00027177465381100774,
+      "dof_torques_l2": -0.0018836847739294171,
+      "dof_acc_l2": -0.00029504339909181,
+      "action_rate_l2": -0.0002603234024718404,
+      "feet_air_time": -0.0008398056961596012,
+      "undesired_contacts": -4.272461410437245e-06,
+      "stand_still": -0.0006405642488971353,
+      "flat_orientation_l2": -0.00039779546204954386,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.011501451954245567
+     }
+    },
+    "mean_action": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.001953125,
+     "mean_length": 255.64453125,
+     "mean_return": 3.03757905960083,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.01648348192542402,
+      "track_ang_vel_z_exp": 0.009256443790468142,
+      "lin_vel_z_l2": -0.00028626317145106936,
+      "ang_vel_xy_l2": -0.00017568619004071137,
+      "dof_torques_l2": -0.0013696724594900774,
+      "dof_acc_l2": -0.00024968736794135345,
+      "action_rate_l2": -7.669691624547793e-05,
+      "feet_air_time": -0.0006750554030788018,
+      "undesired_contacts": -9.626403777700793e-06,
+      "stand_still": -0.0006357599118967382,
+      "flat_orientation_l2": -0.0003644222353074683,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.010015011598778076
+     }
+    }
+   },
+   "physics": {
+    "episodes": 80,
+    "fall_rate": 0.1,
+    "mean_steps": 965.95,
+    "episodes_differing_from_step2": 0,
+    "mean_return": 18.58674090364922,
+    "mean_step_reward_per_term": {
+     "track_lin_vel_xy_exp": 0.016732240998408095,
+     "track_ang_vel_z_exp": 0.009437987501389859,
+     "lin_vel_z_l2": -0.00030990421730515185,
+     "ang_vel_xy_l2": -0.0002383623753177624,
+     "dof_torques_l2": -0.002041757727807547,
+     "dof_acc_l2": -0.00034406954583882435,
+     "action_rate_l2": -5.3108678703632135e-05,
+     "feet_air_time": -0.0007856281605935152,
+     "undesired_contacts": -0.00031290439463740123,
+     "stand_still": -0.0009853035567219091,
+     "flat_orientation_l2": -0.0018572612713631048,
+     "dof_pos_limits": 0.0
+    }
+   },
+   "real_falls": {
+    "n_real_falls": 8,
+    "n_full": 8,
+    "n_short": 0,
+    "n_too_short": 0,
+    "full": {
+     "hit_share_ensemble_mean": 0.0,
+     "hit_share_member_average": 0.0,
+     "hit_share_any_member": 0.0,
+     "early_alarm_share_member_average": 0.0,
+     "mean_max_fall_probability_in_window": 0.00015310617599127095
+    }
+   }
+  },
+  "A_s0__p0": {
+   "imagination": {
+    "policy": "A_s0__p0",
+    "ensemble": 1,
+    "max_episode_length": 256,
+    "sampled": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.0,
+     "mean_length": 256.0,
+     "mean_return": 4.989740371704102,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.01702023483812809,
+      "track_ang_vel_z_exp": 0.008958444930613041,
+      "lin_vel_z_l2": -0.00012880928989034146,
+      "ang_vel_xy_l2": -0.00018501686281524599,
+      "dof_torques_l2": -0.0011542817810550332,
+      "dof_acc_l2": -0.0005453081685118377,
+      "action_rate_l2": -0.002830436220392585,
+      "feet_air_time": -0.00017340706835966557,
+      "undesired_contacts": 0.0,
+      "stand_still": -0.00124228629283607,
+      "flat_orientation_l2": -0.00022796166012994945,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     }
+    },
+    "mean_action": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.0,
+     "mean_length": 256.0,
+     "mean_return": 5.9047017097473145,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.01742360182106495,
+      "track_ang_vel_z_exp": 0.009070442058146,
+      "lin_vel_z_l2": -0.00010014908912125975,
+      "ang_vel_xy_l2": -0.00010224599100183696,
+      "dof_torques_l2": -0.0008912389166653156,
+      "dof_acc_l2": -0.0003966447548009455,
+      "action_rate_l2": -0.00043554994044825435,
+      "feet_air_time": 2.7241390853305347e-05,
+      "undesired_contacts": 0.0,
+      "stand_still": -0.0012813452631235123,
+      "flat_orientation_l2": -0.0002488703466951847,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     }
+    }
+   },
+   "physics": {
+    "episodes": 80,
+    "fall_rate": 1.0,
+    "mean_steps": 101.9625,
+    "episodes_differing_from_step2": 0,
+    "mean_return": -10.366283519627157,
+    "mean_step_reward_per_term": {
+     "track_lin_vel_xy_exp": 0.005510174543318355,
+     "track_ang_vel_z_exp": 0.004386949596190288,
+     "lin_vel_z_l2": -0.007258637104048179,
+     "ang_vel_xy_l2": -0.009276334127368046,
+     "dof_torques_l2": -0.009885636734086475,
+     "dof_acc_l2": -0.003053916900741982,
+     "action_rate_l2": -0.0018132925643072428,
+     "feet_air_time": -0.0008637244469537043,
+     "undesired_contacts": -0.005573127375260509,
+     "stand_still": -0.029569266853072703,
+     "flat_orientation_l2": -0.04427079641544897,
+     "dof_pos_limits": 0.0
+    }
+   },
+   "real_falls": {
+    "n_real_falls": 80,
+    "n_full": 37,
+    "n_short": 33,
+    "n_too_short": 10,
+    "full": {
+     "hit_share_ensemble_mean": 0.0,
+     "hit_share_member_average": 0.0,
+     "hit_share_any_member": 0.0,
+     "early_alarm_share_member_average": 0.0,
+     "mean_max_fall_probability_in_window": 1.5708170817130873e-05
+    },
+    "short": {
+     "hit_share_ensemble_mean": 0.0,
+     "hit_share_member_average": 0.0,
+     "hit_share_any_member": 0.0,
+     "early_alarm_share_member_average": 0.0,
+     "mean_max_fall_probability_in_window": 1.7263757525377127e-05
+    }
+   }
+  },
+  "B_s0__p0": {
+   "imagination": {
+    "policy": "B_s0__p0",
+    "ensemble": 1,
+    "max_episode_length": 256,
+    "sampled": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.0,
+     "mean_length": 256.0,
+     "mean_return": 3.8643674850463867,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.015943823382258415,
+      "track_ang_vel_z_exp": 0.008639320731163025,
+      "lin_vel_z_l2": -0.0002936799719464034,
+      "ang_vel_xy_l2": -0.0003357327950652689,
+      "dof_torques_l2": -0.0018093953840434551,
+      "dof_acc_l2": -0.0007702639559283853,
+      "action_rate_l2": -0.003812357783317566,
+      "feet_air_time": -0.0006674377364106476,
+      "undesired_contacts": 0.0,
+      "stand_still": -0.0014943195274099708,
+      "flat_orientation_l2": -0.00030477234395220876,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     }
+    },
+    "mean_action": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.005859375,
+     "mean_length": 255.52734375,
+     "mean_return": 4.622792720794678,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.01594290158566938,
+      "track_ang_vel_z_exp": 0.008497806821113276,
+      "lin_vel_z_l2": -0.00025300300969613177,
+      "ang_vel_xy_l2": -0.00025298945138207144,
+      "dof_torques_l2": -0.0022080525613510853,
+      "dof_acc_l2": -0.00071615516378602,
+      "action_rate_l2": -0.0006519070661533574,
+      "feet_air_time": -0.0003491171982860033,
+      "undesired_contacts": 0.0,
+      "stand_still": -0.0016189904093769705,
+      "flat_orientation_l2": -0.0002993066057757592,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     }
+    }
+   },
+   "physics": {
+    "episodes": 80,
+    "fall_rate": 1.0,
+    "mean_steps": 46.1625,
+    "episodes_differing_from_step2": 0,
+    "mean_return": -3.992322257244414,
+    "mean_step_reward_per_term": {
+     "track_lin_vel_xy_exp": 0.005045664160496068,
+     "track_ang_vel_z_exp": 0.004175325462068191,
+     "lin_vel_z_l2": -0.015290987948163571,
+     "ang_vel_xy_l2": -0.007436475036060769,
+     "dof_torques_l2": -0.008644438088595848,
+     "dof_acc_l2": -0.0032741388721188786,
+     "action_rate_l2": -0.0028946771141258776,
+     "feet_air_time": -0.0009434064721282672,
+     "undesired_contacts": -0.004137557541294329,
+     "stand_still": -0.01932788700757289,
+     "flat_orientation_l2": -0.03375552134741936,
+     "dof_pos_limits": 0.0
+    }
+   },
+   "real_falls": {
+    "n_real_falls": 80,
+    "n_full": 8,
+    "n_short": 27,
+    "n_too_short": 45,
+    "full": {
+     "hit_share_ensemble_mean": 0.125,
+     "hit_share_member_average": 0.125,
+     "hit_share_any_member": 0.125,
+     "early_alarm_share_member_average": 0.125,
+     "mean_max_fall_probability_in_window": 0.07277956419019915
+    },
+    "short": {
+     "hit_share_ensemble_mean": 0.07407407407407407,
+     "hit_share_member_average": 0.07407407407407407,
+     "hit_share_any_member": 0.07407407407407407,
+     "early_alarm_share_member_average": 0.037037037037037035,
+     "mean_max_fall_probability_in_window": 0.05528221449631693
+    }
+   }
+  },
+  "A_s0__u50__p0": {
+   "imagination": {
+    "policy": "A_s0__u50__p0",
+    "ensemble": 1,
+    "max_episode_length": 256,
+    "sampled": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.001953125,
+     "mean_length": 255.578125,
+     "mean_return": 3.64520001411438,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.01653638358016159,
+      "track_ang_vel_z_exp": 0.00832706830856772,
+      "lin_vel_z_l2": -0.00016437784022250605,
+      "ang_vel_xy_l2": -0.0003830965175863043,
+      "dof_torques_l2": -0.0024396683320429516,
+      "dof_acc_l2": -0.000935062537415144,
+      "action_rate_l2": -0.004389150980640217,
+      "feet_air_time": -0.00045657975607938067,
+      "undesired_contacts": -7.641987684136419e-07,
+      "stand_still": -0.0014325447593260315,
+      "flat_orientation_l2": -0.0003996412539938343,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     }
+    },
+    "mean_action": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 0.009765625,
+     "mean_length": 255.015625,
+     "mean_return": 4.99674654006958,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.01724474649643768,
+      "track_ang_vel_z_exp": 0.008716584888058808,
+      "lin_vel_z_l2": -0.00012751274501552083,
+      "ang_vel_xy_l2": -0.0003084073237041714,
+      "dof_torques_l2": -0.002019830431090026,
+      "dof_acc_l2": -0.0007551018641455327,
+      "action_rate_l2": -0.000989341186575793,
+      "feet_air_time": -0.00026667944159799035,
+      "undesired_contacts": -4.135775701956278e-06,
+      "stand_still": -0.0015147606332135122,
+      "flat_orientation_l2": -0.0003816797031972654,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     }
+    }
+   },
+   "physics": {
+    "episodes": 80,
+    "fall_rate": 1.0,
+    "mean_steps": 69.9625,
+    "episodes_differing_from_step2": 0,
+    "mean_return": -6.562334669278192,
+    "mean_step_reward_per_term": {
+     "track_lin_vel_xy_exp": 0.004641981942428947,
+     "track_ang_vel_z_exp": 0.004500990588157999,
+     "lin_vel_z_l2": -0.010441906848484594,
+     "ang_vel_xy_l2": -0.007340450131087208,
+     "dof_torques_l2": -0.009882720138704454,
+     "dof_acc_l2": -0.0028431562367238696,
+     "action_rate_l2": -0.0018329166154174635,
+     "feet_air_time": -0.0009853850188475816,
+     "undesired_contacts": -0.007539753439342477,
+     "stand_still": -0.027447652471529697,
+     "flat_orientation_l2": -0.03462691863103121,
+     "dof_pos_limits": 0.0
+    }
+   },
+   "real_falls": {
+    "n_real_falls": 80,
+    "n_full": 18,
+    "n_short": 48,
+    "n_too_short": 14,
+    "full": {
+     "hit_share_ensemble_mean": 0.0,
+     "hit_share_member_average": 0.0,
+     "hit_share_any_member": 0.0,
+     "early_alarm_share_member_average": 0.0,
+     "mean_max_fall_probability_in_window": 1.2588514891831437e-05
+    },
+    "short": {
+     "hit_share_ensemble_mean": 0.0,
+     "hit_share_member_average": 0.0,
+     "hit_share_any_member": 0.0,
+     "early_alarm_share_member_average": 0.0,
+     "mean_max_fall_probability_in_window": 0.0019106074668968631
+    }
+   }
+  }
+ },
+ "D2": {
+  "REL__p0": {
+   "policy": "REL__p0",
+   "n_training_pairs": 9989,
+   "imagined": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 9.318239212036133,
+    "median": 8.898565292358398,
+    "p90": 11.649465560913086
+   },
+   "authors_mujoco": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 4.893200874328613,
+    "median": 4.232749938964844,
+    "p90": 6.381256771087647
+   },
+   "ratio_of_means": 1.90432386720986
+  },
+  "A_s0__p0": {
+   "policy": "A_s0__p0",
+   "n_training_pairs": 7991,
+   "imagined": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 34.81529235839844,
+    "median": 31.425352096557617,
+    "p90": 56.52048034667969
+   },
+   "authors_mujoco": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 4.900165557861328,
+    "median": 4.359738349914551,
+    "p90": 6.343827247619629
+   },
+   "ratio_of_means": 7.104921649543925
+  },
+  "B_s0__p0": {
+   "policy": "B_s0__p0",
+   "n_training_pairs": 7991,
+   "imagined": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 32.37446212768555,
+    "median": 28.852754592895508,
+    "p90": 49.4532829284668
+   },
+   "authors_mujoco": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 4.900165557861328,
+    "median": 4.359738349914551,
+    "p90": 6.343827247619629
+   },
+   "ratio_of_means": 6.606809860892811
+  },
+  "A_s0__u50__p0": {
+   "policy": "A_s0__u50__p0",
+   "n_training_pairs": 7991,
+   "imagined": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 38.72745895385742,
+    "median": 35.2499885559082,
+    "p90": 59.17544136047364
+   },
+   "authors_mujoco": {
+    "n_points": 10000,
+    "n_nonfinite_dropped": 0,
+    "mean": 4.900165557861328,
+    "median": 4.359738349914551,
+    "p90": 6.343827247619629
+   },
+   "ratio_of_means": 7.903296020626694
+  }
+ },
+ "D3": {
+  "A5_s0__p0": {
+   "imagination": {
+    "policy": "A5_s0__p0",
+    "ensemble": 5,
+    "max_episode_length": 256,
+    "sampled": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 1.0,
+     "mean_length": 17.40234375,
+     "mean_return": -0.8489375710487366,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.0027587856374070565,
+      "track_ang_vel_z_exp": 0.004418690571212341,
+      "lin_vel_z_l2": -0.00038281196161820297,
+      "ang_vel_xy_l2": -0.00019071251990150255,
+      "dof_torques_l2": -0.0017653254413711771,
+      "dof_acc_l2": -0.0008410081317529132,
+      "action_rate_l2": -0.0008655228063581234,
+      "feet_air_time": -0.0009223343948723893,
+      "undesired_contacts": -0.00014814814065575732,
+      "stand_still": -0.0012644807363867627,
+      "flat_orientation_l2": -0.00032212908152913137,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.04925794676364338
+     }
+    },
+    "mean_action": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 1.0,
+     "mean_length": 17.3359375,
+     "mean_return": -0.8423298597335815,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.0026854763916345694,
+      "track_ang_vel_z_exp": 0.004238986926016479,
+      "lin_vel_z_l2": -0.0003871733189273815,
+      "ang_vel_xy_l2": -0.00019150483495429486,
+      "dof_torques_l2": -0.0017389380862015548,
+      "dof_acc_l2": -0.0008457491343061148,
+      "action_rate_l2": -0.0005809239516015416,
+      "feet_air_time": -0.0009183190652194889,
+      "undesired_contacts": -0.00016448849920433563,
+      "stand_still": -0.0012319668180612682,
+      "flat_orientation_l2": -0.0003022069112305815,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.04915183962546474
+     }
+    }
+   },
+   "seed": 0,
+   "fall_rate": 0.0,
+   "fall_rate_ci95": [
+    0.0,
+    0.0
+   ],
+   "ret": -57.83283666819614,
+   "ret_ci95": [
+    -57.87914357585183,
+    -57.7864885593224
+   ],
+   "speed_err": 0.7979861379205573,
+   "turn_err": 0.16387531481764106,
+   "two_feet": 0.06292500000000001
+  },
+  "A5_s0__p1": {
+   "imagination": {
+    "policy": "A5_s0__p1",
+    "ensemble": 5,
+    "max_episode_length": 256,
+    "sampled": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 1.0,
+     "mean_length": 17.2265625,
+     "mean_return": -0.8447293639183044,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.0027074636515576284,
+      "track_ang_vel_z_exp": 0.004448783424706146,
+      "lin_vel_z_l2": -0.0003366021882920038,
+      "ang_vel_xy_l2": -0.00021600648929743,
+      "dof_torques_l2": -0.0018640747416316787,
+      "dof_acc_l2": -0.0008811588460355659,
+      "action_rate_l2": -0.000912625773423383,
+      "feet_air_time": -0.000934489676200884,
+      "undesired_contacts": -0.00016099772756061857,
+      "stand_still": -0.0012224381202472852,
+      "flat_orientation_l2": -0.0003522363109112867,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.049312060436153625
+     }
+    },
+    "mean_action": {
+     "episodes": 512,
+     "finished": 512,
+     "share_fell": 1.0,
+     "mean_length": 17.162109375,
+     "mean_return": -0.8377651572227478,
+     "mean_step_reward_per_term": {
+      "track_lin_vel_xy_exp": 0.0026630821848832747,
+      "track_ang_vel_z_exp": 0.0042631657874881304,
+      "lin_vel_z_l2": -0.0003486806464246804,
+      "ang_vel_xy_l2": -0.00021754786384055487,
+      "dof_torques_l2": -0.001819805302852736,
+      "dof_acc_l2": -0.0008871575135534583,
+      "action_rate_l2": -0.0005998791071339463,
+      "feet_air_time": -0.0009408672745620972,
+      "undesired_contacts": -0.00017753497480030176,
+      "stand_still": -0.0012983516633639472,
+      "flat_orientation_l2": -0.0003387145761663737,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.04911252507255036
+     }
+    }
+   },
+   "seed": 1,
+   "fall_rate": 1.0,
+   "fall_rate_ci95": [
+    1.0,
+    1.0
+   ],
+   "ret": -1.3935841659855162,
+   "ret_ci95": [
+    -1.4355606787830628,
+    -1.3540199543070635
+   ],
+   "speed_err": 0.9764974966096596,
+   "turn_err": 0.5272442683471815,
+   "two_feet": 0.18276233055611538
+  }
+ },
+ "D4": {
+  "half_width": 0.2,
+  "n_regimes": 21,
+  "all_ten_episodes": {
+   "n_distinct_commands": 21,
+   "share_exact": 0.12830718694347043,
+   "share_monte_carlo": 0.128774,
+   "monte_carlo_samples": 1000000
+  },
+  "eight_training_episodes": {
+   "n_distinct_commands": 17,
+   "share_exact": 0.10966725586931486,
+   "share_monte_carlo": 0.109908,
+   "monte_carlo_samples": 1000000
+  },
+  "note": "commands are the reconstructed regime means of the recorded data; uniform on [-1,1]^3 as the plan defines it (the lite env also gives 2% of robots a zero command)"
+ }
+}
