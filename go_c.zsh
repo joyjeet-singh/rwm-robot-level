@@ -12,6 +12,7 @@
 # days, so they check only what their code could change by mistake: PDM's own files and the code folders in jdirs.
 # When a session stops at Claude's usage limit, the launcher waits for the reset time the message gives, then resumes.
 # Optional overrides in optc/driver.conf (zsh syntax), e.g.  mode=acceptEdits  retries=4  stall_checks=24  deny_flag=0
+# Amendment 1 (10 Nov 2026): session C2R runs after C2 and writes the second pilot's job, which replaces the first pilot's.
 # Never edit this file while it runs.
 emulate -L zsh
 set -uo pipefail
@@ -19,13 +20,13 @@ cd "${0:A:h}" || exit 2
 
 PLAN=OPTIONC_PLAN.md
 D=optc
-order=(C0 C1 C2 C3 C4 C5 C6)
+order=(C0 C1 C2 C2R C3 C4 C5 C6)
 typeset -A model effort turns after
-model=(C0 claude-opus-5-5  C1 claude-opus-5-5  C2 claude-opus-5-5  C3 claude-opus-5-5
+model=(C0 claude-opus-5-5  C1 claude-opus-5-5  C2 claude-opus-5-5  C2R claude-opus-5-5  C3 claude-opus-5-5
        C4 claude-opus-5-5  C5 claude-sonnet-5-5 C6 claude-opus-5-5)
-effort=(C0 high C1 high C2 high C3 high C4 high C5 high C6 high)
-turns=(C0 150 C1 180 C2 150 C3 150 C4 150 C5 120 C6 100)
-after=(C0 diag C1 data C2 pilot C3 main)   # the job each session writes, run before the next session
+effort=(C0 high C1 high C2 high C2R high C3 high C4 high C5 high C6 high)
+turns=(C0 150 C1 180 C2 150 C2R 150 C3 150 C4 150 C5 120 C6 100)
+after=(C0 diag C1 data C2R pilot C3 main)   # the job each session writes, run before the next session (C2's first pilot failed)
 branch=optc        # every session after C0 starts on this branch
 progress=results/c/progress.json
 jdirs=(rwm_repro robotic_world_model_lite rsl_rl_rwm rwm_analysis)   # sibling code folders a job reads
@@ -282,7 +283,7 @@ case ${1:-} in
     [[ $j == (diag|data|pilot|main) ]] || { print -u2 "usage: ./go_c.zsh job diag|data|pilot|main"; exit 2 }
     if wait_job $j; then print "[$(now)] job $j: done"
     else print "[$(now)] job $j: $(job_state $j); see .cache/logs/$(jtag $j).log"; exit 1; fi ;;
-  C<->)
+  C<->|C<->R)
     sid=$1
     [[ -n ${model[$sid]:-} ]] || { print -u2 "unknown session: $sid"; exit 2 }
     check_setup || exit 2
@@ -294,5 +295,5 @@ case ${1:-} in
     # the denial list takes several values, so a flag must follow it before the prompt
     exec claude "${ix[@]}" --model "${model[$sid]}" --effort "${effort[$sid]}" "$(prompt_for $sid $kind interactive)" ;;
   *)
-    print -u2 "usage: ./go_c.zsh auto | status | job diag|data|pilot|main | C<n> [resume]"; exit 2 ;;
+    print -u2 "usage: ./go_c.zsh auto | status | job diag|data|pilot|main | C<n>|C2R [resume]"; exit 2 ;;
 esac

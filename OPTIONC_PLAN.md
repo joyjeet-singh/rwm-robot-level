@@ -57,6 +57,12 @@ Started this week, it ends around 20 November, a month before the 20 December cu
 2. Write your answer there.
 3. Run `./go_c.zsh C<n> resume`, then `auto` again.
 
+**10 November: the first pilot failed, and Amendment 1 changes the plan.**
+- The pilot policy fell in every episode. In its simulator it lost reward on every step and a fall cost nothing, so it learned to end its episodes.
+- Amendment 1 (in the design below) first checks that the simulator can hold a good walk, then tries four training recipes in a second pilot. A new session, C2R, sets this up.
+- This adds one to two days; the round should end around 21–23 November.
+- Continue with `caffeinate -i ./go_c.zsh auto`.
+
 **How work is split.**
 
 | Step | Model | Effort | Max turns | Work |
@@ -65,8 +71,10 @@ Started this week, it ends around 20 November, a month before the 20 December cu
 | job diag | — | — | — | D0–D4, including two policies in `A5_s0`; about 4 h |
 | C1 | Opus 5.5 | high | 180 | root-cause note; data generator; simulator trainer; tests and probes; write the data job |
 | job data | — | — | — | 6M transitions, then the two pilot simulators and their checks; about 10 h |
-| C2 | Opus 5.5 | high | 150 | Gate A; walking score; policy wrapper; write the pilot job |
-| job pilot | — | — | — | two pilot policies to 2,000 iterations, measured; automatic retry; 8–17 h |
+| C2 | Opus 5.5 | high | 150 | Gate A; walking score; policy wrapper; the first pilot's job |
+| job pilot (first) | — | — | — | failed on 10 November; see Amendment 1 |
+| C2R | Opus 5.5 | high | 150 | Amendment 1: calibration, Gate A2 and fixes; the second pilot's job |
+| job pilot | — | — | — | the second pilot: four policies to 1,500 iterations, then one more; 20–30 h |
 | C3 | Opus 5.5 | high | 150 | Gates B and C; register; write the main job |
 | job main | — | — | — | the remaining simulators and checks; 32 policies trained and measured; 4–7 days |
 | C4 | Opus 5.5 | high | 150 | registered analysis; the paper |
@@ -173,7 +181,7 @@ Opus does the work where an error would spoil the result: the diagnosis, the dat
 - **Averages:** an episode scores the mean over its 1,000 steps, from 0 to 1. A policy scores the mean over its episodes; a simulator, the mean over its two policies.
 - **Reference points:**
   - perfect tracking scores 1;
-  - standing perfectly still scores about 0.09 on uniform commands. The evaluator computes this exactly for the protocol's schedules and reports it.
+  - standing perfectly still scores about 0.07 on the protocol's commands. The evaluator computes this exactly for the protocol's schedules and reports it.
 - **Protocol:**
   - calibrated physics, no pushes, no observation noise;
   - 24 fixed command schedules, uniform over the training range with a new command every 10 s, × 4 seeded starts = 96 episodes.
@@ -202,6 +210,60 @@ Computed on both test sets with the paper's functions, from the ensemble's mean 
 - **Iteration rule.** The main study uses the smallest saved count at which the kept 6M policy scores at least 90% of its own 2,000-iteration score.
 - **Gate C** (not a stop). The 10k policy scores below the 6M policy, with their 95% intervals over episodes apart. If not, add a 2k rung (rollout-trained seeds 0 and 1, and teacher-forced seed 0), and record it before registering.
 
+### Amendment 1 (10 November 2026, revised the same day; after the first pilot, before registration)
+
+**What the first pilot showed** (`results/c/pilot_decision.json`, `results/c/eval/`, the lite metrics in `runs/c/lite/`):
+- **The result.** The 6M simulator's policy (weight 1.0, 2,000 iterations) fell in all 96 episodes, scoring 0.0004 against 0.94 for the authors' policy. At 500 iterations it had fallen in 85%.
+- **In imagination, it learned to end its episodes.** Imagined episodes shrank from about half the 256-step limit at iteration 500 to about one step at the end. The 10k policy did the same within 100 iterations, and D3's policies in `A5_s0` within 20.
+- **Why ending paid.** Two things held together:
+  - **the reward per step was negative.** In the 6M run the penalties outweighed the tracking rewards from the first iteration to the last. Early on, the vertical-speed and tilt penalties were larger than the uncertainty charge; later the uncertainty charge was the largest;
+  - **a fall was free.** The lite reward has no cost for a predicted fall, so a policy losing reward every step gains by falling at once.
+- **Why the released model's policy escaped.** Its reward per step was also negative for about its first 250 iterations. But the released model almost never predicts a fall (D1: 0.2% of imagined episodes), so its policy had no way out and had to learn to walk. Our simulators predict falls readily: `A5_s0` in every D1 episode, and ours were trained on data full of falls.
+- **What is not established.** At the start of training the networks disagree about as much in the released model (about 2.0–2.2 per step) as in the 6M simulator (2.3); `A5_s0` and the 10k simulator are near 2.8. The released model's 0.6 is its value once the policy walks. No policy has yet walked in our simulators, so their value there is unknown. Calibration (change 1) measures it.
+- **Two suspects for the early penalties:**
+  - **start states.** The first pilot started imagination anywhere in the mixed data, including states from noisy and failing policies. The lite code starts from the authors' walking data;
+  - **the simulator.** It was trained on about a tenth of its data, once: 2,572 steps × 256 windows against 6 million. Its kinematic residual on held-out data is about 9, against about 0.6–1.0 for the data themselves. Its prediction errors are good (Gate A), so this is a suspect, not a finding. Training also ran twice as fast as the probe assumed, so S used 4 hours of the 8 allowed.
+- **The first pilot's retry rule pointed the wrong way** ("it fell, so raise the penalty").
+  - Weight 2.0 crashed after about 1,500 iterations, when the policy's exploration noise went negative.
+  - Weight 4.0 finished with a negative imagined return and was not measured.
+
+**Changes.** These replace the design above wherever they differ.
+1. **Calibrated penalty.** Each simulator s gets its own weight λ_s = ū_REL / ū_s, clipped to 0.05–2.
+   - **ū** is the mean disagreement per step along the authors' policy, run closed-loop in that simulator's imagination: 1,024 robots, 256 steps, noise-free actions, from the simulator's start states (change 3). For the released model, start from the recorded data.
+   - This gives the authors' walking policy the same uncertainty charge in every simulator as it pays in the released model at RWM-U's weight of 1.0.
+   - λ_s comes from the simulator alone, before any policy is trained in it.
+   - **Fallback.** If the authors' policy cannot run in imagination, use open-loop replay instead, and record which in `optc/DECISIONS.md`. The replay feeds the expert test set's joint commands through the simulator from the true 32-step history, for 100 steps. For the released model, it uses the recorded data's commands.
+2. **Gate A2: can the simulator hold a good walk?** The authors' policy walks in MuJoCo without falling. In the same calibration run, the 6M seed-0 simulator must agree:
+   - at most 10% of the 1,024 imagined episodes end in a predicted fall;
+   - the two tracking terms together earn at least 80% of what the same policy earns per step in MuJoCo (`results/c_authors.json`, or a re-run on the expert test set's commands).
+
+   **If it fails,** the simulator is the problem, and no policy setting can fix it. The pilot job then first retrains `sim_6M_N8_s0` and `sim_10k_N8_s0` with 2 × S steps, recomputes their checks and calibration, and applies Gate A2 again. If it passes, S becomes 2 × S for every simulator. If it fails again, stop BLOCKED.
+3. **Start states** come only from the authors'-policy episodes (source 0, no added noise) in the simulator's own rung: upright, and at least 1 s before any fall. The lite code also starts imagination from the authors' recorded data.
+4. **Noise floor.** Keep the policy's exploration noise at 0.05 or above: a clamp after each update, or the lite code's own log-scale option if it has one.
+5. **Fall cost** (in two of the pilot's arms). A predicted fall costs a one-time 4.0, in the units of the per-step rewards: about 130 steps of perfect tracking. Use the lite reward's own termination term if it has one; otherwise subtract it at the step the episode ends. This departs from the authors' reward, and the paper must say so if it is used.
+6. **Second pilot.** Four policies in the 6M simulator, seed 0, 1,500 iterations, saved at 500, 1,000 and 1,500; each save is measured with the full protocol.
+
+   | Arm | Penalty | Fall cost |
+   |---|---|---|
+   | P1 | λ_6M | none |
+   | P2 | λ_6M | 4.0 |
+   | P3 | 0 | none |
+   | P4 | 0 | 4.0 |
+
+   - **Early stop.** After iteration 300, an arm whose mean imagined episode length stays under a quarter of the limit for 100 iterations in a row is stopped and recorded as "collapsed". Its saves so far are still measured.
+   - For the record, also measure the first pilot's surviving saves: weight 2.0 at 500, 1,000 and 1,500, and weight 4.0 at 500 to 2,000.
+7. **Gate B'.** Check P1, then P2, then P3, then P4.
+   - An arm passes if its best save falls in under 20% of episodes and scores at least half the authors' policy.
+   - The first to pass sets the main study's recipe for every simulator: its own λ_s or 0, with or without the fall cost.
+   - If none passes, stop BLOCKED.
+8. **Iteration rule'.** The main study uses the smallest saved count at which the chosen arm scores at least 90% of its best save.
+9. **Gate C'** (not a stop). After Gate B', the job trains one policy in the 10k simulator with the chosen recipe and iteration count. It must score below the chosen arm's best save, with their 95% intervals over episodes apart. If not, add the 2k rung, as before.
+10. **The main job.**
+    - Every policy uses the chosen recipe, with the noise floor and the start-state rule above.
+    - **D3' (descriptive).** Repeat D3 in `A5_s0` with the chosen recipe: two policies, 500 iterations, Step 2's protocol.
+    - **D5 swaps the penalty:** λ = 0 if the main study uses one, λ_6M if it does not.
+11. **Registration** declares the first pilot, this amendment and the second pilot as known.
+
 <!-- BEGIN COMMON -->
 ## Common rules (every session)
 
@@ -219,6 +281,7 @@ Option C finds why Step 2's rebuilt-simulator policies fell, then repeats the po
   - the walking score, gates, retry and iteration rules.
 
   Never change them. A needed change goes to `optc/DECISIONS.md` and stops the run BLOCKED.
+- **Amendment 1** (end of the design) adds Gate A2 and replaces the penalty weight, the start states and the pilot rules. Where it differs from the design above it, the amendment wins.
 - **Terms.** Keep these distinct:
   - **joint commands** are the policy's actions;
   - the **velocity command** is the speed and turn the policy is asked for;
@@ -409,22 +472,80 @@ Option C finds why Step 2's rebuilt-simulator policies fell, then repeats the po
 5. Commit "C2: Gate A, walking score, pilot job".
 <!-- END C2 -->
 
+<!-- BEGIN C2R -->
+## C2R — Amendment 1: calibration, fixes and the second pilot's job (Opus 5.5, high)
+
+The first pilot failed; read "Amendment 1" in the design before anything else.
+
+**Read:**
+- Amendment 1;
+- `results/c/pilot_decision.json` and `optc/CHECKPOINT.md`;
+- `tail -40 .cache/logs/job_c_pilot.log`;
+- `scripts/c/train_policy.py`, `scripts/c/pilot_rule.py`, `scripts/c/diag.py` (its imagination part) and `optc/jobs/pilot.zsh`, in parts.
+
+**Steps**
+1. **Commit the amendment.** Commit `OPTIONC_PLAN.md` and `go_c.zsh` (changed by the author for Amendment 1) alone: "C2R: Amendment 1 (after the first pilot)".
+   - Also commit the diagnosis results that C1 left uncommitted.
+   - Move `.cache/logs/job_c_pilot.log` to `.cache/logs/job_c_pilot_first.log`.
+2. **The first pilot's record.** Write `scripts/c/pilot1_record.py`, which writes `results/c_pilot1.json` and `results/c_pilot1.txt` (at most 40 lines). Never overwrite `results/c/pilot_decision.json`.
+   - Gate B at weight 1.0;
+   - per policy, from the lite metrics: imagined episode length, mean disagreement, and each reward term, at iterations 0, 100, 500, 1,000 and the end;
+   - the same for `REL__p0` and D3's policies, for comparison;
+   - the first pilot's surviving saves are measured by the job (step 7) and added there.
+3. **Check the amendment's reading.** With `./py`, confirm from the lite metrics and code, and record in `optc/notes/C2R.md`:
+   - how the logged reward terms are scaled (per step, per second or per episode);
+   - whether the lite reward has any cost for a predicted fall;
+   - the share of first-pilot start states by data source.
+
+   If a fact contradicts Amendment 1's account, record it in `optc/DECISIONS.md`. Stop BLOCKED only if it makes a change in the amendment impossible.
+4. **Calibration and Gate A2, `scripts/c/calibrate_penalty.py`.**
+   - Compute ū and λ_s exactly as Amendment 1 defines them, using the lite code's own disagreement measure, for `REL`, `sim_6M_N8_s0`, `sim_10k_N8_s0` and `A5_s0`.
+   - For each, also report the authors' policy's imagined reward per step by term, and its share of predicted falls.
+   - Apply Gate A2 to `sim_6M_N8_s0`. Write `results/c/calibration.json` and commit it before the job runs.
+   - If this takes more than 10 minutes, it moves into the job instead.
+5. **Fixes in `scripts/c/train_policy.py`:**
+   - the noise floor;
+   - the start-state rule (source 0 only);
+   - a `--fall-cost` flag;
+   - the early stop for collapsed arms;
+   - a `--max-iters` flag (500 to 2,000) with saves every 500;
+   - λ from `results/c/calibration.json` by simulator name, or an explicit value.
+
+   **Tests:**
+   - one iteration with 64 robots in each pilot simulator, with nonzero uncertainty;
+   - the noise floor holds when the noise is forced below it;
+   - the start states are all from source 0;
+   - with the fall cost on, an episode that ends in a predicted fall is charged 4.0 exactly once;
+   - the early stop fires on a fixture, and not on `REL__p0`'s recorded metrics.
+6. **Rule, `scripts/c/pilot2_rule.py`.** It implements Gate B', the iteration rule' and Gate C', writes `results/c/pilot2_decision.json`, and writes `results/c_pilot.json` and `.txt` (at most 40 lines). Test every branch on fixtures. A BLOCKED result is recorded in `optc/DECISIONS.md` and `optc/LOG.md`, and the job exits 3.
+7. **Write a new `optc/jobs/pilot.zsh`:**
+   - if Gate A2 failed: retrain the two pilot simulators with 2 × S steps, redo their checks and calibration, and apply Gate A2 again (exit 3 if it fails);
+   - P1 and P2 on two workers, then P3 and P4;
+   - measure every save as soon as its policy finishes;
+   - measure the first pilot's surviving saves, and add them to `results/c_pilot1.*`;
+   - apply Gate B' and the iteration rule', then train and measure the 10k policy for Gate C';
+   - run `pilot2_rule.py`.
+
+   It is resumable and skips finished work, with progress as in C5, and must pass `zsh -n`.
+8. **Record.** Write `optc/DECISIONS.md` entries for every choice. Commit "C2R: calibration, fixes, second pilot job".
+<!-- END C2R -->
+
 <!-- BEGIN C3 -->
 ## C3 — Gates B and C, registration and the main job (Opus 5.5, high)
 
 **Read:**
-- `results/c_pilot.txt`, `results/c_diag.txt` and `optc/notes/C1_rootcause.md`;
-- the design in `OPTIONC_PLAN.md`;
+- `results/c_pilot.txt`, `results/c_pilot1.txt`, `results/c/calibration.json`, `results/c_diag.txt` and `optc/notes/C1_rootcause.md`;
+- the design in `OPTIONC_PLAN.md`, including Amendment 1;
 - in `scripts/stats.py`, `spearman`, `_clean` and `boot_diff`. Import these; never copy them.
 
 **Steps**
-1. **Gates.**
-   - **Gate B:** if it failed even after the retry, stop BLOCKED with the options.
-   - Apply the iteration rule and Gate C, and record both.
+1. **Gates.** Use Amendment 1's rules, which `results/c/pilot2_decision.json` already applies.
+   - **Gate B':** if no arm passed, stop BLOCKED with the options.
+   - Record the chosen recipe (penalty rule and fall cost), S, the iteration count and Gate C'.
 2. **Write `prereg/PREREG_C.md`:**
    - the question;
    - the pool, with any Gate C rung;
-   - the settings: S, N, iterations, uncertainty weight, robots and start states;
+   - the settings: S, N, iterations, the penalty rule with its calibration procedure, the fall cost if used, the noise floor, robots and start states;
    - the protocol, the walking score, and the checks on both test sets.
    - **Statistics:** the unit is the simulator; Spearman correlation with every check turned higher-is-better; paired bootstrap over simulators, 20,000 draws, `default_rng(0)`.
    - **Premise (95%). R0:** ρ(−E100 on the expert test set, walking score). SUPPORTED, CONTRADICTED or NOT SETTLED.
@@ -439,11 +560,12 @@ Option C finds why Step 2's rebuilt-simulator policies fell, then repeats the po
      - selection of the best three simulators by each check;
      - fall rate as the outcome.
    - **Descriptive:** the walking score against the data rung, D5, D6 and the root cause.
-   - **What was known:** the diagnosis, Gate A and the pilot.
+   - **What was known:** the diagnosis, Gates A and A2, the first pilot, Amendment 1 and the second pilot.
    - **Expected outcome:** with about 14 simulators, the differences between checks may end NOT SETTLED. Say so here. The premise test and the data ladder are informative either way.
 3. **Write `scripts/c_stats.py`, `scripts/c_main.py` and tests** with synthetic results.
    - `c_main.py` trains the remaining simulators, including D6's, and makes the pruned copies.
-   - It computes all checks, then trains and measures the 28 pool policies and the four D5 and D6 policies.
+   - It computes all checks, and each simulator's λ_s with `calibrate_penalty.py` before its policies.
+   - It then trains and measures the 28 pool policies, the four D5 and D6 policies, and D3's two policies.
    - It is resumable, and uses the worker layout C1 recorded.
 4. **Review.** Ask air-stats-reviewer to review all of these against this block, in at most 400 words. Fix every MUST FIX and SHOULD FIX.
 5. **Register.**
@@ -472,7 +594,7 @@ Option C finds why Step 2's rebuilt-simulator policies fell, then repeats the po
 
    Change the abstract's scope sentence, Limitations and the Conclusion only where they are now false. The abstract stays at most 200 words.
 4. **Appendix:**
-   - move Step 2 into an appendix section, with the root cause: D0–D6 and the comparison table;
+   - move Step 2 into an appendix section, with the root cause: D0–D6, D3', the comparison table, the first pilot and Amendment 1;
    - add a section "Learned simulators of a known physics model", covering the data, simulators, policies and all results.
 5. **Fit.** `slack.py` must print PASS (reserve 0).
 6. **Finish.** Write `optc/notes/C4.md` with the new keys and claims, and commit "C4: Option C in the paper".
