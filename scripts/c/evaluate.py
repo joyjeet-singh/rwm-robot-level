@@ -67,6 +67,10 @@ def policy_name(sim, seed, weight=1.0):
 
 
 PILOT = tuple(policy_name(s, 0) for s in PILOT_SIMS) + tuple(policy_name(PILOT_SIMS[0], 0, w) for w in RETRY_WEIGHTS)
+# Amendment 1 (C2R): the second pilot's arms and its Gate C' policy, in the pilot simulators or their 2 x S retrainings
+PILOT2_SIMS = PILOT_SIMS + tuple(s + "__2S" for s in PILOT_SIMS)
+PILOT2_TAGS = ("cal", "cal_fall4", "w0", "w0_fall4")
+PILOT += tuple(f"{s}__{t}__p0" for s in PILOT2_SIMS for t in PILOT2_TAGS)
 
 
 def registered():

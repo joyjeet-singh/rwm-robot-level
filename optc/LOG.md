@@ -23,3 +23,10 @@ Gate A passed: on the expert set the 6M simulator's E8 and E24 are below holding
 Authors' policy measured with the full protocol (`results/c_authors.json`, Gate B's reference); standing-still reference computed from the same schedules.
 Tests passed (`scripts/c/test_c2.py`): evaluator equals Step 2's loop on normal episodes; standing pose scores near the reference; guard refuses main-pool policies; start-state rule; wrapper predictions equal the trainer's on 100 windows of the 6M rung (difference 0, limit 1e-6); one iteration with nonzero uncertainty; pilot rule on fixtures, every branch.
 No pilot policy has been trained or measured. Job `optc/jobs/pilot.zsh` written; `zsh -n` passes; it has not run.
+
+## C2R status: COMPLETE (2026-11-11 00:13)
+Amendment 1 and the diagnosis results committed; first pilot's log moved to `.cache/logs/job_c_pilot_first.log`; first pilot's record `results/c_pilot1.*`.
+Facts (`optc/notes/C2R.md`): no fall cost in the lite reward; logged terms are rates per second over the 256-step limit; first-pilot starts were 37% expert data. One partial disagreement with the amendment (DECISIONS C2R 1), not blocking.
+Calibration (`results/c/calibration.json`): λ = 0.30 (6M), 0.23 (10k), 0.25 (`A5_s0`). Gate A2 FAILED on the 6M simulator: the authors' policy fell in 15.5% of imagined episodes and earned 31% of its MuJoCo tracking.
+The job therefore retrains both pilot simulators with 2 × S steps before any arm.
+Fixes in `train_policy.py` and the rule `pilot2_rule.py`; all tests in `scripts/c/test_c2r.py` passed (every rule branch on fixtures). New `optc/jobs/pilot.zsh` passes `zsh -n`; it has not run. Estimated 35–40 h.

@@ -1,0 +1,797 @@
+{
+ "what": "Option C first pilot (failed; Amendment 1). Lite metrics in imagination; walking scores in the calibrated hand-built MuJoCo ANYmal D, fitted PD motor (not Isaac Lab, not hardware)",
+ "gate_b_at_weight_1": {
+  "fall_rate": 1.0,
+  "score": 0.000419350563956828,
+  "authors_score": 0.9421285148499385,
+  "fall_below_limit": false,
+  "score_at_least_half": false,
+  "passed": false
+ },
+ "retry_rule_then": {
+  "retry_weights": [
+   2.0,
+   4.0
+  ],
+  "why": "fell in 20% of episodes or more"
+ },
+ "authors": {
+  "score": 0.9421285148499385,
+  "score_ci95": [
+   0.9393340615221668,
+   0.9448362162025092
+  ],
+  "fall_rate": 0.0
+ },
+ "measured_weight_1": {
+  "sim_6M_N8_s0__p0": {
+   "500": {
+    "score": 0.017164941161575773,
+    "score_ci95": [
+     0.010629586938714027,
+     0.024527491075764758
+    ],
+    "fall_rate": 0.8541666666666666,
+    "ret": -10.061879278874569
+   },
+   "1000": {
+    "score": 0.0021118681651743354,
+    "score_ci95": [
+     0.001681063315885853,
+     0.0025868466001167916
+    ],
+    "fall_rate": 1.0,
+    "ret": -2.423186727181576
+   },
+   "1500": {
+    "score": 0.0009108629414260042,
+    "score_ci95": [
+     0.0007087360579704607,
+     0.001129892034616831
+    ],
+    "fall_rate": 1.0,
+    "ret": -2.9415027472736206
+   },
+   "2000": {
+    "score": 0.000419350563956828,
+    "score_ci95": [
+     0.00032289921145781846,
+     0.0005291841716032062
+    ],
+    "fall_rate": 1.0,
+    "ret": -1.3763594611557386
+   }
+  },
+  "sim_10k_N8_s0__p0": {
+   "500": {
+    "score": 0.01125231044024421,
+    "score_ci95": [
+     0.009028354514748937,
+     0.013649315241159874
+    ],
+    "fall_rate": 1.0,
+    "ret": -5.770810308817495
+   },
+   "1000": {
+    "score": 0.004471131477767457,
+    "score_ci95": [
+     0.003379020218739874,
+     0.005751093030684331
+    ],
+    "fall_rate": 1.0,
+    "ret": -2.805483882624522
+   },
+   "1500": {
+    "score": 0.053983482271977246,
+    "score_ci95": [
+     0.04636098644570933,
+     0.06206702981345235
+    ],
+    "fall_rate": 0.2604166666666667,
+    "ret": -31.69893862173872
+   },
+   "2000": {
+    "score": 0.00818326580860323,
+    "score_ci95": [
+     0.006704067867194049,
+     0.009768633043500093
+    ],
+    "fall_rate": 1.0,
+    "ret": -4.549267414928663
+   }
+  }
+ },
+ "policies": {
+  "sim_6M_N8_s0__p0": {
+   "label": "first pilot, 6M, weight 1.0",
+   "iterations": 2000,
+   "at": {
+    "0": {
+     "iteration": 1,
+     "mean_length": null,
+     "disagreement": 2.015683889389038,
+     "noise_std": 0.9906017184257507,
+     "mean_return": null,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0,
+      "track_ang_vel_z_exp": 0.0,
+      "lin_vel_z_l2": 0.0,
+      "ang_vel_xy_l2": 0.0,
+      "dof_torques_l2": 0.0,
+      "dof_acc_l2": 0.0,
+      "action_rate_l2": 0.0,
+      "feet_air_time": 0.0,
+      "undesired_contacts": 0.0,
+      "stand_still": 0.0,
+      "flat_orientation_l2": 0.0,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     },
+     "sum_terms_logged": 0.0,
+     "approx_total_per_step": null
+    },
+    "100": {
+     "iteration": 100,
+     "mean_length": 228.16,
+     "disagreement": 1.8333889245986938,
+     "noise_std": 0.8899145126342773,
+     "mean_return": -20.283475436363368,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.006006354466080666,
+      "track_ang_vel_z_exp": 0.13330307602882385,
+      "lin_vel_z_l2": -1.0653140544891357,
+      "ang_vel_xy_l2": -0.0548698715865612,
+      "dof_torques_l2": -0.12251194566488266,
+      "dof_acc_l2": -0.016492245718836784,
+      "action_rate_l2": -0.11695484071969986,
+      "feet_air_time": -0.01001302246004343,
+      "undesired_contacts": -0.0351562537252903,
+      "stand_still": -0.14558228850364685,
+      "flat_orientation_l2": -0.18911679089069366,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -1.313768982887268
+     },
+     "sum_terms_logged": -2.930470866151154,
+     "approx_total_per_step": -0.06576091705248031
+    },
+    "500": {
+     "iteration": 500,
+     "mean_length": 138.94,
+     "disagreement": 1.3256672620773315,
+     "noise_std": 0.5358089804649353,
+     "mean_return": -4.117557305488735,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.08299512416124344,
+      "track_ang_vel_z_exp": 0.11430767923593521,
+      "lin_vel_z_l2": -0.003962690941989422,
+      "ang_vel_xy_l2": -0.013161749579012394,
+      "dof_torques_l2": -0.06932937353849411,
+      "dof_acc_l2": -0.009698138572275639,
+      "action_rate_l2": -0.039652977138757706,
+      "feet_air_time": -0.005371907725930214,
+      "undesired_contacts": -0.0042317709885537624,
+      "stand_still": 0.0,
+      "flat_orientation_l2": -0.07496341317892075,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.6732804775238037
+     },
+     "sum_terms_logged": -0.696349695790559,
+     "approx_total_per_step": -0.025660792014161958
+    },
+    "1000": {
+     "iteration": 1000,
+     "mean_length": 52.11,
+     "disagreement": 1.202298641204834,
+     "noise_std": 0.5238890647888184,
+     "mean_return": -1.3021550334617495,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.01981860212981701,
+      "track_ang_vel_z_exp": 0.05972909554839134,
+      "lin_vel_z_l2": -0.0021187495440244675,
+      "ang_vel_xy_l2": -0.004030844662338495,
+      "dof_torques_l2": -0.03642614558339119,
+      "dof_acc_l2": -0.003161465050652623,
+      "action_rate_l2": -0.016593093052506447,
+      "feet_air_time": -0.0017361730569973588,
+      "undesired_contacts": -0.002842106856405735,
+      "stand_still": 0.0,
+      "flat_orientation_l2": -0.02252786047756672,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.2562207877635956
+     },
+     "sum_terms_logged": -0.26610952836927027,
+     "approx_total_per_step": -0.026146244199782457
+    },
+    "end": {
+     "iteration": 2000,
+     "mean_length": 1.02,
+     "disagreement": 1.9849964380264282,
+     "noise_std": 0.27988845109939575,
+     "mean_return": -0.05095452588051558,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0006465588230639696,
+      "track_ang_vel_z_exp": 0.0007995408959686756,
+      "lin_vel_z_l2": -5.1614628318930045e-05,
+      "ang_vel_xy_l2": -5.4182641179068014e-05,
+      "dof_torques_l2": -0.0004220973642077297,
+      "dof_acc_l2": -7.985680713318288e-05,
+      "action_rate_l2": -0.0022601140663027763,
+      "feet_air_time": -3.0361627068486996e-05,
+      "undesired_contacts": -3.9803522668080404e-05,
+      "stand_still": -0.0002524183364585042,
+      "flat_orientation_l2": -0.00016660097753629088,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.007886807434260845
+     },
+     "sum_terms_logged": -0.00979775768610125,
+     "approx_total_per_step": -0.04918090132631215
+    }
+   }
+  },
+  "sim_10k_N8_s0__p0": {
+   "label": "first pilot, 10k, weight 1.0",
+   "iterations": 2000,
+   "at": {
+    "0": {
+     "iteration": 1,
+     "mean_length": null,
+     "disagreement": 2.707611322402954,
+     "noise_std": 0.9904183745384216,
+     "mean_return": null,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0,
+      "track_ang_vel_z_exp": 0.0,
+      "lin_vel_z_l2": 0.0,
+      "ang_vel_xy_l2": 0.0,
+      "dof_torques_l2": 0.0,
+      "dof_acc_l2": 0.0,
+      "action_rate_l2": 0.0,
+      "feet_air_time": 0.0,
+      "undesired_contacts": 0.0,
+      "stand_still": 0.0,
+      "flat_orientation_l2": 0.0,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     },
+     "sum_terms_logged": 0.0,
+     "approx_total_per_step": null
+    },
+    "100": {
+     "iteration": 100,
+     "mean_length": 2.61,
+     "disagreement": 2.2379844188690186,
+     "noise_std": 0.5503275990486145,
+     "mean_return": -0.16704467430710793,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.002211700426414609,
+      "track_ang_vel_z_exp": 0.0026953190099447966,
+      "lin_vel_z_l2": -0.00043663839460350573,
+      "ang_vel_xy_l2": -0.0007321832817979157,
+      "dof_torques_l2": -0.0028017957229167223,
+      "dof_acc_l2": -0.0003961004549637437,
+      "action_rate_l2": -0.0019992829766124487,
+      "feet_air_time": -0.0005167447379790246,
+      "undesired_contacts": -0.005241552833467722,
+      "stand_still": -0.0007952581509016454,
+      "flat_orientation_l2": -0.0012491055531427264,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.025505656376481056
+     },
+     "sum_terms_logged": -0.034767299046507105,
+     "approx_total_per_step": -0.06820251766977639
+    },
+    "500": {
+     "iteration": 500,
+     "mean_length": 1.51,
+     "disagreement": 2.156198263168335,
+     "noise_std": 0.2436618208885193,
+     "mean_return": -0.07453251961618662,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0014641931047663093,
+      "track_ang_vel_z_exp": 0.002025680150836706,
+      "lin_vel_z_l2": -0.0002718184841796756,
+      "ang_vel_xy_l2": -0.0001466818357584998,
+      "dof_torques_l2": -0.0013775582192465663,
+      "dof_acc_l2": -0.00029077017097733915,
+      "action_rate_l2": -0.0013314768439158797,
+      "feet_air_time": -0.0003953020495828241,
+      "undesired_contacts": -0.0018567629158496857,
+      "stand_still": -0.0004979430232197046,
+      "flat_orientation_l2": -0.00036180787719786167,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.016737470403313637
+     },
+     "sum_terms_logged": -0.019777718567638658,
+     "approx_total_per_step": -0.06706087355384764
+    },
+    "1000": {
+     "iteration": 1000,
+     "mean_length": 1.55,
+     "disagreement": 2.1915814876556396,
+     "noise_std": 0.23191261291503906,
+     "mean_return": -0.083081805575639,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0012224077945575118,
+      "track_ang_vel_z_exp": 0.0016060201451182365,
+      "lin_vel_z_l2": -0.00016866158694028854,
+      "ang_vel_xy_l2": -9.686837438493967e-05,
+      "dof_torques_l2": -0.0010537310736253858,
+      "dof_acc_l2": -0.00023023149697110057,
+      "action_rate_l2": -0.0014097467064857483,
+      "feet_air_time": -0.00031060617766343057,
+      "undesired_contacts": -0.0016552560264244676,
+      "stand_still": -0.0004538094799499959,
+      "flat_orientation_l2": -0.00030001054983586073,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.014205202460289001
+     },
+     "sum_terms_logged": -0.01705569599289447,
+     "approx_total_per_step": -0.056338815150722386
+    },
+    "end": {
+     "iteration": 2000,
+     "mean_length": 1.09,
+     "disagreement": 2.0498147010803223,
+     "noise_std": 0.21121400594711304,
+     "mean_return": -0.06313777225092053,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0007375918212346733,
+      "track_ang_vel_z_exp": 0.0009084236808121204,
+      "lin_vel_z_l2": -5.3285770263755694e-05,
+      "ang_vel_xy_l2": -5.710472396458499e-05,
+      "dof_torques_l2": -0.0005464152782224119,
+      "dof_acc_l2": -8.815756882540882e-05,
+      "action_rate_l2": -0.0016147972783073783,
+      "feet_air_time": -0.00012616829189937562,
+      "undesired_contacts": -0.0016515686875209212,
+      "stand_still": -0.00028993384330533445,
+      "flat_orientation_l2": -0.00020697868603747338,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.008822510950267315
+     },
+     "sum_terms_logged": -0.011810905576567166,
+     "approx_total_per_step": -0.05547874913029714
+    }
+   }
+  },
+  "sim_6M_N8_s0__w2__p0": {
+   "label": "first pilot retry, 6M, weight 2.0 (crashed)",
+   "iterations": null,
+   "lite_metrics": "none: the run crashed (exploration noise below zero inside an update) before the lite code writes its metrics"
+  },
+  "sim_6M_N8_s0__w4__p0": {
+   "label": "first pilot retry, 6M, weight 4.0",
+   "iterations": 2000,
+   "at": {
+    "0": {
+     "iteration": 1,
+     "mean_length": null,
+     "disagreement": 2.015683889389038,
+     "noise_std": 0.9904365539550781,
+     "mean_return": null,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0,
+      "track_ang_vel_z_exp": 0.0,
+      "lin_vel_z_l2": 0.0,
+      "ang_vel_xy_l2": 0.0,
+      "dof_torques_l2": 0.0,
+      "dof_acc_l2": 0.0,
+      "action_rate_l2": 0.0,
+      "feet_air_time": 0.0,
+      "undesired_contacts": 0.0,
+      "stand_still": 0.0,
+      "flat_orientation_l2": 0.0,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     },
+     "sum_terms_logged": 0.0,
+     "approx_total_per_step": null
+    },
+    "100": {
+     "iteration": 100,
+     "mean_length": 213.19,
+     "disagreement": 1.3872051239013672,
+     "noise_std": 0.6590994000434875,
+     "mean_return": -40.71672911703587,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.00027381753898225725,
+      "track_ang_vel_z_exp": 0.0059664989821612835,
+      "lin_vel_z_l2": -0.0001066104814526625,
+      "ang_vel_xy_l2": -6.392229261109605e-05,
+      "dof_torques_l2": -0.0017302556661888957,
+      "dof_acc_l2": -0.0006839015404693782,
+      "action_rate_l2": -0.002680898876860738,
+      "feet_air_time": -0.0018945313058793545,
+      "undesired_contacts": 0.0,
+      "stand_still": 0.0,
+      "flat_orientation_l2": -0.0005306499660946429,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.21566015481948853
+     },
+     "sum_terms_logged": -0.21711060842790175,
+     "approx_total_per_step": -0.00521415786458491
+    },
+    "500": {
+     "iteration": 500,
+     "mean_length": 152.14,
+     "disagreement": 1.524412751197815,
+     "noise_std": 0.5420722365379333,
+     "mean_return": -22.972699461281298,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.17768526077270508,
+      "track_ang_vel_z_exp": 0.134094700217247,
+      "lin_vel_z_l2": -0.02847762405872345,
+      "ang_vel_xy_l2": -0.03216232731938362,
+      "dof_torques_l2": -0.26190122961997986,
+      "dof_acc_l2": -0.023078197613358498,
+      "action_rate_l2": -0.08271389454603195,
+      "feet_air_time": -0.0032649757340550423,
+      "undesired_contacts": -0.06949868053197861,
+      "stand_still": -0.7576605677604675,
+      "flat_orientation_l2": -0.18599911034107208,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -5.865306377410889
+     },
+     "sum_terms_logged": -6.998283023945987,
+     "approx_total_per_step": -0.23551471725123874
+    },
+    "1000": {
+     "iteration": 1000,
+     "mean_length": 54.62,
+     "disagreement": 1.031175136566162,
+     "noise_std": 0.3465679883956909,
+     "mean_return": -6.333609261214733,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.01587934046983719,
+      "track_ang_vel_z_exp": 0.03417399153113365,
+      "lin_vel_z_l2": -0.001460885163396597,
+      "ang_vel_xy_l2": -0.003116997890174389,
+      "dof_torques_l2": -0.03530862554907799,
+      "dof_acc_l2": -0.002646280452609062,
+      "action_rate_l2": -0.00691202050074935,
+      "feet_air_time": -0.0012482368620112538,
+      "undesired_contacts": -0.0063612200319767,
+      "stand_still": -0.009149938821792603,
+      "flat_orientation_l2": -0.06935340166091919,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.6850504875183105
+     },
+     "sum_terms_logged": -0.7705547624500468,
+     "approx_total_per_step": -0.07223069175657708
+    },
+    "end": {
+     "iteration": 2000,
+     "mean_length": 57.1,
+     "disagreement": 1.2830473184585571,
+     "noise_std": 0.2647477090358734,
+     "mean_return": -6.263194658607245,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.026147618889808655,
+      "track_ang_vel_z_exp": 0.040340423583984375,
+      "lin_vel_z_l2": -0.005552399903535843,
+      "ang_vel_xy_l2": -0.006227236706763506,
+      "dof_torques_l2": -0.040535103529691696,
+      "dof_acc_l2": -0.0033082959707826376,
+      "action_rate_l2": -0.007741009816527367,
+      "feet_air_time": -0.001082063652575016,
+      "undesired_contacts": -0.0022930188570171595,
+      "stand_still": -0.0370158851146698,
+      "flat_orientation_l2": -0.06559773534536362,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.874248206615448
+     },
+     "sum_terms_logged": -0.9771129130385816,
+     "approx_total_per_step": -0.08761502827946652
+    }
+   }
+  },
+  "REL__p0": {
+   "label": "Step 2 pilot, released model",
+   "iterations": 500,
+   "at": {
+    "0": {
+     "iteration": 1,
+     "mean_length": null,
+     "disagreement": 2.405205726623535,
+     "noise_std": 0.9898316860198975,
+     "mean_return": null,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0,
+      "track_ang_vel_z_exp": 0.0,
+      "lin_vel_z_l2": 0.0,
+      "ang_vel_xy_l2": 0.0,
+      "dof_torques_l2": 0.0,
+      "dof_acc_l2": 0.0,
+      "action_rate_l2": 0.0,
+      "feet_air_time": 0.0,
+      "undesired_contacts": 0.0,
+      "stand_still": 0.0,
+      "flat_orientation_l2": 0.0,
+      "dof_pos_limits": 0.0,
+      "uncertainty": 0.0
+     },
+     "sum_terms_logged": 0.0,
+     "approx_total_per_step": null
+    },
+    "100": {
+     "iteration": 100,
+     "mean_length": 245.61,
+     "disagreement": 0.8551871180534363,
+     "noise_std": 0.43036988377571106,
+     "mean_return": -3.063951969668269,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.32113122940063477,
+      "track_ang_vel_z_exp": 0.3727518618106842,
+      "lin_vel_z_l2": -0.03320534899830818,
+      "ang_vel_xy_l2": -0.03075730986893177,
+      "dof_torques_l2": -0.18896065652370453,
+      "dof_acc_l2": -0.007862371392548084,
+      "action_rate_l2": -0.04972356930375099,
+      "feet_air_time": -0.03638899326324463,
+      "undesired_contacts": -0.00729554146528244,
+      "stand_still": -0.017611946910619736,
+      "flat_orientation_l2": -0.05451713129878044,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.8661721348762512
+     },
+     "sum_terms_logged": -0.598611912690103,
+     "approx_total_per_step": -0.012478697907142736
+    },
+    "500": {
+     "iteration": 500,
+     "mean_length": 255.45,
+     "disagreement": 0.5905364751815796,
+     "noise_std": 0.1926226168870926,
+     "mean_return": 2.1451250354852527,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.8055056929588318,
+      "track_ang_vel_z_exp": 0.4432302415370941,
+      "lin_vel_z_l2": -0.021375475451350212,
+      "ang_vel_xy_l2": -0.016561759635806084,
+      "dof_torques_l2": -0.10393744707107544,
+      "dof_acc_l2": -0.016499679535627365,
+      "action_rate_l2": -0.013549131341278553,
+      "feet_air_time": -0.041747644543647766,
+      "undesired_contacts": -0.00634765625,
+      "stand_still": -0.004108036868274212,
+      "flat_orientation_l2": -0.04121099039912224,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.6319229602813721
+     },
+     "sum_terms_logged": 0.35147515311837196,
+     "approx_total_per_step": 0.007044638026878311
+    },
+    "end": {
+     "iteration": 500,
+     "mean_length": 255.45,
+     "disagreement": 0.5905364751815796,
+     "noise_std": 0.1926226168870926,
+     "mean_return": 2.1451250354852527,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.8055056929588318,
+      "track_ang_vel_z_exp": 0.4432302415370941,
+      "lin_vel_z_l2": -0.021375475451350212,
+      "ang_vel_xy_l2": -0.016561759635806084,
+      "dof_torques_l2": -0.10393744707107544,
+      "dof_acc_l2": -0.016499679535627365,
+      "action_rate_l2": -0.013549131341278553,
+      "feet_air_time": -0.041747644543647766,
+      "undesired_contacts": -0.00634765625,
+      "stand_still": -0.004108036868274212,
+      "flat_orientation_l2": -0.04121099039912224,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.6319229602813721
+     },
+     "sum_terms_logged": 0.35147515311837196,
+     "approx_total_per_step": 0.007044638026878311
+    }
+   }
+  },
+  "A5_s0__p0": {
+   "label": "D3, A5_s0 seed 0",
+   "iterations": 500,
+   "at": {
+    "0": {
+     "iteration": 1,
+     "mean_length": 23.2,
+     "disagreement": 2.6736717224121094,
+     "noise_std": 0.9947125911712646,
+     "mean_return": -1.3521925568580628,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0006774289649911225,
+      "track_ang_vel_z_exp": 0.0033343720715492964,
+      "lin_vel_z_l2": -0.00024148581724148244,
+      "ang_vel_xy_l2": -0.00014798280608374625,
+      "dof_torques_l2": -0.0010465900413691998,
+      "dof_acc_l2": -0.0003015090769622475,
+      "action_rate_l2": -0.0035880960058420897,
+      "feet_air_time": -0.0006819661357440054,
+      "undesired_contacts": 0.0,
+      "stand_still": 0.0,
+      "flat_orientation_l2": -0.00018302106764167547,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.041313931345939636
+     },
+     "sum_terms_logged": -0.043492781260283664,
+     "approx_total_per_step": -0.009598406898821223
+    },
+    "100": {
+     "iteration": 100,
+     "mean_length": 16.5,
+     "disagreement": 2.5502169132232666,
+     "noise_std": 0.5916600823402405,
+     "mean_return": -0.8648834508657456,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.009403890930116177,
+      "track_ang_vel_z_exp": 0.01325030904263258,
+      "lin_vel_z_l2": -0.0011235348647460341,
+      "ang_vel_xy_l2": -0.000528394419234246,
+      "dof_torques_l2": -0.005886913742870092,
+      "dof_acc_l2": -0.0025201227981597185,
+      "action_rate_l2": -0.006813116371631622,
+      "feet_air_time": -0.002979680895805359,
+      "undesired_contacts": -7.566226850030944e-05,
+      "stand_still": -0.0031427384819835424,
+      "flat_orientation_l2": -0.0009600098128430545,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.16130176186561584
+     },
+     "sum_terms_logged": -0.16267773554864107,
+     "approx_total_per_step": -0.05047939430357832
+    },
+    "500": {
+     "iteration": 500,
+     "mean_length": 16.17,
+     "disagreement": 2.284517288208008,
+     "noise_std": 0.24392931163311005,
+     "mean_return": -0.6943023892119526,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.009268630295991898,
+      "track_ang_vel_z_exp": 0.01374219823628664,
+      "lin_vel_z_l2": -0.0009531928226351738,
+      "ang_vel_xy_l2": -0.0003761738771572709,
+      "dof_torques_l2": -0.004467889666557312,
+      "dof_acc_l2": -0.002223032293841243,
+      "action_rate_l2": -0.0028523264918476343,
+      "feet_air_time": -0.002843152731657028,
+      "undesired_contacts": -0.00011637646093731746,
+      "stand_still": -0.002388343447819352,
+      "flat_orientation_l2": -0.000727750186342746,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.14084181189537048
+     },
+     "sum_terms_logged": -0.13477922134188702,
+     "approx_total_per_step": -0.042675919188031014
+    },
+    "end": {
+     "iteration": 500,
+     "mean_length": 16.17,
+     "disagreement": 2.284517288208008,
+     "noise_std": 0.24392931163311005,
+     "mean_return": -0.6943023892119526,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.009268630295991898,
+      "track_ang_vel_z_exp": 0.01374219823628664,
+      "lin_vel_z_l2": -0.0009531928226351738,
+      "ang_vel_xy_l2": -0.0003761738771572709,
+      "dof_torques_l2": -0.004467889666557312,
+      "dof_acc_l2": -0.002223032293841243,
+      "action_rate_l2": -0.0028523264918476343,
+      "feet_air_time": -0.002843152731657028,
+      "undesired_contacts": -0.00011637646093731746,
+      "stand_still": -0.002388343447819352,
+      "flat_orientation_l2": -0.000727750186342746,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.14084181189537048
+     },
+     "sum_terms_logged": -0.13477922134188702,
+     "approx_total_per_step": -0.042675919188031014
+    }
+   }
+  },
+  "A5_s0__p1": {
+   "label": "D3, A5_s0 seed 1",
+   "iterations": 500,
+   "at": {
+    "0": {
+     "iteration": 1,
+     "mean_length": 22.88888888888889,
+     "disagreement": 2.6801583766937256,
+     "noise_std": 0.9938816428184509,
+     "mean_return": -1.354735917515225,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.0006339351530186832,
+      "track_ang_vel_z_exp": 0.0020026471465826035,
+      "lin_vel_z_l2": -0.0003310968168079853,
+      "ang_vel_xy_l2": -0.00022057682508602738,
+      "dof_torques_l2": -0.0011729233665391803,
+      "dof_acc_l2": -0.0003524713683873415,
+      "action_rate_l2": -0.003934195265173912,
+      "feet_air_time": -0.0009544542408548295,
+      "undesired_contacts": 0.0,
+      "stand_still": 0.0,
+      "flat_orientation_l2": -0.0003124812210444361,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.05025150254368782
+     },
+     "sum_terms_logged": -0.054893119347980246,
+     "approx_total_per_step": -0.012279004560946261
+    },
+    "100": {
+     "iteration": 100,
+     "mean_length": 16.01,
+     "disagreement": 2.6079213619232178,
+     "noise_std": 0.6211124658584595,
+     "mean_return": -0.8512439513206482,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.009337879717350006,
+      "track_ang_vel_z_exp": 0.013663392513990402,
+      "lin_vel_z_l2": -0.0010220956755802035,
+      "ang_vel_xy_l2": -0.0005777465994469821,
+      "dof_torques_l2": -0.005652579013258219,
+      "dof_acc_l2": -0.002444234909489751,
+      "action_rate_l2": -0.007441310677677393,
+      "feet_air_time": -0.0031249048188328743,
+      "undesired_contacts": -0.00041036249604076147,
+      "stand_still": -0.003204251639544964,
+      "flat_orientation_l2": -0.0009957455331459641,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.16587579250335693
+     },
+     "sum_terms_logged": -0.16774775163503364,
+     "approx_total_per_step": -0.053645751928255596
+    },
+    "500": {
+     "iteration": 500,
+     "mean_length": 15.09,
+     "disagreement": 2.301499128341675,
+     "noise_std": 0.25717806816101074,
+     "mean_return": -0.6635033798217773,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.008884559385478497,
+      "track_ang_vel_z_exp": 0.01316535472869873,
+      "lin_vel_z_l2": -0.0008478267700411379,
+      "ang_vel_xy_l2": -0.000415079208323732,
+      "dof_torques_l2": -0.004457781091332436,
+      "dof_acc_l2": -0.002162867458537221,
+      "action_rate_l2": -0.002895582467317581,
+      "feet_air_time": -0.0027633849531412125,
+      "undesired_contacts": -0.00012464176688808948,
+      "stand_still": -0.0030874842777848244,
+      "flat_orientation_l2": -0.0008059824467636645,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.13591225445270538
+     },
+     "sum_terms_logged": -0.13142297077865805,
+     "approx_total_per_step": -0.044591491741996635
+    },
+    "end": {
+     "iteration": 500,
+     "mean_length": 15.09,
+     "disagreement": 2.301499128341675,
+     "noise_std": 0.25717806816101074,
+     "mean_return": -0.6635033798217773,
+     "terms_logged": {
+      "track_lin_vel_xy_exp": 0.008884559385478497,
+      "track_ang_vel_z_exp": 0.01316535472869873,
+      "lin_vel_z_l2": -0.0008478267700411379,
+      "ang_vel_xy_l2": -0.000415079208323732,
+      "dof_torques_l2": -0.004457781091332436,
+      "dof_acc_l2": -0.002162867458537221,
+      "action_rate_l2": -0.002895582467317581,
+      "feet_air_time": -0.0027633849531412125,
+      "undesired_contacts": -0.00012464176688808948,
+      "stand_still": -0.0030874842777848244,
+      "flat_orientation_l2": -0.0008059824467636645,
+      "dof_pos_limits": 0.0,
+      "uncertainty": -0.13591225445270538
+     },
+     "sum_terms_logged": -0.13142297077865805,
+     "approx_total_per_step": -0.044591491741996635
+    }
+   }
+  }
+ },
+ "units": "terms_logged: episode sum / 5.12 s (the lite log); approx_total_per_step: reward per 0.02 s step",
+ "surviving_saves_measured": null
+}

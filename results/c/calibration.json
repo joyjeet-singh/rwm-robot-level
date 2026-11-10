@@ -1,0 +1,219 @@
+{
+ "what": "Amendment 1: the calibrated uncertainty weight lambda_s = u_bar(REL) / u_bar(s), clipped to 0.05-2, from the authors' policy run closed-loop (noise-free) in each simulator's imagination; Gate A2 on the 6M simulator. World: hand-built calibrated MuJoCo ANYmal D, fitted PD motor; not Isaac Lab, not hardware",
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first",
+  "clip": [
+   0.05,
+   2.0
+  ],
+  "reference": "REL",
+  "disagreement": "lite measure: sum over state dimensions of the std across the networks' means"
+ },
+ "method": "closed-loop imagination (not the open-loop fallback)",
+ "mujoco_reference": {
+  "tracking_per_step": 0.029102890721680583,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.019425881235246047,
+   "track_ang_vel_z_exp": 0.009677009486434537,
+   "lin_vel_z_l2": -7.104038890371069e-05,
+   "ang_vel_xy_l2": -9.91877231053583e-05,
+   "dof_torques_l2": -0.0011426653227407783,
+   "dof_acc_l2": -0.0004517091173741593,
+   "action_rate_l2": -5.877397507839728e-05,
+   "feet_air_time": -0.0003462750257178353,
+   "undesired_contacts": 0.0,
+   "stand_still": 0.0,
+   "flat_orientation_l2": -8.151658140742504e-05,
+   "dof_pos_limits": 0.0
+  },
+  "score": 0.9421285148499385,
+  "episodes": 96
+ },
+ "simulators": {
+  "REL": {
+   "robots": 1024,
+   "steps_run": 256,
+   "episodes_finished": 1024,
+   "share_fell": 0.0,
+   "falls": 0,
+   "mean_length": 256.0,
+   "u_bar": 0.46427802052539846,
+   "uncertainty_weight_in_env": -1.0,
+   "per_step": {
+    "track_lin_vel_xy_exp": 0.016199877960745353,
+    "track_ang_vel_z_exp": 0.00921836457600127,
+    "lin_vel_z_l2": -0.0002521908751941346,
+    "ang_vel_xy_l2": -0.0002113792615754002,
+    "dof_torques_l2": -0.0012019113357893685,
+    "dof_acc_l2": -0.00045301986381176716,
+    "action_rate_l2": -0.00014864330003316883,
+    "feet_air_time": -0.0005082992848418511,
+    "undesired_contacts": -1.9989013225085728e-05,
+    "stand_still": -0.0007205016926441488,
+    "flat_orientation_l2": -0.0002149685443754821,
+    "dof_pos_limits": 0.0,
+    "uncertainty": -0.009285560203087684
+   },
+   "tracking_per_step": 0.025418242536746623,
+   "total_per_step": 0.01240177916216853,
+   "start_states": {
+    "rule": "the authors' recorded data (the lite code's own start states)",
+    "holdout": null,
+    "windows_kept_total": null
+   },
+   "seconds": 24.098318815231323,
+   "lambda_unclipped": 1.0,
+   "lambda": 1.0,
+   "clipped": false
+  },
+  "sim_6M_N8_s0": {
+   "robots": 1024,
+   "steps_run": 256,
+   "episodes_finished": 1024,
+   "share_fell": 0.1552734375,
+   "falls": 159,
+   "mean_length": 243.0888671875,
+   "u_bar": 1.5416202087358917,
+   "uncertainty_weight_in_env": -1.0,
+   "per_step": {
+    "track_lin_vel_xy_exp": 0.003803605636412745,
+    "track_ang_vel_z_exp": 0.0052601172731417305,
+    "lin_vel_z_l2": -0.08929013739895497,
+    "ang_vel_xy_l2": -0.002319129934779249,
+    "dof_torques_l2": -0.011401617144880128,
+    "dof_acc_l2": -0.0008412926628789886,
+    "action_rate_l2": -0.0001139975597855766,
+    "feet_air_time": -0.0002320436553618753,
+    "undesired_contacts": -0.002227837474257574,
+    "stand_still": -0.0032607175426091427,
+    "flat_orientation_l2": -0.02171424896687719,
+    "dof_pos_limits": 0.0,
+    "uncertainty": -0.030832403487435125
+   },
+   "tracking_per_step": 0.009063722909554475,
+   "total_per_step": -0.15316970291826534,
+   "start_states": {
+    "rule": "Amendment 1: source-0 windows of the simulator's own rung",
+    "rung": "6M",
+    "rows_in_rung": 6000166,
+    "episodes_used": 103,
+    "rows_used": 99460,
+    "windows": 96017,
+    "max_rows": 100000,
+    "history": 32,
+    "tilt_under_deg": 30.0,
+    "steps_before_fall": 50,
+    "source": 0,
+    "window_sources": {
+     "0": 96017
+    }
+   },
+   "seconds": 31.069169998168945,
+   "lambda_unclipped": 0.3011623861016329,
+   "lambda": 0.3011623861016329,
+   "clipped": false
+  },
+  "sim_10k_N8_s0": {
+   "robots": 1024,
+   "steps_run": 256,
+   "episodes_finished": 1024,
+   "share_fell": 0.42578125,
+   "falls": 436,
+   "mean_length": 201.69921875,
+   "u_bar": 2.05393461019603,
+   "uncertainty_weight_in_env": -1.0,
+   "per_step": {
+    "track_lin_vel_xy_exp": 0.004954822795706819,
+    "track_ang_vel_z_exp": 0.005280079857105814,
+    "lin_vel_z_l2": -0.000636056675470734,
+    "ang_vel_xy_l2": -0.009084423619719485,
+    "dof_torques_l2": -0.020332390501088846,
+    "dof_acc_l2": -0.001147171109812861,
+    "action_rate_l2": -0.00012619952568743923,
+    "feet_air_time": -0.00023098965613743333,
+    "undesired_contacts": -0.00012346276474305503,
+    "stand_still": -0.0026260066143118646,
+    "flat_orientation_l2": -0.02279886775151111,
+    "dof_pos_limits": 0.0,
+    "uncertainty": -0.04107869128346078
+   },
+   "tracking_per_step": 0.010234902652812634,
+   "total_per_step": -0.08794935684913098,
+   "start_states": {
+    "rule": "Amendment 1: source-0 windows of the simulator's own rung",
+    "rung": "10k",
+    "rows_in_rung": 9057,
+    "episodes_used": 3,
+    "rows_used": 3000,
+    "windows": 2907,
+    "max_rows": 100000,
+    "history": 32,
+    "tilt_under_deg": 30.0,
+    "steps_before_fall": 50,
+    "source": 0,
+    "window_sources": {
+     "0": 2907
+    }
+   },
+   "seconds": 18.105683088302612,
+   "lambda_unclipped": 0.2260432334216751,
+   "lambda": 0.2260432334216751,
+   "clipped": false
+  },
+  "A5_s0": {
+   "robots": 1024,
+   "steps_run": 256,
+   "episodes_finished": 1024,
+   "share_fell": 0.029296875,
+   "falls": 30,
+   "mean_length": 253.896484375,
+   "u_bar": 1.8690906109983056,
+   "uncertainty_weight_in_env": -1.0,
+   "per_step": {
+    "track_lin_vel_xy_exp": 0.00788694698380554,
+    "track_ang_vel_z_exp": 0.004558200761501762,
+    "lin_vel_z_l2": -0.00011894399169243168,
+    "ang_vel_xy_l2": -0.00012818992251500497,
+    "dof_torques_l2": -0.0010100105287347008,
+    "dof_acc_l2": -0.00036800213852587586,
+    "action_rate_l2": -0.0001408743781340928,
+    "feet_air_time": -0.0004697857916607715,
+    "undesired_contacts": -7.692603389732361e-07,
+    "stand_still": -0.001351861451235974,
+    "flat_orientation_l2": -0.0002116535053124368,
+    "dof_pos_limits": 0.0,
+    "uncertainty": -0.03738181138457875
+   },
+   "tracking_per_step": 0.012445147745307302,
+   "total_per_step": -0.02873675460742171,
+   "start_states": {
+    "rule": "the authors' recorded data (the lite code's own start states)",
+    "holdout": "1,8",
+    "windows_kept_total": [
+     7882,
+     9961
+    ]
+   },
+   "seconds": 18.109143018722534,
+   "lambda_unclipped": 0.24839781324321217,
+   "lambda": 0.24839781324321217,
+   "clipped": false
+  }
+ },
+ "gate_a2": {
+  "simulator": "sim_6M_N8_s0",
+  "share_fell": 0.1552734375,
+  "fall_limit": 0.1,
+  "fall_ok": false,
+  "tracking_per_step": 0.009063722909554475,
+  "tracking_mujoco_per_step": 0.029102890721680583,
+  "tracking_ratio": 0.3114372038239602,
+  "tracking_needed": 0.023282312577344467,
+  "tracking_ok": false,
+  "passed": false
+ }
+}

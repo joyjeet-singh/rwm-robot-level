@@ -1,0 +1,15 @@
+{
+ "gate_b_at_weight_1": {
+  "fall_rate": 1.0,
+  "score": 0.000419350563956828,
+  "authors_score": 0.9421285148499385,
+  "fall_below_limit": false,
+  "score_at_least_half": false,
+  "passed": false
+ },
+ "retry_weights": [
+  2.0,
+  4.0
+ ],
+ "why": "fell in 20% of episodes or more"
+}

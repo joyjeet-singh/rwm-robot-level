@@ -1,0 +1,188 @@
+{
+ "what": "C2R step 3: Amendment 1's reading checked against the lite code, the lite metrics and the data",
+ "scaling": {
+  "code": {
+   "per_step_reward": "weight x term x step_dt (0.02 s), summed over terms; the penalty is uncertainty_weight x disagreement x step_dt",
+   "per_step_reward_lines": "envs/base.py:[170]",
+   "logged_term": "episode sum of (weight x term x step_dt), averaged over the episodes reset at the latest reset, divided by the limit's duration (256 x 0.02 s = 5.12 s); the lite log then averages this over every step of the iteration",
+   "logged_term_line": "envs/base.py:[115]",
+   "meaning": "a rate per second over the 256-step limit: an episode that ends early contributes only the steps it had, so logged terms shrink with episode length. The per-step reward of an episode of L steps is the logged value x 5.12 / L (in reward units per 0.02 s step)."
+  },
+  "numeric_check": {
+   "6M": {
+    "100": {
+     "mean_return": -20.283475436363368,
+     "sum_terms": -2.930470866151154,
+     "sum_terms_x_5.12s": -15.00401083469391,
+     "mean_length": 228.16
+    },
+    "500": {
+     "mean_return": -4.117557305488735,
+     "sum_terms": -0.696349695790559,
+     "sum_terms_x_5.12s": -3.5653104424476623,
+     "mean_length": 138.94
+    },
+    "1000": {
+     "mean_return": -1.3021550334617495,
+     "sum_terms": -0.26610952836927027,
+     "sum_terms_x_5.12s": -1.3624807852506637,
+     "mean_length": 52.11
+    },
+    "2000": {
+     "mean_return": -0.05095452588051558,
+     "sum_terms": -0.00979775768610125,
+     "sum_terms_x_5.12s": -0.050164519352838395,
+     "mean_length": 1.02
+    }
+   },
+   "10k": {
+    "100": {
+     "mean_return": -0.16704467430710793,
+     "sum_terms": -0.034767299046507105,
+     "sum_terms_x_5.12s": -0.17800857111811638,
+     "mean_length": 2.61
+    },
+    "500": {
+     "mean_return": -0.07453251961618662,
+     "sum_terms": -0.019777718567638658,
+     "sum_terms_x_5.12s": -0.10126191906630994,
+     "mean_length": 1.51
+    },
+    "1000": {
+     "mean_return": -0.083081805575639,
+     "sum_terms": -0.01705569599289447,
+     "sum_terms_x_5.12s": -0.0873251634836197,
+     "mean_length": 1.55
+    },
+    "2000": {
+     "mean_return": -0.06313777225092053,
+     "sum_terms": -0.011810905576567166,
+     "sum_terms_x_5.12s": -0.060471836552023886,
+     "mean_length": 1.09
+    }
+   },
+   "6M_w4": {
+    "100": {
+     "mean_return": -40.71672911703587,
+     "sum_terms": -0.21711060842790175,
+     "sum_terms_x_5.12s": -1.111606315150857,
+     "mean_length": 213.19
+    },
+    "500": {
+     "mean_return": -22.972699461281298,
+     "sum_terms": -6.998283023945987,
+     "sum_terms_x_5.12s": -35.83120908260346,
+     "mean_length": 152.14
+    },
+    "1000": {
+     "mean_return": -6.333609261214733,
+     "sum_terms": -0.7705547624500468,
+     "sum_terms_x_5.12s": -3.94524038374424,
+     "mean_length": 54.62
+    },
+    "2000": {
+     "mean_return": -6.263194658607245,
+     "sum_terms": -0.9771129130385816,
+     "sum_terms_x_5.12s": -5.002818114757538,
+     "mean_length": 57.1
+    }
+   },
+   "REL": {
+    "100": {
+     "mean_return": -3.063951969668269,
+     "sum_terms": -0.598611912690103,
+     "sum_terms_x_5.12s": -3.0648929929733275,
+     "mean_length": 245.61
+    },
+    "500": {
+     "mean_return": 2.1451250354852527,
+     "sum_terms": 0.35147515311837196,
+     "sum_terms_x_5.12s": 1.7995527839660646,
+     "mean_length": 255.45
+    }
+   },
+   "A5_p0": {
+    "100": {
+     "mean_return": -0.8648834508657456,
+     "sum_terms": -0.16267773554864107,
+     "sum_terms_x_5.12s": -0.8329100060090423,
+     "mean_length": 16.5
+    },
+    "500": {
+     "mean_return": -0.6943023892119526,
+     "sum_terms": -0.13477922134188702,
+     "sum_terms_x_5.12s": -0.6900696132704616,
+     "mean_length": 16.17
+    }
+   },
+   "A5_p1": {
+    "100": {
+     "mean_return": -0.8512439513206482,
+     "sum_terms": -0.16774775163503364,
+     "sum_terms_x_5.12s": -0.8588684883713722,
+     "mean_length": 16.01
+    },
+    "500": {
+     "mean_return": -0.6635033798217773,
+     "sum_terms": -0.13142297077865805,
+     "sum_terms_x_5.12s": -0.6728856103867292,
+     "mean_length": 15.09
+    }
+   }
+  }
+ },
+ "fall_cost": {
+  "reward_terms": "12 terms (tracking x2, vertical speed, roll/pitch rate, torques, joint accelerations, action rate, feet air time, thigh contacts, stand still, tilt, joint limits at weight 0) plus the uncertainty penalty; none is a termination term",
+  "config_line": "configs/anymal_d_flat_cfg.py:[16]",
+  "termination": "a predicted fall (sigmoid of the fall head, rounded) only ends the episode (dones) and resets it; no reward is attached",
+  "termination_lines": "envs/anymal_d_flat.py:[93], envs/base.py:[173]",
+  "has_fall_cost": false
+ },
+ "start_states": {
+  "6M": {
+   "first_pilot": {
+    "windows": 87340,
+    "episodes": 185,
+    "share_by_group": {
+     "expert": 0.37434165330890773,
+     "noise0.1": 0.08875658346691093,
+     "noise0.3": 0.13864208839019923,
+     "noise0.6": 0.08835585069841997,
+     "smooth": 0.13690176322418135,
+     "trained": 0.17300206091138082
+    }
+   },
+   "amendment1_source0": {
+    "windows": 96017,
+    "episodes_used": 103,
+    "rows_used": 99460,
+    "window_sources": {
+     "0": 96017
+    }
+   }
+  },
+  "10k": {
+   "first_pilot": {
+    "windows": 8623,
+    "episodes": 10,
+    "share_by_group": {
+     "expert": 0.3371216513974255,
+     "noise0.1": 0.11237388379914183,
+     "noise0.3": 0.11237388379914183,
+     "noise0.6": 0.10100892960686536,
+     "smooth": 0.11237388379914183,
+     "trained": 0.22474776759828366
+    }
+   },
+   "amendment1_source0": {
+    "windows": 2907,
+    "episodes_used": 3,
+    "rows_used": 3000,
+    "window_sources": {
+     "0": 2907
+    }
+   }
+  }
+ },
+ "start_states_note": "the first pilot's start states replaced the lite dataset's windows, and the lite env's init_dataset is the same object (train.py prepare_data), so every start came from the rung's windows; none came from the authors' recorded data"
+}

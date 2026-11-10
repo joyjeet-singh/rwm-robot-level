@@ -46,3 +46,33 @@ Choices the plan did not settle, the more conservative option taken each time. N
 11. **Saves** are taken after exactly 500, 1,000, 1,500 and 2,000 finished iterations, through a hook on the lite log. The lite code's own save at iteration index 500 comes one update later.
 12. **An interrupted policy restarts from iteration 0,** as in Step 2, so each policy is one uninterrupted, seeded run. Finished policies and measured saves are skipped.
 13. **A BLOCKED pilot** is recorded by `scripts/c/pilot_rule.py` in this file and in `optc/LOG.md`, and the job exits 3, which stops the launcher.
+
+## C2R (2026-11-11)
+
+1. **Amendment 1's account, one partial disagreement.** In the first 6M run the summed penalties outweighed tracking in every iteration with a finished episode, as the amendment says. But vertical speed plus tilt exceeded the uncertainty charge in only 71 of 1,994 such iterations, 52 of them before iteration 100. From about iteration 10 onwards, the uncertainty charge was usually the largest single penalty. Also, after iteration 1 the lite log shows disagreement of 2.41 (released model), 2.02 (6M), 2.71 (10k) and 2.67 (`A5_s0`), not quite the amendment's 2.0–2.2, 2.3 and about 2.8. Neither fact makes a change impossible; recorded, not blocking (`optc/notes/C2R.md`).
+2. **Calibration ran in the session** (about 1.5 min, under the 10-minute limit). Closed-loop imagination worked, so the open-loop fallback was not used. ū averages the lite disagreement over every step each of 1,024 robots spends in its first episode (seed 20278, policy mean).
+3. **Start states in calibration.** For our simulators: the amendment's rule (source 0, own rung). For the released model and `A5_s0`: the authors' recorded data, as the lite code starts. `A5_s0` was trained on those data, so it keeps Step 2's hold-out.
+4. **Gate A2's MuJoCo reference** is a re-run of the authors' policy on `results/c_authors.json`'s protocol, with the reward recorded per term (`results/c/authors_terms.json`). Its walking score equals `c_authors.json`'s exactly. Tracking is compared per 0.02 s step: imagination counts the steps before each episode ends.
+5. **Gate A2 failed** (falls 15.5%, tracking 31% of MuJoCo's). The job retrains first.
+   - It retrains from scratch: same seed and code, 2 × S = 5,144 steps, one at a time on 4 threads (C1 item 14).
+   - The new simulators are named `sim_6M_N8_s0__2S` and `sim_10k_N8_s0__2S`. The S-step simulators are kept.
+   - Checks go to `results/c/pilot_sims_2S.json`, and calibration to `results/c/calibration_2S.json`, which re-measures the released model.
+   - λ for the retrained simulators is read from that file.
+   - If Gate A2 passes there, C3 must use 2 × S for the whole pool.
+6. **Noise floor:** a clamp to 0.05 after every optimiser step, and at the start. The lite policy uses a scalar standard deviation; the log-scale case is handled the same way.
+7. **Fall cost:** subtracted once, at the step an episode ends in a predicted fall. A time-out at the 256-step limit is not charged. Each iteration logs the share of predicted falls and the charge per step.
+8. **Early stop.**
+   - A mean length logged after iteration n counts for iteration n, and the stop fires when iterations n−99 to n all come after 300 and are all under 64 (strictly). So the earliest stop is at 400.
+   - An iteration with no finished episode breaks the streak, the conservative reading.
+   - The stopped actor is kept as `actor_stopped_i<n>.pt` and is not measured; only regular saves are.
+   - The rule does not fire on `REL__p0`'s metrics. On the first pilot it would have fired at 1,549 (6M) and 400 (10k).
+9. **Names:** `<sim>__cal__p0`, `__cal_fall4__p0`, `__w0__p0` and `__w0_fall4__p0`, added to the evaluator's pilot list (with the `__2S` simulators). The guard is otherwise unchanged.
+10. **Gate B':** an arm's best save is its highest score, and a tie goes to the earlier save. An arm stopped before iteration 500 has no save and fails.
+11. **Gate C''s 10k policy** runs without the early stop, which the amendment defines for the pilot's arms. It trains alone on 4 threads and is measured at the chosen iteration count. Its intervals are the episode bootstrap (C2 item 8).
+12. **The 10k rung has only 3 source-0 episodes** (2,907 start windows). The rule is applied as written. This narrows the 10k policy's starts; keep it in view at Gate C'.
+13. **`results/c_pilot1.*`** is written once by the session. The job adds only the measured surviving saves, after checking that every other value is unchanged; the plan names this addition. The weight-2.0 run crashed before the lite code wrote its metrics, so it has none.
+14. **The "nonzero uncertainty" test** checks the disagreement (> 0) and the penalty weight. After one iteration the logged penalty term is 0, because terms are logged when episodes reset and none had ended.
+15. **Layout and time.** P1 and P2 run together on 2 threads each, then P3 and P4. Evaluations use 1 torch thread each.
+    - Estimates from measured rates: 2 × 7.9 h to retrain the simulators (5.5 s per step), 2 × 6.7 h for the arm pairs (16 s per iteration two at once), and about 4 h for the 10k policy, plus measuring.
+    - Total: about 35–40 h. These are estimates, not measured on this job.
+16. **The first pilot's results are committed** with this session: `results/c/pilot_decision.json`, `results/c/eval/` and `results/c/train/`. The job left them uncommitted, and `results/c_pilot1.*` is built from them. `results/c/progress.json` and `results/s2/progress.json` are status files and stay uncommitted.

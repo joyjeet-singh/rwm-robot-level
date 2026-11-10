@@ -1,24 +1,30 @@
 # Option C checkpoint
 
-**Last session:** C2, COMPLETE.
+**Last session:** C2R, COMPLETE (2026-11-11 00:13).
 
-**Next action:** the launcher runs the job `optc/jobs/pilot.zsh`, then starts C3. Sessions must not start the job.
+**Next action:** the launcher runs the second pilot's job `optc/jobs/pilot.zsh`, then starts C3. Sessions must not start the job.
 
-**Blockers:** none.
+**Blockers:** none yet.
+- Gate A2 failed once (`results/c/calibration.json`), so the job first retrains `sim_6M_N8_s0` and `sim_10k_N8_s0` with 2 × S = 5,144 steps (as `…__2S`), then checks and recalibrates them.
+- If Gate A2 fails again, the job exits 3, BLOCKED (`pilot2_rule.py a2` writes DECISIONS, LOG and `results/c_pilot.*`).
 
 **State**
-- Gate A passed (`results/c/gate_a.json`).
-- `scripts/c/evaluate.py` (walking score), `train_policy.py` (wrapper of Step 2's route), `pilot_rule.py` (Gate B, retry, iteration rule, Gate C), `gate_a.py`, `test_c2.py`. All C2 tests passed.
-- `results/c_authors.json` is Gate B's reference, measured with the full protocol.
-- No pilot policy has been trained or measured. The longest training tested is one iteration with 64 robots. The job's zsh flow has been syntax-checked only; its Python steps were tested separately, and `pilot_rule.py` on fixtures.
+- Calibration: λ = 0.30 (6M), 0.23 (10k), 0.25 (`A5_s0`), from ū = 0.46 in the released model. Closed loop; the fallback was not used.
+- `scripts/c/train_policy.py` has the Amendment 1 changes:
+  - `--penalty cal|<w>`, `--fall-cost`, `--max-iters`, saves every 500;
+  - the noise floor, source-0 starts and the early stop.
+- `scripts/c/pilot2_rule.py` implements Gate A2's branch, Gate B', the iteration rule' and Gate C'. `scripts/c/test_c2r.py` passes in full.
+- `results/c_pilot1.*`: the first pilot's record. The job adds the surviving saves' scores (`pilot1_record.py --measured`).
 
-**For the job**
-- D3's 17 s per iteration (five networks, 4,096 robots, 2 threads) implies about 9.5 h for the two pilot policies, and as much again if the retry runs (about 19.5 h with measuring; the plan said 8–17 h). This is an estimate from D3, not measured on this route.
+**For the job** (estimates, not measured): about 16 h to retrain the simulators, 13 h for the four arms, 4 h for the 10k policy, plus measuring; 35–40 h in all.
 
 **For later sessions**
-- **C3:** `results/c_pilot.txt` holds the verdicts. If Gate C is not passed, add the 2k rung and record it before registering. Results of the pilot are declared in the registration as known.
-- **C3:** `scripts/c/train_policy.py` accepts only 2,000 iterations for non-test names, and `scripts/c/evaluate.py` only the four saved counts. The main job needs the iteration count from `results/c_pilot.json`: extend the wrapper or take that save from a 2,000-iteration run, and record which.
-- `results/c_diag.*`, `results/c/d3_*` and `results/c/progress.json` remain uncommitted, as C1 left them. Commit the diagnosis results with the session that uses them.
-- Descriptive, not a gate: on the expert set the 6M simulator's kinematic residual r̄J is 9.1, against 0.59 for the real data (`results/c/pilot_sims.json`). Its forecasts beat holding the last state, but its joint motion is much less consistent with the joint speeds it predicts. Keep this in view when interpreting the pilot.
-- The tools refuse `mkdir` under `results/`; create result folders from scripts with `os.makedirs`.
+- **C3:**
+  - `results/c_pilot.txt` holds the verdicts. If Gate A2 passed only after 2 × S, S becomes 2 × S for the whole pool.
+  - If Gate C' is not passed, add the 2k rung and record it before registering.
+  - Declare the first pilot, Amendment 1 and the second pilot as known.
+  - If the chosen arm has a fall cost, the paper must say that it departs from the authors' reward.
+- **C3:** `scripts/c/evaluate.py`'s pilot list names the second pilot's policies only. Main-pool names pass once `prereg/PREREG_C.md` is committed.
+- **C3:** the 10k rung has only 3 source-0 episodes (2,907 start windows; DECISIONS C2R 12).
+- **Descriptive:** in imagination, the 6M simulator charges the authors' walk 0.089 per step for vertical speed, against 0.00007 in MuJoCo. This fits its kinematic residual of 9.1.
 - The RWM-U and RWM quotes in `optc/notes/C0_facts.md` are unconfirmed; check them against the papers before citing.
