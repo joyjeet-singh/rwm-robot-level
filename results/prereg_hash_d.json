@@ -1,0 +1,21 @@
+{
+ "file": "prereg/PREREG_D.md",
+ "sha256": "1ee9ee2f901449e659819a9ee006c5d2b2d9ae9c8e2fd879a3b9ad033d03bc1d",
+ "hashed_at_utc": "2026-11-14T15:15:55+00:00",
+ "commit": "8894501c828077de5d683135e6b2ac6b66e6f0a8",
+ "also": {
+  "scripts/d_stats.py": "831726b5710cea21958125eb0455d3f24b3885853f6db500e66da792fa96a7e8",
+  "scripts/s2_stats.py": "06d25f06848749fdfb6d49054a9706f6544bf58b70bd82ce95fe21a2c671e08e",
+  "scripts/stats.py": "663a252e9f53e1185e1dcec6035143458a8bbb218c1a406ba9fa0136fc16de74",
+  "scripts/d/train_policy.py": "5e63c0df98a78ac35e762492e6cc3cdae5dc5849c2cf86719efb400ab599dbf6",
+  "scripts/d/ladder.py": "2b7597557b81f3a9d04f8b1344ef0be2d9b7c52f3f072ca4c49f8710eb260dcb",
+  "scripts/d/evaluate.py": "2e9756eaed63a9175ca70b3f5d2d0995c3119db86f8106fe3fde6602ee984128",
+  "scripts/d/checks.py": "d1d45e332d06e6269ec8a0d4508643be5ceb8c99517ca5f5a355294fa2884425",
+  "scripts/d/walk_test.py": "698cdb5f752fd79970c6f3502d8bade70844014ec2e124caf8eacc6ba3915469",
+  "scripts/d/finetune.py": "a979b59a3b59b2d09c4eda01eb41f1f4a4fe3c3faa8e90197f9b3d91ae0b7dc8",
+  "scripts/d/sims.py": "7b047598c443a67e66afd83f05128ee6f0dfab0714799887e46d003d1a8d07b7",
+  "scripts/d/test_d1.py": "d1d3e68c698c07c5484b74f48993af5e8f98ab488b61475fc23e1710a28854ca",
+  "results/d_record.json": "4849420d2407bb36c151a1d2f3bee17914713cc5e3723e8e94932099a0455148",
+  "results/d/stage1.json": "75de5757704fc74208008d359248934bc7e4ed6bb545a2bfe3d70fecbdf86905"
+ }
+}
