@@ -1,0 +1,66 @@
+{
+ "what": "Option D walk test (secondary): RWM's released policy, noise-free, in the simulator's imagination",
+ "simulator": {
+  "name": "sim_6M_N8_s0__2S",
+  "kind": "optc",
+  "how": "Option C, from scratch on 6M MuJoCo transitions, 5,144 steps, own scales",
+  "path": "AIR 2027/runs/c/sim_6M_N8_s0__2S/final.pt",
+  "sha256": "3805d8c07d0a31c3e92fd1d8b22e0659184294d21aad9e87678b8bb32aa6cc92",
+  "variant": null,
+  "variant_info": null,
+  "scales": "own",
+  "holdout": "",
+  "ensemble": 5,
+  "rung": "6M",
+  "N": 8,
+  "steps": 5144,
+  "seed": 0
+ },
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first"
+ },
+ "start_states": {
+  "rule": "the authors' recorded data (the lite code's own start states)",
+  "holdout": null,
+  "windows_kept_total": null,
+  "scales": "own"
+ },
+ "falls": 0.39453125,
+ "tracking_per_step": 0.013570578735147583,
+ "u_bar": 1.0824924810137362,
+ "tracking_mujoco_per_step": 0.029102890721680583,
+ "tracking_ratio": 0.46629659111622207,
+ "imagine": {
+  "robots": 1024,
+  "steps_run": 256,
+  "episodes_finished": 1024,
+  "share_fell": 0.39453125,
+  "falls": 404,
+  "mean_length": 230.1767578125,
+  "u_bar": 1.0824924810137362,
+  "uncertainty_weight_in_env": -1.0,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.006638517605961534,
+   "track_ang_vel_z_exp": 0.00693206112918605,
+   "lin_vel_z_l2": -0.01588344255029811,
+   "ang_vel_xy_l2": -0.0011418651711473532,
+   "dof_torques_l2": -0.002750589874127353,
+   "dof_acc_l2": -0.00043168607455666697,
+   "action_rate_l2": -0.0001469263894893372,
+   "feet_air_time": -0.0003084620098524458,
+   "undesired_contacts": -0.0007198102520048854,
+   "stand_still": -0.0015295547511436954,
+   "flat_orientation_l2": -0.005350116961960554,
+   "dof_pos_limits": 0.0,
+   "uncertainty": -0.02164984913650144
+  },
+  "tracking_per_step": 0.013570578735147583,
+  "total_per_step": -0.03634172443593425
+ },
+ "seconds": 31.45262312889099,
+ "torch": "2.2.2"
+}

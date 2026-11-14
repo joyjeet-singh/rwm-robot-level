@@ -1,0 +1,64 @@
+{
+ "what": "Option D walk test (secondary): RWM's released policy, noise-free, in the simulator's imagination",
+ "simulator": {
+  "name": "REL__fp16",
+  "kind": "compressed",
+  "how": "compressed copy of REL (fp16; Step 2)",
+  "path": "robotic_world_model_lite/assets/models/pretrain_rnn_ens.pt",
+  "sha256": "2ac8686c8c7736287853c0fe1438c379320068adf97be71609b5f1afb52c6e5a",
+  "variant": "fp16",
+  "variant_info": {
+   "kind": "fp16"
+  },
+  "scales": "authors",
+  "holdout": "",
+  "ensemble": 5
+ },
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first"
+ },
+ "start_states": {
+  "rule": "the authors' recorded data (the lite code's own start states)",
+  "holdout": null,
+  "windows_kept_total": null,
+  "scales": "authors"
+ },
+ "falls": 0.0,
+ "tracking_per_step": 0.025417806709481256,
+ "u_bar": 0.4652591995920261,
+ "tracking_mujoco_per_step": 0.029102890721680583,
+ "tracking_ratio": 0.8733773889528412,
+ "imagine": {
+  "robots": 1024,
+  "steps_run": 256,
+  "episodes_finished": 1024,
+  "share_fell": 0.0,
+  "falls": 0,
+  "mean_length": 256.0,
+  "u_bar": 0.4652591995920261,
+  "uncertainty_weight_in_env": -1.0,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.016200119339378344,
+   "track_ang_vel_z_exp": 0.009217687370102912,
+   "lin_vel_z_l2": -0.0002526300363821046,
+   "ang_vel_xy_l2": -0.00021144691651259938,
+   "dof_torques_l2": -0.001201568993469293,
+   "dof_acc_l2": -0.0004528831815040018,
+   "action_rate_l2": -0.00014856115338549806,
+   "feet_air_time": -0.0005080070791060788,
+   "undesired_contacts": -1.9378661676228148e-05,
+   "stand_still": -0.0007187633871055255,
+   "flat_orientation_l2": -0.00021301569575941324,
+   "dof_pos_limits": 0.0,
+   "uncertainty": -0.009305183783848037
+  },
+  "tracking_per_step": 0.025417806709481256,
+  "total_per_step": 0.01238636782073248
+ },
+ "seconds": 29.88136386871338,
+ "torch": "2.2.2"
+}

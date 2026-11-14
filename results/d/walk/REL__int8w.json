@@ -1,0 +1,65 @@
+{
+ "what": "Option D walk test (secondary): RWM's released policy, noise-free, in the simulator's imagination",
+ "simulator": {
+  "name": "REL__int8w",
+  "kind": "compressed",
+  "how": "compressed copy of REL (int8w; Step 2)",
+  "path": "robotic_world_model_lite/assets/models/pretrain_rnn_ens.pt",
+  "sha256": "2ac8686c8c7736287853c0fe1438c379320068adf97be71609b5f1afb52c6e5a",
+  "variant": "int8w",
+  "variant_info": {
+   "kind": "int8w",
+   "max_scale": 0.06191308855071781
+  },
+  "scales": "authors",
+  "holdout": "",
+  "ensemble": 5
+ },
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first"
+ },
+ "start_states": {
+  "rule": "the authors' recorded data (the lite code's own start states)",
+  "holdout": null,
+  "windows_kept_total": null,
+  "scales": "authors"
+ },
+ "falls": 0.0009765625,
+ "tracking_per_step": 0.017046514674352184,
+ "u_bar": 1.834284995720315,
+ "tracking_mujoco_per_step": 0.029102890721680583,
+ "tracking_ratio": 0.5857326970496837,
+ "imagine": {
+  "robots": 1024,
+  "steps_run": 256,
+  "episodes_finished": 1024,
+  "share_fell": 0.0009765625,
+  "falls": 1,
+  "mean_length": 255.9423828125,
+  "u_bar": 1.834284995720315,
+  "uncertainty_weight_in_env": -1.0,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.009657644619925734,
+   "track_ang_vel_z_exp": 0.007388870054426449,
+   "lin_vel_z_l2": -0.001216551832831735,
+   "ang_vel_xy_l2": -0.0011207057647770037,
+   "dof_torques_l2": -0.00512846532539327,
+   "dof_acc_l2": -0.0008655377651895161,
+   "action_rate_l2": -0.00020843697993119968,
+   "feet_air_time": -0.00046515140822191907,
+   "undesired_contacts": -0.0008678100422241633,
+   "stand_still": -0.0018126871918086663,
+   "flat_orientation_l2": -0.0030965840488347543,
+   "dof_pos_limits": 0.0,
+   "uncertainty": -0.036685699093262115
+  },
+  "tracking_per_step": 0.017046514674352184,
+  "total_per_step": -0.03442111477812216
+ },
+ "seconds": 30.996917009353638,
+ "torch": "2.2.2"
+}

@@ -1,0 +1,1657 @@
+{
+ "what": "Option D record (Stage 1): every simulator that exists, its checks in common units on the MuJoCo test sets, its walk test (secondary), and how each policy trained in it did. Descriptive. World: hand-built calibrated MuJoCo ANYmal D with a fitted PD motor; not Isaac Lab, not hardware",
+ "authors": {
+  "score": 0.9421285148499385,
+  "score_ci95": [
+   0.9393340615221668,
+   0.9448362162025092
+  ],
+  "fall_rate": 0.0,
+  "physics_return": 26.28290165241456,
+  "standing_reference": 0.06858984889393734
+ },
+ "fail_score": 0.15,
+ "stop_rule": {
+  "after": 50,
+  "run": 50,
+  "threshold": 128.0
+ },
+ "missing": [],
+ "simulators": {
+  "REL": {
+   "how": "released model (RWM's own; five networks)",
+   "kind": "released",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.12225470691919327,
+     "E8": 0.14918896555900574,
+     "E24": 0.18426357209682465,
+     "E100": 0.3543151319026947,
+     "E368": 0.7181320786476135,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 2.2722994954521605,
+     "rA": 105.68427189507871,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.5339819414880347,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.27222633361816406,
+     "E8": 0.33168333768844604,
+     "E24": 0.3936976194381714,
+     "E100": 0.5579695701599121,
+     "E368": 0.9443957805633545,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 3.166993896915007,
+     "rA": 101.7626666572579,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.5095982118534415,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.0,
+    "tracking_per_step": 0.025418242536746623,
+    "tracking_ratio": 0.8733923643471941,
+    "u_bar": 0.46427802052539846
+   },
+   "policies": [
+    {
+     "policy": "REL__p1",
+     "sim": "REL",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.609515588224148,
+     "score_ci95": [
+      0.538532928163989,
+      0.6792998984525658
+     ],
+     "fall_rate": 0.3541666666666667,
+     "physics_return": 17.34192963276132,
+     "physics_fall_rate": 0.425,
+     "failed": false,
+     "actor_sha256": "7898b3466b44ed9fabfef3819e2d2ad82c06a78f8a014a9d333a237b42d949e8",
+     "step2_return": 17.34192963276132,
+     "step2_fall_rate": 0.425,
+     "imagined_return": 2.3687797224067153,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 208.43,
+     "final_mean_episode_length": 256.0
+    },
+    {
+     "policy": "REL__p2",
+     "sim": "REL",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.5733284503374363,
+     "score_ci95": [
+      0.5098262391516875,
+      0.6335363657016236
+     ],
+     "fall_rate": 0.3125,
+     "physics_return": 16.243735832062576,
+     "physics_fall_rate": 0.3125,
+     "failed": false,
+     "actor_sha256": "dbc443ec4b7a527b8346c6be6324f089d894c73e79d0e69ff3f0919a74b798fe",
+     "step2_return": 16.243735832062576,
+     "step2_fall_rate": 0.3125,
+     "imagined_return": 2.4594204631090166,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 214.36,
+     "final_mean_episode_length": 256.0
+    },
+    {
+     "policy": "REL__p0",
+     "sim": "REL",
+     "role": "Step 2 pilot",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "released",
+     "measured": true,
+     "score": 0.7689820416203386,
+     "score_ci95": [
+      0.7298281547076269,
+      0.8034479922246358
+     ],
+     "fall_rate": 0.08333333333333333,
+     "physics_return": 18.58674090364922,
+     "physics_fall_rate": 0.1,
+     "failed": false,
+     "actor_sha256": "66564cda81860e61b7790d215ca9394be9f6ef08eccc9c2f6adba9187ed63e62",
+     "step2_return": 18.58674090364922,
+     "step2_fall_rate": 0.1,
+     "imagined_return": 2.068472492861375,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 190.92,
+     "final_mean_episode_length": 255.45
+    }
+   ],
+   "verdict": "did not fail",
+   "mean_score": 0.5914220192807922,
+   "policies_failed": 0
+  },
+  "REL__fp16": {
+   "how": "compressed copy of REL (fp16; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.12223845720291138,
+     "E8": 0.1491648554801941,
+     "E24": 0.18423795700073242,
+     "E100": 0.3543201684951782,
+     "E368": 0.7184962630271912,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 2.2548809124135825,
+     "rA": 98.28155745750195,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.496542716765869,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.27220678329467773,
+     "E8": 0.33165696263313293,
+     "E24": 0.39364922046661377,
+     "E100": 0.5576997399330139,
+     "E368": 0.9423664808273315,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 3.1479799214635786,
+     "rA": 106.13090954084956,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.4813715645768147,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.0,
+    "tracking_per_step": 0.025417806709481256,
+    "tracking_ratio": 0.8733773889528412,
+    "u_bar": 0.4652591995920261
+   },
+   "policies": [
+    {
+     "policy": "REL__fp16__p1",
+     "sim": "REL__fp16",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.600228417423725,
+     "score_ci95": [
+      0.5398772831181654,
+      0.6587800769698753
+     ],
+     "fall_rate": 0.3854166666666667,
+     "physics_return": 15.033839003082614,
+     "physics_fall_rate": 0.45,
+     "failed": false,
+     "actor_sha256": "72f30ee8f503e9342caec435ecd1220f9134ae38bac435914e6848b90b4e6b71",
+     "step2_return": 15.033839003082614,
+     "step2_fall_rate": 0.45,
+     "imagined_return": 2.410157250005007,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 208.73,
+     "final_mean_episode_length": 256.0
+    },
+    {
+     "policy": "REL__fp16__p2",
+     "sim": "REL__fp16",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.6216113335041756,
+     "score_ci95": [
+      0.55906754693379,
+      0.6813800354730936
+     ],
+     "fall_rate": 0.46875,
+     "physics_return": 15.346680501581318,
+     "physics_fall_rate": 0.3375,
+     "failed": false,
+     "actor_sha256": "1f83a48f5967be1eca5518638023d48bc8dc921d2d54b7ca541ed5fed37d5c45",
+     "step2_return": 15.346680501581318,
+     "step2_fall_rate": 0.3375,
+     "imagined_return": 2.5074407174170013,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 200.71,
+     "final_mean_episode_length": 256.0
+    }
+   ],
+   "verdict": "did not fail",
+   "mean_score": 0.6109198754639503,
+   "policies_failed": 0
+  },
+  "REL__int8w": {
+   "how": "compressed copy of REL (int8w; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.30926093459129333,
+     "E8": 0.4388349652290344,
+     "E24": 0.5718190670013428,
+     "E100": 1.2606072425842285,
+     "E368": 2.042390823364258,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 9.466293303034035,
+     "rA": 155.73315527662282,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.9060619862972814,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.42635053396224976,
+     "E8": 0.5693164467811584,
+     "E24": 0.7131312489509583,
+     "E100": 1.1615995168685913,
+     "E368": 1.8727376461029053,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 9.44845712060415,
+     "rA": 218.34640627627593,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.8754198828052342,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.0009765625,
+    "tracking_per_step": 0.017046514674352184,
+    "tracking_ratio": 0.5857326970496837,
+    "u_bar": 1.834284995720315
+   },
+   "policies": [
+    {
+     "policy": "REL__int8w__p1",
+     "sim": "REL__int8w",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.05780070920129481,
+     "score_ci95": [
+      0.04727464505332541,
+      0.0691548055400047
+     ],
+     "fall_rate": 0.75,
+     "physics_return": 0.25850371472480554,
+     "physics_fall_rate": 0.7125,
+     "failed": true,
+     "actor_sha256": "142fe57e0d5a32f51085725c697949adef428c3f7c4f4f6bc712a2802c8c0bc9",
+     "step2_return": 0.25850371472480554,
+     "step2_fall_rate": 0.7125,
+     "imagined_return": -4.092540267890691,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 194.74,
+     "final_mean_episode_length": 254.81
+    },
+    {
+     "policy": "REL__int8w__p2",
+     "sim": "REL__int8w",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.05956443743924473,
+     "score_ci95": [
+      0.04893225596402849,
+      0.07103014560613759
+     ],
+     "fall_rate": 0.8333333333333334,
+     "physics_return": 5.145402992286259,
+     "physics_fall_rate": 0.325,
+     "failed": true,
+     "actor_sha256": "ee5d322b1922defc88217110b2158d38bc6007d9385a8c27d677a456d01b5755",
+     "step2_return": 5.145402992286259,
+     "step2_fall_rate": 0.325,
+     "imagined_return": -4.002534489738942,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 188.16,
+     "final_mean_episode_length": 252.86
+    }
+   ],
+   "verdict": "failed",
+   "mean_score": 0.05868257332026977,
+   "policies_failed": 2
+  },
+  "REL__u10": {
+   "how": "compressed copy of REL (u10; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.17261585593223572,
+     "E8": 0.2036398947238922,
+     "E24": 0.2454787790775299,
+     "E100": 0.4745059907436371,
+     "E368": 1.0449446439743042,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 3.5464408511000656,
+     "rA": 131.6372436623343,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.6403317945513152,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.30342504382133484,
+     "E8": 0.3662255108356476,
+     "E24": 0.440823495388031,
+     "E100": 0.6624253392219543,
+     "E368": 1.0452381372451782,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 3.730603676229787,
+     "rA": 119.56813254419677,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.5308469445215732,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.0,
+    "tracking_per_step": 0.02354977969581546,
+    "tracking_ratio": 0.8091903969618984,
+    "u_bar": 1.219611868049924
+   },
+   "policies": [
+    {
+     "policy": "REL__u10__p1",
+     "sim": "REL__u10",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.24940383413245618,
+     "score_ci95": [
+      0.20380009164703233,
+      0.2957841632383621
+     ],
+     "fall_rate": 0.6875,
+     "physics_return": 5.040004106706348,
+     "physics_fall_rate": 0.4375,
+     "failed": false,
+     "actor_sha256": "28a0c36199dda0ac150acaf2aed5ad840ee4bca29805c5aae71361e995014cf6",
+     "step2_return": 5.040004106706348,
+     "step2_fall_rate": 0.4375,
+     "imagined_return": -2.328025446855277,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 239.96,
+     "final_mean_episode_length": 256.0
+    },
+    {
+     "policy": "REL__u10__p2",
+     "sim": "REL__u10",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.531550245125079,
+     "score_ci95": [
+      0.4764533090475578,
+      0.5835525631993085
+     ],
+     "fall_rate": 0.375,
+     "physics_return": 13.841346958730622,
+     "physics_fall_rate": 0.325,
+     "failed": false,
+     "actor_sha256": "f3f442e15f42cf319616cb7ff64d59f206475b59293fa4994de2f542ddfae39d",
+     "step2_return": 13.841346958730622,
+     "step2_fall_rate": 0.325,
+     "imagined_return": -1.9180480180680752,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 10,
+     "min_mean_episode_length_after_50": 248.01,
+     "final_mean_episode_length": 253.45
+    }
+   ],
+   "verdict": "did not fail",
+   "mean_score": 0.39047703962876756,
+   "policies_failed": 0
+  },
+  "REL__u20": {
+   "how": "compressed copy of REL (u20; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.2597292959690094,
+     "E8": 0.3420538306236267,
+     "E24": 0.4703666567802429,
+     "E100": 1.415588140487671,
+     "E368": 2.3951897621154785,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 9.359441107080977,
+     "rA": 493.6369825849071,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.9393872857310196,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.37235140800476074,
+     "E8": 0.4769928753376007,
+     "E24": 0.6194642186164856,
+     "E100": 1.218833327293396,
+     "E368": 1.947906732559204,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 8.012297651597493,
+     "rA": 366.5273271697567,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.7132041700285886,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.0263671875,
+    "tracking_per_step": 0.005648869518276146,
+    "tracking_ratio": 0.19409994602590958,
+    "u_bar": 6.987025749847293
+   },
+   "policies": [
+    {
+     "policy": "REL__u20__p1",
+     "sim": "REL__u20",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.06345672593336422,
+     "score_ci95": [
+      0.05262561209742774,
+      0.07480157381017977
+     ],
+     "fall_rate": 0.21875,
+     "physics_return": 3.426034732185704,
+     "physics_fall_rate": 0.1875,
+     "failed": true,
+     "actor_sha256": "f7d03ef77956e08d75470df5f37c82e4b818982c6a1991e68c4a59e33112dc65",
+     "step2_return": 3.426034732185704,
+     "step2_fall_rate": 0.1875,
+     "imagined_return": -13.432389981460574,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 6,
+     "min_mean_episode_length_after_50": 161.79,
+     "final_mean_episode_length": 182.23
+    },
+    {
+     "policy": "REL__u20__p2",
+     "sim": "REL__u20",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.061364823500596744,
+     "score_ci95": [
+      0.04934300353692126,
+      0.07409099127254261
+     ],
+     "fall_rate": 0.4166666666666667,
+     "physics_return": 4.330060656281644,
+     "physics_fall_rate": 0.2,
+     "failed": true,
+     "actor_sha256": "037bc9403abde0f157e9e780f3e4b85bb75bdffc2cfc753dd0322b402a3b748d",
+     "step2_return": 4.330060656281644,
+     "step2_fall_rate": 0.2,
+     "imagined_return": -16.38167564127445,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 5,
+     "min_mean_episode_length_after_50": 231.45,
+     "final_mean_episode_length": 256.0
+    }
+   ],
+   "verdict": "failed",
+   "mean_score": 0.062410774716980484,
+   "policies_failed": 2
+  },
+  "REL__u30": {
+   "how": "compressed copy of REL (u30; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.35260170698165894,
+     "E8": 0.560234546661377,
+     "E24": 0.7537511587142944,
+     "E100": 1.0741875171661377,
+     "E368": 1.3877382278442383,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 9.473889355946788,
+     "rA": 87.63278049193379,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.49518271922351287,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.4428010880947113,
+     "E8": 0.6544907689094543,
+     "E24": 0.8789651989936829,
+     "E100": 1.2494341135025024,
+     "E368": 1.8813480138778687,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 11.81753907218177,
+     "rA": 256.08023940892275,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.5861174360658546,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.083984375,
+    "tracking_per_step": 0.0014471944211510916,
+    "tracking_ratio": 0.04972682731042195,
+    "u_bar": 13.067343594831048
+   },
+   "policies": [
+    {
+     "policy": "REL__u30__p1",
+     "sim": "REL__u30",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.003561686956855438,
+     "score_ci95": [
+      0.0028359074005011317,
+      0.004458137741519436
+     ],
+     "fall_rate": 1.0,
+     "physics_return": -7.647066648186002,
+     "physics_fall_rate": 1.0,
+     "failed": true,
+     "actor_sha256": "2633c001c9982b8d7f5681043faa1462c66e9665e33eba6aea7deedaa6f8b4f9",
+     "step2_return": -7.647066648186002,
+     "step2_fall_rate": 1.0,
+     "imagined_return": -43.67074121360183,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": 478,
+     "iterations_logged": 500,
+     "iterations_without_length": 0,
+     "min_mean_episode_length_after_50": 53.53,
+     "final_mean_episode_length": 72.75
+    },
+    {
+     "policy": "REL__u30__p2",
+     "sim": "REL__u30",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.06223634030965156,
+     "score_ci95": [
+      0.05118623608765339,
+      0.0737040214106798
+     ],
+     "fall_rate": 0.125,
+     "physics_return": -47.97001579442395,
+     "physics_fall_rate": 0.0875,
+     "failed": true,
+     "actor_sha256": "0346e4be8ce47cdbe5ff2129f712f999c99f99c73a2b29427c719099db125fd1",
+     "step2_return": -47.97001579442395,
+     "step2_fall_rate": 0.0875,
+     "imagined_return": -143.87430705622432,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 1,
+     "min_mean_episode_length_after_50": 189.2,
+     "final_mean_episode_length": 204.13
+    }
+   ],
+   "verdict": "failed",
+   "mean_score": 0.0328990136332535,
+   "policies_failed": 2
+  },
+  "REL__u50": {
+   "how": "compressed copy of REL (u50; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.4197000563144684,
+     "E8": 1.116485834121704,
+     "E24": 2.3229687213897705,
+     "E100": 7.241244316101074,
+     "E368": 37.24686813354492,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 334.8871230407267,
+     "rA": 14307.57774503184,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 2.0405691404039805,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.5199964046478271,
+     "E8": 1.1848658323287964,
+     "E24": 2.4067578315734863,
+     "E100": 7.974379062652588,
+     "E368": 45.362667083740234,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 462.69674427822895,
+     "rA": 20869.184078206006,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 2.029795864405203,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.009765625,
+    "tracking_per_step": 0.001214057317819922,
+    "tracking_ratio": 0.041716038775333544,
+    "u_bar": 22.304374590769267
+   },
+   "policies": [
+    {
+     "policy": "REL__u50__p1",
+     "sim": "REL__u50",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.06864363558738361,
+     "score_ci95": [
+      0.057533343063057046,
+      0.08022217168358338
+     ],
+     "fall_rate": 0.0,
+     "physics_return": 10.120788399411913,
+     "physics_fall_rate": 0.0,
+     "failed": true,
+     "actor_sha256": "d534495213a6971b7762497b9cd82f7246f1ea15e5a420ebaccb8672e695ecb5",
+     "step2_return": 10.120788399411913,
+     "step2_fall_rate": 0.0,
+     "imagined_return": -5763.646301352162,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 0,
+     "min_mean_episode_length_after_50": 189.3,
+     "final_mean_episode_length": 222.45
+    },
+    {
+     "policy": "REL__u50__p2",
+     "sim": "REL__u50",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.06890215042502079,
+     "score_ci95": [
+      0.05777878100162829,
+      0.08046330208654477
+     ],
+     "fall_rate": 0.0,
+     "physics_return": 9.692220376603975,
+     "physics_fall_rate": 0.0,
+     "failed": true,
+     "actor_sha256": "5e689ad36a47a8009dfc1c14276a47d9b18f97355c288b3afdbd11ddf3e1d4d4",
+     "step2_return": 9.692220376603975,
+     "step2_fall_rate": 0.0,
+     "imagined_return": -4063.1858480935566,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 0,
+     "min_mean_episode_length_after_50": 182.56,
+     "final_mean_episode_length": 210.06
+    }
+   ],
+   "verdict": "failed",
+   "mean_score": 0.06877289300620221,
+   "policies_failed": 2
+  },
+  "REL__s192": {
+   "how": "compressed copy of REL (s192; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.2569381296634674,
+     "E8": 0.503527820110321,
+     "E24": 0.7123521566390991,
+     "E100": 1.0726850032806396,
+     "E368": 2.0069355964660645,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 12.95062059876753,
+     "rA": 106.43305339464708,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.7135580502597815,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.39173442125320435,
+     "E8": 0.6473700404167175,
+     "E24": 0.8721415400505066,
+     "E100": 1.276106357574463,
+     "E368": 1.9849648475646973,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 12.519110644267377,
+     "rA": 111.08519334517291,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.5484400017354103,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.1962890625,
+    "tracking_per_step": 0.007598950834338035,
+    "tracking_ratio": 0.2611063934166889,
+    "u_bar": 2.0835215923330743
+   },
+   "policies": [
+    {
+     "policy": "REL__s192__p1",
+     "sim": "REL__s192",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.05088413863486994,
+     "score_ci95": [
+      0.040830271574237804,
+      0.061593826817572125
+     ],
+     "fall_rate": 0.21875,
+     "physics_return": -108.24188894677914,
+     "physics_fall_rate": 0.2125,
+     "failed": true,
+     "actor_sha256": "ec58decbe333ad401ea8ca543ec8217eb2334d1a9a3a62b898e80dffc02d401b",
+     "step2_return": -108.24188894677914,
+     "step2_fall_rate": 0.2125,
+     "imagined_return": -0.03321932566650212,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": 100,
+     "iterations_logged": 500,
+     "iterations_without_length": 0,
+     "min_mean_episode_length_after_50": 1.0,
+     "final_mean_episode_length": 1.04
+    },
+    {
+     "policy": "REL__s192__p2",
+     "sim": "REL__s192",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.006556409393861594,
+     "score_ci95": [
+      0.0031344686715462367,
+      0.011097062254222531
+     ],
+     "fall_rate": 0.9166666666666666,
+     "physics_return": -13.32466052761286,
+     "physics_fall_rate": 0.9125,
+     "failed": true,
+     "actor_sha256": "dfbb7a0e5603afc2a5a2a6b3da68fa65a1d3ad1d4aa688709ebb3adae9796c99",
+     "step2_return": -13.32466052761286,
+     "step2_fall_rate": 0.9125,
+     "imagined_return": -0.03374080313816666,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": 100,
+     "iterations_logged": 500,
+     "iterations_without_length": 0,
+     "min_mean_episode_length_after_50": 1.0,
+     "final_mean_episode_length": 1.02
+    }
+   ],
+   "verdict": "failed",
+   "mean_score": 0.028720274014365766,
+   "policies_failed": 2
+  },
+  "REL__s128": {
+   "how": "compressed copy of REL (s128; Step 2)",
+   "kind": "compressed",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.3142874240875244,
+     "E8": 0.8379325866699219,
+     "E24": 1.5243113040924072,
+     "E100": 5.262151718139648,
+     "E368": 26.877981185913086,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 258.83127864080933,
+     "rA": 10733.043762227699,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 1.3694796764108972,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.45200151205062866,
+     "E8": 1.007378101348877,
+     "E24": 1.7758787870407104,
+     "E100": 5.613348960876465,
+     "E368": 27.576629638671875,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 264.8959372003333,
+     "rA": 14111.376283297313,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 1.273831959014702,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.4228515625,
+    "tracking_per_step": 0.002597128968077788,
+    "tracking_ratio": 0.08923955331155549,
+    "u_bar": 4.251767151915828
+   },
+   "policies": [
+    {
+     "policy": "REL__s128__p1",
+     "sim": "REL__s128",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.06868410174145716,
+     "score_ci95": [
+      0.05757294269461116,
+      0.08027520458451522
+     ],
+     "fall_rate": 0.0,
+     "physics_return": 9.905371989990845,
+     "physics_fall_rate": 0.0,
+     "failed": true,
+     "actor_sha256": "4d5c840865f8a387508a09472360219b635d92ccda5f730b8efb06a7ac9191fb",
+     "step2_return": 9.905371989990845,
+     "step2_fall_rate": 0.0,
+     "imagined_return": -382.72420624504446,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": 100,
+     "iterations_logged": 500,
+     "iterations_without_length": 0,
+     "min_mean_episode_length_after_50": 21.62,
+     "final_mean_episode_length": 76.0
+    },
+    {
+     "policy": "REL__s128__p2",
+     "sim": "REL__s128",
+     "role": "Step 2 registered",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.06901129345607396,
+     "score_ci95": [
+      0.05794237926436993,
+      0.08052629360698588
+     ],
+     "fall_rate": 0.0,
+     "physics_return": 9.449810052552076,
+     "physics_fall_rate": 0.0,
+     "failed": true,
+     "actor_sha256": "8211f133c3cd8bfedbe6c456fa96d20f261cb9b36c3ff744bab161bafa71add3",
+     "step2_return": 9.449810052552076,
+     "step2_fall_rate": 0.0,
+     "imagined_return": -289.47454441965516,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": 100,
+     "iterations_logged": 500,
+     "iterations_without_length": 0,
+     "min_mean_episode_length_after_50": 22.84,
+     "final_mean_episode_length": 44.14
+    }
+   ],
+   "verdict": "failed",
+   "mean_score": 0.06884769759876555,
+   "policies_failed": 2
+  },
+  "A_s0": {
+   "how": "rebuilt, one network, rollout-trained on 8 of the 10 recorded episodes (Step 2 pilot)",
+   "kind": "rebuilt",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.15779265761375427,
+     "E8": 0.3048495352268219,
+     "E24": 0.37726840376853943,
+     "E100": 0.4449257254600525,
+     "E368": 0.5194800496101379,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 2.2115482468514163,
+     "rA": 15.982477684141147,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": -0.5461014328592586,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.3258022665977478,
+     "E8": 0.5220580697059631,
+     "E24": 0.6391628980636597,
+     "E100": 0.7294686436653137,
+     "E368": 0.8023197054862976,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 2.739890003714181,
+     "rA": 17.099178977172198,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": -0.5921263771175671,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.00390625,
+    "tracking_per_step": 0.017540237932929883,
+    "tracking_ratio": 0.6026974468162728,
+    "u_bar": 0.0
+   },
+   "policies": [
+    {
+     "policy": "A_s0__p0",
+     "sim": "A_s0",
+     "role": "Step 2 pilot",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.01072146086866741,
+     "score_ci95": [
+      0.007346688417221353,
+      0.014775447198193927
+     ],
+     "fall_rate": 0.96875,
+     "physics_return": -10.366283519627157,
+     "physics_fall_rate": 1.0,
+     "failed": true,
+     "actor_sha256": "80b44c5535584b3144b744184a46548bbadf9bb97f38ec6b8f6d417ffcb5f38d",
+     "step2_return": -10.366283519627157,
+     "step2_fall_rate": 1.0,
+     "imagined_return": 5.130101856072107,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 1,
+     "min_mean_episode_length_after_50": 248.36,
+     "final_mean_episode_length": 256.0
+    }
+   ],
+   "verdict": null
+  },
+  "B_s0": {
+   "how": "rebuilt, one network, teacher-forced on 8 of the 10 recorded episodes (Step 2 pilot)",
+   "kind": "rebuilt",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.16844061017036438,
+     "E8": 0.35562190413475037,
+     "E24": 0.5119578242301941,
+     "E100": 0.832999050617218,
+     "E368": 1.971247911453247,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 10.15709989789216,
+     "rA": 47.79786462630092,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.4554058350271187,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.33586135506629944,
+     "E8": 0.5819875597953796,
+     "E24": 0.7770150303840637,
+     "E100": 1.089880347251892,
+     "E368": 2.50870418548584,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 13.34978486961876,
+     "rA": 58.3486452564945,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.4087975075035756,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.0693359375,
+    "tracking_per_step": 0.007145151474793402,
+    "tracking_ratio": 0.24551346267024007,
+    "u_bar": 0.0
+   },
+   "policies": [
+    {
+     "policy": "B_s0__p0",
+     "sim": "B_s0",
+     "role": "Step 2 pilot",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.005577846004032112,
+     "score_ci95": [
+      0.0038954522214147856,
+      0.007834835104020912
+     ],
+     "fall_rate": 1.0,
+     "physics_return": -3.992322257244414,
+     "physics_fall_rate": 1.0,
+     "failed": true,
+     "actor_sha256": "aff632991424577dd405d03e1f3ef1c75a14b1afddad8b8da5d37b5f7f7a5499",
+     "step2_return": -3.992322257244414,
+     "step2_fall_rate": 1.0,
+     "imagined_return": 3.950445022617281,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 1,
+     "min_mean_episode_length_after_50": 242.29,
+     "final_mean_episode_length": 256.0
+    }
+   ],
+   "verdict": null
+  },
+  "A_s0__u50": {
+   "how": "A_s0 with 50% unstructured pruning (Step 2 pilot)",
+   "kind": "rebuilt",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.1833827942609787,
+     "E8": 0.4097619950771332,
+     "E24": 0.6244485974311829,
+     "E100": 1.402815341949463,
+     "E368": 4.731422424316406,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 25.050408776336273,
+     "rA": 213.57101964514374,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": -0.07167394313455332,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.34061115980148315,
+     "E8": 0.5884230732917786,
+     "E24": 0.8065044283866882,
+     "E100": 1.429124355316162,
+     "E368": 4.12574577331543,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 22.13568696566426,
+     "rA": 162.99842289816584,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": -0.06562110765890178,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.0029296875,
+    "tracking_per_step": 0.0018960726127639313,
+    "tracking_ratio": 0.06515066255433612,
+    "u_bar": 0.0
+   },
+   "policies": [
+    {
+     "policy": "A_s0__u50__p0",
+     "sim": "A_s0__u50",
+     "role": "Step 2 pilot",
+     "recipe": "Step 2 (lite code, 500 iterations, 4,096 robots)",
+     "route": "rebuilt",
+     "measured": true,
+     "score": 0.005754730453519502,
+     "score_ci95": [
+      0.004452769703657388,
+      0.007230846074700594
+     ],
+     "fall_rate": 1.0,
+     "physics_return": -6.562334669278192,
+     "physics_fall_rate": 1.0,
+     "failed": true,
+     "actor_sha256": "8c628f2cb8c77d7ea2765174eaa87420bb935070aca2e5e991804c171d98cb8b",
+     "step2_return": -6.562334669278192,
+     "step2_fall_rate": 1.0,
+     "imagined_return": 3.787367946583779,
+     "losses_all_finite": true,
+     "stop_rule_would_fire_at": null,
+     "iterations_logged": 500,
+     "iterations_without_length": 2,
+     "min_mean_episode_length_after_50": 75.95,
+     "final_mean_episode_length": 256.0
+    }
+   ],
+   "verdict": null
+  },
+  "A5_s0": {
+   "how": "rebuilt, five networks, rollout-trained on 8 of the 10 recorded episodes (Option C)",
+   "kind": "rebuilt5",
+   "scales": "authors",
+   "checks": {
+    "expert": {
+     "E1": 0.15507400035858154,
+     "E8": 0.3023412525653839,
+     "E24": 0.36920803785324097,
+     "E100": 0.4323851466178894,
+     "E368": 0.5550037622451782,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 1.897692010232452,
+     "rA": 9.369004901028193,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": -0.5169852145164524,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.32516273856163025,
+     "E8": 0.51857990026474,
+     "E24": 0.6099632978439331,
+     "E100": 0.6961832046508789,
+     "E368": 0.8839661478996277,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 2.6546084685832962,
+     "rA": 11.672140251796947,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": -0.4969665009431149,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.029296875,
+    "tracking_per_step": 0.012445147745307302,
+    "tracking_ratio": 0.42762582811184885,
+    "u_bar": 1.8690906109983056
+   },
+   "policies": [
+    {
+     "policy": "A5_s0__p0",
+     "sim": "A5_s0",
+     "role": "Option C",
+     "label": "D3, A5_s0 seed 0",
+     "iterations": 500,
+     "source": "results/c/d3_eval (Step 2's protocol; no walking score measured)",
+     "step2_return": -57.83283666819614,
+     "step2_fall_rate": 0.0
+    },
+    {
+     "policy": "A5_s0__p1",
+     "sim": "A5_s0",
+     "role": "Option C",
+     "label": "D3, A5_s0 seed 1",
+     "iterations": 500,
+     "source": "results/c/d3_eval (Step 2's protocol; no walking score measured)",
+     "step2_return": -1.3935841659855162,
+     "step2_fall_rate": 1.0
+    }
+   ],
+   "verdict": null
+  },
+  "sim_6M_N8_s0": {
+   "how": "Option C, from scratch on 6M MuJoCo transitions, 2,572 steps, own scales",
+   "kind": "optc",
+   "scales": "own",
+   "checks": {
+    "expert": {
+     "E1": 0.10133568942546844,
+     "E8": 0.15231554210186005,
+     "E24": 0.19332322478294373,
+     "E100": 0.39323750138282776,
+     "E368": 5.878429412841797,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 10.571845030695439,
+     "rA": 931.7863111364,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.17578597552822678,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.19721205532550812,
+     "E8": 0.2571770250797272,
+     "E24": 0.31773191690444946,
+     "E100": 0.5732194781303406,
+     "E368": 5.958950996398926,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 11.08827516089978,
+     "rA": 938.9667871954922,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.14208064665704162,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.2314453125,
+    "tracking_per_step": 0.0086615822611609,
+    "tracking_ratio": 0.2976193101913529,
+    "u_bar": 1.6789253578060013
+   },
+   "policies": [
+    {
+     "policy": "sim_6M_N8_s0__p0",
+     "sim": "sim_6M_N8_s0",
+     "role": "Option C",
+     "label": "first pilot, 6M, weight 1.0",
+     "iterations": 2000,
+     "source": "results/c_pilot1.json",
+     "walking_score_by_save": {
+      "500": {
+       "score": 0.017164941161575773,
+       "fall_rate": 0.8541666666666666,
+       "ret": -10.061879278874569
+      },
+      "1000": {
+       "score": 0.0021118681651743354,
+       "fall_rate": 1.0,
+       "ret": -2.423186727181576
+      },
+      "1500": {
+       "score": 0.0009108629414260042,
+       "fall_rate": 1.0,
+       "ret": -2.9415027472736206
+      },
+      "2000": {
+       "score": 0.000419350563956828,
+       "fall_rate": 1.0,
+       "ret": -1.3763594611557386
+      }
+     },
+     "score": 0.000419350563956828,
+     "fall_rate": 1.0,
+     "physics_return": -1.3763594611557386,
+     "failed": true,
+     "score_at": 2000
+    },
+    {
+     "policy": "sim_6M_N8_s0__w2__p0",
+     "sim": "sim_6M_N8_s0",
+     "role": "Option C",
+     "label": "first pilot retry, 6M, weight 2.0 (crashed)",
+     "iterations": null,
+     "source": "results/c_pilot1.json"
+    },
+    {
+     "policy": "sim_6M_N8_s0__w4__p0",
+     "sim": "sim_6M_N8_s0",
+     "role": "Option C",
+     "label": "first pilot retry, 6M, weight 4.0",
+     "iterations": 2000,
+     "source": "results/c_pilot1.json"
+    }
+   ],
+   "verdict": null
+  },
+  "sim_6M_N8_s0__2S": {
+   "how": "Option C, from scratch on 6M MuJoCo transitions, 5,144 steps, own scales",
+   "kind": "optc",
+   "scales": "own",
+   "checks": {
+    "expert": {
+     "E1": 0.08654986321926117,
+     "E8": 0.12382690608501434,
+     "E24": 0.15868335962295532,
+     "E100": 0.27957648038864136,
+     "E368": 1.6163753271102905,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 2.374170033718481,
+     "rA": 307.2249736320498,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.18065645471212596,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.1535833477973938,
+     "E8": 0.2081216722726822,
+     "E24": 0.26476529240608215,
+     "E100": 0.42748624086380005,
+     "E368": 1.9207850694656372,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 3.071123622217858,
+     "rA": 347.6021237499377,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.14185799183347195,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.39453125,
+    "tracking_per_step": 0.013570578735147583,
+    "tracking_ratio": 0.46629659111622207,
+    "u_bar": 1.0824924810137362
+   },
+   "policies": [],
+   "verdict": null
+  },
+  "sim_10k_N8_s0": {
+   "how": "Option C, from scratch on 10k MuJoCo transitions, 2,572 steps, own scales",
+   "kind": "optc",
+   "scales": "own",
+   "checks": {
+    "expert": {
+     "E1": 0.13043193519115448,
+     "E8": 0.2064022570848465,
+     "E24": 0.25320276618003845,
+     "E100": 0.43216848373413086,
+     "E368": 8.320759773254395,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 24.677018525079074,
+     "rA": 3673.0815609062124,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.12635108042969717,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.2506166100502014,
+     "E8": 0.34982064366340637,
+     "E24": 0.4203316569328308,
+     "E100": 0.668868362903595,
+     "E368": 7.641948699951172,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 21.863795633050053,
+     "rA": 3308.9066764885642,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.11383279239789038,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.53125,
+    "tracking_per_step": 0.010116302970357718,
+    "tracking_ratio": 0.3476047471401679,
+    "u_bar": 2.0356636550395066
+   },
+   "policies": [
+    {
+     "policy": "sim_10k_N8_s0__p0",
+     "sim": "sim_10k_N8_s0",
+     "role": "Option C",
+     "label": "first pilot, 10k, weight 1.0",
+     "iterations": 2000,
+     "source": "results/c_pilot1.json",
+     "walking_score_by_save": {
+      "500": {
+       "score": 0.01125231044024421,
+       "fall_rate": 1.0,
+       "ret": -5.770810308817495
+      },
+      "1000": {
+       "score": 0.004471131477767457,
+       "fall_rate": 1.0,
+       "ret": -2.805483882624522
+      },
+      "1500": {
+       "score": 0.053983482271977246,
+       "fall_rate": 0.2604166666666667,
+       "ret": -31.69893862173872
+      },
+      "2000": {
+       "score": 0.00818326580860323,
+       "fall_rate": 1.0,
+       "ret": -4.549267414928663
+      }
+     },
+     "score": 0.00818326580860323,
+     "fall_rate": 1.0,
+     "physics_return": -4.549267414928663,
+     "failed": true,
+     "score_at": 2000
+    }
+   ],
+   "verdict": null
+  },
+  "sim_10k_N8_s0__2S": {
+   "how": "Option C, from scratch on 10k MuJoCo transitions, 5,144 steps, own scales",
+   "kind": "optc",
+   "scales": "own",
+   "checks": {
+    "expert": {
+     "E1": 0.13995838165283203,
+     "E8": 0.20039066672325134,
+     "E24": 0.248541921377182,
+     "E100": 0.38145846128463745,
+     "E368": 8.325957298278809,
+     "floor_E1": 0.19809535145759583,
+     "floor_E8": 0.6003748178482056,
+     "floor_E100": 0.7931584715843201,
+     "floor_E368": 0.9085105061531067,
+     "rJ": 24.55361895517882,
+     "rA": 1771.4192574887404,
+     "rJ_true": 0.6727094061425696,
+     "rA_true": 0.48490196179911765,
+     "lambda1": 0.24381604320824374,
+     "finite": true,
+     "windows_used": 40,
+     "episodes_too_short": 0
+    },
+    "mixed": {
+     "E1": 0.2504459321498871,
+     "E8": 0.3435695767402649,
+     "E24": 0.4189203381538391,
+     "E100": 0.6697005033493042,
+     "E368": 8.413100242614746,
+     "floor_E1": 0.32875189185142517,
+     "floor_E8": 0.6585148572921753,
+     "floor_E100": 0.8513215184211731,
+     "floor_E368": 0.9721297025680542,
+     "rJ": 25.476349053960675,
+     "rA": 1867.918904787509,
+     "rJ_true": 1.1059069784158122,
+     "rA_true": 0.9146605438583775,
+     "lambda1": 0.28281968392104206,
+     "finite": true,
+     "windows_used": 67,
+     "episodes_too_short": 5
+    }
+   },
+   "walk": {
+    "falls": 0.55078125,
+    "tracking_per_step": 0.015282678494669941,
+    "tracking_ratio": 0.5251257904523178,
+    "u_bar": 1.7685631048408998
+   },
+   "policies": [],
+   "verdict": null
+  }
+ },
+ "created": "2026-11-14T20:10:06"
+}

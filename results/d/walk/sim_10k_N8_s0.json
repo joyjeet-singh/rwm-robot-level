@@ -1,0 +1,66 @@
+{
+ "what": "Option D walk test (secondary): RWM's released policy, noise-free, in the simulator's imagination",
+ "simulator": {
+  "name": "sim_10k_N8_s0",
+  "kind": "optc",
+  "how": "Option C, from scratch on 10k MuJoCo transitions, 2,572 steps, own scales",
+  "path": "AIR 2027/runs/c/sim_10k_N8_s0/final.pt",
+  "sha256": "0b64bb5f92a7838f18a8a2ee69b64ba781cbafb1417dbec425f4c0549e8eb790",
+  "variant": null,
+  "variant_info": null,
+  "scales": "own",
+  "holdout": "",
+  "ensemble": 5,
+  "rung": "10k",
+  "N": 8,
+  "steps": 2572,
+  "seed": 0
+ },
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first"
+ },
+ "start_states": {
+  "rule": "the authors' recorded data (the lite code's own start states)",
+  "holdout": null,
+  "windows_kept_total": null,
+  "scales": "own"
+ },
+ "falls": 0.53125,
+ "tracking_per_step": 0.010116302970357718,
+ "u_bar": 2.0356636550395066,
+ "tracking_mujoco_per_step": 0.029102890721680583,
+ "tracking_ratio": 0.3476047471401679,
+ "imagine": {
+  "robots": 1024,
+  "steps_run": 256,
+  "episodes_finished": 1024,
+  "share_fell": 0.53125,
+  "falls": 544,
+  "mean_length": 190.1025390625,
+  "u_bar": 2.0356636550395066,
+  "uncertainty_weight_in_env": -1.0,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.0049183237701183385,
+   "track_ang_vel_z_exp": 0.00519797920023938,
+   "lin_vel_z_l2": -0.0007016715536780667,
+   "ang_vel_xy_l2": -0.008587226915719065,
+   "dof_torques_l2": -0.018910455077763375,
+   "dof_acc_l2": -0.001078237288203896,
+   "action_rate_l2": -0.00013809042621717906,
+   "feet_air_time": -0.0002477065920385527,
+   "undesired_contacts": -0.00023804997798381982,
+   "stand_still": -0.0024859039302668182,
+   "flat_orientation_l2": -0.02195878291177987,
+   "dof_pos_limits": 0.0,
+   "uncertainty": -0.04071327219130299
+  },
+  "tracking_per_step": 0.010116302970357718,
+  "total_per_step": -0.08494309389459592
+ },
+ "seconds": 31.87548804283142,
+ "torch": "2.2.2"
+}

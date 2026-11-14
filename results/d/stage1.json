@@ -1,0 +1,409 @@
+{
+ "what": "Option D, D1 step 1: what Stage 1 gave (descriptive)",
+ "fail_score": 0.15,
+ "stop_rule": {
+  "after": 50,
+  "run": 50,
+  "threshold": 128.0
+ },
+ "REL": {
+  "REL__p1": 0.609515588224148,
+  "REL__p2": 0.5733284503374363,
+  "REL__p0": 0.7689820416203386
+ },
+ "step2_nine": {
+  "REL": {
+   "scores": [
+    0.609515588224148,
+    0.5733284503374363
+   ],
+   "failed": [
+    false,
+    false
+   ],
+   "verdict": "did not fail",
+   "seeds_disagree": false
+  },
+  "REL__fp16": {
+   "scores": [
+    0.600228417423725,
+    0.6216113335041756
+   ],
+   "failed": [
+    false,
+    false
+   ],
+   "verdict": "did not fail",
+   "seeds_disagree": false
+  },
+  "REL__int8w": {
+   "scores": [
+    0.05780070920129481,
+    0.05956443743924473
+   ],
+   "failed": [
+    true,
+    true
+   ],
+   "verdict": "failed",
+   "seeds_disagree": false
+  },
+  "REL__u10": {
+   "scores": [
+    0.24940383413245618,
+    0.531550245125079
+   ],
+   "failed": [
+    false,
+    false
+   ],
+   "verdict": "did not fail",
+   "seeds_disagree": false
+  },
+  "REL__u20": {
+   "scores": [
+    0.06345672593336422,
+    0.061364823500596744
+   ],
+   "failed": [
+    true,
+    true
+   ],
+   "verdict": "failed",
+   "seeds_disagree": false
+  },
+  "REL__u30": {
+   "scores": [
+    0.003561686956855438,
+    0.06223634030965156
+   ],
+   "failed": [
+    true,
+    true
+   ],
+   "verdict": "failed",
+   "seeds_disagree": false
+  },
+  "REL__u50": {
+   "scores": [
+    0.06864363558738361,
+    0.06890215042502079
+   ],
+   "failed": [
+    true,
+    true
+   ],
+   "verdict": "failed",
+   "seeds_disagree": false
+  },
+  "REL__s192": {
+   "scores": [
+    0.05088413863486994,
+    0.006556409393861594
+   ],
+   "failed": [
+    true,
+    true
+   ],
+   "verdict": "failed",
+   "seeds_disagree": false
+  },
+  "REL__s128": {
+   "scores": [
+    0.06868410174145716,
+    0.06901129345607396
+   ],
+   "failed": [
+    true,
+    true
+   ],
+   "verdict": "failed",
+   "seeds_disagree": false
+  }
+ },
+ "step2_failed": 6,
+ "step2_disagree": 0,
+ "stop_rule_on_stored_logs": {
+  "REL__p1": {
+   "log": "runs/lite/s2_REL__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.609515588224148,
+   "record_says": null
+  },
+  "REL__p2": {
+   "log": "runs/lite/s2_REL__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.5733284503374363,
+   "record_says": null
+  },
+  "REL__p0": {
+   "log": "runs/lite/s2_REL__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 pilot",
+   "score": 0.7689820416203386,
+   "record_says": null
+  },
+  "REL__fp16__p1": {
+   "log": "runs/lite/s2_REL__fp16__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.600228417423725,
+   "record_says": null
+  },
+  "REL__fp16__p2": {
+   "log": "runs/lite/s2_REL__fp16__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.6216113335041756,
+   "record_says": null
+  },
+  "REL__int8w__p1": {
+   "log": "runs/lite/s2_REL__int8w__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.05780070920129481,
+   "record_says": null
+  },
+  "REL__int8w__p2": {
+   "log": "runs/lite/s2_REL__int8w__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.05956443743924473,
+   "record_says": null
+  },
+  "REL__u10__p1": {
+   "log": "runs/lite/s2_REL__u10__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.24940383413245618,
+   "record_says": null
+  },
+  "REL__u10__p2": {
+   "log": "runs/lite/s2_REL__u10__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 10,
+   "role": "Step 2 registered",
+   "score": 0.531550245125079,
+   "record_says": null
+  },
+  "REL__u20__p1": {
+   "log": "runs/lite/s2_REL__u20__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 6,
+   "role": "Step 2 registered",
+   "score": 0.06345672593336422,
+   "record_says": null
+  },
+  "REL__u20__p2": {
+   "log": "runs/lite/s2_REL__u20__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 5,
+   "role": "Step 2 registered",
+   "score": 0.061364823500596744,
+   "record_says": null
+  },
+  "REL__u30__p1": {
+   "log": "runs/lite/s2_REL__u30__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": 478,
+   "missing_lengths": 0,
+   "role": "Step 2 registered",
+   "score": 0.003561686956855438,
+   "record_says": 478
+  },
+  "REL__u30__p2": {
+   "log": "runs/lite/s2_REL__u30__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 1,
+   "role": "Step 2 registered",
+   "score": 0.06223634030965156,
+   "record_says": null
+  },
+  "REL__u50__p1": {
+   "log": "runs/lite/s2_REL__u50__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 0,
+   "role": "Step 2 registered",
+   "score": 0.06864363558738361,
+   "record_says": null
+  },
+  "REL__u50__p2": {
+   "log": "runs/lite/s2_REL__u50__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 0,
+   "role": "Step 2 registered",
+   "score": 0.06890215042502079,
+   "record_says": null
+  },
+  "REL__s192__p1": {
+   "log": "runs/lite/s2_REL__s192__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": 100,
+   "missing_lengths": 0,
+   "role": "Step 2 registered",
+   "score": 0.05088413863486994,
+   "record_says": 100
+  },
+  "REL__s192__p2": {
+   "log": "runs/lite/s2_REL__s192__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": 100,
+   "missing_lengths": 0,
+   "role": "Step 2 registered",
+   "score": 0.006556409393861594,
+   "record_says": 100
+  },
+  "REL__s128__p1": {
+   "log": "runs/lite/s2_REL__s128__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": 100,
+   "missing_lengths": 0,
+   "role": "Step 2 registered",
+   "score": 0.06868410174145716,
+   "record_says": 100
+  },
+  "REL__s128__p2": {
+   "log": "runs/lite/s2_REL__s128__p2/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": 100,
+   "missing_lengths": 0,
+   "role": "Step 2 registered",
+   "score": 0.06901129345607396,
+   "record_says": 100
+  },
+  "A_s0__p0": {
+   "log": "runs/lite/s2_A_s0__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 1,
+   "role": "Step 2 pilot",
+   "score": 0.01072146086866741,
+   "record_says": null
+  },
+  "B_s0__p0": {
+   "log": "runs/lite/s2_B_s0__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 1,
+   "role": "Step 2 pilot",
+   "score": 0.005577846004032112,
+   "record_says": null
+  },
+  "A_s0__u50__p0": {
+   "log": "runs/lite/s2_A_s0__u50__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": null,
+   "missing_lengths": 2,
+   "role": "Step 2 pilot",
+   "score": 0.005754730453519502,
+   "record_says": null
+  },
+  "sim_6M_N8_s0__p0": {
+   "log": "runs/c/lite/runs/lite/s2_sim_6M_N8_s0__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 2000,
+   "stop_at": 798,
+   "missing_lengths": 6,
+   "role": "Option C pilot"
+  },
+  "sim_10k_N8_s0__p0": {
+   "log": "runs/c/lite/runs/lite/s2_sim_10k_N8_s0__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 2000,
+   "stop_at": 100,
+   "missing_lengths": 1,
+   "role": "Option C pilot"
+  },
+  "sim_6M_N8_s0__w2__p0": {
+   "log": "runs/c/lite/runs/lite/s2_sim_6M_N8_s0__w2__p0/metrics.jsonl",
+   "stored": false,
+   "role": "Option C pilot"
+  },
+  "sim_6M_N8_s0__w4__p0": {
+   "log": "runs/c/lite/runs/lite/s2_sim_6M_N8_s0__w4__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 2000,
+   "stop_at": 776,
+   "missing_lengths": 6,
+   "role": "Option C pilot"
+  },
+  "A5_s0__p0": {
+   "log": "runs/c/d3_lite/runs/lite/s2_A5_s0__p0/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": 100,
+   "missing_lengths": 0,
+   "role": "Option C pilot"
+  },
+  "A5_s0__p1": {
+   "log": "runs/c/d3_lite/runs/lite/s2_A5_s0__p1/metrics.jsonl",
+   "stored": true,
+   "iterations_logged": 500,
+   "stop_at": 100,
+   "missing_lengths": 0,
+   "role": "Option C pilot"
+  }
+ },
+ "stopped_step2_registered": [
+  "REL__s128__p1",
+  "REL__s128__p2",
+  "REL__s192__p1",
+  "REL__s192__p2",
+  "REL__u30__p1"
+ ],
+ "stopped_step2_pilot": [],
+ "stopped_optc": [
+  "A5_s0__p0",
+  "A5_s0__p1",
+  "sim_10k_N8_s0__p0",
+  "sim_6M_N8_s0__p0",
+  "sim_6M_N8_s0__w4__p0"
+ ],
+ "agrees_with_record": true
+}

@@ -1,0 +1,65 @@
+{
+ "what": "Option D walk test (secondary): RWM's released policy, noise-free, in the simulator's imagination",
+ "simulator": {
+  "name": "B_s0",
+  "kind": "rebuilt",
+  "how": "rebuilt, one network, teacher-forced on 8 of the 10 recorded episodes (Step 2 pilot)",
+  "path": "rwm_repro/runs/armB_seed0/weights_2500.pt",
+  "sha256": "fcadae6d57cb52bfe3f2987f2a3e7fb17d4b6c4075844bd77d048e32c92723fb",
+  "variant": null,
+  "variant_info": null,
+  "scales": "authors",
+  "holdout": "1,8",
+  "ensemble": 1
+ },
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first"
+ },
+ "start_states": {
+  "rule": "the authors' recorded data (the lite code's own start states)",
+  "holdout": "1,8",
+  "windows_kept_total": [
+   7882,
+   9961
+  ],
+  "scales": "authors"
+ },
+ "falls": 0.0693359375,
+ "tracking_per_step": 0.007145151474793402,
+ "u_bar": 0.0,
+ "tracking_mujoco_per_step": 0.029102890721680583,
+ "tracking_ratio": 0.24551346267024007,
+ "imagine": {
+  "robots": 1024,
+  "steps_run": 256,
+  "episodes_finished": 1024,
+  "share_fell": 0.0693359375,
+  "falls": 71,
+  "mean_length": 251.6298828125,
+  "u_bar": 0.0,
+  "uncertainty_weight_in_env": -1.0,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.004192911644540995,
+   "track_ang_vel_z_exp": 0.0029522398302524074,
+   "lin_vel_z_l2": -0.00041793759920600454,
+   "ang_vel_xy_l2": -0.000307142026161213,
+   "dof_torques_l2": -0.0036290199943333455,
+   "dof_acc_l2": -0.0008141525162110982,
+   "action_rate_l2": -0.00011253981121083563,
+   "feet_air_time": -0.0003981938388563297,
+   "undesired_contacts": -8.538085492729696e-07,
+   "stand_still": -0.002206889709406582,
+   "flat_orientation_l2": -0.000782876069898547,
+   "dof_pos_limits": 0.0,
+   "uncertainty": 0.0
+  },
+  "tracking_per_step": 0.007145151474793402,
+  "total_per_step": -0.0015244538990398264
+ },
+ "seconds": 28.284849882125854,
+ "torch": "2.2.2"
+}
