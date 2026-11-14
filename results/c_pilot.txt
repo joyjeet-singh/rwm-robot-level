@@ -1,0 +1,2 @@
+Option C second pilot: BLOCKED at Gate A2
+Gate A2 failed twice (sim_6M_N8_s0: fell 15.5%, tracking 31% of MuJoCo's; after retraining with 2 x S steps, sim_6M_N8_s0__2S: fell 26.6%, tracking 49% of MuJoCo's; limits: at most 10% falls and at least 80% of MuJoCo's tracking). The simulator cannot hold the authors' walk in imagination; the plan says to stop.

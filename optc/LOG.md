@@ -30,3 +30,6 @@ Facts (`optc/notes/C2R.md`): no fall cost in the lite reward; logged terms are r
 Calibration (`results/c/calibration.json`): λ = 0.30 (6M), 0.23 (10k), 0.25 (`A5_s0`). Gate A2 FAILED on the 6M simulator: the authors' policy fell in 15.5% of imagined episodes and earned 31% of its MuJoCo tracking.
 The job therefore retrains both pilot simulators with 2 × S steps before any arm.
 Fixes in `train_policy.py` and the rule `pilot2_rule.py`; all tests in `scripts/c/test_c2r.py` passed (every rule branch on fixtures). New `optc/jobs/pilot.zsh` passes `zsh -n`; it has not run. Estimated 35–40 h.
+
+## Pilot job status: BLOCKED (2026-11-11 15:38)
+Gate A2 failed twice (sim_6M_N8_s0: fell 15.5%, tracking 31% of MuJoCo's; after retraining with 2 x S steps, sim_6M_N8_s0__2S: fell 26.6%, tracking 49% of MuJoCo's; limits: at most 10% falls and at least 80% of MuJoCo's tracking). The simulator cannot hold the authors' walk in imagination; the plan says to stop. See `optc/DECISIONS.md` and `results/c_pilot.txt`.

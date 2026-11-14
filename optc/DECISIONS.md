@@ -76,3 +76,11 @@ Choices the plan did not settle, the more conservative option taken each time. N
     - Estimates from measured rates: 2 × 7.9 h to retrain the simulators (5.5 s per step), 2 × 6.7 h for the arm pairs (16 s per iteration two at once), and about 4 h for the 10k policy, plus measuring.
     - Total: about 35–40 h. These are estimates, not measured on this job.
 16. **The first pilot's results are committed** with this session: `results/c/pilot_decision.json`, `results/c/eval/` and `results/c/train/`. The job left them uncommitted, and `results/c_pilot1.*` is built from them. `results/c/progress.json` and `results/s2/progress.json` are status files and stay uncommitted.
+
+## Pilot job: BLOCKED at Gate A2 (2026-11-11 15:38)
+
+**What is blocked:** Gate A2 failed twice (sim_6M_N8_s0: fell 15.5%, tracking 31% of MuJoCo's; after retraining with 2 x S steps, sim_6M_N8_s0__2S: fell 26.6%, tracking 49% of MuJoCo's; limits: at most 10% falls and at least 80% of MuJoCo's tracking). The simulator cannot hold the authors' walk in imagination; the plan says to stop.
+
+**Options:** (a) stop Option C and report Gate A2 as the finding (the simulators, even with twice the training, do not hold the authors' walk); (b) a further change to the simulator's training (more steps, a different loss weighting or data mix), which is a change to the fixed design and needs the author.
+
+**Recommendation:** (a), unless the author chooses a further simulator change.

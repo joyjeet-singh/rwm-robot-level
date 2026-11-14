@@ -1,0 +1,31 @@
+{
+ "what": "Option C second pilot: BLOCKED at Gate A2 (hand-built calibrated MuJoCo ANYmal D, fitted PD motor; not Isaac Lab, not hardware)",
+ "status": "BLOCKED",
+ "blocked_at": "Gate A2",
+ "gate_a2": {
+  "first": {
+   "simulator": "sim_6M_N8_s0",
+   "share_fell": 0.1552734375,
+   "fall_limit": 0.1,
+   "fall_ok": false,
+   "tracking_per_step": 0.009063722909554475,
+   "tracking_mujoco_per_step": 0.029102890721680583,
+   "tracking_ratio": 0.3114372038239602,
+   "tracking_needed": 0.023282312577344467,
+   "tracking_ok": false,
+   "passed": false
+  },
+  "after_2S": {
+   "simulator": "sim_6M_N8_s0__2S",
+   "share_fell": 0.265625,
+   "fall_limit": 0.1,
+   "fall_ok": false,
+   "tracking_per_step": 0.014147585453482329,
+   "tracking_mujoco_per_step": 0.029102890721680583,
+   "tracking_ratio": 0.4861230311717076,
+   "tracking_needed": 0.023282312577344467,
+   "tracking_ok": false,
+   "passed": false
+  }
+ }
+}
