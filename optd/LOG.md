@@ -17,3 +17,12 @@ No Option D number exists yet except the toy rehearsal's (under .cache/).
 results/d_record.txt and .json written; gates 1 and 2 passed.
 
 ## D1 started (2026-11-14 20:12)
+
+## D1 status: COMPLETE (2026-11-14 20:48)
+Stage 1 (optd/notes/D1.md): 6 of Step 2's 9 fail, seeds never disagree (0 of 9); the stop rule would have stopped 5 of the 18 registered policies (all failed anyway).
+scripts/d/train_policy.py equals Step 2's recipe (REL, 3 iterations: logs identical); stop rule via the log hook; failed-by-simulator rule.
+scripts/d/ladder.py: verdict and search rules, two-worker queue, fine-tune lock, crash guard, toy and rehearsal modes. scripts/d_stats.py: the registered analysis.
+Tests scripts/d/test_d1.py: 71 of 71 pass in 231 s. air-stats-reviewer: 2 MUST FIX and 4 SHOULD FIX, all fixed (DECISIONS D1-9).
+Registered: 8894501 (prereg/PREREG_D.md, scripts/d_stats.py, now read-only); hash results/prereg_hash_d.json (609a1d1).
+Rehearsal with real code at toy size passed (fine-tune 2 steps, checks, walk test, 2 policies, measured, verdict; stopped after one policy and resumed); its files deleted.
+optd/jobs/ladder.zsh passes zsh -n and has not run. Estimate 40-55 h. No ladder policy has been trained.
