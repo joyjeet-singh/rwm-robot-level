@@ -1,0 +1,112 @@
+{
+ "run": "W_s1",
+ "status": "done",
+ "tests": [
+  {
+   "steps": 80,
+   "sim": "W_s1_d80",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "W_s1_d80__p1",
+     "seed": 1,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.06538975401552118,
+     "fall_rate": 0.71875,
+     "physics_return": -4.970987743482344,
+     "eval": "results/d/eval/W_s1_d80__p1.json",
+     "failed": true
+    },
+    {
+     "policy": "W_s1_d80__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.07724790224107589,
+     "fall_rate": 0.6458333333333334,
+     "physics_return": -4.726627702673245,
+     "eval": "results/d/eval/W_s1_d80__p2.json",
+     "failed": true
+    }
+   ],
+   "verdict": "failed",
+   "third_policy": false
+  },
+  {
+   "steps": 20,
+   "sim": "W_s1_d20",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "W_s1_d20__p1",
+     "seed": 1,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.083555855635138,
+     "fall_rate": 0.8958333333333334,
+     "physics_return": -3.0085630466530966,
+     "eval": "results/d/eval/W_s1_d20__p1.json",
+     "failed": true
+    },
+    {
+     "policy": "W_s1_d20__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.1015533762880692,
+     "fall_rate": 0.59375,
+     "physics_return": -8.397753564266713,
+     "eval": "results/d/eval/W_s1_d20__p2.json",
+     "failed": true
+    }
+   ],
+   "verdict": "failed",
+   "third_policy": false
+  },
+  {
+   "steps": 5,
+   "sim": "W_s1_d5",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "W_s1_d5__p1",
+     "seed": 1,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.7506015428164267,
+     "fall_rate": 0.125,
+     "physics_return": 10.652510160022123,
+     "eval": "results/d/eval/W_s1_d5__p1.json",
+     "failed": false
+    },
+    {
+     "policy": "W_s1_d5__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.4408420140832187,
+     "fall_rate": 0.5416666666666666,
+     "physics_return": 11.848641076062552,
+     "eval": "results/d/eval/W_s1_d5__p2.json",
+     "failed": false
+    }
+   ],
+   "verdict": "did not fail",
+   "third_policy": false
+  }
+ ],
+ "started_hours": 20.494436312450304,
+ "started": "2026-11-15T17:23:36",
+ "finished_hours": 35.13972276409467,
+ "boundary": true
+}

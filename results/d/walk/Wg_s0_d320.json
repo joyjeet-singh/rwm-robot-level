@@ -1,0 +1,68 @@
+{
+ "what": "Option D walk test (secondary): RWM's released policy, noise-free, in the simulator's imagination",
+ "simulator": {
+  "name": "Wg_s0_d320",
+  "kind": "ladder",
+  "how": "ladder: REL fine-tuned on MuJoCo data (Option D)",
+  "path": "AIR 2027/runs/d/Wg_s0_d320/final.pt",
+  "sha256": "dec2ed9221f92566ce78010615cda1dd28c3ec441d5dafe006bc70dbe49c0ec0",
+  "variant": null,
+  "variant_info": null,
+  "scales": "authors",
+  "holdout": "",
+  "ensemble": 5,
+  "run": "Wg_s0",
+  "steps": 320,
+  "data": "walking",
+  "lr": 1e-05,
+  "N": 8,
+  "seed": 0
+ },
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first"
+ },
+ "start_states": {
+  "rule": "the authors' recorded data (the lite code's own start states)",
+  "holdout": null,
+  "windows_kept_total": null,
+  "scales": "authors"
+ },
+ "falls": 0.0029296875,
+ "tracking_per_step": 0.024768006049321112,
+ "u_bar": 1.6661285762703921,
+ "tracking_mujoco_per_step": 0.029102890721680583,
+ "tracking_ratio": 0.8510496873380986,
+ "imagine": {
+  "robots": 1024,
+  "steps_run": 256,
+  "episodes_finished": 1024,
+  "share_fell": 0.0029296875,
+  "falls": 3,
+  "mean_length": 255.66796875,
+  "u_bar": 1.6661285762703921,
+  "uncertainty_weight_in_env": -1.0,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.01561673152983208,
+   "track_ang_vel_z_exp": 0.00915127451948903,
+   "lin_vel_z_l2": -0.00029294432168535067,
+   "ang_vel_xy_l2": -0.0002495945453589814,
+   "dof_torques_l2": -0.0011955327844565722,
+   "dof_acc_l2": -0.00045979520603427985,
+   "action_rate_l2": -0.00014783861910899084,
+   "feet_air_time": -0.00045107029145719137,
+   "undesired_contacts": -4.33148452526747e-05,
+   "stand_still": -0.0008009205144445985,
+   "flat_orientation_l2": -0.00044695309035313387,
+   "dof_pos_limits": 0.0,
+   "uncertainty": -0.03332257078335957
+  },
+  "tracking_per_step": 0.024768006049321112,
+  "total_per_step": -0.012642528952190233
+ },
+ "seconds": 30.621237993240356,
+ "torch": "2.2.2"
+}

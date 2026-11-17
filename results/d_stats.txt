@@ -1,0 +1,52 @@
+Option D: registered analysis (prereg/PREREG_D.md). World: the calibrated hand-built MuJoCo ANYmal D with a
+fitted PD motor (not Isaac Lab, not hardware). Outcome: mean walking score of a simulator's 2-3 policies.
+Primary pool (19): REL, W_s0_d80, W_s0_d20, W_s0_d5, M_s0_d80, M_s0_d20, M_s0_d5, Wtf_s0_d80, Wtf_s0_d20, Wtf_s0_d5, W_s1_d80, W_s1_d20, W_s1_d5, Wg_s0_d80, Wg_s0_d320, Wg_s0_d160, Mg_s0_d80, Mg_s0_d320, Mg_s0_d160
+Pooled (27); seed-0 runs with REL (16).
+
+Premise (95%)
+  R0 rho(-E100, score): rho +0.163, 95% [-0.335, +0.653] -> NOT SETTLED (n = 19, dropped draws 0)
+Primary family (97.5% each)
+  R1 rho(-lambda1) - rho(-E1): rho +0.072 - -0.423 = +0.495, 97.5% [-0.416, +1.318] -> NOT SETTLED (n = 19, dropped draws 0)
+  R2 rho(-rJ) - rho(-E8): rho +0.318 - -0.428 = +0.746, 97.5% [-0.167, +1.417] -> NOT SETTLED (n = 19, dropped draws 0)
+Secondary (95%)
+  R0 [pooled pool]: rho +0.471, 95% [+0.078, +0.776] -> SUPPORTED (n = 27, dropped draws 0)
+  R1 [pooled pool]: rho +0.244 - +0.137 = +0.107, 95% [-0.521, +0.760] -> NOT SETTLED (n = 27, dropped draws 0)
+  R2 [pooled pool]: rho +0.579 - +0.138 = +0.441, 95% [+0.044, +0.878] -> LABEL-FREE BETTER (n = 27, dropped draws 0)
+  R0 [mixed test set]: rho +0.004, 95% [-0.423, +0.508] -> NOT SETTLED (n = 19, dropped draws 0)
+  R1 [mixed test set]: rho -0.002 - -0.651 = +0.649, 95% [-0.043, +1.256] -> NOT SETTLED (n = 19, dropped draws 0)
+  R2 [mixed test set]: rho +0.051 - -0.705 = +0.756, 95% [+0.050, +1.325] -> LABEL-FREE BETTER (n = 19, dropped draws 0)
+  R1 [seed-0 runs and REL]: rho +0.224 - -0.374 = +0.597, 95% [-0.320, +1.384] -> NOT SETTLED (n = 16, dropped draws 0)
+  R2 [seed-0 runs and REL]: rho +0.232 - -0.379 = +0.612, 95% [-0.319, +1.366] -> NOT SETTLED (n = 16, dropped draws 0)
+  R0 [seed-1 policy alone]: rho +0.135, 95% [-0.352, +0.635] -> NOT SETTLED (n = 19, dropped draws 0)
+  R1 [seed-1 policy alone]: rho +0.025 - -0.258 = +0.283, 95% [-0.651, +1.104] -> NOT SETTLED (n = 19, dropped draws 0)
+  R2 [seed-1 policy alone]: rho +0.332 - -0.278 = +0.610, 95% [-0.294, +1.327] -> NOT SETTLED (n = 19, dropped draws 0)
+  R0 [outcome -fall rate]: rho +0.072, 95% [-0.453, +0.533] -> NOT SETTLED (n = 19, dropped draws 0)
+  R1 [outcome -fall rate]: rho -0.082 - -0.495 = +0.412, 95% [-0.423, +1.156] -> NOT SETTLED (n = 19, dropped draws 0)
+  R2 [outcome -fall rate]: rho +0.505 - -0.489 = +0.995, 95% [+0.240, +1.446] -> LABEL-FREE BETTER (n = 19, dropped draws 0)
+  R0 [outcome physics return]: rho +0.251, 95% [-0.306, +0.752] -> NOT SETTLED (n = 19, dropped draws 0)
+  R1 [outcome physics return]: rho +0.142 - -0.695 = +0.837, 95% [+0.084, +1.450] -> LABEL-FREE BETTER (n = 19, dropped draws 0)
+  R2 [outcome physics return]: rho +0.526 - -0.639 = +1.165, 95% [+0.499, +1.574] -> LABEL-FREE BETTER (n = 19, dropped draws 0)
+  rho(-E368) - rho(-E8): rho +0.323 - -0.428 = +0.751, 95% [-0.013, +1.350] -> NOT SETTLED (n = 19, dropped draws 0)
+  walk test tracking: rho: rho +0.791, 95% [+0.425, +0.955] -> POSITIVE (n = 19, dropped draws 0)
+  walk test tracking: minus rho(-E8): rho +0.791 - -0.428 = +1.219, 95% [+0.711, +1.582] -> WALK TEST BETTER (n = 19, dropped draws 0)
+  walk test falls: rho: rho +0.289, 95% [-0.260, +0.815] -> NOT SETTLED (n = 19, dropped draws 0)
+  walk test falls: minus rho(-E8): rho +0.289 - -0.428 = +0.717, 95% [-0.299, +1.599] -> NOT SETTLED (n = 19, dropped draws 0)
+  walk test u: rho: rho +0.837, 95% [+0.531, +0.963] -> POSITIVE (n = 19, dropped draws 0)
+  walk test u: minus rho(-E8): rho +0.837 - -0.428 = +1.265, 95% [+0.736, +1.643] -> WALK TEST BETTER (n = 19, dropped draws 0)
+  'failed' separated by E1: AUC 0.269, 95% [+0.060, +0.538] -> NOT SETTLED (n = 19)
+  'failed' separated by E8: AUC 0.308, 95% [+0.083, +0.577] -> NOT SETTLED (n = 19)
+  'failed' separated by E24: AUC 0.397, 95% [+0.143, +0.676] -> NOT SETTLED (n = 19)
+  'failed' separated by E100: AUC 0.667, 95% [+0.397, +0.910] -> NOT SETTLED (n = 19)
+  'failed' separated by E368: AUC 0.667, 95% [+0.324, +1.000] -> NOT SETTLED (n = 19)
+  'failed' separated by lambda1: AUC 0.462, 95% [+0.102, +0.833] -> NOT SETTLED (n = 19)
+  'failed' separated by rJ: AUC 0.667, 95% [+0.321, +1.000] -> NOT SETTLED (n = 19)
+  best three by score: W_s0_d5, W_s1_d5, REL (mean 0.599)
+    E1       chose W_s0_d80, W_s1_d80, Wtf_s0_d80; shortfall +0.525, 95% [+0.266, +0.552]
+    E8       chose W_s0_d80, W_s1_d80, Wg_s0_d320; shortfall +0.542, 95% [+0.271, +0.554]
+    E100     chose W_s1_d80, W_s0_d80, REL; shortfall +0.360, 95% [+0.009, +0.546]
+    E368     chose Wtf_s0_d5, W_s1_d5, REL; shortfall +0.071, 95% [+0.000, +0.330]
+    lambda1  chose Wtf_s0_d5, REL, M_s0_d5; shortfall +0.233, 95% [+0.000, +0.495]
+    rJ       chose Wtf_s0_d5, W_s1_d5, REL; shortfall +0.071, 95% [+0.000, +0.338]
+Exploratory
+  rho(-rA) - rho(-E8): rho +0.433 - -0.428 = +0.861, 95% [-0.059, +1.472] -> NOT SETTLED (n = 19, dropped draws 0)
+Descriptive: 18 ladder tests; 4 needed a third policy.

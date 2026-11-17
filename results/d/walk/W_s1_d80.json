@@ -1,0 +1,68 @@
+{
+ "what": "Option D walk test (secondary): RWM's released policy, noise-free, in the simulator's imagination",
+ "simulator": {
+  "name": "W_s1_d80",
+  "kind": "ladder",
+  "how": "ladder: REL fine-tuned on MuJoCo data (Option D)",
+  "path": "AIR 2027/runs/d/W_s1_d80/final.pt",
+  "sha256": "eef4fffe04cbfc0bb5c5bba35f75fb92e6c227e7ba83bb33e4e83ec1c4c34636",
+  "variant": null,
+  "variant_info": null,
+  "scales": "authors",
+  "holdout": "",
+  "ensemble": 5,
+  "run": "W_s1",
+  "steps": 80,
+  "data": "walking",
+  "lr": 0.0001,
+  "N": 8,
+  "seed": 1
+ },
+ "settings": {
+  "robots": 1024,
+  "steps": 256,
+  "seed": 20278,
+  "actions": "noise-free (policy mean)",
+  "episodes": "each robot's first"
+ },
+ "start_states": {
+  "rule": "the authors' recorded data (the lite code's own start states)",
+  "holdout": null,
+  "windows_kept_total": null,
+  "scales": "authors"
+ },
+ "falls": 0.001953125,
+ "tracking_per_step": 0.02490245174191471,
+ "u_bar": 1.2419389086846047,
+ "tracking_mujoco_per_step": 0.029102890721680583,
+ "tracking_ratio": 0.8556693553250124,
+ "imagine": {
+  "robots": 1024,
+  "steps_run": 256,
+  "episodes_finished": 1024,
+  "share_fell": 0.001953125,
+  "falls": 2,
+  "mean_length": 255.6220703125,
+  "u_bar": 1.2419389086846047,
+  "uncertainty_weight_in_env": -1.0,
+  "per_step": {
+   "track_lin_vel_xy_exp": 0.015765494425774556,
+   "track_ang_vel_z_exp": 0.009136957316140152,
+   "lin_vel_z_l2": -0.0002819908820346649,
+   "ang_vel_xy_l2": -0.0002329450830606611,
+   "dof_torques_l2": -0.0010974659256254681,
+   "dof_acc_l2": -0.00047320814347012784,
+   "action_rate_l2": -0.00014850119537241873,
+   "feet_air_time": -0.0004478451643569386,
+   "undesired_contacts": -2.6360325973223188e-05,
+   "stand_still": -0.0007964825420001843,
+   "flat_orientation_l2": -0.00042639554769607397,
+   "dof_pos_limits": 0.0,
+   "uncertainty": -0.024838777618090613
+  },
+  "tracking_per_step": 0.02490245174191471,
+  "total_per_step": -0.0038675206857656658
+ },
+ "seconds": 31.274024963378906,
+ "torch": "2.2.2"
+}

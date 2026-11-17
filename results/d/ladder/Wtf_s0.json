@@ -1,0 +1,124 @@
+{
+ "run": "Wtf_s0",
+ "status": "done",
+ "tests": [
+  {
+   "steps": 80,
+   "sim": "Wtf_s0_d80",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "Wtf_s0_d80__p1",
+     "seed": 1,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.09109913713189206,
+     "fall_rate": 0.78125,
+     "physics_return": -7.892812711952624,
+     "eval": "results/d/eval/Wtf_s0_d80__p1.json",
+     "failed": true
+    },
+    {
+     "policy": "Wtf_s0_d80__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.10224715165254313,
+     "fall_rate": 0.8645833333333334,
+     "physics_return": -4.6148117399762185,
+     "eval": "results/d/eval/Wtf_s0_d80__p2.json",
+     "failed": true
+    }
+   ],
+   "verdict": "failed",
+   "third_policy": false
+  },
+  {
+   "steps": 20,
+   "sim": "Wtf_s0_d20",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "Wtf_s0_d20__p1",
+     "seed": 1,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.20919812794890422,
+     "fall_rate": 0.6666666666666666,
+     "physics_return": -3.5161184769647855,
+     "eval": "results/d/eval/Wtf_s0_d20__p1.json",
+     "failed": false
+    },
+    {
+     "policy": "Wtf_s0_d20__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.10288400805368485,
+     "fall_rate": 0.75,
+     "physics_return": -6.543738258728351,
+     "eval": "results/d/eval/Wtf_s0_d20__p2.json",
+     "failed": true
+    },
+    {
+     "policy": "Wtf_s0_d20__p3",
+     "seed": 3,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.1390863837887395,
+     "fall_rate": 0.4270833333333333,
+     "physics_return": -6.190526809053884,
+     "eval": "results/d/eval/Wtf_s0_d20__p3.json",
+     "failed": true
+    }
+   ],
+   "verdict": "failed",
+   "third_policy": true
+  },
+  {
+   "steps": 5,
+   "sim": "Wtf_s0_d5",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "Wtf_s0_d5__p1",
+     "seed": 1,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.5998355274562116,
+     "fall_rate": 0.3854166666666667,
+     "physics_return": 7.166496505837519,
+     "eval": "results/d/eval/Wtf_s0_d5__p1.json",
+     "failed": false
+    },
+    {
+     "policy": "Wtf_s0_d5__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.19344478104503082,
+     "fall_rate": 0.4583333333333333,
+     "physics_return": -6.447561780386249,
+     "eval": "results/d/eval/Wtf_s0_d5__p2.json",
+     "failed": false
+    }
+   ],
+   "verdict": "did not fail",
+   "third_policy": false
+  }
+ ],
+ "started_hours": 16.05019057995743,
+ "started": "2026-11-15T12:56:56",
+ "finished_hours": 33.03300019330449,
+ "boundary": true
+}

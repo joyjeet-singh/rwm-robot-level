@@ -1,0 +1,46 @@
+{
+ "policy": "M_s0_d20__p1",
+ "sim": "M_s0_d20",
+ "seed": 1,
+ "status": "failed_by_simulator",
+ "failed": true,
+ "measure": false,
+ "failed_by_simulator": {
+  "why": "the same crash inside the lite code twice; the crash guard ran clean on REL",
+  "score": 0.0,
+  "fall_rate": 1.0,
+  "crashes": [
+   {
+    "policy": "M_s0_d20__p1",
+    "sim": "M_s0_d20",
+    "seed": 1,
+    "attempt": 1,
+    "type": "RuntimeError",
+    "message": "normal expects all elements of std >= 0.0",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/joyjeetsingh/Downloads/PDM/AIR 2027/scripts/d/train_policy.py\", line 211, in train\n    summ = RL.main(argv)\n           ^^^^^^^^^^^^^\n  File \"/Users/joyjeetsingh/Downloads/PDM/AIR 2027/scripts/lite/run_lite.py\", line 185, in main\n    exp.train_policy(log_dir, **cfg.policy_training_config.to_dict())\n  File \"/Users/joyjeetsingh/Downloads/PDM/robotic_world_model_lite/scripts/train.py\", line 307, in train_policy\n    policy_training.learn()\n  File \"/Users/joyjeetsingh/Downloads/PDM/robotic_world_model_lite/scripts/policy_training.py\", line 105, in learn\n    loss_dict = self.alg.update()\n                ^^^^^^^^^^^^^^^^^\n  File \"/Users/joyjeetsingh/Downloads/PDM/rsl_rl_rwm/rsl_rl/algorithms/ppo.py\", line 249, in update\n    self.policy.act(obs_batch, masks=masks_batch, hidden_states=hid_states_batch[0])\n  File \"/Users/joyjeetsingh/Downloads/PDM/rsl_rl_rwm/rsl_rl/modules/actor_critic.py\", line 146, in act\n    return self.distribution.sample()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/joyjeetsingh/Downloads/PDM/.venv-rwm311/lib/python3.11/site-packages/torch/distributions/normal.py\", line 70, in sample\n    return torch.normal(self.loc.expand(shape), self.scale.expand(shape))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: normal expects all elements of std >= 0.0\n",
+    "iterations_logged": 479,
+    "time": "2026-11-15T06:15:18"
+   },
+   {
+    "policy": "M_s0_d20__p1",
+    "sim": "M_s0_d20",
+    "seed": 1,
+    "attempt": 2,
+    "type": "RuntimeError",
+    "message": "normal expects all elements of std >= 0.0",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/joyjeetsingh/Downloads/PDM/AIR 2027/scripts/d/train_policy.py\", line 211, in train\n    summ = RL.main(argv)\n           ^^^^^^^^^^^^^\n  File \"/Users/joyjeetsingh/Downloads/PDM/AIR 2027/scripts/lite/run_lite.py\", line 185, in main\n    exp.train_policy(log_dir, **cfg.policy_training_config.to_dict())\n  File \"/Users/joyjeetsingh/Downloads/PDM/robotic_world_model_lite/scripts/train.py\", line 307, in train_policy\n    policy_training.learn()\n  File \"/Users/joyjeetsingh/Downloads/PDM/robotic_world_model_lite/scripts/policy_training.py\", line 105, in learn\n    loss_dict = self.alg.update()\n                ^^^^^^^^^^^^^^^^^\n  File \"/Users/joyjeetsingh/Downloads/PDM/rsl_rl_rwm/rsl_rl/algorithms/ppo.py\", line 249, in update\n    self.policy.act(obs_batch, masks=masks_batch, hidden_states=hid_states_batch[0])\n  File \"/Users/joyjeetsingh/Downloads/PDM/rsl_rl_rwm/rsl_rl/modules/actor_critic.py\", line 146, in act\n    return self.distribution.sample()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/joyjeetsingh/Downloads/PDM/.venv-rwm311/lib/python3.11/site-packages/torch/distributions/normal.py\", line 70, in sample\n    return torch.normal(self.loc.expand(shape), self.scale.expand(shape))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: normal expects all elements of std >= 0.0\n",
+    "iterations_logged": 479,
+    "time": "2026-11-15T08:14:32"
+   }
+  ],
+  "guard": {
+   "ok": true,
+   "exit": 0,
+   "name": "_test_guard_M_s0_d20__p1",
+   "iterations": 3,
+   "sim": "REL"
+  }
+ },
+ "actor_sha256": null,
+ "what": "Option D policy whose training failed by its simulator"
+}

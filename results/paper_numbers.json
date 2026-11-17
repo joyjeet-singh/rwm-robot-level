@@ -1864,6 +1864,121 @@
   "source": "rwm_repro/results/paper_numbers.json",
   "value": "0.13\\%"
  },
+ "c_batch": {
+  "path": "training.batch",
+  "source": "AIR 2027/results/c/probe.json",
+  "value": "256"
+ },
+ "c_d0_falls": {
+  "path": "D0.fall_rows",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "0"
+ },
+ "c_d0_rows": {
+  "path": "D0.rows",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "10{,}000"
+ },
+ "c_d1_imfell_max": {
+  "path": "max over single-network D1.<p>.imagination.sampled.share_fell",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "0.2\\%"
+ },
+ "c_d1_realfell": {
+  "path": "min over single-network D1.<p>.physics.fall_rate",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "100\\%"
+ },
+ "c_d2_max": {
+  "path": "max over single-network D2.<p>.ratio_of_means",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "7.9"
+ },
+ "c_d2_min": {
+  "path": "min over single-network D2.<p>.ratio_of_means",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "6.6"
+ },
+ "c_d2_rel": {
+  "path": "D2.REL__p0.ratio_of_means",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "1.9"
+ },
+ "c_d3_p0_falls": {
+  "path": "D3.A5_s0__p0.fall_rate",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "0\\%"
+ },
+ "c_d3_p0_speed": {
+  "path": "D3.A5_s0__p0.speed_err",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "0.80"
+ },
+ "c_d3_p1_falls": {
+  "path": "D3.A5_s0__p1.fall_rate",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "100\\%"
+ },
+ "c_d4_share": {
+  "path": "D4.all_ten_episodes.share_exact",
+  "source": "AIR 2027/results/c_diag.json",
+  "value": "13\\%"
+ },
+ "c_ga_fell": {
+  "path": "gate_a2.first.share_fell",
+  "source": "AIR 2027/results/c_pilot.json",
+  "value": "16\\%"
+ },
+ "c_ga_fell_lim": {
+  "path": "gate_a2.first.fall_limit",
+  "source": "AIR 2027/results/c_pilot.json",
+  "value": "10\\%"
+ },
+ "c_ga_track": {
+  "path": "gate_a2.first.tracking_ratio",
+  "source": "AIR 2027/results/c_pilot.json",
+  "value": "31\\%"
+ },
+ "c_ga_track_lim": {
+  "path": "gate_a2.first.tracking_needed / tracking_mujoco_per_step",
+  "source": "AIR 2027/results/c_pilot.json",
+  "value": "80\\%"
+ },
+ "c_gb_fell": {
+  "path": "gate_a2.after_2S.share_fell",
+  "source": "AIR 2027/results/c_pilot.json",
+  "value": "27\\%"
+ },
+ "c_gb_track": {
+  "path": "gate_a2.after_2S.tracking_ratio",
+  "source": "AIR 2027/results/c_pilot.json",
+  "value": "49\\%"
+ },
+ "c_pass": {
+  "path": "sims.sim_6M_N8_s0.steps * training.batch / rung_6M rows (share of one pass)",
+  "source": "AIR 2027/results/c/pilot_sims.json; AIR 2027/results/c/probe.json; AIR 2027/optc/data/rung_6M.stats.json",
+  "value": "0.1"
+ },
+ "c_pass_two": {
+  "path": "sims.sim_6M_N8_s0__2S.steps * training.batch / rung_6M rows",
+  "source": "AIR 2027/results/c/pilot_sims_2S.json; AIR 2027/results/c/probe.json; AIR 2027/optc/data/rung_6M.stats.json",
+  "value": "0.2"
+ },
+ "c_rows_sixm": {
+  "path": "rows / 1e6",
+  "source": "AIR 2027/optc/data/rung_6M.stats.json",
+  "value": "6.0"
+ },
+ "c_steps": {
+  "path": "sims.sim_6M_N8_s0.steps",
+  "source": "AIR 2027/results/c/pilot_sims.json",
+  "value": "2{,}572"
+ },
+ "c_steps_two": {
+  "path": "sims.sim_6M_N8_s0__2S.steps",
+  "source": "AIR 2027/results/c/pilot_sims_2S.json",
+  "value": "5{,}144"
+ },
  "checks_all_pass": {
   "path": "all_pass",
   "source": "AIR 2027/results/checks.json",
@@ -1943,6 +2058,3006 @@
   "path": "D4_X5.lam_pos[0]",
   "source": "AIR 2027/results/stats.json",
   "value": "8"
+ },
+ "d_auc_Eeight": {
+  "path": "secondary.failed_auc.E8.auc",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.31"
+ },
+ "d_auc_Eeight_ci": {
+  "path": "secondary.failed_auc.E8.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.08, 0.58]"
+ },
+ "d_auc_Eeight_label": {
+  "path": "secondary.failed_auc.E8.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_auc_Ehund": {
+  "path": "secondary.failed_auc.E100.auc",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.67"
+ },
+ "d_auc_Ehund_ci": {
+  "path": "secondary.failed_auc.E100.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.40, 0.91]"
+ },
+ "d_auc_Ehund_label": {
+  "path": "secondary.failed_auc.E100.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_auc_Elong": {
+  "path": "secondary.failed_auc.E368.auc",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.67"
+ },
+ "d_auc_Elong_ci": {
+  "path": "secondary.failed_auc.E368.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.32, 1.00]"
+ },
+ "d_auc_Elong_label": {
+  "path": "secondary.failed_auc.E368.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_auc_Eone": {
+  "path": "secondary.failed_auc.E1.auc",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.27"
+ },
+ "d_auc_Eone_ci": {
+  "path": "secondary.failed_auc.E1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.06, 0.54]"
+ },
+ "d_auc_Eone_label": {
+  "path": "secondary.failed_auc.E1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_auc_Etwfour": {
+  "path": "secondary.failed_auc.E24.auc",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.40"
+ },
+ "d_auc_Etwfour_ci": {
+  "path": "secondary.failed_auc.E24.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.14, 0.68]"
+ },
+ "d_auc_Etwfour_label": {
+  "path": "secondary.failed_auc.E24.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_auc_lam": {
+  "path": "secondary.failed_auc.lambda1.auc",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.46"
+ },
+ "d_auc_lam_ci": {
+  "path": "secondary.failed_auc.lambda1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.10, 0.83]"
+ },
+ "d_auc_lam_label": {
+  "path": "secondary.failed_auc.lambda1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_auc_n_settled": {
+  "path": "secondary.failed_auc.*.label (count settled)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0"
+ },
+ "d_auc_nfail": {
+  "path": "secondary.failed_auc.E1.n_failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "13"
+ },
+ "d_auc_rJ": {
+  "path": "secondary.failed_auc.rJ.auc",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.67"
+ },
+ "d_auc_rJ_ci": {
+  "path": "secondary.failed_auc.rJ.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.32, 1.00]"
+ },
+ "d_auc_rJ_label": {
+  "path": "secondary.failed_auc.rJ.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_auth_score": {
+  "path": "authors.score",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.942"
+ },
+ "d_bt_Eeight": {
+  "path": "secondary.best_three.checks.E8.shortfall",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.54"
+ },
+ "d_bt_Eeight_chosen": {
+  "path": "secondary.best_three.checks.E8.chosen",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "W\\_s0\\_d80, W\\_s1\\_d80, Wg\\_s0\\_d320"
+ },
+ "d_bt_Eeight_ci": {
+  "path": "secondary.best_three.checks.E8.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.27, 0.55]"
+ },
+ "d_bt_Ehund": {
+  "path": "secondary.best_three.checks.E100.shortfall",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.36"
+ },
+ "d_bt_Ehund_chosen": {
+  "path": "secondary.best_three.checks.E100.chosen",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "W\\_s1\\_d80, W\\_s0\\_d80, REL"
+ },
+ "d_bt_Ehund_ci": {
+  "path": "secondary.best_three.checks.E100.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.01, 0.55]"
+ },
+ "d_bt_Elong": {
+  "path": "secondary.best_three.checks.E368.shortfall",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.07"
+ },
+ "d_bt_Elong_chosen": {
+  "path": "secondary.best_three.checks.E368.chosen",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "Wtf\\_s0\\_d5, W\\_s1\\_d5, REL"
+ },
+ "d_bt_Elong_ci": {
+  "path": "secondary.best_three.checks.E368.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.00, 0.33]"
+ },
+ "d_bt_Eone": {
+  "path": "secondary.best_three.checks.E1.shortfall",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.53"
+ },
+ "d_bt_Eone_chosen": {
+  "path": "secondary.best_three.checks.E1.chosen",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "W\\_s0\\_d80, W\\_s1\\_d80, Wtf\\_s0\\_d80"
+ },
+ "d_bt_Eone_ci": {
+  "path": "secondary.best_three.checks.E1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.27, 0.55]"
+ },
+ "d_bt_best": {
+  "path": "secondary.best_three.best_three",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "W\\_s0\\_d5, W\\_s1\\_d5, REL"
+ },
+ "d_bt_lam": {
+  "path": "secondary.best_three.checks.lambda1.shortfall",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.23"
+ },
+ "d_bt_lam_chosen": {
+  "path": "secondary.best_three.checks.lambda1.chosen",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "Wtf\\_s0\\_d5, REL, M\\_s0\\_d5"
+ },
+ "d_bt_lam_ci": {
+  "path": "secondary.best_three.checks.lambda1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.00, 0.49]"
+ },
+ "d_bt_mean": {
+  "path": "secondary.best_three.best_three_mean",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.60"
+ },
+ "d_bt_rJ": {
+  "path": "secondary.best_three.checks.rJ.shortfall",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.07"
+ },
+ "d_bt_rJ_chosen": {
+  "path": "secondary.best_three.checks.rJ.chosen",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "Wtf\\_s0\\_d5, W\\_s1\\_d5, REL"
+ },
+ "d_bt_rJ_ci": {
+  "path": "secondary.best_three.checks.rJ.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[0.00, 0.34]"
+ },
+ "d_fail_max": {
+  "path": "max score over failed ladder simulators",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.15"
+ },
+ "d_fail_score": {
+  "path": "fail_score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.15"
+ },
+ "d_fr_r0_ci": {
+  "path": "secondary.fall_rate.R0.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.45, +0.53]"
+ },
+ "d_fr_r0_label": {
+  "path": "secondary.fall_rate.R0.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_fr_r0_rho": {
+  "path": "secondary.fall_rate.R0.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.07"
+ },
+ "d_fr_r1_base": {
+  "path": "secondary.fall_rate.R1.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.49"
+ },
+ "d_fr_r1_ci": {
+  "path": "secondary.fall_rate.R1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.42, +1.16]"
+ },
+ "d_fr_r1_label": {
+  "path": "secondary.fall_rate.R1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_fr_r1_new": {
+  "path": "secondary.fall_rate.R1.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.08"
+ },
+ "d_fr_r1_rho": {
+  "path": "secondary.fall_rate.R1.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.41"
+ },
+ "d_fr_r2_base": {
+  "path": "secondary.fall_rate.R2.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.49"
+ },
+ "d_fr_r2_ci": {
+  "path": "secondary.fall_rate.R2.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.24, +1.45]"
+ },
+ "d_fr_r2_label": {
+  "path": "secondary.fall_rate.R2.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "label-free better"
+ },
+ "d_fr_r2_new": {
+  "path": "secondary.fall_rate.R2.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.51"
+ },
+ "d_fr_r2_rho": {
+  "path": "secondary.fall_rate.R2.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.99"
+ },
+ "d_job_h": {
+  "path": "descriptive.job_hours",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "53"
+ },
+ "d_l_mgd160": {
+  "path": "descriptive.simulators[Mg_s0_d160].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.12$^\\times$"
+ },
+ "d_l_mgd320": {
+  "path": "descriptive.simulators[Mg_s0_d320].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.10$^\\times$"
+ },
+ "d_l_mgd80": {
+  "path": "descriptive.simulators[Mg_s0_d80].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.30"
+ },
+ "d_l_ms0d20": {
+  "path": "descriptive.simulators[M_s0_d20].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.04$^\\times$"
+ },
+ "d_l_ms0d5": {
+  "path": "descriptive.simulators[M_s0_d5].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.11$^\\times$"
+ },
+ "d_l_ms0d80": {
+  "path": "descriptive.simulators[M_s0_d80].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.08$^\\times$"
+ },
+ "d_l_wgd160": {
+  "path": "descriptive.simulators[Wg_s0_d160].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09$^\\times$"
+ },
+ "d_l_wgd320": {
+  "path": "descriptive.simulators[Wg_s0_d320].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.05$^\\times$"
+ },
+ "d_l_wgd80": {
+  "path": "descriptive.simulators[Wg_s0_d80].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.31"
+ },
+ "d_l_ws0d20": {
+  "path": "descriptive.simulators[W_s0_d20].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09$^\\times$"
+ },
+ "d_l_ws0d5": {
+  "path": "descriptive.simulators[W_s0_d5].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.61"
+ },
+ "d_l_ws0d80": {
+  "path": "descriptive.simulators[W_s0_d80].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.05$^\\times$"
+ },
+ "d_l_ws1d20": {
+  "path": "descriptive.simulators[W_s1_d20].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09$^\\times$"
+ },
+ "d_l_ws1d5": {
+  "path": "descriptive.simulators[W_s1_d5].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.60"
+ },
+ "d_l_ws1d80": {
+  "path": "descriptive.simulators[W_s1_d80].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.07$^\\times$"
+ },
+ "d_l_wtfd20": {
+  "path": "descriptive.simulators[Wtf_s0_d20].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.15$^\\times$"
+ },
+ "d_l_wtfd5": {
+  "path": "descriptive.simulators[Wtf_s0_d5].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.40"
+ },
+ "d_l_wtfd80": {
+  "path": "descriptive.simulators[Wtf_s0_d80].score (+ failed mark)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.10$^\\times$"
+ },
+ "d_long_ci": {
+  "path": "secondary.E368_vs_E8.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.01, +1.35]"
+ },
+ "d_long_label": {
+  "path": "secondary.E368_vs_E8.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_long_new": {
+  "path": "secondary.E368_vs_E8.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.32"
+ },
+ "d_long_rho": {
+  "path": "secondary.E368_vs_E8.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.75"
+ },
+ "d_max_Eeight": {
+  "path": "max over ladder descriptive.checks.<sim>.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.148"
+ },
+ "d_max_Ehund": {
+  "path": "max over ladder descriptive.checks.<sim>.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.560"
+ },
+ "d_max_Elong": {
+  "path": "max over ladder descriptive.checks.<sim>.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.398"
+ },
+ "d_max_Eone": {
+  "path": "max over ladder descriptive.checks.<sim>.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.121"
+ },
+ "d_min_Eeight": {
+  "path": "min over ladder descriptive.checks.<sim>.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.076"
+ },
+ "d_min_Ehund": {
+  "path": "min over ladder descriptive.checks.<sim>.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.253"
+ },
+ "d_min_Elong": {
+  "path": "min over ladder descriptive.checks.<sim>.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.662"
+ },
+ "d_min_Eone": {
+  "path": "min over ladder descriptive.checks.<sim>.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.064"
+ },
+ "d_mix_r0_ci": {
+  "path": "secondary.mixed.R0.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.42, +0.51]"
+ },
+ "d_mix_r0_label": {
+  "path": "secondary.mixed.R0.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_mix_r0_rho": {
+  "path": "secondary.mixed.R0.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.00"
+ },
+ "d_mix_r1_base": {
+  "path": "secondary.mixed.R1.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.65"
+ },
+ "d_mix_r1_ci": {
+  "path": "secondary.mixed.R1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.04, +1.26]"
+ },
+ "d_mix_r1_label": {
+  "path": "secondary.mixed.R1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_mix_r1_new": {
+  "path": "secondary.mixed.R1.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.00"
+ },
+ "d_mix_r1_rho": {
+  "path": "secondary.mixed.R1.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.65"
+ },
+ "d_mix_r2_base": {
+  "path": "secondary.mixed.R2.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.71"
+ },
+ "d_mix_r2_ci": {
+  "path": "secondary.mixed.R2.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.05, +1.32]"
+ },
+ "d_mix_r2_label": {
+  "path": "secondary.mixed.R2.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "label-free better"
+ },
+ "d_mix_r2_new": {
+  "path": "secondary.mixed.R2.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.05"
+ },
+ "d_mix_r2_rho": {
+  "path": "secondary.mixed.R2.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.76"
+ },
+ "d_n_failed": {
+  "path": "descriptive.simulators[pool == ladder].failed (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "13"
+ },
+ "d_n_fbs": {
+  "path": "ladder policies with status failed_by_simulator (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3"
+ },
+ "d_n_lower_Eeight": {
+  "path": "ladder simulators with expert E8 below REL's (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "18"
+ },
+ "d_n_lower_Ehund": {
+  "path": "ladder simulators with expert E100 below REL's (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2"
+ },
+ "d_n_lower_Elong": {
+  "path": "ladder simulators with expert E368 below REL's (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2"
+ },
+ "d_n_lower_Eone": {
+  "path": "ladder simulators with expert E1 below REL's (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "18"
+ },
+ "d_n_pol": {
+  "path": "descriptive.simulators[ladder].policies (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "40"
+ },
+ "d_n_pol_failed": {
+  "path": "ladder policies with failed (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "27"
+ },
+ "d_n_pooled": {
+  "path": "pools.pooled (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "27"
+ },
+ "d_n_primary": {
+  "path": "pools.primary (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "19"
+ },
+ "d_n_runs": {
+  "path": "descriptive.runs[status == done] (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "6"
+ },
+ "d_n_runs_all": {
+  "path": "descriptive.runs (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "7"
+ },
+ "d_n_seedzero": {
+  "path": "pools.seed0 (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "16"
+ },
+ "d_n_settled": {
+  "path": "premise/primary labels (count settled)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0"
+ },
+ "d_n_stops": {
+  "path": "descriptive.stops (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0"
+ },
+ "d_n_tested": {
+  "path": "descriptive.tests",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "18"
+ },
+ "d_n_third": {
+  "path": "descriptive.tests_with_third_policy",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "4"
+ },
+ "d_n_walk": {
+  "path": "descriptive.simulators[ladder, not failed] (count)",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "5"
+ },
+ "d_pool_r0_ci": {
+  "path": "secondary.pooled.R0.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.08, +0.78]"
+ },
+ "d_pool_r0_label": {
+  "path": "secondary.pooled.R0.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "supported"
+ },
+ "d_pool_r0_rho": {
+  "path": "secondary.pooled.R0.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.47"
+ },
+ "d_pool_r1_base": {
+  "path": "secondary.pooled.R1.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.14"
+ },
+ "d_pool_r1_ci": {
+  "path": "secondary.pooled.R1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.52, +0.76]"
+ },
+ "d_pool_r1_label": {
+  "path": "secondary.pooled.R1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_pool_r1_new": {
+  "path": "secondary.pooled.R1.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.24"
+ },
+ "d_pool_r1_rho": {
+  "path": "secondary.pooled.R1.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.11"
+ },
+ "d_pool_r2_base": {
+  "path": "secondary.pooled.R2.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.14"
+ },
+ "d_pool_r2_ci": {
+  "path": "secondary.pooled.R2.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.04, +0.88]"
+ },
+ "d_pool_r2_label": {
+  "path": "secondary.pooled.R2.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "label-free better"
+ },
+ "d_pool_r2_new": {
+  "path": "secondary.pooled.R2.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.58"
+ },
+ "d_pool_r2_rho": {
+  "path": "secondary.pooled.R2.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.44"
+ },
+ "d_r0_ci": {
+  "path": "premise.R0.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.34, +0.65]"
+ },
+ "d_r0_label": {
+  "path": "premise.R0.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_r0_rho": {
+  "path": "premise.R0.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.16"
+ },
+ "d_r1_base": {
+  "path": "primary.R1.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.42"
+ },
+ "d_r1_ci": {
+  "path": "primary.R1.ci97.5",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.42, +1.32]"
+ },
+ "d_r1_delta": {
+  "path": "primary.R1.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.49"
+ },
+ "d_r1_label": {
+  "path": "primary.R1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_r1_new": {
+  "path": "primary.R1.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.07"
+ },
+ "d_r2_base": {
+  "path": "primary.R2.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.43"
+ },
+ "d_r2_ci": {
+  "path": "primary.R2.ci97.5",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.17, +1.42]"
+ },
+ "d_r2_delta": {
+  "path": "primary.R2.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.75"
+ },
+ "d_r2_label": {
+  "path": "primary.R2.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_r2_new": {
+  "path": "primary.R2.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.32"
+ },
+ "d_ra_ci": {
+  "path": "exploratory.rA_vs_E8.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.06, +1.47]"
+ },
+ "d_ra_label": {
+  "path": "exploratory.rA_vs_E8.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_ra_new": {
+  "path": "exploratory.rA_vs_E8.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.43"
+ },
+ "d_ra_rho": {
+  "path": "exploratory.rA_vs_E8.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.86"
+ },
+ "d_rec_a_Eeight": {
+  "path": "simulators.A_s0.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.305"
+ },
+ "d_rec_a_Ehund": {
+  "path": "simulators.A_s0.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.445"
+ },
+ "d_rec_a_Eone": {
+  "path": "simulators.A_s0.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.158"
+ },
+ "d_rec_a_falls": {
+  "path": "simulators.A_s0.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "97\\%"
+ },
+ "d_rec_a_scores": {
+  "path": "simulators.A_s0.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.01"
+ },
+ "d_rec_a_wfalls": {
+  "path": "simulators.A_s0.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%"
+ },
+ "d_rec_a_wtrack": {
+  "path": "simulators.A_s0.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "60\\%"
+ },
+ "d_rec_afive_Eeight": {
+  "path": "simulators.A5_s0.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.302"
+ },
+ "d_rec_afive_Ehund": {
+  "path": "simulators.A5_s0.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.432"
+ },
+ "d_rec_afive_Eone": {
+  "path": "simulators.A5_s0.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.155"
+ },
+ "d_rec_afive_pfalls": {
+  "path": "simulators.A5_s0.policies[].step2_fall_rate (Step 2's protocol; no walking score)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%, 100\\%"
+ },
+ "d_rec_afive_wfalls": {
+  "path": "simulators.A5_s0.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "3\\%"
+ },
+ "d_rec_afive_wtrack": {
+  "path": "simulators.A5_s0.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "43\\%"
+ },
+ "d_rec_au50_Eeight": {
+  "path": "simulators.A_s0__u50.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.410"
+ },
+ "d_rec_au50_Ehund": {
+  "path": "simulators.A_s0__u50.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "1.403"
+ },
+ "d_rec_au50_Eone": {
+  "path": "simulators.A_s0__u50.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.183"
+ },
+ "d_rec_au50_falls": {
+  "path": "simulators.A_s0__u50.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "100\\%"
+ },
+ "d_rec_au50_scores": {
+  "path": "simulators.A_s0__u50.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.01"
+ },
+ "d_rec_au50_wfalls": {
+  "path": "simulators.A_s0__u50.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%"
+ },
+ "d_rec_au50_wtrack": {
+  "path": "simulators.A_s0__u50.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "7\\%"
+ },
+ "d_rec_b_Eeight": {
+  "path": "simulators.B_s0.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.356"
+ },
+ "d_rec_b_Ehund": {
+  "path": "simulators.B_s0.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.833"
+ },
+ "d_rec_b_Eone": {
+  "path": "simulators.B_s0.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.168"
+ },
+ "d_rec_b_falls": {
+  "path": "simulators.B_s0.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "100\\%"
+ },
+ "d_rec_b_scores": {
+  "path": "simulators.B_s0.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.01"
+ },
+ "d_rec_b_wfalls": {
+  "path": "simulators.B_s0.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "7\\%"
+ },
+ "d_rec_b_wtrack": {
+  "path": "simulators.B_s0.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "25\\%"
+ },
+ "d_rec_csixm_Eeight": {
+  "path": "simulators.sim_6M_N8_s0.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.152"
+ },
+ "d_rec_csixm_Ehund": {
+  "path": "simulators.sim_6M_N8_s0.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.393"
+ },
+ "d_rec_csixm_Eone": {
+  "path": "simulators.sim_6M_N8_s0.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.101"
+ },
+ "d_rec_csixm_falls": {
+  "path": "simulators.sim_6M_N8_s0.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "100\\%"
+ },
+ "d_rec_csixm_scores": {
+  "path": "simulators.sim_6M_N8_s0.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.000"
+ },
+ "d_rec_csixm_wfalls": {
+  "path": "simulators.sim_6M_N8_s0.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "23\\%"
+ },
+ "d_rec_csixm_wtrack": {
+  "path": "simulators.sim_6M_N8_s0.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "30\\%"
+ },
+ "d_rec_csixmtwo_Eeight": {
+  "path": "simulators.sim_6M_N8_s0__2S.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.124"
+ },
+ "d_rec_csixmtwo_Ehund": {
+  "path": "simulators.sim_6M_N8_s0__2S.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.280"
+ },
+ "d_rec_csixmtwo_Eone": {
+  "path": "simulators.sim_6M_N8_s0__2S.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.087"
+ },
+ "d_rec_csixmtwo_wfalls": {
+  "path": "simulators.sim_6M_N8_s0__2S.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "39\\%"
+ },
+ "d_rec_csixmtwo_wtrack": {
+  "path": "simulators.sim_6M_N8_s0__2S.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "47\\%"
+ },
+ "d_rec_ctenk_Eeight": {
+  "path": "simulators.sim_10k_N8_s0.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.206"
+ },
+ "d_rec_ctenk_Ehund": {
+  "path": "simulators.sim_10k_N8_s0.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.432"
+ },
+ "d_rec_ctenk_Eone": {
+  "path": "simulators.sim_10k_N8_s0.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.130"
+ },
+ "d_rec_ctenk_falls": {
+  "path": "simulators.sim_10k_N8_s0.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "100\\%"
+ },
+ "d_rec_ctenk_scores": {
+  "path": "simulators.sim_10k_N8_s0.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.01"
+ },
+ "d_rec_ctenk_wfalls": {
+  "path": "simulators.sim_10k_N8_s0.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "53\\%"
+ },
+ "d_rec_ctenk_wtrack": {
+  "path": "simulators.sim_10k_N8_s0.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "35\\%"
+ },
+ "d_rec_ctenktwo_Eeight": {
+  "path": "simulators.sim_10k_N8_s0__2S.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.200"
+ },
+ "d_rec_ctenktwo_Ehund": {
+  "path": "simulators.sim_10k_N8_s0__2S.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.381"
+ },
+ "d_rec_ctenktwo_Eone": {
+  "path": "simulators.sim_10k_N8_s0__2S.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.140"
+ },
+ "d_rec_ctenktwo_wfalls": {
+  "path": "simulators.sim_10k_N8_s0__2S.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "55\\%"
+ },
+ "d_rec_ctenktwo_wtrack": {
+  "path": "simulators.sim_10k_N8_s0__2S.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "53\\%"
+ },
+ "d_rec_fp16_Eeight": {
+  "path": "simulators.REL__fp16.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.149"
+ },
+ "d_rec_fp16_Ehund": {
+  "path": "simulators.REL__fp16.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.354"
+ },
+ "d_rec_fp16_Eone": {
+  "path": "simulators.REL__fp16.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.122"
+ },
+ "d_rec_fp16_falls": {
+  "path": "simulators.REL__fp16.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "39\\%, 47\\%"
+ },
+ "d_rec_fp16_scores": {
+  "path": "simulators.REL__fp16.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.60, 0.62"
+ },
+ "d_rec_fp16_verdict": {
+  "path": "simulators.REL__fp16.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "did not fail"
+ },
+ "d_rec_fp16_wfalls": {
+  "path": "simulators.REL__fp16.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%"
+ },
+ "d_rec_fp16_wtrack": {
+  "path": "simulators.REL__fp16.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "87\\%"
+ },
+ "d_rec_int8w_Eeight": {
+  "path": "simulators.REL__int8w.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.439"
+ },
+ "d_rec_int8w_Ehund": {
+  "path": "simulators.REL__int8w.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "1.261"
+ },
+ "d_rec_int8w_Eone": {
+  "path": "simulators.REL__int8w.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.309"
+ },
+ "d_rec_int8w_falls": {
+  "path": "simulators.REL__int8w.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "75\\%, 83\\%"
+ },
+ "d_rec_int8w_scores": {
+  "path": "simulators.REL__int8w.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.06, 0.06"
+ },
+ "d_rec_int8w_verdict": {
+  "path": "simulators.REL__int8w.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "failed"
+ },
+ "d_rec_int8w_wfalls": {
+  "path": "simulators.REL__int8w.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%"
+ },
+ "d_rec_int8w_wtrack": {
+  "path": "simulators.REL__int8w.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "59\\%"
+ },
+ "d_rec_rel_Eeight": {
+  "path": "simulators.REL.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.149"
+ },
+ "d_rec_rel_Ehund": {
+  "path": "simulators.REL.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.354"
+ },
+ "d_rec_rel_Eone": {
+  "path": "simulators.REL.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.122"
+ },
+ "d_rec_rel_falls": {
+  "path": "simulators.REL.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "35\\%, 31\\%, 8\\%"
+ },
+ "d_rec_rel_scores": {
+  "path": "simulators.REL.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.61, 0.57, 0.77"
+ },
+ "d_rec_rel_verdict": {
+  "path": "simulators.REL.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "did not fail"
+ },
+ "d_rec_rel_wfalls": {
+  "path": "simulators.REL.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%"
+ },
+ "d_rec_rel_wtrack": {
+  "path": "simulators.REL.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "87\\%"
+ },
+ "d_rec_s128_Eeight": {
+  "path": "simulators.REL__s128.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.838"
+ },
+ "d_rec_s128_Ehund": {
+  "path": "simulators.REL__s128.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "5.262"
+ },
+ "d_rec_s128_Eone": {
+  "path": "simulators.REL__s128.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.314"
+ },
+ "d_rec_s128_falls": {
+  "path": "simulators.REL__s128.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%, 0\\%"
+ },
+ "d_rec_s128_scores": {
+  "path": "simulators.REL__s128.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.07, 0.07"
+ },
+ "d_rec_s128_verdict": {
+  "path": "simulators.REL__s128.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "failed"
+ },
+ "d_rec_s128_wfalls": {
+  "path": "simulators.REL__s128.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "42\\%"
+ },
+ "d_rec_s128_wtrack": {
+  "path": "simulators.REL__s128.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "9\\%"
+ },
+ "d_rec_s192_Eeight": {
+  "path": "simulators.REL__s192.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.504"
+ },
+ "d_rec_s192_Ehund": {
+  "path": "simulators.REL__s192.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "1.073"
+ },
+ "d_rec_s192_Eone": {
+  "path": "simulators.REL__s192.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.257"
+ },
+ "d_rec_s192_falls": {
+  "path": "simulators.REL__s192.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "22\\%, 92\\%"
+ },
+ "d_rec_s192_scores": {
+  "path": "simulators.REL__s192.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.05, 0.01"
+ },
+ "d_rec_s192_verdict": {
+  "path": "simulators.REL__s192.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "failed"
+ },
+ "d_rec_s192_wfalls": {
+  "path": "simulators.REL__s192.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "20\\%"
+ },
+ "d_rec_s192_wtrack": {
+  "path": "simulators.REL__s192.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "26\\%"
+ },
+ "d_rec_u10_Eeight": {
+  "path": "simulators.REL__u10.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.204"
+ },
+ "d_rec_u10_Ehund": {
+  "path": "simulators.REL__u10.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.475"
+ },
+ "d_rec_u10_Eone": {
+  "path": "simulators.REL__u10.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.173"
+ },
+ "d_rec_u10_falls": {
+  "path": "simulators.REL__u10.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "69\\%, 38\\%"
+ },
+ "d_rec_u10_scores": {
+  "path": "simulators.REL__u10.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.25, 0.53"
+ },
+ "d_rec_u10_verdict": {
+  "path": "simulators.REL__u10.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "did not fail"
+ },
+ "d_rec_u10_wfalls": {
+  "path": "simulators.REL__u10.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%"
+ },
+ "d_rec_u10_wtrack": {
+  "path": "simulators.REL__u10.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "81\\%"
+ },
+ "d_rec_u20_Eeight": {
+  "path": "simulators.REL__u20.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.342"
+ },
+ "d_rec_u20_Ehund": {
+  "path": "simulators.REL__u20.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "1.416"
+ },
+ "d_rec_u20_Eone": {
+  "path": "simulators.REL__u20.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.260"
+ },
+ "d_rec_u20_falls": {
+  "path": "simulators.REL__u20.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "22\\%, 42\\%"
+ },
+ "d_rec_u20_scores": {
+  "path": "simulators.REL__u20.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.06, 0.06"
+ },
+ "d_rec_u20_verdict": {
+  "path": "simulators.REL__u20.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "failed"
+ },
+ "d_rec_u20_wfalls": {
+  "path": "simulators.REL__u20.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "3\\%"
+ },
+ "d_rec_u20_wtrack": {
+  "path": "simulators.REL__u20.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "19\\%"
+ },
+ "d_rec_u30_Eeight": {
+  "path": "simulators.REL__u30.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.560"
+ },
+ "d_rec_u30_Ehund": {
+  "path": "simulators.REL__u30.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "1.074"
+ },
+ "d_rec_u30_Eone": {
+  "path": "simulators.REL__u30.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.353"
+ },
+ "d_rec_u30_falls": {
+  "path": "simulators.REL__u30.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "100\\%, 12\\%"
+ },
+ "d_rec_u30_scores": {
+  "path": "simulators.REL__u30.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.004, 0.06"
+ },
+ "d_rec_u30_verdict": {
+  "path": "simulators.REL__u30.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "failed"
+ },
+ "d_rec_u30_wfalls": {
+  "path": "simulators.REL__u30.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "8\\%"
+ },
+ "d_rec_u30_wtrack": {
+  "path": "simulators.REL__u30.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "5\\%"
+ },
+ "d_rec_u50_Eeight": {
+  "path": "simulators.REL__u50.checks.expert.E8",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "1.116"
+ },
+ "d_rec_u50_Ehund": {
+  "path": "simulators.REL__u50.checks.expert.E100",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "7.241"
+ },
+ "d_rec_u50_Eone": {
+  "path": "simulators.REL__u50.checks.expert.E1",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.420"
+ },
+ "d_rec_u50_falls": {
+  "path": "simulators.REL__u50.policies[].fall_rate (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0\\%, 0\\%"
+ },
+ "d_rec_u50_scores": {
+  "path": "simulators.REL__u50.policies[].score (in order)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.07, 0.07"
+ },
+ "d_rec_u50_verdict": {
+  "path": "simulators.REL__u50.verdict",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "failed"
+ },
+ "d_rec_u50_wfalls": {
+  "path": "simulators.REL__u50.walk.falls",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "1\\%"
+ },
+ "d_rec_u50_wtrack": {
+  "path": "simulators.REL__u50.walk.tracking_ratio",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "4\\%"
+ },
+ "d_reg_commit": {
+  "path": "log --diff-filter=A -- prereg/PREREG_D.md (%h)",
+  "source": "git",
+  "value": "8894501"
+ },
+ "d_reg_time": {
+  "path": "log --diff-filter=A -- prereg/PREREG_D.md (%ct, printed in UTC)",
+  "source": "git",
+  "value": "2026-11-14 15:15 UTC"
+ },
+ "d_rel_Eeight": {
+  "path": "descriptive.checks.REL.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.149"
+ },
+ "d_rel_Ehund": {
+  "path": "descriptive.checks.REL.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.354"
+ },
+ "d_rel_Elong": {
+  "path": "descriptive.checks.REL.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.718"
+ },
+ "d_rel_Eone": {
+  "path": "descriptive.checks.REL.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.122"
+ },
+ "d_rel_p0_score": {
+  "path": "simulators.REL.policies[REL__p0].score",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.77"
+ },
+ "d_rel_p1": {
+  "path": "descriptive.simulators[REL].policies[0].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.61"
+ },
+ "d_rel_p2": {
+  "path": "descriptive.simulators[REL].policies[1].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.57"
+ },
+ "d_rel_score": {
+  "path": "descriptive.simulators[REL].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.59"
+ },
+ "d_ret_r0_ci": {
+  "path": "secondary.physics_return.R0.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.31, +0.75]"
+ },
+ "d_ret_r0_label": {
+  "path": "secondary.physics_return.R0.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_ret_r0_rho": {
+  "path": "secondary.physics_return.R0.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.25"
+ },
+ "d_ret_r1_base": {
+  "path": "secondary.physics_return.R1.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.69"
+ },
+ "d_ret_r1_ci": {
+  "path": "secondary.physics_return.R1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.08, +1.45]"
+ },
+ "d_ret_r1_label": {
+  "path": "secondary.physics_return.R1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "label-free better"
+ },
+ "d_ret_r1_new": {
+  "path": "secondary.physics_return.R1.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.14"
+ },
+ "d_ret_r1_rho": {
+  "path": "secondary.physics_return.R1.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.84"
+ },
+ "d_ret_r2_base": {
+  "path": "secondary.physics_return.R2.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.64"
+ },
+ "d_ret_r2_ci": {
+  "path": "secondary.physics_return.R2.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.50, +1.57]"
+ },
+ "d_ret_r2_label": {
+  "path": "secondary.physics_return.R2.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "label-free better"
+ },
+ "d_ret_r2_new": {
+  "path": "secondary.physics_return.R2.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.53"
+ },
+ "d_ret_r2_rho": {
+  "path": "secondary.physics_return.R2.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+1.16"
+ },
+ "d_rows_onem": {
+  "path": "rows / 1e6 (one decimal)",
+  "source": "AIR 2027/optc/data/rung_1M.stats.json",
+  "value": "1.0"
+ },
+ "d_rows_onem_n": {
+  "path": "rows",
+  "source": "AIR 2027/optc/data/rung_1M.stats.json",
+  "value": "999{,}973"
+ },
+ "d_s2_n": {
+  "path": "simulators with kind released/compressed (count)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "9"
+ },
+ "d_s2_n_failed": {
+  "path": "simulators[released/compressed].verdict == failed (count)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "6"
+ },
+ "d_s2_n_pol": {
+  "path": "Step 2 registered policies (count)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "18"
+ },
+ "d_s2_n_split": {
+  "path": "Step 2 registered policy pairs that disagree (count)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0"
+ },
+ "d_s2_n_stop": {
+  "path": "registered policies with stop_rule_would_fire_at set (count)",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "5"
+ },
+ "d_sone_r0_ci": {
+  "path": "secondary.seed1_policy.R0.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.35, +0.64]"
+ },
+ "d_sone_r0_label": {
+  "path": "secondary.seed1_policy.R0.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_sone_r0_rho": {
+  "path": "secondary.seed1_policy.R0.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.14"
+ },
+ "d_sone_r1_base": {
+  "path": "secondary.seed1_policy.R1.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.26"
+ },
+ "d_sone_r1_ci": {
+  "path": "secondary.seed1_policy.R1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.65, +1.10]"
+ },
+ "d_sone_r1_label": {
+  "path": "secondary.seed1_policy.R1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_sone_r1_new": {
+  "path": "secondary.seed1_policy.R1.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.03"
+ },
+ "d_sone_r1_rho": {
+  "path": "secondary.seed1_policy.R1.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.28"
+ },
+ "d_sone_r2_base": {
+  "path": "secondary.seed1_policy.R2.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.28"
+ },
+ "d_sone_r2_ci": {
+  "path": "secondary.seed1_policy.R2.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.29, +1.33]"
+ },
+ "d_sone_r2_label": {
+  "path": "secondary.seed1_policy.R2.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_sone_r2_new": {
+  "path": "secondary.seed1_policy.R2.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.33"
+ },
+ "d_sone_r2_rho": {
+  "path": "secondary.seed1_policy.R2.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.61"
+ },
+ "d_steps_max": {
+  "path": "max steps over ladder simulators",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "320"
+ },
+ "d_steps_min": {
+  "path": "min steps over ladder simulators",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "5"
+ },
+ "d_still_score": {
+  "path": "authors.standing_reference",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "0.069"
+ },
+ "d_stop_after": {
+  "path": "stop_rule.after",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "50"
+ },
+ "d_stop_len": {
+  "path": "stop_rule.threshold",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "128"
+ },
+ "d_stop_run": {
+  "path": "stop_rule.run",
+  "source": "AIR 2027/results/d_record.json",
+  "value": "50"
+ },
+ "d_sz_r1_base": {
+  "path": "secondary.seed0_runs.R1.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.37"
+ },
+ "d_sz_r1_ci": {
+  "path": "secondary.seed0_runs.R1.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.32, +1.38]"
+ },
+ "d_sz_r1_label": {
+  "path": "secondary.seed0_runs.R1.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_sz_r1_new": {
+  "path": "secondary.seed0_runs.R1.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.22"
+ },
+ "d_sz_r1_rho": {
+  "path": "secondary.seed0_runs.R1.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.60"
+ },
+ "d_sz_r2_base": {
+  "path": "secondary.seed0_runs.R2.rho_base",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "$-$0.38"
+ },
+ "d_sz_r2_ci": {
+  "path": "secondary.seed0_runs.R2.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.32, +1.37]"
+ },
+ "d_sz_r2_label": {
+  "path": "secondary.seed0_runs.R2.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_sz_r2_new": {
+  "path": "secondary.seed0_runs.R2.rho_new",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.23"
+ },
+ "d_sz_r2_rho": {
+  "path": "secondary.seed0_runs.R2.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.61"
+ },
+ "d_t_mgd160_Eeight": {
+  "path": "descriptive.checks.Mg_s0_d160.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.145"
+ },
+ "d_t_mgd160_Ehund": {
+  "path": "descriptive.checks.Mg_s0_d160.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.391"
+ },
+ "d_t_mgd160_Elong": {
+  "path": "descriptive.checks.Mg_s0_d160.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.902"
+ },
+ "d_t_mgd160_Eone": {
+  "path": "descriptive.checks.Mg_s0_d160.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.120"
+ },
+ "d_t_mgd160_falls": {
+  "path": "descriptive.simulators[Mg_s0_d160].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "64\\%, 74\\%, 51\\%"
+ },
+ "d_t_mgd160_lam": {
+  "path": "descriptive.checks.Mg_s0_d160.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.626"
+ },
+ "d_t_mgd160_pols": {
+  "path": "descriptive.simulators[Mg_s0_d160].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.16, 0.08, 0.13"
+ },
+ "d_t_mgd160_rJ": {
+  "path": "descriptive.checks.Mg_s0_d160.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2.83"
+ },
+ "d_t_mgd160_score": {
+  "path": "descriptive.simulators[Mg_s0_d160].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.12"
+ },
+ "d_t_mgd160_u": {
+  "path": "descriptive.checks.Mg_s0_d160.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.06"
+ },
+ "d_t_mgd160_verdict": {
+  "path": "descriptive.simulators[Mg_s0_d160].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_mgd160_wfalls": {
+  "path": "descriptive.checks.Mg_s0_d160.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_mgd160_wtrack": {
+  "path": "Mg_s0_d160.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "86.6\\%"
+ },
+ "d_t_mgd320_Eeight": {
+  "path": "descriptive.checks.Mg_s0_d320.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.141"
+ },
+ "d_t_mgd320_Ehund": {
+  "path": "descriptive.checks.Mg_s0_d320.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.388"
+ },
+ "d_t_mgd320_Elong": {
+  "path": "descriptive.checks.Mg_s0_d320.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.944"
+ },
+ "d_t_mgd320_Eone": {
+  "path": "descriptive.checks.Mg_s0_d320.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.118"
+ },
+ "d_t_mgd320_falls": {
+  "path": "descriptive.simulators[Mg_s0_d320].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "45\\%, 90\\%"
+ },
+ "d_t_mgd320_lam": {
+  "path": "descriptive.checks.Mg_s0_d320.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.570"
+ },
+ "d_t_mgd320_pols": {
+  "path": "descriptive.simulators[Mg_s0_d320].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.11, 0.09"
+ },
+ "d_t_mgd320_rJ": {
+  "path": "descriptive.checks.Mg_s0_d320.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2.98"
+ },
+ "d_t_mgd320_score": {
+  "path": "descriptive.simulators[Mg_s0_d320].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.10"
+ },
+ "d_t_mgd320_u": {
+  "path": "descriptive.checks.Mg_s0_d320.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.14"
+ },
+ "d_t_mgd320_verdict": {
+  "path": "descriptive.simulators[Mg_s0_d320].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_mgd320_wfalls": {
+  "path": "descriptive.checks.Mg_s0_d320.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_mgd320_wtrack": {
+  "path": "Mg_s0_d320.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "86.6\\%"
+ },
+ "d_t_mgd80_Eeight": {
+  "path": "descriptive.checks.Mg_s0_d80.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.147"
+ },
+ "d_t_mgd80_Ehund": {
+  "path": "descriptive.checks.Mg_s0_d80.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.395"
+ },
+ "d_t_mgd80_Elong": {
+  "path": "descriptive.checks.Mg_s0_d80.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.986"
+ },
+ "d_t_mgd80_Eone": {
+  "path": "descriptive.checks.Mg_s0_d80.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.121"
+ },
+ "d_t_mgd80_falls": {
+  "path": "descriptive.simulators[Mg_s0_d80].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "42\\%, 100\\%, 54\\%"
+ },
+ "d_t_mgd80_lam": {
+  "path": "descriptive.checks.Mg_s0_d80.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.714"
+ },
+ "d_t_mgd80_pols": {
+  "path": "descriptive.simulators[Mg_s0_d80].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.50, 0.00$^\\ddagger$, 0.41"
+ },
+ "d_t_mgd80_rJ": {
+  "path": "descriptive.checks.Mg_s0_d80.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3.15"
+ },
+ "d_t_mgd80_score": {
+  "path": "descriptive.simulators[Mg_s0_d80].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.30"
+ },
+ "d_t_mgd80_u": {
+  "path": "descriptive.checks.Mg_s0_d80.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.86"
+ },
+ "d_t_mgd80_verdict": {
+  "path": "descriptive.simulators[Mg_s0_d80].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walks"
+ },
+ "d_t_mgd80_wfalls": {
+  "path": "descriptive.checks.Mg_s0_d80.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_mgd80_wtrack": {
+  "path": "Mg_s0_d80.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "86.7\\%"
+ },
+ "d_t_ms0d20_Eeight": {
+  "path": "descriptive.checks.M_s0_d20.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.147"
+ },
+ "d_t_ms0d20_Ehund": {
+  "path": "descriptive.checks.M_s0_d20.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.446"
+ },
+ "d_t_ms0d20_Elong": {
+  "path": "descriptive.checks.M_s0_d20.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.034"
+ },
+ "d_t_ms0d20_Eone": {
+  "path": "descriptive.checks.M_s0_d20.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.120"
+ },
+ "d_t_ms0d20_falls": {
+  "path": "descriptive.simulators[M_s0_d20].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "100\\%, 30\\%"
+ },
+ "d_t_ms0d20_lam": {
+  "path": "descriptive.checks.M_s0_d20.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.607"
+ },
+ "d_t_ms0d20_pols": {
+  "path": "descriptive.simulators[M_s0_d20].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.00$^\\ddagger$, 0.08"
+ },
+ "d_t_ms0d20_rJ": {
+  "path": "descriptive.checks.M_s0_d20.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3.08"
+ },
+ "d_t_ms0d20_score": {
+  "path": "descriptive.simulators[M_s0_d20].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.04"
+ },
+ "d_t_ms0d20_u": {
+  "path": "descriptive.checks.M_s0_d20.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.84"
+ },
+ "d_t_ms0d20_verdict": {
+  "path": "descriptive.simulators[M_s0_d20].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_ms0d20_wfalls": {
+  "path": "descriptive.checks.M_s0_d20.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ms0d20_wtrack": {
+  "path": "M_s0_d20.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "83.3\\%"
+ },
+ "d_t_ms0d5_Eeight": {
+  "path": "descriptive.checks.M_s0_d5.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.148"
+ },
+ "d_t_ms0d5_Ehund": {
+  "path": "descriptive.checks.M_s0_d5.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.378"
+ },
+ "d_t_ms0d5_Elong": {
+  "path": "descriptive.checks.M_s0_d5.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.900"
+ },
+ "d_t_ms0d5_Eone": {
+  "path": "descriptive.checks.M_s0_d5.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.121"
+ },
+ "d_t_ms0d5_falls": {
+  "path": "descriptive.simulators[M_s0_d5].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "100\\%, 76\\%, 49\\%"
+ },
+ "d_t_ms0d5_lam": {
+  "path": "descriptive.checks.M_s0_d5.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.549"
+ },
+ "d_t_ms0d5_pols": {
+  "path": "descriptive.simulators[M_s0_d5].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.00$^\\ddagger$, 0.20, 0.13"
+ },
+ "d_t_ms0d5_rJ": {
+  "path": "descriptive.checks.M_s0_d5.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2.93"
+ },
+ "d_t_ms0d5_score": {
+  "path": "descriptive.simulators[M_s0_d5].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.11"
+ },
+ "d_t_ms0d5_u": {
+  "path": "descriptive.checks.M_s0_d5.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.08"
+ },
+ "d_t_ms0d5_verdict": {
+  "path": "descriptive.simulators[M_s0_d5].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_ms0d5_wfalls": {
+  "path": "descriptive.checks.M_s0_d5.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ms0d5_wtrack": {
+  "path": "M_s0_d5.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "85.4\\%"
+ },
+ "d_t_ms0d80_Eeight": {
+  "path": "descriptive.checks.M_s0_d80.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.132"
+ },
+ "d_t_ms0d80_Ehund": {
+  "path": "descriptive.checks.M_s0_d80.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.465"
+ },
+ "d_t_ms0d80_Elong": {
+  "path": "descriptive.checks.M_s0_d80.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.937"
+ },
+ "d_t_ms0d80_Eone": {
+  "path": "descriptive.checks.M_s0_d80.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.108"
+ },
+ "d_t_ms0d80_falls": {
+  "path": "descriptive.simulators[M_s0_d80].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "6\\%, 0\\%"
+ },
+ "d_t_ms0d80_lam": {
+  "path": "descriptive.checks.M_s0_d80.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.891"
+ },
+ "d_t_ms0d80_pols": {
+  "path": "descriptive.simulators[M_s0_d80].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.08, 0.08"
+ },
+ "d_t_ms0d80_rJ": {
+  "path": "descriptive.checks.M_s0_d80.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2.93"
+ },
+ "d_t_ms0d80_score": {
+  "path": "descriptive.simulators[M_s0_d80].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.08"
+ },
+ "d_t_ms0d80_u": {
+  "path": "descriptive.checks.M_s0_d80.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.68"
+ },
+ "d_t_ms0d80_verdict": {
+  "path": "descriptive.simulators[M_s0_d80].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_ms0d80_wfalls": {
+  "path": "descriptive.checks.M_s0_d80.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ms0d80_wtrack": {
+  "path": "M_s0_d80.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "83.9\\%"
+ },
+ "d_t_rel_Eeight": {
+  "path": "descriptive.checks.REL.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.149"
+ },
+ "d_t_rel_Ehund": {
+  "path": "descriptive.checks.REL.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.354"
+ },
+ "d_t_rel_Elong": {
+  "path": "descriptive.checks.REL.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.718"
+ },
+ "d_t_rel_Eone": {
+  "path": "descriptive.checks.REL.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.122"
+ },
+ "d_t_rel_falls": {
+  "path": "descriptive.simulators[REL].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "35\\%, 31\\%"
+ },
+ "d_t_rel_lam": {
+  "path": "descriptive.checks.REL.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.534"
+ },
+ "d_t_rel_pols": {
+  "path": "descriptive.simulators[REL].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.61, 0.57"
+ },
+ "d_t_rel_rJ": {
+  "path": "descriptive.checks.REL.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2.27"
+ },
+ "d_t_rel_score": {
+  "path": "descriptive.simulators[REL].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.59"
+ },
+ "d_t_rel_u": {
+  "path": "descriptive.checks.REL.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.46"
+ },
+ "d_t_rel_verdict": {
+  "path": "descriptive.simulators[REL].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walks"
+ },
+ "d_t_rel_wfalls": {
+  "path": "descriptive.checks.REL.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_rel_wtrack": {
+  "path": "REL.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "87.3\\%"
+ },
+ "d_t_wgd160_Eeight": {
+  "path": "descriptive.checks.Wg_s0_d160.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.106"
+ },
+ "d_t_wgd160_Ehund": {
+  "path": "descriptive.checks.Wg_s0_d160.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.458"
+ },
+ "d_t_wgd160_Elong": {
+  "path": "descriptive.checks.Wg_s0_d160.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.108"
+ },
+ "d_t_wgd160_Eone": {
+  "path": "descriptive.checks.Wg_s0_d160.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.086"
+ },
+ "d_t_wgd160_falls": {
+  "path": "descriptive.simulators[Wg_s0_d160].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "80\\%, 86\\%"
+ },
+ "d_t_wgd160_lam": {
+  "path": "descriptive.checks.Wg_s0_d160.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.750"
+ },
+ "d_t_wgd160_pols": {
+  "path": "descriptive.simulators[Wg_s0_d160].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09, 0.08"
+ },
+ "d_t_wgd160_rJ": {
+  "path": "descriptive.checks.Wg_s0_d160.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3.74"
+ },
+ "d_t_wgd160_score": {
+  "path": "descriptive.simulators[Wg_s0_d160].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09"
+ },
+ "d_t_wgd160_u": {
+  "path": "descriptive.checks.Wg_s0_d160.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.50"
+ },
+ "d_t_wgd160_verdict": {
+  "path": "descriptive.simulators[Wg_s0_d160].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_wgd160_wfalls": {
+  "path": "descriptive.checks.Wg_s0_d160.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_wgd160_wtrack": {
+  "path": "Wg_s0_d160.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "85.3\\%"
+ },
+ "d_t_wgd320_Eeight": {
+  "path": "descriptive.checks.Wg_s0_d320.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.090"
+ },
+ "d_t_wgd320_Ehund": {
+  "path": "descriptive.checks.Wg_s0_d320.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.383"
+ },
+ "d_t_wgd320_Elong": {
+  "path": "descriptive.checks.Wg_s0_d320.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.928"
+ },
+ "d_t_wgd320_Eone": {
+  "path": "descriptive.checks.Wg_s0_d320.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.075"
+ },
+ "d_t_wgd320_falls": {
+  "path": "descriptive.simulators[Wg_s0_d320].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "83\\%, 80\\%"
+ },
+ "d_t_wgd320_lam": {
+  "path": "descriptive.checks.Wg_s0_d320.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.699"
+ },
+ "d_t_wgd320_pols": {
+  "path": "descriptive.simulators[Wg_s0_d320].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.05, 0.05"
+ },
+ "d_t_wgd320_rJ": {
+  "path": "descriptive.checks.Wg_s0_d320.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3.13"
+ },
+ "d_t_wgd320_score": {
+  "path": "descriptive.simulators[Wg_s0_d320].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.05"
+ },
+ "d_t_wgd320_u": {
+  "path": "descriptive.checks.Wg_s0_d320.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.67"
+ },
+ "d_t_wgd320_verdict": {
+  "path": "descriptive.simulators[Wg_s0_d320].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_wgd320_wfalls": {
+  "path": "descriptive.checks.Wg_s0_d320.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_wgd320_wtrack": {
+  "path": "Wg_s0_d320.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "85.1\\%"
+ },
+ "d_t_wgd80_Eeight": {
+  "path": "descriptive.checks.Wg_s0_d80.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.113"
+ },
+ "d_t_wgd80_Ehund": {
+  "path": "descriptive.checks.Wg_s0_d80.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.425"
+ },
+ "d_t_wgd80_Elong": {
+  "path": "descriptive.checks.Wg_s0_d80.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.081"
+ },
+ "d_t_wgd80_Eone": {
+  "path": "descriptive.checks.Wg_s0_d80.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.097"
+ },
+ "d_t_wgd80_falls": {
+  "path": "descriptive.simulators[Wg_s0_d80].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "68\\%, 33\\%"
+ },
+ "d_t_wgd80_lam": {
+  "path": "descriptive.checks.Wg_s0_d80.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.865"
+ },
+ "d_t_wgd80_pols": {
+  "path": "descriptive.simulators[Wg_s0_d80].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.18, 0.43"
+ },
+ "d_t_wgd80_rJ": {
+  "path": "descriptive.checks.Wg_s0_d80.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3.52"
+ },
+ "d_t_wgd80_score": {
+  "path": "descriptive.simulators[Wg_s0_d80].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.31"
+ },
+ "d_t_wgd80_u": {
+  "path": "descriptive.checks.Wg_s0_d80.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.68"
+ },
+ "d_t_wgd80_verdict": {
+  "path": "descriptive.simulators[Wg_s0_d80].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walks"
+ },
+ "d_t_wgd80_wfalls": {
+  "path": "descriptive.checks.Wg_s0_d80.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_wgd80_wtrack": {
+  "path": "Wg_s0_d80.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "86.7\\%"
+ },
+ "d_t_ws0d20_Eeight": {
+  "path": "descriptive.checks.W_s0_d20.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.109"
+ },
+ "d_t_ws0d20_Ehund": {
+  "path": "descriptive.checks.W_s0_d20.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.552"
+ },
+ "d_t_ws0d20_Elong": {
+  "path": "descriptive.checks.W_s0_d20.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.310"
+ },
+ "d_t_ws0d20_Eone": {
+  "path": "descriptive.checks.W_s0_d20.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.087"
+ },
+ "d_t_ws0d20_falls": {
+  "path": "descriptive.simulators[W_s0_d20].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "73\\%, 59\\%"
+ },
+ "d_t_ws0d20_lam": {
+  "path": "descriptive.checks.W_s0_d20.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.756"
+ },
+ "d_t_ws0d20_pols": {
+  "path": "descriptive.simulators[W_s0_d20].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09, 0.10"
+ },
+ "d_t_ws0d20_rJ": {
+  "path": "descriptive.checks.W_s0_d20.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "4.61"
+ },
+ "d_t_ws0d20_score": {
+  "path": "descriptive.simulators[W_s0_d20].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09"
+ },
+ "d_t_ws0d20_u": {
+  "path": "descriptive.checks.W_s0_d20.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.40"
+ },
+ "d_t_ws0d20_verdict": {
+  "path": "descriptive.simulators[W_s0_d20].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_ws0d20_wfalls": {
+  "path": "descriptive.checks.W_s0_d20.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ws0d20_wtrack": {
+  "path": "W_s0_d20.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "85.1\\%"
+ },
+ "d_t_ws0d5_Eeight": {
+  "path": "descriptive.checks.W_s0_d5.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.122"
+ },
+ "d_t_ws0d5_Ehund": {
+  "path": "descriptive.checks.W_s0_d5.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.431"
+ },
+ "d_t_ws0d5_Elong": {
+  "path": "descriptive.checks.W_s0_d5.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.132"
+ },
+ "d_t_ws0d5_Eone": {
+  "path": "descriptive.checks.W_s0_d5.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.104"
+ },
+ "d_t_ws0d5_falls": {
+  "path": "descriptive.simulators[W_s0_d5].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "45\\%, 18\\%"
+ },
+ "d_t_ws0d5_lam": {
+  "path": "descriptive.checks.W_s0_d5.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.807"
+ },
+ "d_t_ws0d5_pols": {
+  "path": "descriptive.simulators[W_s0_d5].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.51, 0.71"
+ },
+ "d_t_ws0d5_rJ": {
+  "path": "descriptive.checks.W_s0_d5.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3.50"
+ },
+ "d_t_ws0d5_score": {
+  "path": "descriptive.simulators[W_s0_d5].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.61"
+ },
+ "d_t_ws0d5_u": {
+  "path": "descriptive.checks.W_s0_d5.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.46"
+ },
+ "d_t_ws0d5_verdict": {
+  "path": "descriptive.simulators[W_s0_d5].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walks"
+ },
+ "d_t_ws0d5_wfalls": {
+  "path": "descriptive.checks.W_s0_d5.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ws0d5_wtrack": {
+  "path": "W_s0_d5.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "87.2\\%"
+ },
+ "d_t_ws0d80_Eeight": {
+  "path": "descriptive.checks.W_s0_d80.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.076"
+ },
+ "d_t_ws0d80_Ehund": {
+  "path": "descriptive.checks.W_s0_d80.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.271"
+ },
+ "d_t_ws0d80_Elong": {
+  "path": "descriptive.checks.W_s0_d80.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.913"
+ },
+ "d_t_ws0d80_Eone": {
+  "path": "descriptive.checks.W_s0_d80.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.064"
+ },
+ "d_t_ws0d80_falls": {
+  "path": "descriptive.simulators[W_s0_d80].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "82\\%, 79\\%"
+ },
+ "d_t_ws0d80_lam": {
+  "path": "descriptive.checks.W_s0_d80.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.773"
+ },
+ "d_t_ws0d80_pols": {
+  "path": "descriptive.simulators[W_s0_d80].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.06, 0.05"
+ },
+ "d_t_ws0d80_rJ": {
+  "path": "descriptive.checks.W_s0_d80.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2.92"
+ },
+ "d_t_ws0d80_score": {
+  "path": "descriptive.simulators[W_s0_d80].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.05"
+ },
+ "d_t_ws0d80_u": {
+  "path": "descriptive.checks.W_s0_d80.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.24"
+ },
+ "d_t_ws0d80_verdict": {
+  "path": "descriptive.simulators[W_s0_d80].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_ws0d80_wfalls": {
+  "path": "descriptive.checks.W_s0_d80.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ws0d80_wtrack": {
+  "path": "W_s0_d80.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "85.2\\%"
+ },
+ "d_t_ws1d20_Eeight": {
+  "path": "descriptive.checks.W_s1_d20.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.111"
+ },
+ "d_t_ws1d20_Ehund": {
+  "path": "descriptive.checks.W_s1_d20.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.560"
+ },
+ "d_t_ws1d20_Elong": {
+  "path": "descriptive.checks.W_s1_d20.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.387"
+ },
+ "d_t_ws1d20_Eone": {
+  "path": "descriptive.checks.W_s1_d20.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.088"
+ },
+ "d_t_ws1d20_falls": {
+  "path": "descriptive.simulators[W_s1_d20].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "90\\%, 59\\%"
+ },
+ "d_t_ws1d20_lam": {
+  "path": "descriptive.checks.W_s1_d20.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.714"
+ },
+ "d_t_ws1d20_pols": {
+  "path": "descriptive.simulators[W_s1_d20].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.08, 0.10"
+ },
+ "d_t_ws1d20_rJ": {
+  "path": "descriptive.checks.W_s1_d20.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "4.08"
+ },
+ "d_t_ws1d20_score": {
+  "path": "descriptive.simulators[W_s1_d20].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09"
+ },
+ "d_t_ws1d20_u": {
+  "path": "descriptive.checks.W_s1_d20.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.44"
+ },
+ "d_t_ws1d20_verdict": {
+  "path": "descriptive.simulators[W_s1_d20].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_ws1d20_wfalls": {
+  "path": "descriptive.checks.W_s1_d20.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ws1d20_wtrack": {
+  "path": "W_s1_d20.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "84.4\\%"
+ },
+ "d_t_ws1d5_Eeight": {
+  "path": "descriptive.checks.W_s1_d5.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.122"
+ },
+ "d_t_ws1d5_Ehund": {
+  "path": "descriptive.checks.W_s1_d5.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.364"
+ },
+ "d_t_ws1d5_Elong": {
+  "path": "descriptive.checks.W_s1_d5.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.680"
+ },
+ "d_t_ws1d5_Eone": {
+  "path": "descriptive.checks.W_s1_d5.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.105"
+ },
+ "d_t_ws1d5_falls": {
+  "path": "descriptive.simulators[W_s1_d5].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "12\\%, 54\\%"
+ },
+ "d_t_ws1d5_lam": {
+  "path": "descriptive.checks.W_s1_d5.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.763"
+ },
+ "d_t_ws1d5_pols": {
+  "path": "descriptive.simulators[W_s1_d5].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.75, 0.44"
+ },
+ "d_t_ws1d5_rJ": {
+  "path": "descriptive.checks.W_s1_d5.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.98"
+ },
+ "d_t_ws1d5_score": {
+  "path": "descriptive.simulators[W_s1_d5].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.60"
+ },
+ "d_t_ws1d5_u": {
+  "path": "descriptive.checks.W_s1_d5.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.46"
+ },
+ "d_t_ws1d5_verdict": {
+  "path": "descriptive.simulators[W_s1_d5].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walks"
+ },
+ "d_t_ws1d5_wfalls": {
+  "path": "descriptive.checks.W_s1_d5.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ws1d5_wtrack": {
+  "path": "W_s1_d5.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "86.8\\%"
+ },
+ "d_t_ws1d80_Eeight": {
+  "path": "descriptive.checks.W_s1_d80.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.076"
+ },
+ "d_t_ws1d80_Ehund": {
+  "path": "descriptive.checks.W_s1_d80.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.253"
+ },
+ "d_t_ws1d80_Elong": {
+  "path": "descriptive.checks.W_s1_d80.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.006"
+ },
+ "d_t_ws1d80_Eone": {
+  "path": "descriptive.checks.W_s1_d80.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.064"
+ },
+ "d_t_ws1d80_falls": {
+  "path": "descriptive.simulators[W_s1_d80].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "72\\%, 65\\%"
+ },
+ "d_t_ws1d80_lam": {
+  "path": "descriptive.checks.W_s1_d80.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.616"
+ },
+ "d_t_ws1d80_pols": {
+  "path": "descriptive.simulators[W_s1_d80].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.07, 0.08"
+ },
+ "d_t_ws1d80_rJ": {
+  "path": "descriptive.checks.W_s1_d80.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "3.31"
+ },
+ "d_t_ws1d80_score": {
+  "path": "descriptive.simulators[W_s1_d80].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.07"
+ },
+ "d_t_ws1d80_u": {
+  "path": "descriptive.checks.W_s1_d80.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.24"
+ },
+ "d_t_ws1d80_verdict": {
+  "path": "descriptive.simulators[W_s1_d80].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_ws1d80_wfalls": {
+  "path": "descriptive.checks.W_s1_d80.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_ws1d80_wtrack": {
+  "path": "W_s1_d80.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "85.6\\%"
+ },
+ "d_t_wtfd20_Eeight": {
+  "path": "descriptive.checks.Wtf_s0_d20.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.124"
+ },
+ "d_t_wtfd20_Ehund": {
+  "path": "descriptive.checks.Wtf_s0_d20.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.397"
+ },
+ "d_t_wtfd20_Elong": {
+  "path": "descriptive.checks.Wtf_s0_d20.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.772"
+ },
+ "d_t_wtfd20_Eone": {
+  "path": "descriptive.checks.Wtf_s0_d20.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.087"
+ },
+ "d_t_wtfd20_falls": {
+  "path": "descriptive.simulators[Wtf_s0_d20].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "67\\%, 75\\%, 43\\%"
+ },
+ "d_t_wtfd20_lam": {
+  "path": "descriptive.checks.Wtf_s0_d20.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.571"
+ },
+ "d_t_wtfd20_pols": {
+  "path": "descriptive.simulators[Wtf_s0_d20].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.21, 0.10, 0.14"
+ },
+ "d_t_wtfd20_rJ": {
+  "path": "descriptive.checks.Wtf_s0_d20.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "2.58"
+ },
+ "d_t_wtfd20_score": {
+  "path": "descriptive.simulators[Wtf_s0_d20].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.15"
+ },
+ "d_t_wtfd20_u": {
+  "path": "descriptive.checks.Wtf_s0_d20.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.66"
+ },
+ "d_t_wtfd20_verdict": {
+  "path": "descriptive.simulators[Wtf_s0_d20].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_wtfd20_wfalls": {
+  "path": "descriptive.checks.Wtf_s0_d20.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_wtfd20_wtrack": {
+  "path": "Wtf_s0_d20.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "84.9\\%"
+ },
+ "d_t_wtfd5_Eeight": {
+  "path": "descriptive.checks.Wtf_s0_d5.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.134"
+ },
+ "d_t_wtfd5_Ehund": {
+  "path": "descriptive.checks.Wtf_s0_d5.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.358"
+ },
+ "d_t_wtfd5_Elong": {
+  "path": "descriptive.checks.Wtf_s0_d5.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.662"
+ },
+ "d_t_wtfd5_Eone": {
+  "path": "descriptive.checks.Wtf_s0_d5.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.107"
+ },
+ "d_t_wtfd5_falls": {
+  "path": "descriptive.simulators[Wtf_s0_d5].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "39\\%, 46\\%"
+ },
+ "d_t_wtfd5_lam": {
+  "path": "descriptive.checks.Wtf_s0_d5.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.476"
+ },
+ "d_t_wtfd5_pols": {
+  "path": "descriptive.simulators[Wtf_s0_d5].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.60, 0.19"
+ },
+ "d_t_wtfd5_rJ": {
+  "path": "descriptive.checks.Wtf_s0_d5.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.77"
+ },
+ "d_t_wtfd5_score": {
+  "path": "descriptive.simulators[Wtf_s0_d5].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.40"
+ },
+ "d_t_wtfd5_u": {
+  "path": "descriptive.checks.Wtf_s0_d5.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.46"
+ },
+ "d_t_wtfd5_verdict": {
+  "path": "descriptive.simulators[Wtf_s0_d5].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walks"
+ },
+ "d_t_wtfd5_wfalls": {
+  "path": "descriptive.checks.Wtf_s0_d5.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_wtfd5_wtrack": {
+  "path": "Wtf_s0_d5.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "86.7\\%"
+ },
+ "d_t_wtfd80_Eeight": {
+  "path": "descriptive.checks.Wtf_s0_d80.checks.expert.E8",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.091"
+ },
+ "d_t_wtfd80_Ehund": {
+  "path": "descriptive.checks.Wtf_s0_d80.checks.expert.E100",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.517"
+ },
+ "d_t_wtfd80_Elong": {
+  "path": "descriptive.checks.Wtf_s0_d80.checks.expert.E368",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "1.398"
+ },
+ "d_t_wtfd80_Eone": {
+  "path": "descriptive.checks.Wtf_s0_d80.checks.expert.E1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.070"
+ },
+ "d_t_wtfd80_falls": {
+  "path": "descriptive.simulators[Wtf_s0_d80].policies[].fall_rate",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "78\\%, 86\\%"
+ },
+ "d_t_wtfd80_lam": {
+  "path": "descriptive.checks.Wtf_s0_d80.checks.expert.lambda1",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.765"
+ },
+ "d_t_wtfd80_pols": {
+  "path": "descriptive.simulators[Wtf_s0_d80].policies[].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.09, 0.10"
+ },
+ "d_t_wtfd80_rJ": {
+  "path": "descriptive.checks.Wtf_s0_d80.checks.expert.rJ",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "5.48"
+ },
+ "d_t_wtfd80_score": {
+  "path": "descriptive.simulators[Wtf_s0_d80].score",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.10"
+ },
+ "d_t_wtfd80_u": {
+  "path": "descriptive.checks.Wtf_s0_d80.walk.u",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.77"
+ },
+ "d_t_wtfd80_verdict": {
+  "path": "descriptive.simulators[Wtf_s0_d80].failed",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "failed"
+ },
+ "d_t_wtfd80_wfalls": {
+  "path": "descriptive.checks.Wtf_s0_d80.walk.falls",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0\\%"
+ },
+ "d_t_wtfd80_wtrack": {
+  "path": "Wtf_s0_d80.json tracking_ratio (one decimal)",
+  "source": "AIR 2027/results/d/walk",
+  "value": "85.1\\%"
+ },
+ "d_walk_max": {
+  "path": "max score over ladder simulators that did not fail",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.61"
+ },
+ "d_walk_min": {
+  "path": "min score over ladder simulators that did not fail",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "0.30"
+ },
+ "d_wt_falls_ci": {
+  "path": "secondary.walk_test.falls.rho.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.26, +0.82]"
+ },
+ "d_wt_falls_d": {
+  "path": "secondary.walk_test.falls.minus_E8.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.72"
+ },
+ "d_wt_falls_dci": {
+  "path": "secondary.walk_test.falls.minus_E8.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[$-$0.30, +1.60]"
+ },
+ "d_wt_falls_dlabel": {
+  "path": "secondary.walk_test.falls.minus_E8.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_wt_falls_label": {
+  "path": "secondary.walk_test.falls.rho.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "not settled"
+ },
+ "d_wt_falls_rho": {
+  "path": "secondary.walk_test.falls.rho.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.29"
+ },
+ "d_wt_track_ci": {
+  "path": "secondary.walk_test.tracking.rho.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.43, +0.96]"
+ },
+ "d_wt_track_d": {
+  "path": "secondary.walk_test.tracking.minus_E8.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+1.22"
+ },
+ "d_wt_track_dci": {
+  "path": "secondary.walk_test.tracking.minus_E8.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.71, +1.58]"
+ },
+ "d_wt_track_dlabel": {
+  "path": "secondary.walk_test.tracking.minus_E8.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walk test better"
+ },
+ "d_wt_track_label": {
+  "path": "secondary.walk_test.tracking.rho.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "positive"
+ },
+ "d_wt_track_rho": {
+  "path": "secondary.walk_test.tracking.rho.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.79"
+ },
+ "d_wt_u_ci": {
+  "path": "secondary.walk_test.u.rho.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.53, +0.96]"
+ },
+ "d_wt_u_d": {
+  "path": "secondary.walk_test.u.minus_E8.delta",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+1.26"
+ },
+ "d_wt_u_dci": {
+  "path": "secondary.walk_test.u.minus_E8.ci95",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "[+0.74, +1.64]"
+ },
+ "d_wt_u_dlabel": {
+  "path": "secondary.walk_test.u.minus_E8.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "walk test better"
+ },
+ "d_wt_u_label": {
+  "path": "secondary.walk_test.u.rho.label",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "positive"
+ },
+ "d_wt_u_rho": {
+  "path": "secondary.walk_test.u.rho.rho",
+  "source": "AIR 2027/results/d_stats.json",
+  "value": "+0.84"
  },
  "diff_max": {
   "path": "diff_grad_max",

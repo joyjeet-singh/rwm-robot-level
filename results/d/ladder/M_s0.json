@@ -1,0 +1,126 @@
+{
+ "run": "M_s0",
+ "status": "done",
+ "tests": [
+  {
+   "steps": 80,
+   "sim": "M_s0_d80",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "M_s0_d80__p1",
+     "seed": 1,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.08096457413352798,
+     "fall_rate": 0.0625,
+     "physics_return": 8.001675853264029,
+     "eval": "results/d/eval/M_s0_d80__p1.json",
+     "failed": true
+    },
+    {
+     "policy": "M_s0_d80__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.07844272912513463,
+     "fall_rate": 0.0,
+     "physics_return": 9.956451616881314,
+     "eval": "results/d/eval/M_s0_d80__p2.json",
+     "failed": true
+    }
+   ],
+   "verdict": "failed",
+   "third_policy": false
+  },
+  {
+   "steps": 20,
+   "sim": "M_s0_d20",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "M_s0_d20__p1",
+     "seed": 1,
+     "status": "failed_by_simulator",
+     "crashes": 2,
+     "stopped_at": null,
+     "score": 0.0,
+     "fall_rate": 1.0,
+     "physics_return": null,
+     "eval": null,
+     "note": "failed by its simulator: walking score 0, fall rate 1 (Step 2's rule), not measured",
+     "failed": true
+    },
+    {
+     "policy": "M_s0_d20__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.08097612650864937,
+     "fall_rate": 0.3020833333333333,
+     "physics_return": 10.766285475939075,
+     "eval": "results/d/eval/M_s0_d20__p2.json",
+     "failed": true
+    }
+   ],
+   "verdict": "failed",
+   "third_policy": false
+  },
+  {
+   "steps": 5,
+   "sim": "M_s0_d5",
+   "checks": "ok",
+   "walk": "ok",
+   "policies": [
+    {
+     "policy": "M_s0_d5__p1",
+     "seed": 1,
+     "status": "failed_by_simulator",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.0,
+     "fall_rate": 1.0,
+     "physics_return": null,
+     "eval": null,
+     "note": "failed by its simulator: walking score 0, fall rate 1 (Step 2's rule), not measured",
+     "failed": true
+    },
+    {
+     "policy": "M_s0_d5__p2",
+     "seed": 2,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.1978096924491252,
+     "fall_rate": 0.7604166666666666,
+     "physics_return": 6.715383502931819,
+     "eval": "results/d/eval/M_s0_d5__p2.json",
+     "failed": false
+    },
+    {
+     "policy": "M_s0_d5__p3",
+     "seed": 3,
+     "status": "finished",
+     "crashes": 0,
+     "stopped_at": null,
+     "score": 0.1315450321953645,
+     "fall_rate": 0.4895833333333333,
+     "physics_return": 9.554659813856869,
+     "eval": "results/d/eval/M_s0_d5__p3.json",
+     "failed": true
+    }
+   ],
+   "verdict": "failed",
+   "third_policy": true
+  }
+ ],
+ "started_hours": 5.929999881320529e-07,
+ "started": "2026-11-14T20:48:18",
+ "finished_hours": 20.49443575991525,
+ "boundary": false
+}

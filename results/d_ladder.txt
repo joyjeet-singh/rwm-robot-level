@@ -1,0 +1,70 @@
+Option D ladder: one line per measured policy, as measured (walking score in the calibrated hand-built MuJoCo ANYmal D; fails below 0.15)
+2026-11-14 23:19:20  W_s0    W_s0_d80       W_s0_d80__p1       finished            score 0.060  falls 0.82  FAILED
+2026-11-14 23:34:10  M_s0    M_s0_d80       M_s0_d80__p1       finished            score 0.081  falls 0.06  FAILED
+2026-11-15 04:02:09  W_s0    W_s0_d80       W_s0_d80__p2       finished            score 0.045  falls 0.79  FAILED
+2026-11-15 04:07:58  M_s0    M_s0_d80       M_s0_d80__p2       finished            score 0.078  falls 0.00  FAILED
+2026-11-15 06:17:02  W_s0    W_s0_d20       W_s0_d20__p1       finished            score 0.086  falls 0.73  FAILED
+2026-11-15 08:15:32  M_s0    M_s0_d20       M_s0_d20__p1       failed_by_simulator score 0.000  falls 1.00  FAILED
+2026-11-15 08:25:34  W_s0    W_s0_d20       W_s0_d20__p2       finished            score 0.101  falls 0.59  FAILED
+2026-11-15 10:26:23  M_s0    M_s0_d20       M_s0_d20__p2       finished            score 0.081  falls 0.30  FAILED
+2026-11-15 10:38:00  W_s0    W_s0_d5        W_s0_d5__p1        finished            score 0.509  falls 0.45  walks
+2026-11-15 12:39:24  M_s0    M_s0_d5        M_s0_d5__p1        failed_by_simulator score 0.000  falls 1.00  FAILED
+2026-11-15 12:56:56  W_s0    W_s0_d5        W_s0_d5__p2        finished            score 0.710  falls 0.18  walks
+2026-11-15 15:00:20  M_s0    M_s0_d5        M_s0_d5__p2        finished            score 0.198  falls 0.76  walks
+2026-11-15 15:29:02  Wtf_s0  Wtf_s0_d80     Wtf_s0_d80__p1     finished            score 0.091  falls 0.78  FAILED
+2026-11-15 17:23:36  M_s0    M_s0_d5        M_s0_d5__p3        finished            score 0.132  falls 0.49  FAILED
+2026-11-15 17:47:13  Wtf_s0  Wtf_s0_d80     Wtf_s0_d80__p2     finished            score 0.102  falls 0.86  FAILED
+2026-11-15 19:58:10  W_s1    W_s1_d80       W_s1_d80__p1       finished            score 0.065  falls 0.72  FAILED
+2026-11-15 20:13:48  Wtf_s0  Wtf_s0_d20     Wtf_s0_d20__p1     finished            score 0.209  falls 0.67  walks
+2026-11-15 22:17:54  W_s1    W_s1_d80       W_s1_d80__p2       finished            score 0.077  falls 0.65  FAILED
+2026-11-15 22:34:42  Wtf_s0  Wtf_s0_d20     Wtf_s0_d20__p2     finished            score 0.103  falls 0.75  FAILED
+2026-11-16 00:45:14  W_s1    W_s1_d20       W_s1_d20__p1       finished            score 0.084  falls 0.90  FAILED
+2026-11-16 01:02:55  Wtf_s0  Wtf_s0_d20     Wtf_s0_d20__p3     finished            score 0.139  falls 0.43  FAILED
+2026-11-16 03:09:12  W_s1    W_s1_d20       W_s1_d20__p2       finished            score 0.102  falls 0.59  FAILED
+2026-11-16 03:33:02  Wtf_s0  Wtf_s0_d5      Wtf_s0_d5__p1      finished            score 0.600  falls 0.39  walks
+2026-11-16 05:38:13  W_s1    W_s1_d5        W_s1_d5__p1        finished            score 0.751  falls 0.12  walks
+2026-11-16 05:55:54  Wtf_s0  Wtf_s0_d5      Wtf_s0_d5__p2      finished            score 0.193  falls 0.46  walks
+2026-11-16 08:02:19  W_s1    W_s1_d5        W_s1_d5__p2        finished            score 0.441  falls 0.54  walks
+2026-11-16 08:32:15  Wg_s0   Wg_s0_d80      Wg_s0_d80__p1      finished            score 0.181  falls 0.68  walks
+2026-11-16 10:39:17  Mg_s0   Mg_s0_d80      Mg_s0_d80__p1      finished            score 0.499  falls 0.42  walks
+2026-11-16 10:54:32  Wg_s0   Wg_s0_d80      Wg_s0_d80__p2      finished            score 0.430  falls 0.33  walks
+2026-11-16 12:55:30  Mg_s0   Mg_s0_d80      Mg_s0_d80__p2      failed_by_simulator score 0.000  falls 1.00  FAILED
+2026-11-16 13:52:58  Wg_s0   Wg_s0_d320     Wg_s0_d320__p1     finished            score 0.047  falls 0.83  FAILED
+2026-11-16 15:38:50  Mg_s0   Mg_s0_d80      Mg_s0_d80__p3      finished            score 0.413  falls 0.54  walks
+2026-11-16 16:38:56  Wg_s0   Wg_s0_d320     Wg_s0_d320__p2     finished            score 0.046  falls 0.80  FAILED
+2026-11-16 18:45:54  Mg_s0   Mg_s0_d320     Mg_s0_d320__p1     finished            score 0.109  falls 0.45  FAILED
+2026-11-16 19:04:46  Wg_s0   Wg_s0_d160     Wg_s0_d160__p1     finished            score 0.091  falls 0.80  FAILED
+2026-11-16 21:18:26  Mg_s0   Mg_s0_d320     Mg_s0_d320__p2     finished            score 0.087  falls 0.90  FAILED
+2026-11-16 21:34:14  Wg_s0   Wg_s0_d160     Wg_s0_d160__p2     finished            score 0.085  falls 0.86  FAILED
+2026-11-16 22:48:31  Mg_s0   Mg_s0_d160     Mg_s0_d160__p1     finished            score 0.157  falls 0.64  walks
+2026-11-17 00:12:27  Mg_s0   Mg_s0_d160     Mg_s0_d160__p2     finished            score 0.083  falls 0.74  FAILED
+2026-11-17 01:51:00  Mg_s0   Mg_s0_d160     Mg_s0_d160__p3     finished            score 0.133  falls 0.51  FAILED
+
+=== Final ladder table (2026-11-17T01:51:17); job time 53.0 h ===
+run      status   tests (steps: verdict, mean score, policies)
+W_s0     done     
+            80: failed       mean 0.052  (p1 0.060*, p2 0.045*)
+            20: failed       mean 0.094  (p1 0.086*, p2 0.101*)
+             5: did not fail mean 0.609  (p1 0.509, p2 0.710)
+M_s0     done     
+            80: failed       mean 0.080  (p1 0.081*, p2 0.078*)
+            20: failed       mean 0.040  (p1 0.000*, p2 0.081*)
+             5: failed       mean 0.110  (p1 0.000*, p2 0.198, p3 0.132*)
+Wtf_s0   done     
+            80: failed       mean 0.097  (p1 0.091*, p2 0.102*)
+            20: failed       mean 0.150  (p1 0.209, p2 0.103*, p3 0.139*)
+             5: did not fail mean 0.397  (p1 0.600, p2 0.193)
+W_s1     done     
+            80: failed       mean 0.071  (p1 0.065*, p2 0.077*)
+            20: failed       mean 0.093  (p1 0.084*, p2 0.102*)
+             5: did not fail mean 0.596  (p1 0.751, p2 0.441)
+M_s1     skipped  M_s0 found no boundary
+Wg_s0    done     
+            80: did not fail mean 0.305  (p1 0.181, p2 0.430)
+           320: failed       mean 0.047  (p1 0.047*, p2 0.046*)
+           160: failed       mean 0.088  (p1 0.091*, p2 0.085*)
+Mg_s0    done     
+            80: did not fail mean 0.304  (p1 0.499, p2 0.000*, p3 0.413)
+           320: failed       mean 0.098  (p1 0.109*, p2 0.087*)
+           160: failed       mean 0.124  (p1 0.157, p2 0.083*, p3 0.133*)
+tested simulators 18; tests that needed a third policy 4; * = failed policy

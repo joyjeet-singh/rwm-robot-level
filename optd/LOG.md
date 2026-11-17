@@ -26,3 +26,11 @@ Tests scripts/d/test_d1.py: 71 of 71 pass in 231 s. air-stats-reviewer: 2 MUST F
 Registered: 8894501 (prereg/PREREG_D.md, scripts/d_stats.py, now read-only); hash results/prereg_hash_d.json (609a1d1).
 Rehearsal with real code at toy size passed (fine-tune 2 steps, checks, walk test, 2 policies, measured, verdict; stopped after one policy and resumed); its files deleted.
 optd/jobs/ladder.zsh passes zsh -n and has not run. Estimate 40-55 h. No ladder policy has been trained.
+## D2 started (2026-11-17 13:24)
+
+## D2 status: COMPLETE (2026-11-17 14:06)
+Registered analysis: results/d_stats.* (already on disk; rerun to .cache byte-identical, DECISIONS D2-1). R0, R1, R2 NOT SETTLED (19 simulators).
+Ladder: 6 of 7 runs, 18 saves, 13 failed; every save had lower E1 and E8 than REL, only 2 lower E100. E1/E8 ranked walking in reverse (rho -0.42, -0.43).
+Secondary: walk-test tracking and u POSITIVE and better than E8; pooled R0 SUPPORTED, R2 LABEL-FREE BETTER.
+scripts/d_numbers.py (called from paper_numbers.py). Paper: Sec. step2 paragraph + tab:ladder; verdict-table PT rows = Option D; A12 root cause; new A13.
+Fit: slack.py PASS (6 pages, abstract 199 words) after wording cuts listed in DECISIONS D2-3. Builds identical; check_claims, check_numbers, submission_checks pass.
