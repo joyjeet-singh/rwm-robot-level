@@ -1,0 +1,95 @@
+rwm-robot-level: robot-level tests of the Robotic World Model
+Copyright 2026 Joyjeet Singh
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+-------------------------------------------------------------------------------
+ATTRIBUTION
+-------------------------------------------------------------------------------
+
+This work is an independent study of, and builds on a reproduction of:
+
+  Robotic World Model: A Neural Network Simulator for Robust Policy
+  Optimization in Robotics
+  Chenhao Li, Andreas Krause, Marco Hutter
+  arXiv:2501.10100 (2025)
+
+  Uncertainty-Aware Robotic World Model Makes Offline Model-Based
+  Reinforcement Learning Work on Real Robots
+  Chenhao Li, Andreas Krause, Marco Hutter
+  arXiv:2504.16680 (2025)
+
+  Robotic Systems Lab, ETH Zurich.
+
+The reproduction it builds on: https://github.com/joyjeet-singh/rwm
+(Apache License 2.0; its NOTICE gives the full upstream record).
+
+Upstream repositories, used in place and NOT redistributed here:
+
+  leggedrobotics/robotic_world_model_lite      Apache License 2.0
+    commit 13a798e9d35dabf12c0e6e02977b25ec64dfb2bd
+    Scripts under scripts/ call, and in places adapt, this code.
+    Reference artifacts consumed (fetched and hash-checked, not included):
+      assets/models/pretrain_rnn_ens.pt
+        sha256 2ac8686c8c7736287853c0fe1438c379320068adf97be71609b5f1afb52c6e5a
+      assets/data/state_action_data_0.csv
+        sha256 1b2e00b8a2bc10dc9b5f62840de72410adb448a57a9a2f6adbcd735be9e78921
+
+  leggedrobotics/rsl_rl_rwm                    BSD 3-Clause
+    commit 18eebcdd7145284c8d5eed5d8ed1a4b96c649693
+    Copyright (c) 2025 ETH Zurich; Copyright (c) 2025 NVIDIA CORPORATION
+    & AFFILIATES. All rights reserved.
+
+  MuJoCo (google-deepmind/mujoco)              Apache License 2.0
+    Installed as a dependency; not included.
+
+The robot model step2/model/anymal_d.xml (and anymal_d_cal.xml) was generated
+by scripts/s2/build_model.py from ANYbotics' published description,
+ANYbotics/anymal_d_simple_description, commit
+d5bf4dc3a81af81a16b9598fc15c98e339f45a33, which carries this licence:
+
+  Copyright 2023, ANYbotics AG.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+
+  2. Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in
+     the documentation and/or other materials provided with the
+     distribution.
+
+  3. Neither the name of the copyright holder nor the names of its
+     contributors may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The description itself (step2/assets/) is not included.
+
+paper/IEEEtran.cls and paper/IEEEtran.bst are by Michael Shell and carry
+their own licence terms (LaTeX Project Public License), stated in the files.
+
+-------------------------------------------------------------------------------
+INDEPENDENCE
+-------------------------------------------------------------------------------
+
+This is independent work. It is not affiliated with, endorsed by, or reviewed
+by the original authors, the Robotic Systems Lab, ETH Zurich, ANYbotics or
+NVIDIA. Per the BSD 3-Clause licences above, their names are not used to
+endorse or promote this work. Findings recorded here are the present author's,
+carry the evidence and status given in this repository, and should not be
+attributed to the original authors.

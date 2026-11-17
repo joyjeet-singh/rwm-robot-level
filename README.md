@@ -234,3 +234,21 @@ Run order after the ladder job (always through `./py`):
 ./py scripts/check_bib.py; ./py scripts/submission_checks.py
 ./py scripts/build_supplement.py                     # optional reviewer supplement (full 73 MB; --slim 4 MB)
 ```
+
+## Published copy (added 17 Nov 2026)
+
+This folder was written as a submission to Advances in Robotics (AIR 2027). That venue has since been dropped; the
+text above is kept as it was. Licence: Apache 2.0 (`LICENSE`); attributions and upstream licences: `NOTICE`.
+
+**Weights and policies.** `runs/` is not in git. The simulators, policies and training records behind the results
+above are on Hugging Face at https://huggingface.co/Joyjeetsingh/rwm-robot-level, at the same `runs/...` paths, with each file's size and
+SHA-256 in `MANIFEST.json`. To put them back into a clone of this repository:
+
+```
+pip install huggingface_hub
+python -c "from huggingface_hub import snapshot_download; snapshot_download('Joyjeetsingh/rwm-robot-level', local_dir='.', allow_patterns='runs/*')"
+```
+
+Test runs, resumable training state, diagnostic arrays and the policy trainer's intermediate checkpoints were not
+uploaded. The scripts expect the PDM folder layout (`../rwm_repro`, `../robotic_world_model_lite`); the reproduction
+is at https://github.com/joyjeet-singh/rwm.
