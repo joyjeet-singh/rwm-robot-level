@@ -36,3 +36,26 @@ Choices this plan did not settle, and anything blocked (Rule 3, Rule 10).
 - **D3-1 Claim-check findings not applied.** #2 (secondary variants in the body), #6 (tracking range in the body), #8, #9: the body has no free space (reserve 0) and A13 carries the content; see `optd/review/D3_claimcheck.md`.
 - **D3-2 Supplement paths.** One result file (`results/d/train/M_s0_d20__p1.json`, a crash traceback) holds the working copy's absolute path. The working file is untouched; the staged copy is rewritten (`build_supplement.py`, `neutralise_paths`) and the README inside says so.
 - **D3-3 Hash file.** `results/prereg_hash_d.json` lists `results/d_record.json` and `results/d/stage1.json`; neither is altered by the neutralisation (they hold no paths).
+
+## D4 (17 Nov 2026): review actions (none blocks)
+- **D4-1 Text fixed after the reviews** (`optd/review/D4_referee.md`, `D4_stats.md`; no new analysis). Recommendation scoped to
+  prediction error; abstract and conclusion say "one- and 8-step error" and "13 of 18 searched"; "registered" -> "primary" where
+  only primary tests stayed unsettled; "in reverse" -> "partly in reverse (descriptive)"; the released model's 0.59 labelled a
+  policy score; "imagined tracking ranked it well"; failure rule "≥2 policies below 0.15"; Table IV caption; the fine-tuning
+  amount named as a possible confound (Limitations, A13); A13 wording (R0 premise, R1–R2 primary; 2- and 3-iteration tests).
+- **D4-2 Fit.** The fixes ran 2 lines over. Cut: "forecast" (intro, a paraphrase of [6]); "(descriptive; weights only)" ->
+  "Rounding only the weights ... (descriptive)"; "on {{n_P}} GRU simulators" left the abstract (the count is in Sec. III).
+  `slack.py` PASS, free 0.06 textheight.
+
+## D4 declined
+- **Referee 1b (abstract scope longer), 3 (novelty against [29]), 4 rest (Table I caption, E_h definition, jargon), 5 rest
+  (38% vs 39%, four-times-longer models, "five registrations", Q5/Q1-24 rows, Fig. 2 caption, "101 trained simulators"):**
+  the body has no free space; the numbers come from result files and pass `check_claims.py`/`check_numbers.py` (38% and 39% are
+  different quantities); the definitions are in Sec. III and the appendices.
+- **Referee 1c ("registered" overstates; self-reported commits):** the paper already says the registrations have no
+  independent timestamp (Sec. III); the hashes are in the supplement.
+- **Referee 2 (Q1 depends on pool make-up; label-free checks see longer rollouts; Table III dagger):** a new analysis
+  would be needed; registered verdicts stand as registered; the Limitations name the shared parents and data.
+- **Referee 6 (supplement git metadata):** the supplement holds no `.git`; `submission_checks.py` scan 0 hits.
+- **Stats 8 (d_stats.txt AUC lines omit dropped draws; ci97.5 for secondary):** `scripts/d_stats.py` and its results are
+  registered and read-only; the paper quotes only 95% intervals for secondary results.

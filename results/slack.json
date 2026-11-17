@@ -3,6 +3,6 @@
  "reserve_pages": 6,
  "slot_height": 0.0,
  "abstract_words": 200,
- "free_slot": 0.0,
+ "free_slot": 0.06,
  "pass": true
 }

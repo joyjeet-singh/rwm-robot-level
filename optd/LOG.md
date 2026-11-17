@@ -41,3 +41,10 @@ check_claims.py: 181 -> 210 assertions (29 new for Option D), all pass. Pipeline
 air-claim-checker: 12 wording findings; 8 fixed, 4 left with reasons (optd/review/D3_claimcheck.md, DECISIONS D3-1).
 Supplement rebuilt with scripts/c, scripts/d, PREREG_D.md, c and d results, optc/data_manifest.json (no data, simulators or weights): full 73.4 MB, slim 4.4 MB, scan 0 hits.
 README.md, SUBMIT.md, ANOMALIES.md updated. Notes: optd/notes/D3.md.
+## D4 started (2026-11-17 14:22)
+
+## D4 status: COMPLETE (2026-11-17 17:02)
+Reviews: air-referee "borderline" (optd/review/D4_referee.md); air-stats-reviewer: d_stats.json matches PREREG_D, 4 SHOULD FIX fixed (D4_stats.md).
+Text fixes D4-1, fit cuts D4-2, declined points under "D4 declined" (optd/DECISIONS.md). No new analysis.
+Pipeline: paper_numbers, build_paper (twice, identical), slack PASS (free 0.06 textheight), check_claims 210/210, check_numbers all agree, check_bib, submission_checks pass.
+Supplement rebuilt (full and slim, scan 0 hits; not committed). optd/REPORT.md written (497 words). Tag air2027-optd; history.bundle verified.

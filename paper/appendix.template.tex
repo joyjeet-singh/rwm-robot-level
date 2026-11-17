@@ -1052,19 +1052,19 @@ settings in the simulator's own coordinates.
 
 \textbf{Registration.} The design (runs, search, verdict and stop rules, pools, outcome) was fixed in a plan committed
 before any number of this study existed; the analysis and its code were committed at {{d_reg_time}} (commit
-{{d_reg_commit}}), after the record and before any policy was trained in a fine-tuned save (apart from 3-iteration code
+{{d_reg_commit}}), after the record and before any policy was trained in a fine-tuned save (apart from 2- and 3-iteration code
 tests, deleted). Known at that time: Step~2's
 results, Option C's records, the record above, and a review on another machine in which one fine-tuned simulator's
 policies failed while the released model's walked; the design was chosen after it.
 
 \textbf{Registered results.} The unit is the simulator; its outcome is the mean walking score of its two or three
 policies. The primary pool is the released model (Step~2's two policies) and the {{d_n_tested}} tested saves
-({{d_n_primary}} simulators). All three registered questions were not settled. R0: the 100-step error ranked walking
+({{d_n_primary}} simulators). R0 (premise) and R1--R2 (primary) were not settled. R0: the 100-step error ranked walking
 with $\rho={}${{d_r0_rho}} (95\% {{d_r0_ci}}). R1: the growth rate ranked it {{d_r1_new}} and one-step error
 {{d_r1_base}}; the difference was {{d_r1_delta}} (97.5\% {{d_r1_ci}}). R2: the kinematic residual ranked it
 {{d_r2_new}} and 8-step error {{d_r2_base}}; the difference was {{d_r2_delta}} (97.5\% {{d_r2_ci}}). The point
-estimates favour the label-free checks partly because one-step and 8-step errors ranked walking in reverse: fine-tuning
-lowered the short-horizon errors of saves whose policies then failed.
+estimates favour the label-free checks partly because one-step and 8-step errors ranked walking partly in reverse
+(descriptive): every save had lower short-horizon errors than the released model, and {{d_n_failed}} failed.
 
 \textbf{Secondary results} (Table~\ref{tab:app-dsec}; 95\% intervals). The walk test ranked the simulators by walking:
 its tracking reward ($\rho={}${{d_wt_track_rho}}, {{d_wt_track_ci}}) and the networks' disagreement
@@ -1072,7 +1072,8 @@ its tracking reward ($\rho={}${{d_wt_track_rho}}, {{d_wt_track_ci}}) and the net
 few percentage points (Table~\ref{tab:app-dladder}). Its fall share was
 not settled. On the mixed test set, with the fall rate, and with physics return as the outcome, the residual ranked
 better than 8-step error; with physics return the growth rate also ranked better than one-step error. These results
-are secondary, and each comparison with an error check is helped by that check's reversed ranking. No check's
+are secondary, and each comparison with an error check is helped by that check's reversed ranking; the walk test, the networks'
+disagreement in particular, may only measure how far a save moved from the released model. No check's
 separation of failed from other simulators was settled (Table~\ref{tab:app-dsel}). In
 selection, one-step and 8-step error each chose three saves fine-tuned on walking data, all of which failed; their three fell short of the best three by score ({{d_bt_best}}, mean {{d_bt_mean}}) by {{d_bt_Eone}} and
 {{d_bt_Eeight}}. The 368-step error and the residual chose the same three, which fell short by {{d_bt_Elong}}.
