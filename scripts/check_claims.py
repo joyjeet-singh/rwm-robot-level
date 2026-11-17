@@ -603,6 +603,153 @@ CLAIMS.update({
                         .get("commit", "HEAD"), "HEAD"], cwd=C.AIR).returncode == 0,
 })
 
+# D3 (Option D): every result-bearing sentence added in D2 (Sec. 4.2 paragraph and Table `ladder`, verdict-table PT rows,
+# abstract, Limitations, Conclusion, appendix A12 root cause, appendix A13; optd/notes/D2.md). Registered verdicts stand.
+DS = json.load(open(os.path.join(C.RESULTS, "d_stats.json")))
+DL = json.load(open(os.path.join(C.RESULTS, "d_ladder.json")))
+DR = json.load(open(os.path.join(C.RESULTS, "d_record.json")))
+CDG = json.load(open(os.path.join(C.RESULTS, "c_diag.json")))
+CPL = json.load(open(os.path.join(C.RESULTS, "c_pilot.json")))
+_dd = DS["descriptive"]
+_dsim = {x["sim"]: x for x in _dd["simulators"]}
+_dlad = [x for x in _dd["simulators"] if x["pool"] == "ladder"]
+_dck = _dd["checks"]
+_dex = lambda s_, c: _dck[s_]["checks"]["expert"][c]                                    # noqa: E731
+_dsec = DS["secondary"]
+_dpri = DS["primary"]
+_drs = DR["simulators"]
+_dwt = _dsec["walk_test"]
+_dfail = lambda s_: _dsim[s_]["failed"]                                                  # noqa: E731
+_dbt = _dsec["best_three"]
+_dtrk = [_dck[x["sim"]]["walk"]["tracking"] / _dck["REL"]["walk"]["tracking"] for x in _dlad]
+
+
+def _git_in(commit_a, commit_b):
+    return subprocess.run(["git", "merge-base", "--is-ancestor", commit_a, commit_b], cwd=C.AIR).returncode == 0
+
+
+def _git_first(path):
+    return subprocess.run(["git", "log", "--diff-filter=A", "--format=%H", "--", path], cwd=C.AIR, capture_output=True,
+                          text=True).stdout.split()[-1]
+
+
+_dreg = json.load(open(os.path.join(C.RESULTS, "prereg_hash_d.json")))["commit"]
+CLAIMS.update({
+    "D3 Sec. 4.2 and Abstract: R0, R1 and R2 were not settled (registered, premise and both primary questions)":
+        DS["premise"]["R0"]["label"] == _dpri["R1"]["label"] == _dpri["R2"]["label"] == "NOT SETTLED"
+        and DS["premise"]["R0"]["ci95"][0] < 0 < DS["premise"]["R0"]["ci95"][1]
+        and _dpri["R1"]["ci97.5"][0] < 0 and _dpri["R2"]["ci97.5"][0] < 0,
+    "D3 Sec. 4.2: every one of the tested saves had lower one-step and 8-step error than the released model; "
+    "fewer had lower 100-step error":
+        len(_dlad) == _dd["tests"] == 18
+        and all(_dex(x["sim"], "E1") < _dex("REL", "E1") and _dex(x["sim"], "E8") < _dex("REL", "E8") for x in _dlad)
+        and 0 < sum(_dex(x["sim"], "E100") < _dex("REL", "E100") for x in _dlad) < len(_dlad) / 2,
+    "D3 Sec. 4.2/Abstract: most tested saves failed (two or more of their policies below the failure score); a save "
+    "that did not fail had at most one failed policy":
+        sum(x["failed"] for x in _dlad) > len(_dlad) / 2
+        and all((sum(p["failed"] for p in x["policies"]) >= 2) == x["failed"] for x in _dlad)
+        and DS["fail_score"] == 0.15,
+    "D3 Sec. 4.2: the released model walks (verdict) and walks better than standing still; the released policy's walking "
+    "score is above the failure score and standing still's is below":
+        not _dsim["REL"]["failed"] and DR["authors"]["score"] > DS["fail_score"] > DR["authors"]["standing_reference"],
+    "D3 Sec. 4.2: one- and 8-step error ranked walking in reverse (both rho < 0, primary pool)":
+        _dpri["R1"]["rho_base"] < 0 and _dpri["R2"]["rho_base"] < 0,
+    "D3 Sec. 4.2 and A13: the point estimates favoured the label-free checks only because the error checks reversed "
+    "(both differences positive, both error-check correlations negative)":
+        _dpri["R1"]["delta"] > 0 and _dpri["R2"]["delta"] > 0 and _dpri["R1"]["rho_base"] < 0 and _dpri["R2"]["rho_base"] < 0,
+    "D3 Sec. 4.2 (secondary): the released policy's tracking in each simulator ranked the simulators well (rho > 0.5, "
+    "interval above 0, POSITIVE)":
+        _dwt["tracking"]["rho"]["rho"] > 0.5 and _dwt["tracking"]["rho"]["ci95"][0] > 0
+        and _dwt["tracking"]["rho"]["label"] == "POSITIVE",
+    "D3 Sec. 4.2: seven runs were registered, six ran (the mixed-data repeat did not start), every run's saves are 3":
+        len(_dd["runs"]) == 7 and sum(v["status"] == "done" for v in _dd["runs"].values()) == 6
+        and _dd["runs"]["M_s1"]["status"] == "skipped" and not _dd["stops"]
+        and all(sum(x["run"] == r_ for x in _dlad) == 3 for r_, v in _dd["runs"].items() if v["status"] == "done"),
+    "D3 A13: with walking data at 1e-4 the boundary lay between 5 and 20 steps in all three runs (5 steps walked, 20 "
+    "and 80 failed in W_s0, W_s1, Wtf_s0)":
+        all((not _dfail(r_ + "_d5")) and _dfail(r_ + "_d20") and _dfail(r_ + "_d80") for r_ in ("W_s0", "W_s1", "Wtf_s0")),
+    "D3 A13: at 1e-5 the boundary lay between 80 and 160 steps with walking data (80 walked, 160 and 320 failed)":
+        not _dfail("Wg_s0_d80") and _dfail("Wg_s0_d160") and _dfail("Wg_s0_d320"),
+    "D3 A13: with mixed data at 1e-4 every tested save failed, even at 5 steps; at 1e-5 the 80-step save did not fail":
+        all(_dfail(f"M_s0_d{n_}") for n_ in (5, 20, 80)) and not _dfail("Mg_s0_d80")
+        and all(x["failed"] for x in _dlad if x["run"] == "M_s0"),
+    "D3 A13: the simulator-failures (policies failed by their simulator) were all in mixed-data saves, and the "
+    "stop rule stopped none of the ladder's policies":
+        all(p["policy"].startswith("M") for x in _dlad for p in x["policies"] if p["status"] == "failed_by_simulator")
+        and any(p["status"] == "failed_by_simulator" for x in _dlad for p in x["policies"]) and not _dd["stops"],
+    "D3 A13: a third policy was trained only in saves where the first two policies disagreed (exactly one failed)":
+        all((len(x["policies"]) == 3) == (sum(p["failed"] for p in x["policies"][:2]) == 1) for x in _dlad)
+        and _dd["tests_with_third_policy"] == sum(len(x["policies"]) == 3 for x in _dlad) == DL["n_third_policy"],
+    "D3 A13: a save counts as tested for each of the three search steps: 80 first, then 20 or 320":
+        all(sorted(x["steps"] for x in _dlad if x["run"] == r_) == (sorted([5, 20, 80]) if r_ in ("W_s0", "W_s1", "Wtf_s0", "M_s0")
+                                                                    else sorted([80, 160, 320]))
+            for r_ in ("W_s0", "W_s1", "Wtf_s0", "M_s0", "Wg_s0", "Mg_s0")),
+    "D3 A13 (secondary): the walk test's tracking and disagreement were positive and ranked better than 8-step error; "
+    "its fall share was not settled":
+        _dwt["tracking"]["rho"]["label"] == _dwt["u"]["rho"]["label"] == "POSITIVE"
+        and _dwt["tracking"]["minus_E8"]["label"] == _dwt["u"]["minus_E8"]["label"] == "WALK TEST BETTER"
+        and _dwt["falls"]["rho"]["label"] == "NOT SETTLED",
+    "D3 A13: the saves' walk-test tracking shares differ by only a few percentage points (spread under 5 points of the "
+    "released model's tracking)":
+        max(_dtrk) - min(_dtrk) < 0.05,
+    "D3 A13 (secondary): on the mixed test set, with the fall rate and with physics return the residual ranked better "
+    "than 8-step error; with physics return the growth rate also ranked better than one-step error":
+        _dsec["mixed"]["R2"]["label"] == _dsec["fall_rate"]["R2"]["label"] == _dsec["physics_return"]["R2"]["label"]
+        == "LABEL-FREE BETTER" and _dsec["physics_return"]["R1"]["label"] == "LABEL-FREE BETTER",
+    "D3 A13 (secondary): no check's separation of failed from other simulators was settled (all AUC NOT SETTLED)":
+        all(b["label"] == "NOT SETTLED" for b in _dsec["failed_auc"].values()) and len(_dsec["failed_auc"]) == 7,
+    "D3 A13 (secondary): one-step and 8-step error each chose three saves fine-tuned on walking data, all of which "
+    "failed; the 368-step error and the residual chose the same three":
+        len(_dbt["checks"]["E1"]["chosen"]) == len(_dbt["checks"]["E8"]["chosen"]) == 3
+        and all(s_.startswith("W") and _dfail(s_) for c_ in ("E1", "E8") for s_ in _dbt["checks"][c_]["chosen"])
+        and sorted(_dbt["checks"]["E368"]["chosen"]) == sorted(_dbt["checks"]["rJ"]["chosen"]),
+    "D3 A13 (secondary): the 368-step error and the residual chose three saves (one 5-step walking save pair and the "
+    "released model among them) that fell short of the best three by less than one-step and 8-step error's did":
+        sorted(_dbt["best_three"]) == ["REL", "W_s0_d5", "W_s1_d5"]
+        and sorted(_dbt["checks"]["E368"]["chosen"]) == sorted(_dbt["checks"]["rJ"]["chosen"])
+        and _dbt["checks"]["E368"]["shortfall"] < min(_dbt["checks"][c_]["shortfall"] for c_ in ("E1", "E8")),
+    "D3 A13 (secondary): pooled with Step 2's copies R0 was supported and the residual ranked better than 8-step error; "
+    "R1 was not settled; one- and 8-step error no longer rank in reverse (correlations at or above 0)":
+        _dsec["pooled"]["R0"]["label"] == "SUPPORTED" and _dsec["pooled"]["R2"]["label"] == "LABEL-FREE BETTER"
+        and _dsec["pooled"]["R1"]["label"] == "NOT SETTLED"
+        and _dsec["pooled"]["R1"]["rho_base"] >= 0 and _dsec["pooled"]["R2"]["rho_base"] >= 0
+        and len(DS["pools"]["pooled"]) == len(DS["pools"]["primary"]) + 8,
+    "D3 A13: the primary pool is the released model and the 18 tested saves (19 simulators)":
+        len(DS["pools"]["primary"]) == 19 and "REL" in DS["pools"]["primary"],
+    "D3 A13 (record, descriptive): by the verdict rule 6 of Step 2's 9 simulators failed, their two policies never "
+    "disagreed, and every stored-log stop would have hit a policy that failed anyway":
+        sum(v["verdict"] == "failed" for v in _drs.values() if v["kind"] in ("released", "compressed")) == 6
+        and sum(v["kind"] in ("released", "compressed") for v in _drs.values()) == 9
+        and all(len({p["failed"] for p in v["policies"] if p.get("role") == "Step 2 registered"}) == 1
+                for v in _drs.values() if v["kind"] in ("released", "compressed"))
+        and all(p["failed"] for v in _drs.values() if v["kind"] in ("released", "compressed") for p in v["policies"]
+                if p.get("stop_rule_would_fire_at") is not None),
+    "D3 A13 (record): every measured policy trained in a rebuilt single-network or a from-scratch simulator failed":
+        all(p["failed"] for v in _drs.values() if v["kind"] in ("rebuilt", "optc") for p in v["policies"]
+            if p.get("score") is not None)
+        and sum(p.get("score") is not None for v in _drs.values() if v["kind"] in ("rebuilt", "optc") for p in v["policies"]) >= 4,
+    "D3 A13 (Option C): the from-scratch simulators failed Gate A2 twice (first and after twice the training: falls "
+    "above the limit or tracking below the needed share), though their one-step error was below the released model's":
+        all(g_["share_fell"] > g_["fall_limit"] or g_["tracking_ratio"] * g_["tracking_mujoco_per_step"] < g_["tracking_needed"]
+            for g_ in (CPL["gate_a2"]["first"], CPL["gate_a2"]["after_2S"]))
+        and _drs["sim_6M_N8_s0"]["checks"]["expert"]["E1"] < _drs["REL"]["checks"]["expert"]["E1"],
+    "D3 A12 root cause (descriptive): the recorded data hold no fall; the single-network simulators imagined falls in "
+    "almost no episodes (<= 1%) while their policies fell in every MuJoCo episode":
+        CDG["D0"]["fall_rows"] == 0
+        and max(CDG["D1"][p_]["imagination"]["sampled"]["share_fell"] for p_ in ("A_s0__p0", "B_s0__p0", "A_s0__u50__p0")) <= 0.01
+        and min(CDG["D1"][p_]["physics"]["fall_rate"] for p_ in ("A_s0__p0", "B_s0__p0", "A_s0__u50__p0")) == 1.0,
+    "D3 A12 root cause (descriptive): the failed policies' imagined state-action pairs lay further from the data than "
+    "the released policy's (ratio of means above the released policy's, all above 1)":
+        all(CDG["D2"][p_]["ratio_of_means"] > CDG["D2"]["REL__p0"]["ratio_of_means"] > 1
+            for p_ in ("A_s0__p0", "B_s0__p0", "A_s0__u50__p0")),
+    "D3 A12 root cause (descriptive): only a minority of training velocity commands lie near a recorded one (share < 50%)":
+        CDG["D4"]["all_ten_episodes"]["share_exact"] < 0.5,
+    "D3 Limitations/Conclusion: the registration (PREREG_D.md and the record) was committed before the ladder results, "
+    "and it was committed in the commit named in the hash file":
+        _dreg == _git_first("prereg/PREREG_D.md") and _git_first("results/d_record.json") == _dreg
+        and _git_in(_dreg, _git_first("results/d_ladder.json")) and _dreg != _git_first("results/d_ladder.json"),
+})
+
 if __name__ == "__main__":
     out = {k: bool(v) for k, v in CLAIMS.items()}
     failed = [k for k, v in out.items() if not v]

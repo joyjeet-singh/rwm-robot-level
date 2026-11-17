@@ -66,3 +66,16 @@ data's simulator and not hardware; the paper says so wherever the result is stat
 - **Look at before submitting:** (1) the new paragraph and appendices A11 and A12 in your own words; (2) the "Limitations"
   sentence on what the physics test covers; (3) that withdrawing the earlier venue papers is done (step 1 above).
 - **The main job** ran about 21 hours (`step2/LOG.md`); nothing was pushed, uploaded or sent.
+
+## After Option D (D3)
+
+- **Checks:** `paper_numbers.py`, `build_paper.py` (run twice: same text), `slack.py` (free space 0), `check_claims.py` (210 assertions),
+  `check_numbers.py`, `check_bib.py` and `submission_checks.py` pass. An independent claim check of the Option D text against
+  `results/d_*`, `results/c_*` and `prereg/PREREG_D.md` is in `optd/review/` (findings fixed or listed in `optd/notes/D3.md`).
+- **Supplement:** rebuilt with Options C and D (`prereg/PREREG_D.md`, `scripts/c/`, `scripts/d/`, the `c` and `d` results, Option C's data
+  manifest). The data, simulators and policies are not in it. Scan: 0 hits. Full zip 73.4 MB (limit kept at 80 MB), slim 4.4 MB: check the
+  size against CMT's limit; the slim copy is the safer choice.
+- **Look at before submitting:** (1) the new Sec. 4.2 paragraph, Table "ladder" and appendix A13 in your own words; (2) the main-text
+  sentence that the R0-R2 verdict-table rows now give Option D's tests (Step 2's are in A12); (3) that the two-column check is exactly
+  six pages with no spare room (any added word needs a cut); (4) that withdrawing the earlier venue papers is done (step 1 above).
+- **The ladder job** ran about 53 hours; nothing was pushed, uploaded or sent.

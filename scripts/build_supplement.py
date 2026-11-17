@@ -30,7 +30,7 @@ SLIM = "--slim" in sys.argv
 SKIP_NAMES = {".DS_Store", "__pycache__"}
 SKIP_SUFFIX = {".pyc", ".lock"}
 NOT_PACKED = {"scripts/build_supplement.py"}  # holds the scan patterns (names, paths); packaging tool, not analysis code
-BYTE_EXACT = {"prereg/PREREG.md", "prereg/PREREG_FT.md", "prereg/PREREG_S1.md", "prereg/PREREG_S2.md"}
+BYTE_EXACT = {"prereg/PREREG.md", "prereg/PREREG_FT.md", "prereg/PREREG_S1.md", "prereg/PREREG_S2.md", "prereg/PREREG_D.md"}
 # Step 2 (M6): the MuJoCo model files, its licence notice, and the asset manifest (the ANYdrive actuator file was never obtained
 # and is never packed). dst -> src, both relative to the working copy.
 STEP2_EXTRA = {
@@ -39,8 +39,11 @@ STEP2_EXTRA = {
     "step2/model/calibration.json": "step2/model/calibration.json",
     "step2/model/LICENSE_anymal_d_description.txt": "step2/assets/anymal_d/LICENSE",
     "step2/assets_manifest.json": "step2/assets/manifest.json",
+    # Option C's data manifest (generator, seeds, settings, hashes): the data themselves are left out; scripts/c/gen_data.py
+    # recreates them from the seeds (the simulators are recreated by scripts/d/finetune.py)
+    "optc/data_manifest.json": "optc/data_manifest.json",
 }
-NOT_PACKED_RESULTS = {"results/s2/progress.json"}  # a job heartbeat, not a result
+NOT_PACKED_RESULTS = {"results/s2/progress.json", "results/d/progress.json"}  # a job heartbeat, not a result
 
 # identifying patterns: scripts/submission_checks.py IDENT (read below) plus these three
 EXTRA_PATTERNS = [r"/Users/", r"Downloads", r"joyjeetsingh"]
@@ -99,21 +102,27 @@ NEUTRALISE = [
 ]
 
 
+def reg_facts_d():
+    pn = json.load(open(ROOT / "results" / "paper_numbers.json"))
+    return pn["d_reg_commit"]["value"], pn["d_reg_time"]["value"]
+
+
 def reg_facts():
     pn = json.load(open(ROOT / "results" / "paper_numbers.json"))
     return pn["s1_reg_commit"]["value"], pn["s1_reg_time"]["value"], pn["s2_reg_commit"]["value"], pn["s2_reg_time"]["value"]
 
 
-def readme(commit, when, commit2, when2, changed):
+def readme(commit, when, commit2, when2, changed, commit3, when3):
     return f"""# Supplement for reviewers
 
 Anonymous copy of the material behind the paper. Nothing here is needed to read the paper.
 
 | Folder | Holds |
 |---|---|
-| `prereg/` | `PREREG.md` (the main study's questions and decision rules), `PREREG_FT.md` (study FT) and `PREREG_S1.md` (studies CL and AR) and `PREREG_S2.md` (the physics test), each written before the data it judges existed |
+| `prereg/` | `PREREG.md` (the main study's questions and decision rules), `PREREG_FT.md` (study FT) and `PREREG_S1.md` (studies CL and AR) `PREREG_S2.md` (the physics test) and `PREREG_D.md` (Option D: simulators adapted from the released model, tested by the walking of their policies), each written before the data it judges existed |
 | `scripts/` | all measurement, statistics, table and check code (`common.py` holds shared helpers); `scripts/lite/` runs the lite policy training on a CPU, with a stub module in place of the logging service |
 | `results/` | every result file the paper's numbers are read from, including `raw_*.npz` (kept) and `results/s1/` (progress and baseline-training records; its per-model array files are left out because `raw_S1.npz` holds all of them) |
+| `optc/` | `data_manifest.json`: how Option C's MuJoCo data were generated (generator `scripts/c/gen_data.py`, seeds, settings, hashes). The data and the simulators are not included |
 | `step2/` | Step 2's MuJoCo model (`step2/model/*.xml`, `calibration.json`), the BSD 3-Clause licence notice of the robot description it was made from, and the asset manifest |
 | `paper/` | the paper's source templates (every number is a `{{{{key}}}}` placeholder) and `refs.bib` |
 
@@ -124,7 +133,7 @@ Anonymous copy of the material behind the paper. Nothing here is needed to read 
 analyses (`revision_analyses.py`, `ft_eval.py`, `ft_stats.py`, `revision_numbers.py`), then the Step 1 analyses
 (`s1_train_baseline.py`, `s1_eval.py`, `s1_stats.py`, `s1_budget.py`, `s1_extra.py`, `s1_numbers.py`; `test_s1.py` checks the
 code on random-weight models), then the Step 2 analyses (`s2/train_policy.py`, `s2_main.py`, `s2_stats.py`, `s2_numbers.py`; `s2/test_s2.py`), `make_figures.py`, `check_bib.py`, `paper_numbers.py`, `build_paper.py`, `check_claims.py`,
-`submission_checks.py`.
+`submission_checks.py`. Option C and D code and results: see the last section.
 The scripts need the authors' model checkpoints and earlier-study files, which are not included; the
 result files in `results/` are what the paper reads. Stored results were computed with Python 3.13, torch 2.15 and numpy 2.5;
 the Step 1 job ran on a CPU-only laptop with Python 3.11 and torch 2.2.
@@ -162,10 +171,39 @@ the Step 1 job ran on a CPU-only laptop with Python 3.11 and torch 2.2.
   motor is the PD controller with a fixed delay fitted to the recorded torques (appendix A11).
 - Rerunning needs MuJoCo 3.10.0 in a separate library folder and the files above that are not included; the stored result files are what the paper reads.
 
+## Options C and D (simulators of a known physics model; appendix A13)
+- `prereg/PREREG_D.md` and `scripts/d_stats.py` were committed {when3} (git commit `{commit3}`), after the record of existing results
+  (`results/d_record.json`) and before any policy was trained in a fine-tuned simulator; hashes are in `results/prereg_hash_d.json`.
+  `PREREG_D.md` is byte-identical to the registered file. The registered analysis is `results/d_stats.json` and `results/d_stats.txt`.
+- Code: `scripts/c/` (Option C: MuJoCo data generator and the from-scratch simulators, which failed), `scripts/d/` (Option D:
+  fine-tuning of the released model, the checks, the walk test, the walking score, the policy training with its stop rule, the search
+  and its tests), `scripts/d_stats.py` (registered analysis), `scripts/d_numbers.py` (paper keys).
+- Results: `results/d_record.*` (the record), `results/d_ladder.*` (the ladder job), `results/d_stats.*`, `results/d/` (per-simulator
+  checks, walk tests, policy training and evaluation records), `results/c_*.json` and `results/c/` (Option C's pilots, diagnosis and probes).
+- **Left out:** Option C's data, the fine-tuned simulators, and every policy's weights. `optc/data_manifest.json` lists the generator,
+  its seeds and the hash of every data shard; `scripts/c/gen_data.py` regenerates the data and `scripts/d/finetune.py` the simulators from
+  their seeds. The tests of `scripts/d/` (`test_d1.py`) need the authors' released model and the MuJoCo model, which are not included.
+
 ## Edits made for anonymity
-In this copy only: {changed}. The four registration files are byte-identical to the registered files
+In this copy only: {changed}. The five registration files are byte-identical to the registered files
 (their hashes are evidence); `prereg/PREREG.md` mentions a generic download folder path, with no name.
 """
+
+
+PATH_RX = re.compile(r"/Users/[^/\s\"\\]+/Downloads/PDM/")
+
+
+def neutralise_paths():
+    """Option C/D result files hold tracebacks with absolute paths of the working copy; replaced in the staged copy only."""
+    n = 0
+    for sub in ("results/c", "results/d", "results"):
+        for f in sorted((STAGE / sub).glob("*.json" if sub == "results" else "**/*.json")):
+            t = f.read_text()
+            t2 = PATH_RX.sub("<PDM folder>/", t)
+            if t2 != t:
+                f.write_text(t2)
+                n += 1
+    return n
 
 
 def stage():
@@ -186,8 +224,11 @@ def stage():
         if n == 1 and t2 != t:
             f.write_text(t2)
             done.append(what)
+    n = neutralise_paths()
+    if n:
+        done.append(f"absolute paths of the working copy in {n} Option C/D result files (tracebacks)")
     commit, when, commit2, when2 = reg_facts()
-    (STAGE / "README_SUPPLEMENT.md").write_text(readme(commit, when, commit2, when2, "; ".join(done) or "none needed"))
+    (STAGE / "README_SUPPLEMENT.md").write_text(readme(commit, when, commit2, when2, "; ".join(done) or "none needed", *reg_facts_d()))
     return rels, done
 
 

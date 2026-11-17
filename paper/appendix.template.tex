@@ -773,7 +773,7 @@ became the fallback pool instead of 25 main-pool simulators.
 \textbf{Root cause of the pilot's falls (diagnosed later; descriptive).} A later diagnosis, run on the same pilot
 policies after this test, supports three causes. (1)~The data show no failure: the ten recorded episodes hold
 {{c_d0_falls}} falls in {{c_d0_rows}} rows, so a simulator's fall predictor has nothing to learn from. The
-single-network simulators imagined a fall in at most {{c_d1_imfell_max}} of episodes, while their policies fell in
+single-network simulators imagined a fall (sampled actions) in at most {{c_d1_imfell_max}} of episodes, while their policies fell in
 {{c_d1_realfell}} of MuJoCo episodes. (2)~Imagination lets a policy leave the data: the failed policies' imagined
 state--action pairs lay {{c_d2_min}} to {{c_d2_max}} times further from the training data than the authors' policy's
 pairs in MuJoCo ({{c_d2_rel}} for the released model's policy), and only {{c_d4_share}} of training velocity commands
@@ -932,7 +932,7 @@ stopped {{d_s2_n_stop}} of Step~2's {{d_s2_n_pol}} registered policies, all of w
 Errors on the expert test set in the authors' scales; walk test: falls and tracking (share of MuJoCo's). Policies:
 walking scores and fall rates in MuJoCo (released model: seeds 1 and 2, then the pilot; rebuilt and from-scratch: one
 pilot policy, from-scratch ones by Option C's recipe at 2,000 iterations). $^\S$: fall rate by appendix~A12's
-protocol (no walking score measured). The record's walk test uses its own settings, so its values differ a little
+protocol (no walking score measured). The record's walk test uses its own settings, so its values differ
 from Option C's Gate A2.}
 \label{tab:app-drecord}
 \footnotesize
@@ -966,9 +966,9 @@ scratch on MuJoCo data (up to {{c_rows_sixm}} million transitions, from the auth
 noise, weaker policies and random motion) with RWM's loss, and required them to pass the walk test before any
 policy was trained: the released policy should fall in at most {{c_ga_fell_lim}} of imagined episodes and earn at least
 {{c_ga_track_lim}} of its MuJoCo tracking reward (Gate A2). The simulator trained on the most data failed (falls {{c_ga_fell}},
-tracking {{c_ga_track}}), and again after twice the training ({{c_gb_fell}} and {{c_gb_track}}); its first pilot policy fell
+tracking {{c_ga_track}}), and again after twice the training ({{c_gb_fell}} and {{c_gb_track}}); the policy of Option C's first pilot, before the gate existed, fell
 in every episode. Its one-step error was nonetheless lower than the released model's (Table~\ref{tab:app-drecord}). Two
-mistakes in our design lay behind the failure. \emph{Scaling:} our trainer divided each state by its own data's spread
+mistakes in our design probably lay behind the failure. \emph{Scaling:} our trainer divided each state by its own data's spread
 instead of the authors' fixed scales; as the loss sums squared scaled errors, this weighted states such as body tilt and
 vertical speed far less than the authors' loss does. \emph{Training amount:} the simulators were trained for
 {{c_steps}} updates of {{c_batch}} windows ({{c_steps_two}} when doubled), the number that fitted a fixed time budget
@@ -1063,7 +1063,7 @@ policies. The primary pool is the released model (Step~2's two policies) and the
 with $\rho={}${{d_r0_rho}} (95\% {{d_r0_ci}}). R1: the growth rate ranked it {{d_r1_new}} and one-step error
 {{d_r1_base}}; the difference was {{d_r1_delta}} (97.5\% {{d_r1_ci}}). R2: the kinematic residual ranked it
 {{d_r2_new}} and 8-step error {{d_r2_base}}; the difference was {{d_r2_delta}} (97.5\% {{d_r2_ci}}). The point
-estimates favour the label-free checks only because one-step and 8-step errors ranked walking in reverse: fine-tuning
+estimates favour the label-free checks partly because one-step and 8-step errors ranked walking in reverse: fine-tuning
 lowered the short-horizon errors of saves whose policies then failed.
 
 \textbf{Secondary results} (Table~\ref{tab:app-dsec}; 95\% intervals). The walk test ranked the simulators by walking:

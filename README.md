@@ -201,3 +201,36 @@ Run order after the main job (always through `./py`; MuJoCo work through `./py-m
 ./py scripts/check_bib.py; ./py scripts/submission_checks.py
 ./py scripts/build_supplement.py                     # optional reviewer supplement
 ```
+
+## Options C and D (simulators of a known physics model, added)
+
+Does a simulator that scores well on the paper's checks produce policies that walk? Option C (from-scratch simulators) failed; Option D
+(the released model fine-tuned in a searched ladder of runs) is the registered test. The world is the hand-built MuJoCo ANYmal D of Step 2
+(fitted PD motor; not Isaac Lab, not hardware). Plans: `OPTIONC_PLAN.md`, `OPTIOND_PLAN.md`; log, checkpoint, decisions and notes in `optc/`
+and `optd/`. Registration: `prereg/PREREG_D.md` and `scripts/d_stats.py`, committed after the record of existing results and before any
+policy was trained in a fine-tuned simulator (hash in `results/prereg_hash_d.json`).
+
+- **Result (registered, descriptive and secondary labelled in the paper):** R0, R1 and R2 are all NOT SETTLED over 19 simulators (the
+  released model and 18 tested saves). 13 of the 18 saves failed (two or more of their 40 policies below 0.15). Every save had lower one-step
+  and 8-step error than the released model, and those two checks ranked walking in reverse (rho about -0.4). The walk test's tracking ranked
+  walking well (secondary). Option C's from-scratch simulators failed the walk test (two design mistakes: state scaling, and about 0.1 of one pass
+  over the data); policies from rebuilt single-network simulators fell in every pilot episode. Details: Sec. 4.2, Table "ladder", appendices A12 and A13.
+- **Code:** `scripts/c/` (Option C), `scripts/d/` (record, fine-tuning, checks, walk test, policy wrapper with the stop rule, search, tests),
+  `scripts/d_stats.py` (registered analysis), `scripts/d_numbers.py` (`d_*` and `c_*` keys, called last by `paper_numbers.py`).
+- **Results:** `results/d_record.*`, `results/d_ladder.*`, `results/d_stats.*` (the registered analysis, never overwritten), `results/d/`,
+  `results/c_*.json`, `results/c/`. Data, simulators and policies are in `optc/data/` and `runs/` (not committed; `optc/data_manifest.json`
+  lists the generator, seeds and hashes: `scripts/c/gen_data.py` and `scripts/d/finetune.py` recreate them).
+- **Jobs** (run by the launcher, never by a session): `optd/jobs/record.zsh`, `optd/jobs/ladder.zsh` (53 h).
+- **Changed in D2-D3:** `body.template.tex`, `appendix.template.tex` (A12 root cause, new A13), `paper_numbers.py`, `check_claims.py`
+  (181 -> 210 assertions; the Option D block is the last), `build_supplement.py` (Option C and D files, the Option C data manifest, path
+  neutralisation in the staged copy). Git tags: `air2027-optd-start`, `air2027-optd`.
+
+Run order after the ladder job (always through `./py`):
+
+```
+./py scripts/d_stats.py                              # registered analysis (already run; never overwritten)
+./py scripts/paper_numbers.py; ./py scripts/build_paper.py
+./py scripts/slack.py; ./py scripts/check_claims.py; ./py scripts/check_numbers.py
+./py scripts/check_bib.py; ./py scripts/submission_checks.py
+./py scripts/build_supplement.py                     # optional reviewer supplement (full 73 MB; --slim 4 MB)
+```

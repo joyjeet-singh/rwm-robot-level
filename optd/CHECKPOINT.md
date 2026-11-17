@@ -1,14 +1,13 @@
 # Option D checkpoint
 
-**Last session:** D2, COMPLETE (see the status line in `optd/LOG.md`).
+**Last session:** D3, COMPLETE (see the status line in `optd/LOG.md`).
 
-**Next action:** D3 (claims, checks, supplement, documents). Start from `optd/notes/D2.md`: it lists the new keys and the typed claims that need assertions in `scripts/check_claims.py`.
+**Next action:** D4 (final review, tag `air2027-optd`). Nothing pending from D3.
 
 **Blockers:** none.
 
 **State**
-- Registered analysis: `results/d_stats.json`/`.txt` (not overwritten; DECISIONS D2-1). R0–R2 NOT SETTLED.
-- Numbers: `scripts/d_numbers.py` (`d_*`, `c_*` keys), called last by `scripts/paper_numbers.py`.
-- Paper: `paper/body.template.tex` (Sec. step2 paragraph, `tab:ladder`, verdict-table PT rows, abstract, Limitations, Conclusion, "five registrations"); `paper/appendix.template.tex` (A12 root cause; new A13 "Simulators of a known physics model" with tables `tab:app-drecord`, `tab:app-dladder`, `tab:app-dsec`, `tab:app-dsel`).
-- Fit: `slack.py` PASS with no free space (reserve 0). Any added word in the body may need a matching cut; see DECISIONS D2-3 for what was compressed.
-- Ladder result files `results/d/` and `results/d_ladder.*` are committed by D2.
+- `check_claims.py` has 210 assertions (Option D block last); the full pipeline passes; `slack.py` PASS with reserve 0 (any added word in the body needs a cut).
+- Claim check: `optd/review/D3_claimcheck.md` (4 findings left on purpose, DECISIONS D3-1).
+- Supplement: `submission/AIR2027_supplement.zip` (73.4 MB) and `_slim.zip` (4.4 MB), scan 0 hits; not committed.
+- Documents: README.md, SUBMIT.md, ANOMALIES.md updated for Options C and D.

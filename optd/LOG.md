@@ -34,3 +34,10 @@ Ladder: 6 of 7 runs, 18 saves, 13 failed; every save had lower E1 and E8 than RE
 Secondary: walk-test tracking and u POSITIVE and better than E8; pooled R0 SUPPORTED, R2 LABEL-FREE BETTER.
 scripts/d_numbers.py (called from paper_numbers.py). Paper: Sec. step2 paragraph + tab:ladder; verdict-table PT rows = Option D; A12 root cause; new A13.
 Fit: slack.py PASS (6 pages, abstract 199 words) after wording cuts listed in DECISIONS D2-3. Builds identical; check_claims, check_numbers, submission_checks pass.
+## D3 started (2026-11-17 14:07)
+
+## D3 status: COMPLETE (2026-11-17 14:22)
+check_claims.py: 181 -> 210 assertions (29 new for Option D), all pass. Pipeline passes: builds identical, slack PASS (reserve 0), check_numbers all agree, check_bib, submission_checks.
+air-claim-checker: 12 wording findings; 8 fixed, 4 left with reasons (optd/review/D3_claimcheck.md, DECISIONS D3-1).
+Supplement rebuilt with scripts/c, scripts/d, PREREG_D.md, c and d results, optc/data_manifest.json (no data, simulators or weights): full 73.4 MB, slim 4.4 MB, scan 0 hits.
+README.md, SUBMIT.md, ANOMALIES.md updated. Notes: optd/notes/D3.md.

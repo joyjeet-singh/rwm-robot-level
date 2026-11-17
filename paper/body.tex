@@ -18,7 +18,7 @@ weights kept 90\% of the skill one step ahead but 39\% at 2~s. Second, fine-tuni
 error, but was not separated from 8-step error and failed a replication (secondary); a kinematic residual ranked them better than
 one-step error (secondary), but less well under policy-chosen commands (against recorded-command error). We recommend checking 8 or more steps ahead on
 held-out episodes, with these checks as fallback. In a hand-built physics model, fine-tuning lowered one-step
-error, yet most fine-tuned simulators yielded failing policies; registered tests stayed unsettled. Scope: simulated data, one robot and gait.
+error, yet most tested fine-tuned simulators yielded failing policies; registered tests stayed unsettled. Scope: simulated data, one robot and gait.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -131,7 +131,7 @@ correlations. A result is \emph{registered} if its decision rule was committed t
 measurements that test it were run~\cite{nosek2018prereg}; a rule gives a verdict only when its interval clears a stated threshold
 (usually zero), and ``not settled'' otherwise. Five registrations were made: the comparison of checks
 on both pools (primary Q1--Q2, secondary Q3--Q6), study FT on fine-tuning pruned copies (FT1--FT2), studies CL
-and AR on policy commands and other architectures (CL1--CL2, AR1--AR2), and two physics tests (appendix~A12; R0--R2). Primary questions use 97.5\% intervals. The registrations are
+and AR on policy commands and other architectures (CL1--CL2, AR1--AR2), and two physics tests (appendices~A12 and~A13; R0--R2). Primary questions use 97.5\% intervals. The registrations are
 commits in our own version control, so their times are self-reported: the supplement lists their order but
 no independent timestamp, and the answer to Q1 was largely predictable from earlier analyses (appendix~A2). Other verdicts come from rules registered for earlier,
 unpublished analyses; those registrations and the code are in the supplement. Secondary
@@ -338,12 +338,12 @@ errors and positive growth rates; compressed copies (squares) spread mostly vert
 We trained policies in simulators with the authors' code and scored them in a MuJoCo ANYmal~D we built
 (appendix~A11) by command following (\emph{walking score}: released policy 0.942, standing still 0.069). Policies from single-network rebuilds fell in every pilot episode, and on copies of the released
 model nothing was settled (appendix~A12). Our
-from-scratch simulators could not keep the released policy walking, as we had scaled states wrongly and trained
-too little (appendix~A13). We then fine-tuned the released model (score 0.59) in 6 runs, testing 18 saves
+from-scratch simulators could not keep the released policy walking, probably from wrong state scaling and too little
+training (appendix~A13). We then fine-tuned the released model (score 0.59) in 6 runs, testing 18 saves
 chosen by a registered search (Table~\ref{tab:ladder}, descriptive): all had lower one- and 8-step error than the released model,
 2 lower 100-step error, and 13 failed (two policies below 0.15). R0--R2 were not settled (Table~\ref{tab:verdicts}):
-one- and 8-step error ranked walking in reverse ($\rho={}$$-$0.42, $-$0.43), the released policy's tracking
-in each simulator well ($\rho={}$+0.79, [+0.43, +0.96]; secondary).
+one- and 8-step error ranked walking in reverse (point estimates $\rho={}$$-$0.42, $-$0.43), the released policy's tracking
+well ($\rho={}$+0.79, [+0.43, +0.96]; secondary).
 
 \begin{table}[t]
 \centering
@@ -393,7 +393,7 @@ stability account does not cover the released model. Each other architecture has
 On this simulator, one-step checks favoured teacher forcing, one-step training and a pruned model that, without
 fine-tuning, loses most of its skill by 2~s. Checking 8 or more steps ahead on held-out episodes is the safer way to rank these simulators.
 Without recorded futures, the growth rate beat one-step error on the main pool but failed its replication (secondary), and the
-kinematic residual ranked best on the main pool with recorded commands (descriptive) but less well under a policy. In a hand-built physics model, fine-tuning lowered one-step error yet most resulting policies failed; registered tests were unsettled.
+kinematic residual ranked best on the main pool with recorded commands (descriptive) but less well under a policy. In a hand-built physics model, fine-tuning lowered one-step error yet most policies failed; registered tests were unsettled.
 
 \textbf{Reproducibility and use of AI tools.} Registrations and code are in the
 supplement. An AI assistant (Claude, Anthropic), directed by the author(s), wrote

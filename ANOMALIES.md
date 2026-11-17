@@ -83,3 +83,24 @@ None of these changes `prereg/PREREG_S2.md` or a registered verdict (R0, R1, R2 
 - **Supplement (M6).** The ANYdrive file is not packed. The MuJoCo version is recorded only in the uncommitted `step2/assets/manifest.json`
   (shipped inside the supplement as `step2/assets_manifest.json`), not printed in the paper.
 
+
+## Option D (D0-D3)
+
+None of these changes `prereg/PREREG_D.md` or a registered verdict (R0, R1, R2 all NOT SETTLED). Details in `optd/DECISIONS.md`.
+- **The registered analysis file existed before D2 (D2-1).** `results/d_stats.json` was on disk before any D2 session ran (three earlier D2
+  launches failed at sign-in); no launcher names `d_stats`, so what wrote it is not recorded. Never overwritten: a rerun of the unedited
+  `scripts/d_stats.py` into `.cache/` is byte-identical.
+- **Option C's from-scratch simulators failed, through two design mistakes of ours.** State scaling (each state divided by its own
+  data's spread, not the authors' fixed scales) and training amount (about 0.1 of one pass over the data). They were not repaired; the next
+  design adapted the released model. Why the rebuilt single-network simulators' policies fall was diagnosed later (descriptive, A12).
+- **Three of the ladder's saves had policies failed by their simulator (D1-5).** Losses not finite, or the same crash twice, all in mixed-data
+  saves; they score 0 and count as failed.
+- **Error checks ranked walking in reverse.** Every tested save had lower one-step and 8-step error than the released model, yet most of
+  them failed. The R1 and R2 point estimates favour the label-free checks only because of that reversal; both intervals include 0.
+- **The mixed-data repeat did not start (design rule).** The mixed run at 1e-4 found no boundary, so M_s1 was skipped; 6 of 7 runs ran.
+- **Walk-test starts for Option C's four simulators (D0-4)** differ from Option C's calibration, so their walk-test values differ a little from Gate A2's.
+- **r-bar-J on the paper's arena (D0-1)** is 0.13% below the value stored on the cloud and equals the Mac recomputation; the gap is floating-point.
+- **Option C's five-network simulator's policies were never given a walking score (D0-8);** the record shows their fall rate only.
+- **Fit (D2-3).** The new paragraph and table left no space: wording elsewhere was compressed without removing a result.
+- **Supplement (D3).** One Option D result file (a crash traceback) held the working copy's absolute path; it is replaced in the staged copy
+  only. `build_supplement.py` lists it among the anonymity edits in the supplement's README.
